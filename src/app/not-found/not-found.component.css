@@ -5,12 +5,12 @@
 }
 
 #loupe {
-  animation: bounceInUp 2s ease forwards;
+  animation: bounceInUp 1s ease forwards;
   }
 
 
 #ombre-loupe {
-  animation: fadeIn 2s 3s ease forwards;
+  animation: fadeIn 1s 2s ease forwards;
 }
 
 #_x34_-gauche, #_x34_-droite, #ombre-loupe, #decorations {
@@ -18,21 +18,21 @@
 }
 
 #_x34_-gauche, #_x34_-droite {
-  animation: fadeIn 2s ease forwards;
+  animation: fadeIn 1s ease forwards;
 }
 
 #_x34_-gauche {
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 #_x34_-droite {
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 #decorations {
   transform-origin: center;
-  animation: fadeIn 2s ease forwards, rotate-grow 50s linear infinite alternate;
-  animation-delay: 4s;
+  animation: fadeIn 1s ease forwards, rotate-grow 50s linear infinite alternate;
+  animation-delay: 1.5s;
 }
 
 @-webkit-keyframes rotate-grow {

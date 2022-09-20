@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit{
       data: {
         labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
         datasets: [{
-          label: 'Finding in this month',
+          label: 'Data',
           data: [12, 19, 3, 5],
           backgroundColor: [
               'rgba(255, 99, 132, 0.2)',

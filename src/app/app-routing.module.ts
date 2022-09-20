@@ -14,6 +14,7 @@ import { PdmMFsbComponent } from './pdm-m-fsb/pdm-m-fsb.component';
 import { AppsLinkComponent } from './apps-link/apps-link.component';
 import { Big5Component } from './big5/big5.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AddNodeComponent } from './add-node/add-node.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'pdm_m_fsb',component: PdmMFsbComponent},
   {path: 'apps_link', component: AppsLinkComponent},
   {path: 'big5', component: Big5Component},
+  {path: 'addnode', component: AddNodeComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
