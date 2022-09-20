@@ -38,15 +38,15 @@ if (pageName != "rtl") {
     fixedPluginCard.classList.toggle("right-0");
   });
 
-  fixedPluginButtonNav.addEventListener("click", function () {
-    fixedPluginCard.classList.toggle("-right-90");
-    fixedPluginCard.classList.toggle("right-0");
-  });
+  // fixedPluginButtonNav.addEventListener("click", function () {
+  //   fixedPluginCard.classList.toggle("-right-90");
+  //   fixedPluginCard.classList.toggle("right-0");
+  // });
 
-  fixedPluginCloseButton.addEventListener("click", function () {
-    fixedPluginCard.classList.toggle("-right-90");
-    fixedPluginCard.classList.toggle("right-0");
-  });
+  // fixedPluginCloseButton.addEventListener("click", function () {
+  //   fixedPluginCard.classList.toggle("-right-90");
+  //   fixedPluginCard.classList.toggle("right-0");
+  // });
 
   window.addEventListener("click", function (e) {
     if (!fixedPlugin.contains(e.target) && !fixedPluginButton.contains(e.target) && !fixedPluginButtonNav.contains(e.target)) {
@@ -86,7 +86,7 @@ function sidebarColor(a) {
   var color_from = a.getAttribute("data-color-from");
   var color_to = a.getAttribute("data-color-to");
   var parent = a.parentElement.children;
-  
+
   var activeColorFrom;
   var activeColorTo;
   var activeSidenavIconColorClassFrom;
@@ -95,13 +95,13 @@ function sidebarColor(a) {
   var activeSidenavCardColorClassTo;
   var activeSidenavCardIconColorClassFrom;
   var activeSidenavCardIconColorClassTo;
-  
+
   var checkedSidenavIconColorFrom = "from-" + color_from;
   var checkedSidenavIconColorTo = "to-" + color_to;
-  
+
   var checkedSidenavCardColorFrom = "after:from-" + (color_from == "purple-700" ? "slate-600" : color_from);
   var checkedSidenavCardColorTo = "after:to-" + (color_to == "pink-500" ? "slate-300" : color_to);
-  
+
   var checkedSidenavCardIconColorClassFrom = "from-" + (color_from == "purple-700" ? "slate-600" : color_from);
   var checkedSidenavCardIconColorClassTo = "to-" + (color_to == "pink-500" ? "slate-300" : color_to);
 
@@ -116,7 +116,7 @@ function sidebarColor(a) {
 
       parent[i].classList.toggle("border-white");
       parent[i].classList.toggle("border-slate-700");
-      
+
       activeSidenavIconColorClassFrom = "from-" + activeColorFrom;
       activeSidenavIconColorClassTo = "to-" + activeColorTo;
 
@@ -137,19 +137,19 @@ function sidebarColor(a) {
 
   sidenavCard.classList.remove(activeSidenavCardColorClassFrom);
   sidenavCard.classList.remove(activeSidenavCardColorClassTo);
-  
+
   sidenavCardIcon.classList.remove(activeSidenavCardIconColorClassFrom);
   sidenavCardIcon.classList.remove(activeSidenavCardIconColorClassTo);
-  
+
   sidenavIcon.classList.remove(activeSidenavIconColorClassFrom);
   sidenavIcon.classList.remove(activeSidenavIconColorClassTo);
-  
+
   sidenavCard.classList.add(checkedSidenavCardColorFrom);
   sidenavCard.classList.add(checkedSidenavCardColorTo);
-  
+
   sidenavCardIcon.classList.add(checkedSidenavCardIconColorClassFrom);
   sidenavCardIcon.classList.add(checkedSidenavCardIconColorClassTo);
-  
+
   sidenavIcon.classList.add(checkedSidenavIconColorFrom);
   sidenavIcon.classList.add(checkedSidenavIconColorTo);
 }
