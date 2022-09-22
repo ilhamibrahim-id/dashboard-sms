@@ -1,0 +1,40 @@
+.btn {
+  @apply font-bold py-2 px-4 rounded;
+}
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+.btn-green {
+  @apply bg-green-500 text-white;
+}
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+.btn2 {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  @apply font-bold py-2 px-4 rounded;
+}
+
+/* Darker background on mouse-over */
+.btn2:hover {
+  background-color: RoyalBlue;
+}
+.btn3 {
+  background-color: rgb(255, 61, 61);
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  @apply font-bold py-2 px-4 rounded;
+}
+
+/* Darker background on mouse-over */
+.btn3:hover {
+  background-color: rgb(255, 0, 0);
+}

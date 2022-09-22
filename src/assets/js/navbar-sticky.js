@@ -2,10 +2,10 @@
 
 var navbar = document.querySelector("[navbar-main]");
 
-window.onscroll = function () {
-  let blur = navbar.getAttribute("navbar-scroll");
-  if (blur == "true") stickyNav();
-};
+// window.onscroll = function () {
+//   let blur = navbar.getAttribute("navbar-scroll");
+//   if (blur == "true") stickyNav();
+// };
 
 function stickyNav() {
   if (window.scrollY >= 5) {

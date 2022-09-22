@@ -4,7 +4,7 @@ before:bg-black before:inline-block before:relative before:align-middle
 before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-soft-xl">AM dashboard
 </h1>
 <!-- row 1 -->
-<div class="flex flex-wrap -mx-3">
+<div class="flex flex-wrap -mx-3 duration-2000">
   <!-- card1 -->
   <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
@@ -15,9 +15,9 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
               <p class="mb-0 font-sans font-semibold leading-normal text-sm">
                 Total Finding
               </p>
-              <h5 class="mb-0 font-bold">
-                2864
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
+              <h5 class="mb-0 font-bold" *ngFor="let const2s of const2">
+                {{const2s.total}}
+                <span> / Year</span>
               </h5>
             </div>
           </div>
@@ -39,9 +39,9 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
               <p class="mb-0 font-sans font-semibold leading-normal text-sm">
                 Pending execute
               </p>
-              <h5 class="mb-0 font-bold">
-                185
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
+              <h5 class="mb-0 font-bold" *ngFor="let pendingexecute2s of pendingexecute2">
+                {{pendingexecute2s.total}}
+                <span> / Year</span>
               </h5>
             </div>
           </div>
@@ -63,9 +63,9 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
               <p class="mb-0 font-sans font-semibold leading-normal text-sm">
                 Finish Execute
               </p>
-              <h5 class="mb-0 font-bold">
-                93.5%
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
+              <h5 class="mb-0 font-bold" *ngFor="let finishexecute2s of finishexecute2">
+                {{finishexecute2s.total}}
+                <span> / Year</span>
               </h5>
             </div>
           </div>
@@ -87,9 +87,9 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
               <p class="mb-0 font-sans font-semibold leading-normal text-sm">
                 Ready Execute
               </p>
-              <h5 class="mb-0 font-bold">
-                933
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
+              <h5 class="mb-0 font-bold" *ngFor="let readyexecute2s of readyexecute2">
+                {{readyexecute2s.total}}
+                <span> / Year</span>
               </h5>
             </div>
           </div>
@@ -104,32 +104,33 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
   </div>
 </div>
 <div class="flex flex-wrap -mx-3">
-<div class="w-full px-1 py-1 mx-auto">
-  <div class="flex flex-wrap -mx-1 lg:-mx-4">
-    <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-        <div class="flex-auto p-6">
-          <h5 class="text-center">Finding This Mounth</h5>
+  <div class="w-full px-1 py-1 mx-auto">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+      <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
+          <div class="flex-auto p-4">
+            <h5 class="text-center">Finding This Years</h5>
+          </div>
+        </div>
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+          <div class="flex-auto p-6">
+            <canvas id="dum" width="400" height="300"></canvas>
+          </div>
+        </div>
       </div>
-      </div>
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-        <div class="flex-auto p-6">
-      <canvas id="dum" width="400" height="300"></canvas>
-      </div>
+      <div class="my-1 px-1 w-full md:w-1/2 lg:my-6 lg:px-6">
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
+          <div class="flex-auto p-4">
+            <h5 class="text-center">Type Of Finding</h5>
+          </div>
+        </div>
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+          <div class="flex-auto p-6">
+            <canvas id="donut" width="400" height="300"></canvas>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="my-1 px-1 w-full md:w-1/2 lg:my-6 lg:px-6">
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-        <div class="flex-auto p-6">
-      <h5 class="text-center">Type Of Finding</h5>
-      </div>
-      </div>
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-        <div class="flex-auto p-6">
-      <canvas id="donut" width="400" height="300"></canvas>
-      </div>
-      </div>
-    </div>
-  </div>
   </div>
 </div>
+

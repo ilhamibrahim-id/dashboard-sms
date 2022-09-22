@@ -15,6 +15,7 @@ import { AppsLinkComponent } from './apps-link/apps-link.component';
 import { Big5Component } from './big5/big5.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddNodeComponent } from './add-node/add-node.component';
+import { AddTablesComponent } from './add-tables/add-tables.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'apps_link', component: AppsLinkComponent},
   {path: 'big5', component: Big5Component},
   {path: 'addnode', component: AddNodeComponent},
+  {path: 'addtables', component: AddTablesComponent},
   {path: '**', component: NotFoundComponent},
 ];
 

@@ -2,7 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import '~bootstrap/scss/bootstrap';
+@import "~styles/spinner";
+@import "styles/spinner";
 .snowflake {
   color: #fff;
   font-size: 1.5em;
@@ -156,3 +158,6 @@
   font-family: 'Raleway', sans-serif;
   color: #000;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
