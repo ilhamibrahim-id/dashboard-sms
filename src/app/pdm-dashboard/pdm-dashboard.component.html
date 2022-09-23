@@ -1,147 +1,169 @@
-<h1 class="text-center overflow-hidden before:h-[1px] after:h-[1px] after:bg-black
-after:inline-block after:relative after:align-middle after:w-1/4
-before:bg-black before:inline-block before:relative before:align-middle
-before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-soft-xl">PDM dashboard
-</h1>
-<!-- row 1 -->
-<div class="flex flex-wrap -mx-3">
-  <!-- card1 -->
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Total Asset
-              </p>
-              <h5 class="mb-0 font-bold">
-                2864
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
+<div *ngIf="resolved; else loading2">
+  <!-- row 1 -->
+  <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
+    <div class="flex-auto p-6">
+      <div
+        class="relative flex flex-col mt-2 mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <h5 class="text-center">PDM dashboard
+          </h5>
+        </div>
+      </div>
+      <!-- row 1 -->
+      <div class="flex flex-wrap -mx-3">
+        <!-- card1 -->
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Total Asset
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      {{totalasset}}
+                      <span> / device</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+        </div>
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Finish Check
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      185
+                      <span>+55%</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Total Good Dan SatisFactory
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      93.5%
+                      <span>+55%</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Total Unsatisactory and Unacceptable
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      933
+                      <span>+55%</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full px-2 py-2 mx-auto">
+          <div class="flex flex-wrap -mx-1 lg:-mx-3">
+            <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
+                <div class="flex-auto p-6">
+                  <h5 class="text-center">OCI 1</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                  <canvas id="dum" width="310" height="300"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
+                <div class="flex-auto p-6">
+                  <h5 class="text-center">OCI 2</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                  <canvas id="donut" width="310" height="300"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
+                <div class="flex-auto p-6">
+                  <h5 class="text-center">FSB</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                  <canvas id="donutku" width="310" height="300"></canvas>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                On Progress Check
-              </p>
-              <h5 class="mb-0 font-bold">
-                185
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Total Good
-              </p>
-              <h5 class="mb-0 font-bold">
-                93.5%
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Total SatisFactory
-              </p>
-              <h5 class="mb-0 font-bold">
-                933
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="flex flex-wrap -mx-3">
-  <div class="w-full px-2 py-2 mx-auto">
-    <div class="flex flex-wrap -mx-1 lg:-mx-3">
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-          <div class="flex-auto p-6">
-            <h5 class="text-center">OCI 1</h5>
-        </div>
-        </div>
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <canvas id="dum" width="310" height="300"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-          <div class="flex-auto p-6">
-            <h5 class="text-center">OCI 2</h5>
-        </div>
-        </div>
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <canvas id="donut" width="310" height="300"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-          <div class="flex-auto p-6">
-            <h5 class="text-center">FSB</h5>
-        </div>
-        </div>
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <canvas id="donutku" width="310" height="300"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <ng-template #loading2>
+    <ngx-spinner type="ball-beat"></ngx-spinner>
+  </ng-template>

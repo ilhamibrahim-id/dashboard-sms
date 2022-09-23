@@ -10,6 +10,7 @@ export class CountService {
   private urlpendingexecute = 'http://localhost:3000/totalreadpendingexecute';
   private urlreadyexecute = 'http://localhost:3000/totalreadreadyexecute';
   private urlfinishexecute = 'http://localhost:3000/totalreadfinishexecute';
+  private urltotalpdmasset = 'http://localhost:3000/totalpdmasset';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,5 +25,8 @@ export class CountService {
   }
   getReadFinishExecute(){
     return this.httpClient.get(this.urlfinishexecute);
+  }
+  getReadTotalPdmAsset(){
+    return this.httpClient.get(this.urltotalpdmasset);
   }
 }

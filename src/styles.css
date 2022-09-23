@@ -78,7 +78,7 @@
   -webkit-animation-iteration-count: infinite, infinite;
   -webkit-animation-play-state: running, running;
   animation-name: snowflakes-fall, snowflakes-shake;
-  animation-duration: 7s, 2.5s;
+  animation-duration: 3s, 2.5s;
   animation-timing-function: linear, ease-in-out;
   animation-iteration-count: infinite, infinite;
   animation-play-state: running, running

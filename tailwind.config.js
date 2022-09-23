@@ -26,6 +26,7 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
+      pink: colors.pink,
 
       slate: {
         DEFAULT: colors.slate,
