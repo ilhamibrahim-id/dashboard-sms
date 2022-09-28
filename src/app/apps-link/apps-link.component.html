@@ -1,159 +1,66 @@
-<h1 class="text-center overflow-hidden before:h-[1px] after:h-[1px] after:bg-black
-           after:inline-block after:relative after:align-middle after:w-1/4
-           before:bg-black before:inline-block before:relative before:align-middle
-           before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-soft-xl">List Apps
-</h1>
-<div class="flex flex-wrap -mx-3">
-  <div class="w-full px-1 py-1 mx-auto">
-    <div class="flex flex-wrap -mx-1 lg:-mx-3">
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="wrapper bg-gray-400 antialiased text-gray-900">
-              <div style="cursor: pointer;" onclick="window.location='/';">
-                <img
-                  src="https://akcdn.detik.net.id/community/media/visual/2022/09/09/manchester-united-vs-real-sociedad-cristiano-ronaldo-5_169.jpeg?w=700&q=90"
-                  alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-                <div class="relative px-4 -mt-16  ">
-                  <div class="bg-white p-6 rounded-lg shadow-lg">
+<div *ngIf="resolved; else loading2">
+  <!-- row 1 -->
+  <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
+    <div class="flex-auto p-6">
+      <div
+        class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <h5 class="text-center">Apps Link
+          </h5>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full px-1 py-1 mx-auto">
+          <div class="flex flex-wrap -mx-1 lg:-mx-3">
+            <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                  <div class="wrapper bg-gray-400 antialiased text-gray-900">
+                    <div style="cursor: pointer;" onclick="window.location='http://192.168.9.47/plan_pdm';">
+                      <img
+                        src="/../assets/img/am.png" width="300" height="300"
+                        alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+                      <div class="relative px-4 -mt-16  ">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
 
-                    <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Name Apps</h4>
+                          <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">PDM CHEKSHEET</h4>
 
-                    <div class="mt-1">
-                      <span class="text-gray-600 text-sm">description apps</span>
-                    </div>
-                    <div class="mt-6 text-right">
-                      <span class="text-xs">create by: ilham ibrahim</span>
+                          <div class="mt-1">
+                            <span class="text-gray-600 text-sm">project pdm checksheet</span>
+                          </div>
+                          <div class="mt-6 text-right">
+                            <span class="text-xs">create by: ilham ibrahim</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="wrapper bg-gray-400 antialiased text-gray-900">
-              <div style="cursor: pointer;" onclick="window.location='/';">
-                <img
-                  src="https://akcdn.detik.net.id/community/media/visual/2022/09/09/manchester-united-vs-real-sociedad-cristiano-ronaldo-5_169.jpeg?w=700&q=90"
-                  alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-                <div class="relative px-4 -mt-16  ">
-                  <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                  <div class="wrapper bg-gray-400 antialiased text-gray-900">
+                    <div style="cursor: pointer;" onclick="NewTab()">
+                      <img
+                        src="/../assets/img/3.png"
+                        alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+                      <div class="relative px-4 -mt-16  ">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
 
-                    <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Name Apps</h4>
+                          <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">AM CHEKSHEET</h4>
 
-                    <div class="mt-1">
-                      <span class="text-gray-600 text-sm">description apps</span>
-                    </div>
-                    <div class="mt-6 text-right">
-                      <span class="text-xs">create by: ilham ibrahim</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="wrapper bg-gray-400 antialiased text-gray-900">
-              <div style="cursor: pointer;" onclick="window.location='/';">
-                <img
-                  src="https://akcdn.detik.net.id/community/media/visual/2022/09/09/manchester-united-vs-real-sociedad-cristiano-ronaldo-5_169.jpeg?w=700&q=90"
-                  alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-                <div class="relative px-4 -mt-16  ">
-                  <div class="bg-white p-6 rounded-lg shadow-lg">
-
-                    <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Name Apps</h4>
-
-                    <div class="mt-1">
-                      <span class="text-gray-600 text-sm">description apps</span>
-                    </div>
-                    <div class="mt-6 text-right">
-                      <span class="text-xs">create by: ilham ibrahim</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="wrapper bg-gray-400 antialiased text-gray-900">
-              <div style="cursor: pointer;" onclick="window.location='/';">
-                <img
-                  src="https://akcdn.detik.net.id/community/media/visual/2022/09/09/manchester-united-vs-real-sociedad-cristiano-ronaldo-5_169.jpeg?w=700&q=90"
-                  alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-                <div class="relative px-4 -mt-16  ">
-                  <div class="bg-white p-6 rounded-lg shadow-lg">
-
-                    <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Name Apps</h4>
-
-                    <div class="mt-1">
-                      <span class="text-gray-600 text-sm">description apps</span>
-                    </div>
-                    <div class="mt-6 text-right">
-                      <span class="text-xs">create by: ilham ibrahim</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="wrapper bg-gray-400 antialiased text-gray-900">
-              <div style="cursor: pointer;" onclick="window.location='/';">
-                <img
-                  src="https://akcdn.detik.net.id/community/media/visual/2022/09/09/manchester-united-vs-real-sociedad-cristiano-ronaldo-5_169.jpeg?w=700&q=90"
-                  alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-                <div class="relative px-4 -mt-16  ">
-                  <div class="bg-white p-6 rounded-lg shadow-lg">
-
-                    <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Name Apps</h4>
-
-                    <div class="mt-1">
-                      <span class="text-gray-600 text-sm">description apps</span>
-                    </div>
-                    <div class="mt-6 text-right">
-                      <span class="text-xs">create by: ilham ibrahim</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="wrapper bg-gray-400 antialiased text-gray-900">
-              <div style="cursor: pointer;" onclick="window.location='/';">
-                <img
-                  src="https://akcdn.detik.net.id/community/media/visual/2022/09/09/manchester-united-vs-real-sociedad-cristiano-ronaldo-5_169.jpeg?w=700&q=90"
-                  alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
-                <div class="relative px-4 -mt-16  ">
-                  <div class="bg-white p-6 rounded-lg shadow-lg">
-
-                    <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Name Apps</h4>
-
-                    <div class="mt-1">
-                      <span class="text-gray-600 text-sm">description apps</span>
-                    </div>
-                    <div class="mt-6 text-right">
-                      <span class="text-xs">create by: ilham ibrahim</span>
+                          <div class="mt-1">
+                            <span class="text-gray-600 text-sm">project am checksheet</span>
+                          </div>
+                          <div class="mt-6 text-right">
+                            <span class="text-xs">create by: ilham ibrahim</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -165,3 +72,6 @@
     </div>
   </div>
 </div>
+<ng-template #loading2>
+  <ngx-spinner type="ball-beat"></ngx-spinner>
+</ng-template>

@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   const2: any = [];
   angka: number = 0;
   totalfinding: any = [];
+  totalfindingd: any = [];
   totalfinding1: any;
   totalfinding2: any;
   totalfinding3: any;
@@ -28,6 +29,7 @@ export class DashboardComponent implements OnInit {
   public errorMsg: any;
   barChart: any = [];
   donut: any = [];
+  coba: any = [];
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   ngOnInit() {
     this.spinner.show();
@@ -47,6 +49,7 @@ export class DashboardComponent implements OnInit {
         // console.log(this.const2);
         for (let elem of this.const2) {
           this.totalfinding[0] = elem.total;
+          this.totalfindingd[0] = elem.total;
           this.totalfinding1 = elem.total;
           //console.log(this.totalfinding[0]);
         }
@@ -68,6 +71,7 @@ export class DashboardComponent implements OnInit {
         this.pendingexecute2.splice(this.pendingexecute2.lenght, 0, array[0]);
         for (let elem of this.pendingexecute2) {
           this.totalfinding[1] = elem.total;
+          this.totalfindingd[1] = elem.total;
           this.totalfinding2 = elem.total;
           //console.log(this.totalfinding[0]);
         }
@@ -84,6 +88,7 @@ export class DashboardComponent implements OnInit {
         this.finishexecute2.splice(this.finishexecute2.lenght, 0, array[0]);
         for (let elem of this.finishexecute2) {
           this.totalfinding[2] = elem.total;
+          this.totalfindingd[2] = elem.total;
           this.totalfinding3 = elem.total;
           //console.log(this.totalfinding[0]);
         }
@@ -103,6 +108,7 @@ export class DashboardComponent implements OnInit {
         this.readyexecute2.splice(this.readyexecute2.lenght, 0, array[0]);
         for (let elem of this.readyexecute2) {
           this.totalfinding[3] = elem.total;
+          this.totalfindingd[3] = elem.total;
           this.totalfinding4 = elem.total;
           //console.log(this.totalfinding[0]);
         }
@@ -113,36 +119,13 @@ export class DashboardComponent implements OnInit {
     var a = setInterval(() => {
       count++;
       this.resolved = true;
-      this.barChart = new Chart("dum", {
-        type: 'horizontalBar',
-        data: {
-          labels: ["Total Finding", "Pending Execute", "Finish Execute", "Ready Execute"],
-          datasets: [{
-            label: 'Data',
-            data: this.totalfinding,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-          }],
-        },
-      });
       this.donut = new Chart('donut', {
         type: 'doughnut',
         data: {
           labels: ["Total Finding", "Pending Execute", "Finish Execute", "Ready Execute"],
           datasets: [{
             label: 'Data',
-            data: this.totalfinding,
+            data: this.totalfindingd,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -158,6 +141,67 @@ export class DashboardComponent implements OnInit {
             borderWidth: 1
           }]
         },
+      });
+      this.coba = new Chart('dum', {
+        type: 'horizontalBar',
+        data: {
+          datasets: [
+            {
+              label: 'Total Finding',
+              data: [this.totalfinding[0]],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+              ],
+              borderWidth: 1
+            },
+            {
+              type: 'bar',
+              label: 'Pending Execute',
+              data: [this.totalfinding[1]],
+              backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+              ],
+              borderColor: [
+                'rgba(54, 162, 235, 1)',
+              ],
+              borderWidth: 1
+            },
+            {
+              label: 'Ready Execute',
+              data: [this.totalfinding[3]],
+              backgroundColor: [
+                'rgba(255, 206, 86, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 206, 86, 0.2)',
+              ],
+              borderWidth: 1
+            },
+            {
+              label: 'Finish Execute',
+              data: [this.totalfinding[2]],
+              backgroundColor: [
+                'rgba(75, 192, 192, 0.2)',
+              ],
+              borderColor: [
+                'rgba(75, 192, 192, 0.2)',
+              ],
+              borderWidth: 1
+            },
+
+          ]
+        }, options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
       });
       if (count == 1) {
         clearInterval(a)
@@ -234,28 +278,66 @@ export class DashboardComponent implements OnInit {
           var count = 0;
           count++;
           this.resolved = true;
-          this.barChart = new Chart("dum", {
+          this.coba = new Chart('dum', {
             type: 'horizontalBar',
             data: {
-              labels: ["Total Finding", "Pending Execute", "Finish Execute", "Ready Execute"],
-              datasets: [{
-                label: 'Data',
-                data: this.totalfinding,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }],
-            },
+              datasets: [
+                {
+                  label: 'Total Finding',
+                  data: [this.totalfinding[0]],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  type: 'bar',
+                  label: 'Pending Execute',
+                  data: [this.totalfinding[1]],
+                  backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  label: 'Ready Execute',
+                  data: [this.totalfinding[3]],
+                  backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  label: 'Finish Execute',
+                  data: [this.totalfinding[2]],
+                  backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderWidth: 1
+                },
+
+              ]
+            }, options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
           });
           this.donut = new Chart('donut', {
             type: 'doughnut',
@@ -263,7 +345,7 @@ export class DashboardComponent implements OnInit {
               labels: ["Total Finding", "Pending Execute", "Finish Execute", "Ready Execute"],
               datasets: [{
                 label: 'Data',
-                data: this.totalfinding,
+                data: this.totalfindingd,
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',

@@ -14,3 +14,254 @@ exports.readtotalasset = async (req, res) => {
     return res.status(500).json({ error: error.message })
   }
 };
+exports.readtotalfinish = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t WHERE t.value IS NOT NULL;", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.readgoodandsatis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t WHERE t.`status` = 'Good' OR t.`status` = 'Satisfactory';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.unsatisunac = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t WHERE t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.assetoci1 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM mst_device d JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI1';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.assetoci2 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM mst_device d JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI2';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.assetfsb = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM mst_device d JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.assetfsb = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM mst_device d JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci1good = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Good' AND a.name_area = 'OCI1';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci1satis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Satisfactory' AND a.name_area = 'OCI1';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci1unsatis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Unatisfactory' AND a.name_area = 'OCI1';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci1unacc = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Unacceptable' AND a.name_area = 'OCI1';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci2good = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Good' AND a.name_area = 'OCI2';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci2satis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Satisfactory' AND a.name_area = 'OCI2';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci2unsatis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Unatisfactory' AND a.name_area = 'OCI2';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.oci2unacc = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Unacceptable' AND a.name_area = 'OCI2';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.FSBgood = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Good' AND a.name_area = 'FSB';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.FSBsatis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Satisfactory' AND a.name_area = 'FSB';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.FSBunsatis = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Unatisfactory' AND a.name_area = 'FSB';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.FSBunacc = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN view_set_test st ON st.id_set_test = t.id_set_test JOIN view_area a ON a.id_area = st.id_area WHERE t.`status` = 'Unacceptable' AND a.name_area = 'FSB';", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+
+
+
+

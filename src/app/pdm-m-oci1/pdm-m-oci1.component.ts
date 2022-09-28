@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pdm-m-oci1',
@@ -7,11 +8,17 @@ import { Chart } from 'chart.js';
   styleUrls: ['./pdm-m-oci1.component.css']
 })
 export class PdmMOci1Component implements OnInit {
-
+  constructor(private spinner: NgxSpinnerService) { }
+  public resolved: boolean = false;
   coba: any = [];
   donut:any = [];
   coba2:any = [];
   ngOnInit(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+      this.resolved = true;
+    }, 400);
     this.coba = new Chart('dum', {
       type: 'line',
       data: {

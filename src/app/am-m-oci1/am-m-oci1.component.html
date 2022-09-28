@@ -1,511 +1,345 @@
-<h1 class="text-center overflow-hidden before:h-[1px] after:h-[1px] after:bg-black
-after:inline-block after:relative after:align-middle after:w-1/4
-before:bg-black before:inline-block before:relative before:align-middle
-before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-soft-xl">AM Monitoring - FSB
-</h1>
-<div class="flex flex-wrap -mx-3">
-  <!-- card1 -->
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Total Finding
-              </p>
-              <h5 class="mb-0 font-bold">
-                2864
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Pending execute
-              </p>
-              <h5 class="mb-0 font-bold">
-                185
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Finish Execute
-              </p>
-              <h5 class="mb-0 font-bold">
-                93.5%
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-      <div class="flex-auto p-4">
-        <div class="flex flex-row -mx-3">
-          <div class="flex-none w-2/3 max-w-full px-3">
-            <div>
-              <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                Ready Execute
-              </p>
-              <h5 class="mb-0 font-bold">
-                933
-                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
-              </h5>
-            </div>
-          </div>
-          <div class="px-3 text-right basis-1/3">
-            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-              <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="flex flex-wrap -mx-3">
-  <div class="w-full px-1 py-1 mx-auto">
-    <div class="my-1 px-1 place-items-center max-w-full md:w-full lg:my-6 lg:px-6">
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-2 bg-clip-border">
+<div *ngIf="resolved; else loading2">
+  <!-- row 1 -->
+  <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
+    <div class="flex-auto p-6">
+      <div class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
         <div class="flex-auto p-4">
-          <h5 class="text-center">Total Data</h5>
+          <h5 class="text-center">AM Monitoring - OCI 1
+          </h5>
         </div>
       </div>
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-        <div class="flex-auto p-6">
-          <canvas id="dum" width="10"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-wrap -mx-1 lg:-mx-4">
-      <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
-        <div
-          class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl  mb-1 bg-clip-border">
-          <div class="flex-auto p-4">
-            <h5 class="text-center">Type of Finding</h5>
-          </div>
-        </div>
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-          <div class="flex-auto p-6">
-            <canvas id="donut" width="580" height="480"></canvas>
-          </div>
-        </div>
-        <div
-          class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mt-2 mb-2 bg-clip-border">
-          <div class="flex-auto p-4">
-            <h5 class="text-center">Level Finding</h5>
-          </div>
-        </div>
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <canvas id="donut2" width="575" height="475"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="my-1 px-1 w-full md:w-1/2 lg:my-6 lg:px-6">
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-1 bg-clip-border">
-          <div class="flex-auto p-4">
-            <h5 class="text-center">Finding Pending (Not Closed Yet)</h5>
-          </div>
-        </div>
-        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th scope="col" class="py-3 px-6">
-                      No
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Deskripsi
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Level
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Machine
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Area
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="bg-white border-b Success:bg-gray-900 Success:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple MacBook Pro 17"
-                    </th>
-                    <td class="py-4 px-6">
-                      Sliver
-                    </td>
-                    <td class="py-4 px-6">
-                      Laptop
-                    </td>
-                    <td class="py-4 px-6">
-                      $2999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Microsoft Surface Pro
-                    </th>
-                    <td class="py-4 px-6">
-                      White
-                    </td>
-                    <td class="py-4 px-6">
-                      Laptop PC
-                    </td>
-                    <td class="py-4 px-6">
-                      $1999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Magic Mouse 2
-                    </th>
-                    <td class="py-4 px-6">
-                      Black
-                    </td>
-                    <td class="py-4 px-6">
-                      Accessories
-                    </td>
-                    <td class="py-4 px-6">
-                      $99
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Google Pixel Phone
-                    </th>
-                    <td class="py-4 px-6">
-                      Gray
-                    </td>
-                    <td class="py-4 px-6">
-                      Phone
-                    </td>
-                    <td class="py-4 px-6">
-                      $799
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple Watch 5
-                    </th>
-                    <td class="py-4 px-6">
-                      Red
-                    </td>
-                    <td class="py-4 px-6">
-                      Wearables
-                    </td>
-                    <td class="py-4 px-6">
-                      $999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+      <div class="flex flex-wrap -mx-3">
+        <!-- card1 -->
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Total Finding
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      {{totalfinding1}}
+                      <span>/ Month</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div
-          class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mt-2 mb-2 bg-clip-border">
-          <div class="flex-auto p-4">
-            <h5 class="text-center">History Pending (Not Closed Yet)</h5>
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Pending execute
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      {{totalfinding2}}
+                      <span>/ Month</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div
-          class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mt-1 bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th scope="col" class="py-3 px-6">
-                      No
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Deskripsi
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Level
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Machine
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Area
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple MacBook Pro 17"
-                    </th>
-                    <td class="py-4 px-6">
-                      Sliver
-                    </td>
-                    <td class="py-4 px-6">
-                      Laptop
-                    </td>
-                    <td class="py-4 px-6">
-                      $2999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Microsoft Surface Pro
-                    </th>
-                    <td class="py-4 px-6">
-                      White
-                    </td>
-                    <td class="py-4 px-6">
-                      Laptop PC
-                    </td>
-                    <td class="py-4 px-6">
-                      $1999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Magic Mouse 2
-                    </th>
-                    <td class="py-4 px-6">
-                      Black
-                    </td>
-                    <td class="py-4 px-6">
-                      Accessories
-                    </td>
-                    <td class="py-4 px-6">
-                      $99
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Google Pixel Phone
-                    </th>
-                    <td class="py-4 px-6">
-                      Gray
-                    </td>
-                    <td class="py-4 px-6">
-                      Phone
-                    </td>
-                    <td class="py-4 px-6">
-                      $799
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple Watch 5
-                    </th>
-                    <td class="py-4 px-6">
-                      Red
-                    </td>
-                    <td class="py-4 px-6">
-                      Wearables
-                    </td>
-                    <td class="py-4 px-6">
-                      $999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Finish Execute
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      {{totalfinding3}}
+                      <span>/ Month</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                  <div>
+                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                      Ready Execute
+                    </p>
+                    <h5 class="mb-0 font-bold">
+                      {{totalfinding4}}
+                      <span>/ Month</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="px-3 text-right basis-1/3">
+                  <div
+                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="my-1 px-1 w-full md:w-full lg:my-6 lg:px-6">
-      <div
-          class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mb-2 bg-clip-border">
-          <div class="flex-auto p-4">
-            <h5 class="text-center">History Finding Close</h5>
-          </div>
-        </div>
-        <div
-          class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl mt-1 mb-1 bg-clip-border">
-          <div class="flex-auto p-6">
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th scope="col" class="py-3 px-6">
-                      No
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Deskripsi
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Level
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Machine
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                      Area
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple MacBook Pro 17"
-                    </th>
-                    <td class="py-4 px-6">
-                      Sliver
-                    </td>
-                    <td class="py-4 px-6">
-                      Laptop
-                    </td>
-                    <td class="py-4 px-6">
-                      $2999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Microsoft Surface Pro
-                    </th>
-                    <td class="py-4 px-6">
-                      White
-                    </td>
-                    <td class="py-4 px-6">
-                      Laptop PC
-                    </td>
-                    <td class="py-4 px-6">
-                      $1999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Magic Mouse 2
-                    </th>
-                    <td class="py-4 px-6">
-                      Black
-                    </td>
-                    <td class="py-4 px-6">
-                      Accessories
-                    </td>
-                    <td class="py-4 px-6">
-                      $99
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Google Pixel Phone
-                    </th>
-                    <td class="py-4 px-6">
-                      Gray
-                    </td>
-                    <td class="py-4 px-6">
-                      Phone
-                    </td>
-                    <td class="py-4 px-6">
-                      $799
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple Watch 5
-                    </th>
-                    <td class="py-4 px-6">
-                      Red
-                    </td>
-                    <td class="py-4 px-6">
-                      Wearables
-                    </td>
-                    <td class="py-4 px-6">
-                      $999
-                    </td>
-                    <td class="py-4 px-6">
-                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full px-1 py-1 mx-auto">
+          <div class="my-1 px-1 place-items-center max-w-full md:w-full lg:my-6 lg:px-6">
+            <div
+              class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-2 bg-clip-border">
+              <div class="flex-auto p-4">
+                <h5 class="text-center">Total Data</h5>
+              </div>
+            </div>
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <canvas id="dum" width="10"></canvas>
+              </div>
             </div>
           </div>
+          <div class="flex flex-wrap -mx-1 lg:-mx-4">
+            <div class="my-1 px-1 w-full md:w-1/2 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl  mb-1 bg-clip-border">
+                <div class="flex-auto p-4">
+                  <h5 class="text-center">Type of Finding</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
+                <div class="flex-auto p-6">
+                  <canvas id="donut" width="575" height="480"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="my-1 px-1 w-full md:w-1/2 lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl  mb-1 bg-clip-border">
+                <div class="flex-auto p-4">
+                  <h5 class="text-center">Level of Finding</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
+                <div class="flex-auto p-6">
+                  <canvas id="donut2" width="575" height="480"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="my-1 px-1 w-full md:w-full lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
+                <div class="flex-auto p-4">
+                  <h5 class="text-center">Finding Pending (Not Closed Yet)</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                  <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                          <th scope="col" class="py-3 px-6">
+                            No
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Deskripsi
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Level
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Machine
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Area
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="bg-white border-b Success:bg-gray-900 Success:border-gray-700"
+                          *ngFor="let findingpending of findingpending2; let i = index">
+                          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{i+1}}
+                          </th>
+                          <td class="py-4 px-6">
+                            {{findingpending.finding}}
+                          </td>
+                          <td class="py-4 px-6">
+                            {{findingpending.level}}
+                          </td>
+                          <td class="py-4 px-6">
+                            {{findingpending.func_loc}}
+                          </td>
+                          <td class="py-4 px-6">
+                            {{findingpending.area}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="my-1 px-1 w-full md:w-full lg:my-6 lg:px-6">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-2 bg-clip-border">
+                <div class="flex-auto p-4">
+                  <h5 class="text-center">History Finding Close</h5>
+                </div>
+              </div>
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mt-1 mb-1 bg-clip-border">
+                <div class="flex-auto p-6">
+                  <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                          <th scope="col" class="py-3 px-6">
+                            No
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Deskripsi
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Level
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Machine
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Area
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Apple MacBook Pro 17"
+                          </th>
+                          <td class="py-4 px-6">
+                            Sliver
+                          </td>
+                          <td class="py-4 px-6">
+                            Laptop
+                          </td>
+                          <td class="py-4 px-6">
+                            $2999
+                          </td>
+                          <td class="py-4 px-6">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          </td>
+                        </tr>
+                        <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
+                          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Microsoft Surface Pro
+                          </th>
+                          <td class="py-4 px-6">
+                            White
+                          </td>
+                          <td class="py-4 px-6">
+                            Laptop PC
+                          </td>
+                          <td class="py-4 px-6">
+                            $1999
+                          </td>
+                          <td class="py-4 px-6">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Magic Mouse 2
+                          </th>
+                          <td class="py-4 px-6">
+                            Black
+                          </td>
+                          <td class="py-4 px-6">
+                            Accessories
+                          </td>
+                          <td class="py-4 px-6">
+                            $99
+                          </td>
+                          <td class="py-4 px-6">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          </td>
+                        </tr>
+                        <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
+                          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Google Pixel Phone
+                          </th>
+                          <td class="py-4 px-6">
+                            Gray
+                          </td>
+                          <td class="py-4 px-6">
+                            Phone
+                          </td>
+                          <td class="py-4 px-6">
+                            $799
+                          </td>
+                          <td class="py-4 px-6">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Apple Watch 5
+                          </th>
+                          <td class="py-4 px-6">
+                            Red
+                          </td>
+                          <td class="py-4 px-6">
+                            Wearables
+                          </td>
+                          <td class="py-4 px-6">
+                            $999
+                          </td>
+                          <td class="py-4 px-6">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
+<ng-template #loading2>
+  <ngx-spinner type="ball-beat"></ngx-spinner>
+</ng-template>
