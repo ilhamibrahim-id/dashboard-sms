@@ -11,9 +11,21 @@ export class CountService {
   private urlreadyexecute = 'http://localhost:3000/totalreadreadyexecute';
   private urlfinishexecute = 'http://localhost:3000/totalreadfinishexecute';
   private urltotalpdmasset = 'http://localhost:3000/totalpdmasset';
+  private urltotalpdmassetoci1 = 'http://localhost:3000/totalpdmassetoci1';
+  private urltotalpdmassetoci2 = 'http://localhost:3000/totalpdmassetoci2';
+  private urltotalpdmassetfsb = 'http://localhost:3000/totalpdmassetfsb';
   private urltotalpdmfinish = 'http://localhost:3000/totalreadfinishpdm';
+  private urltotalpdmfinishoci1 = 'http://localhost:3000/totalreadfinishpdmoci1';
+  private urltotalpdmfinishoci2 = 'http://localhost:3000/totalreadfinishpdmoci2';
+  private urltotalpdmfinishfsb = 'http://localhost:3000/totalreadfinishpdmfsb';
   private urltotalgoodandsatis = 'http://localhost:3000/totalgoodandsatis';
-  private urltotalunsatisunac = 'http://localhost:3000/totalunsatisunac'
+  private urltotalgoodandsatisoci1 = 'http://localhost:3000/totalgoodandsatisoci1';
+  private urltotalgoodandsatisoci2 = 'http://localhost:3000/totalgoodandsatisoci2';
+  private urltotalgoodandsatisfsb = 'http://localhost:3000/totalgoodandsatisfsb';
+  private urltotalunsatisunac = 'http://localhost:3000/totalunsatisunac';
+  private urltotalunsatisunacoci1 = 'http://localhost:3000/totalunsatisunacoci1';
+  private urltotalunsatisunacoci2 = 'http://localhost:3000/totalunsatisunacoci2';
+  private urltotalunsatisunacfsb = 'http://localhost:3000/totalunsatisunacfsb';
   private urltotalassetoci1 = 'http://localhost:3000/totalasetoci1';
   private urltotalassetoci2 = 'http://localhost:3000/totalasetoci2';
   private urltotalfsb = 'http://localhost:3000/totalasetfsb';
@@ -35,6 +47,21 @@ export class CountService {
   private urlTotalFinishFindingM = 'http://localhost:3000/totalfinishexecutem';
   private urlFindingPending = 'http://localhost:3000/findingpending';
   private urlTotalLevel = 'http://localhost:3000/levelam';
+  private urlTotalFindingMoci2 = 'http://localhost:3000/totalfindingmoci2';
+  private urlTotalPendingFindingMoci2 = 'http://localhost:3000/totalpendingexecutemoci2';
+  private urlTotalReadyFindingMoci2 = 'http://localhost:3000/totalreadyexecutemoci2';
+  private urlTotalFinishFindingMoci2 = 'http://localhost:3000/totalfinishexecutemoci2';
+  private urlFindingPendingoci2 = 'http://localhost:3000/findingpendingoci2';
+  private urlTotalLeveloci2 = 'http://localhost:3000/levelamoci2';
+  private urlTotalFindingMfsb = 'http://localhost:3000/totalfindingmfsb';
+  private urlTotalPendingFindingMfsb = 'http://localhost:3000/totalpendingexecutemfsb';
+  private urlTotalReadyFindingMfsb = 'http://localhost:3000/totalreadyexecutemfsb';
+  private urlTotalFinishFindingMfsb = 'http://localhost:3000/totalfinishexecutemfsb';
+  private urlFindingPendingfsb = 'http://localhost:3000/findingpendingfsb';
+  private urlTotalLevelfsb = 'http://localhost:3000/levelamfsb';
+  private urlFinishJobTodayoci1 = 'http://localhost:3000/finishtodaylistoci1';
+  private urlFinishJobTodayoci2 = 'http://localhost:3000/finishtodaylistoci2';
+  private urlFinishJobTodayfsb = 'http://localhost:3000/finishtodaylistfsb';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -53,14 +80,50 @@ export class CountService {
   getReadTotalPdmAsset(){
     return this.httpClient.get(this.urltotalpdmasset);
   }
+  getReadTotalPdmAssetoci1(){
+    return this.httpClient.get(this.urltotalpdmassetoci1);
+  }
+  getReadTotalPdmAssetoci2(){
+    return this.httpClient.get(this.urltotalpdmassetoci2);
+  }
+  getReadTotalPdmAssetfsb(){
+    return this.httpClient.get(this.urltotalpdmassetfsb);
+  }
   getReadPdmFinish(){
     return this.httpClient.get(this.urltotalpdmfinish);
+  }
+  getReadPdmFinishoci1(){
+    return this.httpClient.get(this.urltotalpdmfinishoci1);
+  }
+  getReadPdmFinishoci2(){
+    return this.httpClient.get(this.urltotalpdmfinishoci2);
+  }
+  getReadPdmFinishfsb(){
+    return this.httpClient.get(this.urltotalpdmfinishfsb);
   }
   getReadGoodAndSatis(){
     return this.httpClient.get(this.urltotalgoodandsatis);
   }
+  getReadGoodAndSatisoci1(){
+    return this.httpClient.get(this.urltotalgoodandsatisoci1);
+  }
+  getReadGoodAndSatisoci2(){
+    return this.httpClient.get(this.urltotalgoodandsatisoci2);
+  }
+  getReadGoodAndSatisfsb(){
+    return this.httpClient.get(this.urltotalgoodandsatisfsb);
+  }
   getReadunsatissunac(){
     return this.httpClient.get(this.urltotalunsatisunac);
+  }
+  getReadunsatissunacoci1(){
+    return this.httpClient.get(this.urltotalunsatisunacoci1);
+  }
+  getReadunsatissunacoci2(){
+    return this.httpClient.get(this.urltotalunsatisunacoci2);
+  }
+  getReadunsatissunacfsb(){
+    return this.httpClient.get(this.urltotalunsatisunacfsb);
   }
   getTotalAssetOci1(){
     return this.httpClient.get(this.urltotalassetoci1);
@@ -124,5 +187,50 @@ export class CountService {
   }
   getReadLevelTotal(){
     return this.httpClient.get(this.urlTotalLevel);
+  }
+  getTotalFindingMoci2 () {
+    return this.httpClient.get(this.urlTotalFindingMoci2);
+  }
+  getTotalPendingFindingMoci2 () {
+    return this.httpClient.get(this.urlTotalPendingFindingMoci2);
+  }
+  getTotalReadyFindingMoci2 () {
+    return this.httpClient.get(this.urlTotalReadyFindingMoci2);
+  }
+  getTotalFinsihFindingMoci2 () {
+    return this.httpClient.get(this.urlTotalFinishFindingMoci2);
+  }
+  getReadFindingPendingoci2(){
+    return this.httpClient.get(this.urlFindingPendingoci2);
+  }
+  getReadLevelTotaloci2(){
+    return this.httpClient.get(this.urlTotalLeveloci2);
+  }
+  getTotalFindingMfsb () {
+    return this.httpClient.get(this.urlTotalFindingMfsb);
+  }
+  getTotalPendingFindingMfsb () {
+    return this.httpClient.get(this.urlTotalPendingFindingMfsb);
+  }
+  getTotalReadyFindingMfsb () {
+    return this.httpClient.get(this.urlTotalReadyFindingMfsb);
+  }
+  getTotalFinsihFindingMfsb () {
+    return this.httpClient.get(this.urlTotalFinishFindingMfsb);
+  }
+  getReadFindingPendingfsb(){
+    return this.httpClient.get(this.urlFindingPendingfsb);
+  }
+  getReadLevelTotalfsb(){
+    return this.httpClient.get(this.urlTotalLevelfsb);
+  }
+  getReadFinishTodayoci1(){
+    return this.httpClient.get(this.urlFinishJobTodayoci1);
+  }
+  getReadFinishTodayoci2(){
+    return this.httpClient.get(this.urlFinishJobTodayoci2);
+  }
+  getReadFinishTodayfsb(){
+    return this.httpClient.get(this.urlFinishJobTodayfsb);
   }
 }

@@ -284,9 +284,14 @@ export class AmMOci1Component implements OnInit {
         },
       });
       if (count == 1) {
+        var count2 = 0;
         clearInterval(a)
         setInterval(() => {
           this.findingpending2.splice(0);
+          this.totallevel2.splice(0);
+          this.low = 0;
+          this.medium = 0;
+          this.high = 0;
           this.service.getReadLevelTotal().subscribe(data => {
             this.totallevel = data;
             Object.values(this.totallevel).forEach(data => {
@@ -525,6 +530,32 @@ export class AmMOci1Component implements OnInit {
               }]
             },
           });
+          var b = setInterval(() => {
+            clearInterval(b);
+            this.coba = new Chart('donut2', {
+              type: 'doughnut',
+              data: {
+                labels: ['Low', 'Medium', 'High'],
+                datasets: [{
+                  label: '# of Votes',
+                  data: [this.low, this.medium, this.high],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+            });
+          }, 200);
         }, 60000);
       };
     }, 500);
