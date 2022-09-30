@@ -64,4 +64,7 @@ router.get('/levelamfsb',tableAM.levelamfsb);
 router.get('/finishtodaylistoci1',tablePDM.finishtodaylistoci1);
 router.get('/finishtodaylistoci2',tablePDM.finishtodaylistoci2);
 router.get('/finishtodaylistfsb',tablePDM.finishtodaylistfsb);
+router.get('/vibrationlineoci1',tablePDM.vibrationlineoci1);
+router.get('/vibrationlineoci2',tablePDM.vibrationlineoci2);
+router.get('/vibrationlinefsb',tablePDM.vibrationlinefsb);
 module.exports = router;

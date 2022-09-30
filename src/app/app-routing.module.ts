@@ -16,6 +16,8 @@ import { Big5Component } from './big5/big5.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddNodeComponent } from './add-node/add-node.component';
 import { AddTablesComponent } from './add-tables/add-tables.component';
+import { GamesComponent } from './games/games.component';
+import { SuitComponent } from './suit/suit.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -30,6 +32,8 @@ const routes: Routes = [
   {path: 'big5', component: Big5Component},
   {path: 'addnode', component: AddNodeComponent},
   {path: 'addtables', component: AddTablesComponent},
+  {path: 'games', component: GamesComponent},
+  {path: 'suit', component: SuitComponent},
   {path: '**', component: NotFoundComponent},
 ];
 

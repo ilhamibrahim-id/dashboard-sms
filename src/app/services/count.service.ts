@@ -62,9 +62,20 @@ export class CountService {
   private urlFinishJobTodayoci1 = 'http://localhost:3000/finishtodaylistoci1';
   private urlFinishJobTodayoci2 = 'http://localhost:3000/finishtodaylistoci2';
   private urlFinishJobTodayfsb = 'http://localhost:3000/finishtodaylistfsb';
+  private urlvibrationlineoci1 = 'http://localhost:3000/vibrationlineoci1';
+  private urlvibrationlineoci2 = 'http://localhost:3000/vibrationlineoci2';
+  private urlvibrationlinefsb = 'http://localhost:3000/vibrationlinefsb';
 
   constructor(private httpClient: HttpClient) { }
-
+  getVibrationLinefsb(){
+    return this.httpClient.get(this.urlvibrationlinefsb);
+  }
+  getVibrationLineoci2(){
+    return this.httpClient.get(this.urlvibrationlineoci2);
+  }
+  getVibrationLineoci1(){
+    return this.httpClient.get(this.urlvibrationlineoci1);
+  }
   getCountTotalFinding(){
     return this.httpClient.get(this.url);
   }

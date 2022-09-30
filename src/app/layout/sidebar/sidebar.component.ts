@@ -11,6 +11,7 @@ export class SidebarComponent implements OnInit {
   public resolved: boolean = false;
   public sub1: boolean = false;
   public sub2: boolean = false;
+  public sub3: boolean = false;
   constructor(public router: Router) {}
 
   ngOnInit(): void {
@@ -23,5 +24,8 @@ export class SidebarComponent implements OnInit {
   }
   pdmmonitoringsub(){
     this.sub2 = !this.sub2;
+  }
+  gamessub(){
+    this.sub3 = !this.sub3;
   }
 }

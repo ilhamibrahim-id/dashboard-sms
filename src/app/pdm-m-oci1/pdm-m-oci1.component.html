@@ -234,19 +234,19 @@
                       </thead>
                       <tbody>
                         <tr class="border-b border-gray-200 dark:border-gray-700"
-                          *ngFor="let totalabnormallist2 of totalabnormallist; let i = index">
+                          *ngFor="let getdata of totalabnormallisttrue; let i = index">
                           <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                             {{i+1}}
                           </th>
                           <td class="py-4 px-6">
-                            {{totalabnormallist2.device_name}}
-                          </td>
-                          <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
-                            {{totalabnormallist2.value}}
+                            {{getdata.device_name}}
                           </td>
                           <td class="py-4 px-6">
-                            {{totalabnormallist2.status}}
+                            {{getdata.value}}
+                          </td>
+                          <td class="py-4 px-6">
+                            {{getdata.status}}
                           </td>
                         </tr>
                       </tbody>

@@ -456,5 +456,42 @@ exports.finishtodaylistfsb = async (req, res) => {
     return res.status(500).json({ error: error.message })
   }
 };
-
-
+exports.vibrationlineoci1 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI1' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 1 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.vibrationlineoci2 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI2' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 1 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.vibrationlinefsb = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 1 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
