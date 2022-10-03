@@ -32,12 +32,75 @@ export class PdmMOci1Component implements OnInit {
   abnormal: object = {};
   totalabnormal: any = [];
   totalabnormallist: any = [];
+  vibration: object = {};
+  totalvibrationlist: any = [];
+  totalvibrationdate: any = [];
+  ampere: object = {};
+  totalamperelist: any = [];
+  totalamperedate: any = [];
+  temperature: object = {};
+  totaltemperaturelist: any = [];
+  totaltemperaturedate: any = [];
   ngOnInit(): void {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
       this.resolved = true;
     }, 400);
+    this.service.getTemperatureLineoci1().subscribe(data => {
+      this.temperature = data;
+      Object.values(this.temperature).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totaltemperaturelist.splice(this.totaltemperaturelist.lenght, 0, array[i].value);
+          this.totaltemperaturedate.splice(this.totaltemperaturedate.lenght,0, array[i].do_date);
+          //console.log(array[i]);
+        }
+        // console.log(this.vibration);
+        //console.log(this.totalvibrationlist);
+      })
+    }
+    );
+    this.service.getAmpereLineoci1().subscribe(data => {
+      this.ampere = data;
+      Object.values(this.ampere).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totalamperelist.splice(this.totalamperelist.lenght, 0, array[i].value);
+          this.totalamperedate.splice(this.totalamperedate.lenght,0, array[i].do_date);
+          //console.log(array[i]);
+        }
+        // console.log(this.vibration);
+        //console.log(this.totalvibrationlist);
+      })
+    }
+    );
+    this.service.getVibrationLineoci1().subscribe(data => {
+      this.vibration = data;
+      Object.values(this.vibration).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totalvibrationlist.splice(this.totalvibrationlist.lenght, 0, array[i].value);
+          this.totalvibrationdate.splice(this.totalvibrationdate.lenght,0, array[i].do_date);
+          //console.log(array[i]);
+        }
+        // console.log(this.vibration);
+       // console.log(this.totalvibrationlist);
+      })
+    }
+    );
     this.service.getReadFinishTodayoci1().subscribe(data => {
       this.abnormal = data;
       Object.values(this.abnormal).forEach(data => {
@@ -59,7 +122,7 @@ export class PdmMOci1Component implements OnInit {
           }
           }
         }
-        console.log(this.totalabnormal);
+        //console.log(this.totalabnormal);
         this.totalabnormallisttrue = this.totalabnormallist.filter(function (e:any) {return e != null;});
 
         // console.log(this.findingpending2);
@@ -140,33 +203,38 @@ export class PdmMOci1Component implements OnInit {
       this.coba = new Chart('dum', {
         type: 'line',
         data: {
-          labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
+          labels: this.totalvibrationdate,
           datasets: [{
-            label: 'Vibration',
-            data: [12, 19, 3, 5],
+            label: 'Data Vibration',
+            data: this.totalvibrationlist,
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
               'rgba(75, 192, 192, 0.2)',
             ],
             borderColor: [
+              'rgba(75, 192, 192, 1)',
               'rgba(255, 99, 132, 1)',
               'rgba(54, 162, 235, 1)',
               'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
             ],
             borderWidth: 1
           }]
-        },
+        },options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
       });
       this.coba2 = new Chart('dumdum', {
         type: 'line',
         data: {
-          labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
+          labels: this.totalamperedate,
           datasets: [{
             label: 'Ampere',
-            data: [12, 19, 3, 5],
+            data: this.totalamperelist,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -181,15 +249,23 @@ export class PdmMOci1Component implements OnInit {
             ],
             borderWidth: 1
           }]
-        },
+        }, options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
       });
       this.coba = new Chart('donut', {
         type: 'doughnut',
         data: {
-          labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
+          labels: ['Finish Check', 'Total Good And SatisFactory', 'Total Unsatisactory and Unacceptable'],
           datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5],
+            data: [this.totalfinish, this.totalgoodsatis, this.totalunsatis],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -206,37 +282,13 @@ export class PdmMOci1Component implements OnInit {
           }]
         },
       });
-      this.coba = new Chart('donutku', {
+      this.coba2 = new Chart('dumdumdum', {
         type: 'line',
-        options: {
-          plugins: {
-            datalabels: {
-              display: true,
-              backgroundColor: '#ccc',
-              borderRadius: 3,
-              font: {
-                color: 'red',
-                weight: 'bold',
-              }
-            },
-            doughnutlabel: {
-              labels: [{
-                text: '550',
-                font: {
-                  size: 20,
-                  weight: 'bold'
-                }
-              }, {
-                text: 'total'
-              }]
-            }
-          }
-        },
         data: {
-          labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
+          labels: this.totaltemperaturedate,
           datasets: [{
-            label: 'temperature',
-            data: [12, 19, 3, 5],
+            label: 'Ampere',
+            data: this.totaltemperaturelist,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -250,11 +302,17 @@ export class PdmMOci1Component implements OnInit {
               'rgba(75, 192, 192, 1)',
             ],
             borderWidth: 1
-          }],
-
-        },
-      }
-      );
+          }]
+        }, options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
       if (count == 1) {
         clearInterval(a)
       };

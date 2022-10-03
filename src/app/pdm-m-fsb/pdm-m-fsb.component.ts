@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CountService } from '../services/count.service';
 
 @Component({
   selector: 'app-pdm-m-fsb',
@@ -8,135 +9,313 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./pdm-m-fsb.component.css']
 })
 export class PdmMFsbComponent implements OnInit {
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
-
   coba: any = [];
-  donut:any = [];
-  coba2:any = [];
+  donut: any = [];
+  coba2: any = [];
+  asset: object = {};
+  asset2: any = [];
+  totalabnormallisttrue: any = [];
+  totalasset: any;
+  finish: object = {};
+  finish2: any = [];
+  totalfinish: any;
+  goodsatis: object = {};
+  goodsatis2: any = [];
+  totalgoodsatis: any;
+  unsatis: object = {};
+  unsatis2: any = [];
+  totalunsatis: any;
+  totalfinishtoday: object = {};
+  totalfinishtoday2: any = [];
+  abnormal: object = {};
+  totalabnormal: any = [];
+  totalabnormallist: any = [];
+  vibration: object = {};
+  totalvibrationlist: any = [];
+  totalvibrationdate: any = [];
+  ampere: object = {};
+  totalamperelist: any = [];
+  totalamperedate: any = [];
+  temperature: object = {};
+  totaltemperaturelist: any = [];
+  totaltemperaturedate: any = [];
   ngOnInit(): void {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
       this.resolved = true;
     }, 400);
-    this.coba = new Chart('dum', {
-      type: 'line',
-      data: {
-          labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
-          datasets: [{
-              label: 'Vibration',
-              data: [12, 19, 3, 5],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-              ],
-              borderWidth: 1
-          }]
-      },
-  });
-  this.coba2 = new Chart('dumdum', {
-    type: 'line',
-    data: {
-        labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
-        datasets: [{
-            label: 'Ampere',
-            data: [12, 19, 3, 5],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-});
-  this.coba = new Chart('donut', {
-    type: 'doughnut',
-    data: {
-        labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-});
-this.coba = new Chart('donutku', {
-  type: 'line',
-  options: {
-    plugins: {
-      datalabels: {
-        display: true,
-        backgroundColor: '#ccc',
-        borderRadius: 3,
-        font: {
-          color: 'red',
-          weight: 'bold',
+    this.service.getTemperatureLinefsb().subscribe(data => {
+      this.temperature = data;
+      Object.values(this.temperature).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totaltemperaturelist.splice(this.totaltemperaturelist.lenght, 0, array[i].value);
+          this.totaltemperaturedate.splice(this.totaltemperaturedate.lenght,0, array[i].do_date);
+          //console.log(array[i]);
         }
-      },
-      doughnutlabel: {
-        labels: [{
-          text: '550',
-          font: {
-            size: 20,
-            weight: 'bold'
-          }
-        }, {
-          text: 'total'
-        }]
-      }
+        // console.log(this.vibration);
+        //console.log(this.totalvibrationlist);
+      })
     }
-  },
-  data: {
-      labels: ['Total finding', 'ready execute', 'pending execute', 'finish execute'],
-      datasets: [{
-          label: 'temperature',
-          data: [12, 19, 3, 5],
-          backgroundColor: [
+    );
+    this.service.getAmpereLinefsb().subscribe(data => {
+      this.ampere = data;
+      Object.values(this.ampere).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totalamperelist.splice(this.totalamperelist.lenght, 0, array[i].value);
+          this.totalamperedate.splice(this.totalamperedate.lenght,0, array[i].do_date);
+          //console.log(array[i]);
+        }
+        // console.log(this.vibration);
+        //console.log(this.totalvibrationlist);
+      })
+    }
+    );
+    this.service.getVibrationLinefsb().subscribe(data => {
+      this.vibration = data;
+      Object.values(this.vibration).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totalvibrationlist.splice(this.totalvibrationlist.lenght, 0, array[i].value);
+          this.totalvibrationdate.splice(this.totalvibrationdate.lenght,0, array[i].do_date);
+          //console.log(array[i]);
+        }
+        // console.log(this.vibration);
+       // console.log(this.totalvibrationlist);
+      })
+    }
+    );
+    this.service.getReadFinishTodayfsb().subscribe(data => {
+      this.abnormal = data;
+      Object.values(this.abnormal).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totalabnormal.splice(this.totalabnormal.lenght, 0, array[i]);
+        }
+        for (var i = 0; i < this.totalabnormal.length; i++) {
+          if(this.totalabnormal[i].length === 0){
+            continue;
+          } else {
+          if(this.totalabnormal[i].status === 'Unatisfactory' || this.totalabnormal[i].status === 'Unacceptable'){
+            this.totalabnormallist[i] = this.totalabnormal[i];
+            //this.totalabnormallist[i] = this.totalabnormal[i];
+          }
+          }
+        }
+        //console.log(this.totalabnormal);
+        this.totalabnormallisttrue = this.totalabnormallist.filter(function (e:any) {return e != null;});
+
+        // console.log(this.findingpending2);
+      })
+    }
+    );
+    this.service.getReadFinishTodayfsb().subscribe(data => {
+      this.totalfinishtoday = data;
+      Object.values(this.totalfinishtoday).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
+        }
+
+        // console.log(this.findingpending2);
+      })
+    }
+    );
+    this.service.getReadunsatissunacfsb().subscribe(data => {
+      this.unsatis = data;
+      Object.values(this.unsatis).forEach(data => {
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        this.unsatis2.splice(this.unsatis2.lenght, 0, array[0]);
+        for (let elem of this.unsatis2) {
+          this.totalunsatis = elem.total;
+        }
+      })
+    }
+    );
+    this.service.getReadGoodAndSatisfsb().subscribe(data => {
+      this.goodsatis = data;
+      Object.values(this.goodsatis).forEach(data => {
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[0]);
+        for (let elem of this.goodsatis2) {
+          this.totalgoodsatis = elem.total;
+        }
+      })
+    }
+    );
+    this.service.getReadPdmFinishfsb().subscribe(data => {
+      this.finish = data;
+      Object.values(this.finish).forEach(data => {
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        this.finish2.splice(this.finish2.lenght, 0, array[0]);
+        for (let elem of this.finish2) {
+          this.totalfinish = elem.total;
+        }
+      })
+    }
+    );
+    this.service.getReadTotalPdmAssetfsb().subscribe(data => {
+      this.asset = data;
+      Object.values(this.asset).forEach(data => {
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        this.asset2.splice(this.asset2.lenght, 0, array[0]);
+        for (let elem of this.asset2) {
+          this.totalasset = elem.total;
+        }
+      })
+    }
+    );
+    var count = 0;
+    var a = setInterval(() => {
+      count++;
+      this.coba = new Chart('dum', {
+        type: 'line',
+        data: {
+          labels: this.totalvibrationdate,
+          datasets: [{
+            label: 'Data Vibration',
+            data: this.totalvibrationlist,
+            backgroundColor: [
+              'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+              'rgba(75, 192, 192, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+          }]
+        },options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+      this.coba2 = new Chart('dumdum', {
+        type: 'line',
+        data: {
+          labels: this.totalamperedate,
+          datasets: [{
+            label: 'Ampere',
+            data: this.totalamperelist,
+            backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
               'rgba(255, 206, 86, 0.2)',
               'rgba(75, 192, 192, 0.2)',
-          ],
-          borderColor: [
+            ],
+            borderColor: [
               'rgba(255, 99, 132, 1)',
               'rgba(54, 162, 235, 1)',
               'rgba(255, 206, 86, 1)',
               'rgba(75, 192, 192, 1)',
-          ],
-          borderWidth: 1
-      }],
+            ],
+            borderWidth: 1
+          }]
+        }, options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+      this.coba = new Chart('donut', {
+        type: 'doughnut',
+        data: {
+          labels: ['Finish Check', 'Total Good And SatisFactory', 'Total Unsatisactory and Unacceptable'],
+          datasets: [{
+            label: '# of Votes',
+            data: [this.totalfinish, this.totalgoodsatis, this.totalunsatis],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 1
+          }]
+        },
+      });
+      this.coba2 = new Chart('dumdumdum', {
+        type: 'line',
+        data: {
+          labels: this.totaltemperaturedate,
+          datasets: [{
+            label: 'Ampere',
+            data: this.totaltemperaturelist,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 1
+          }]
+        }, options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+      if (count == 1) {
+        clearInterval(a)
+      };
+    },500);
 
-  },
-  }
-);
-
-}};
+  }};

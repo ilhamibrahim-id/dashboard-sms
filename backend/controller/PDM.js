@@ -107,7 +107,7 @@ exports.readtotalfinishfsb = async (req, res) => {
 };
 exports.readgoodandsatis = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t WHERE t.`status` = 'Good' OR t.`status` = 'Satisfactory';", {
+    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t WHERE (t.`status` = 'Good' OR t.`status` = 'Satisfactory');", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -120,7 +120,7 @@ exports.readgoodandsatis = async (req, res) => {
 };
 exports.readgoodandsatisoci1 = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.`status` = 'Good' OR t.`status` = 'Satisfactory' AND a.name_area = 'OCI1';", {
+    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND (t.`status` = 'Good' OR t.`status` = 'Satisfactory' AND a.name_area = 'OCI1');", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -133,7 +133,7 @@ exports.readgoodandsatisoci1 = async (req, res) => {
 };
 exports.readgoodandsatisoci2 = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.`status` = 'Good' OR t.`status` = 'Satisfactory' AND a.name_area = 'OCI2';", {
+    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND (t.`status` = 'Good' OR t.`status` = 'Satisfactory' AND a.name_area = 'OCI2');", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -146,7 +146,7 @@ exports.readgoodandsatisoci2 = async (req, res) => {
 };
 exports.readgoodandsatisfsb = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.`status` = 'Good' OR t.`status` = 'Satisfactory' AND a.name_area = 'FSB';", {
+    const get = await config.connect2.query("SELECT COUNT(*) as total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND (t.`status` = 'Good' OR t.`status` = 'Satisfactory' AND a.name_area = 'FSB');", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -159,7 +159,7 @@ exports.readgoodandsatisfsb = async (req, res) => {
 };
 exports.unsatisunac = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t WHERE t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable';", {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t WHERE (t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable');", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -172,7 +172,7 @@ exports.unsatisunac = async (req, res) => {
 };
 exports.unsatisunacoci1 = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable' AND a.name_area = 'OCI1';", {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND (t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable') AND a.name_area = 'OCI1';", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -185,7 +185,7 @@ exports.unsatisunacoci1 = async (req, res) => {
 };
 exports.unsatisunacoci2 = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable' AND a.name_area = 'OCI2';", {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND (t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable') AND a.name_area = 'OCI2';", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -198,7 +198,7 @@ exports.unsatisunacoci2 = async (req, res) => {
 };
 exports.unsatisunacfsb = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable' AND a.name_area = 'FSB';", {
+    const get = await config.connect2.query("SELECT COUNT(*) AS total FROM tr_test t JOIN mst_set_test st ON t.id_set_test = st.id_set_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE t.do_date BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND (t.`status` = 'Unatisfactory' OR t.`status` = 'Unacceptable') AND a.name_area = 'FSB';", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -458,7 +458,7 @@ exports.finishtodaylistfsb = async (req, res) => {
 };
 exports.vibrationlineoci1 = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI1' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 1 DAY AND CURDATE();", {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI1' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -471,7 +471,7 @@ exports.vibrationlineoci1 = async (req, res) => {
 };
 exports.vibrationlineoci2 = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI2' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 1 DAY AND CURDATE();", {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI2' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -484,7 +484,85 @@ exports.vibrationlineoci2 = async (req, res) => {
 };
 exports.vibrationlinefsb = async (req, res) => {
   try {
-    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 1 DAY AND CURDATE();", {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB' AND te.kategori = 'vibration' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.amperelineoci1 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI1' AND te.kategori = 'ampere' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.amperelineoci2 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI2' AND te.kategori = 'ampere' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.amperelinefsb = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB' AND te.kategori = 'ampere' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.temperaturelineoci1 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI1' AND te.kategori = 'temperature' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.temperaturelineoci2 = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'OCI2' AND te.kategori = 'temperature' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.temperaturelinefsb = async (req, res) => {
+  try {
+    const get = await config.connect2.query("SELECT t.do_date,t.value FROM tr_test t JOIN mst_set_test st ON st.id_set_test = t.id_set_test JOIN mst_test te ON te.id_test = st.id_test JOIN mst_device d ON d.id_device = st.id_device JOIN view_area a ON a.id_area = d.id_area WHERE a.name_area = 'FSB' AND te.kategori = 'temperature' AND t.do_date BETWEEN curdate() - interval 30 DAY AND CURDATE();", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({

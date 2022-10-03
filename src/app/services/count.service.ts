@@ -65,8 +65,32 @@ export class CountService {
   private urlvibrationlineoci1 = 'http://localhost:3000/vibrationlineoci1';
   private urlvibrationlineoci2 = 'http://localhost:3000/vibrationlineoci2';
   private urlvibrationlinefsb = 'http://localhost:3000/vibrationlinefsb';
+  private urlamperelineoci1 = 'http://localhost:3000/amperelineoci1';
+  private urlamperelineoci2 = 'http://localhost:3000/amperelineoci2';
+  private urlamperelinefsb = 'http://localhost:3000/amperelinefsb';
+  private urltemperaturelineoci1 = 'http://localhost:3000/temperaturelineoci1';
+  private urltemperaturelineoci2 = 'http://localhost:3000/temperaturelineoci2';
+  private urltemperaturelinefsb = 'http://localhost:3000/temperaturelinefsb';
 
   constructor(private httpClient: HttpClient) { }
+  getTemperatureLineoci1(){
+    return this.httpClient.get(this.urltemperaturelineoci1);
+  }
+  getTemperatureLineoci2(){
+    return this.httpClient.get(this.urltemperaturelineoci2);
+  }
+  getTemperatureLinefsb(){
+    return this.httpClient.get(this.urltemperaturelinefsb);
+  }
+  getAmpereLineoci1(){
+    return this.httpClient.get(this.urlamperelineoci1);
+  }
+  getAmpereLineoci2(){
+    return this.httpClient.get(this.urlamperelineoci2);
+  }
+  getAmpereLinefsb(){
+    return this.httpClient.get(this.urlamperelinefsb);
+  }
   getVibrationLinefsb(){
     return this.httpClient.get(this.urlvibrationlinefsb);
   }
