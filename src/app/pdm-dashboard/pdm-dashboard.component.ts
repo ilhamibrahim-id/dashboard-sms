@@ -73,12 +73,9 @@ export class PdmDashboardComponent implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
   donut: any = [];
-  ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-      this.resolved = true;
-    }, 500);
+  public loaddata: any;
+  async ngOnInit(): Promise<void> {
+    this.loaddata = new Promise(resolve => {
     this.service.getTotalFsbUnacc().subscribe(data => {
       this.fsbunacc = data;
       Object.values(this.fsbunacc).forEach(data => {
@@ -570,10 +567,18 @@ export class PdmDashboardComponent implements OnInit {
         },
       }
       );
-      if (count == 1) {
+      if (count == 2) {
+        console.log("2");
+        this.spinner.hide();
+        this.resolved = true;
+      } else if (count == 3) {
+        console.log("3");
         clearInterval(a);
       }
-
-    }, 500);
+    }, 50);
+  });
+    console.log("1");
+    this.spinner.show();
+    this.loaddata = await this.loaddata;
   }
 };

@@ -3,7 +3,7 @@ const { Sequelize } = require('../models/index.js');
 
 exports.read = async (req, res) => {
   try {
-    const get = await config.connect.query("SELECT COUNT(*) AS total FROM tr_temuan_h t WHERE t.last_update BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 365 DAY )AND CURRENT_TIMESTAMP;", {
+    const get = await config.connect.query("SELECT COUNT(*) AS total, t.kategori FROM tr_temuan_h t WHERE t.last_update BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 365 DAY )AND CURRENT_TIMESTAMP;", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({
@@ -277,6 +277,19 @@ exports.findingpendingfsb = async (req, res) => {
 exports.levelamfsb = async (req, res) => {
   try {
     const get = await config.connect.query("SELECT l.`level` FROM tr_temuan_h t JOIN mst_level l ON l.id = t.`level` WHERE t.last_update BETWEEN DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 DAY )AND CURRENT_TIMESTAMP AND t.id_area = 3;", {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    return res.status(200).json({
+      get
+    });
+  }
+  catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+};
+exports.kategori = async (req, res) => {
+  try {
+    const get = await config.connect.query("SELECT k.kategori FROM tr_temuan_h t JOIN mst_kategori k ON k.id = t.kategori;", {
       type: Sequelize.QueryTypes.SELECT
     });
     return res.status(200).json({

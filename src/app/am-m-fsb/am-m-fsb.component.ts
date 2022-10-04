@@ -34,13 +34,10 @@ export class AmMFsbComponent implements OnInit {
   totalfinding1: any;
   totalfinding2: any;
   totalfinding3: any;
+  public loaddata: any;
   totalfinding4: any;
-  ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-      this.resolved = true;
-    }, 400);
+  async ngOnInit(): Promise<void> {
+    this.loaddata = new Promise(resolve => {
     this.service.getReadLevelTotalfsb().subscribe(data => {
       this.totallevel = data;
       Object.values(this.totallevel).forEach(data => {
@@ -283,8 +280,19 @@ export class AmMFsbComponent implements OnInit {
           }]
         },
       });
-      if (count == 1) {
-        clearInterval(a)
-        };
-    }, 500);
-  }};
+      if (count == 2) {
+        console.log("2");
+        this.spinner.hide();
+        this.resolved = true;
+      } else if (count == 3) {
+        console.log("3");
+        clearInterval(a);
+      }
+    }, 50);
+  });
+    console.log("1");
+    this.spinner.show();
+    this.loaddata = await this.loaddata;
+  }
+};
+

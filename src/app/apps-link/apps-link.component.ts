@@ -10,13 +10,15 @@ export class AppsLinkComponent implements OnInit {
 
   constructor(private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
+  public loaddata: any;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.loaddata = new Promise(resolve => {
     this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-      this.resolved = true;
-    }, 400);
+    this.spinner.hide();
+    this.resolved = true;
+    });
+    this.loaddata = await this.loaddata;
   }
 
 }

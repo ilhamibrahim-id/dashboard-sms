@@ -73,4 +73,5 @@ router.get('/amperelinefsb',tablePDM.amperelinefsb);
 router.get('/temperaturelineoci1',tablePDM.temperaturelineoci1);
 router.get('/temperaturelineoci2',tablePDM.temperaturelineoci2);
 router.get('/temperaturelinefsb',tablePDM.temperaturelinefsb);
+router.get('/kategori',tableAM.kategori);
 module.exports = router;

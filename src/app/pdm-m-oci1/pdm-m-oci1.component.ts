@@ -41,12 +41,9 @@ export class PdmMOci1Component implements OnInit {
   temperature: object = {};
   totaltemperaturelist: any = [];
   totaltemperaturedate: any = [];
-  ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-      this.resolved = true;
-    }, 400);
+  public loaddata: any;
+  async ngOnInit(): Promise<void> {
+    this.loaddata = new Promise(resolve => {
     this.service.getTemperatureLineoci1().subscribe(data => {
       this.temperature = data;
       Object.values(this.temperature).forEach(data => {
@@ -313,10 +310,18 @@ export class PdmMOci1Component implements OnInit {
           }
         }
       });
-      if (count == 1) {
-        clearInterval(a)
-      };
-    },500);
-
+      if (count == 2) {
+        console.log("2");
+        this.spinner.hide();
+        this.resolved = true;
+      } else if (count == 3) {
+        console.log("3");
+        clearInterval(a);
+      }
+    }, 50);
+  });
+    console.log("1");
+    this.spinner.show();
+    this.loaddata = await this.loaddata;
   }
 };

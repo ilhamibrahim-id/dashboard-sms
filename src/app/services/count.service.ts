@@ -71,6 +71,7 @@ export class CountService {
   private urltemperaturelineoci1 = 'http://localhost:3000/temperaturelineoci1';
   private urltemperaturelineoci2 = 'http://localhost:3000/temperaturelineoci2';
   private urltemperaturelinefsb = 'http://localhost:3000/temperaturelinefsb';
+  private urlKategori = 'http://localhost:3000/kategori';
 
   constructor(private httpClient: HttpClient) { }
   getTemperatureLineoci1(){
@@ -267,5 +268,8 @@ export class CountService {
   }
   getReadFinishTodayfsb(){
     return this.httpClient.get(this.urlFinishJobTodayfsb);
+  }
+  getKategori(){
+    return this.httpClient.get(this.urlKategori);
   }
 }
