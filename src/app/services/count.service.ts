@@ -1,275 +1,349 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UrlHandlingStrategy } from '@angular/router';
+
+var api = 'http://192.168.152.47:3000/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountService {
-
-  private url = 'http://localhost:3000/totalf';
-  private urlpendingexecute = 'http://localhost:3000/totalreadpendingexecute';
-  private urlreadyexecute = 'http://localhost:3000/totalreadreadyexecute';
-  private urlfinishexecute = 'http://localhost:3000/totalreadfinishexecute';
-  private urltotalpdmasset = 'http://localhost:3000/totalpdmasset';
-  private urltotalpdmassetoci1 = 'http://localhost:3000/totalpdmassetoci1';
-  private urltotalpdmassetoci2 = 'http://localhost:3000/totalpdmassetoci2';
-  private urltotalpdmassetfsb = 'http://localhost:3000/totalpdmassetfsb';
-  private urltotalpdmfinish = 'http://localhost:3000/totalreadfinishpdm';
-  private urltotalpdmfinishoci1 = 'http://localhost:3000/totalreadfinishpdmoci1';
-  private urltotalpdmfinishoci2 = 'http://localhost:3000/totalreadfinishpdmoci2';
-  private urltotalpdmfinishfsb = 'http://localhost:3000/totalreadfinishpdmfsb';
-  private urltotalgoodandsatis = 'http://localhost:3000/totalgoodandsatis';
-  private urltotalgoodandsatisoci1 = 'http://localhost:3000/totalgoodandsatisoci1';
-  private urltotalgoodandsatisoci2 = 'http://localhost:3000/totalgoodandsatisoci2';
-  private urltotalgoodandsatisfsb = 'http://localhost:3000/totalgoodandsatisfsb';
-  private urltotalunsatisunac = 'http://localhost:3000/totalunsatisunac';
-  private urltotalunsatisunacoci1 = 'http://localhost:3000/totalunsatisunacoci1';
-  private urltotalunsatisunacoci2 = 'http://localhost:3000/totalunsatisunacoci2';
-  private urltotalunsatisunacfsb = 'http://localhost:3000/totalunsatisunacfsb';
-  private urltotalassetoci1 = 'http://localhost:3000/totalasetoci1';
-  private urltotalassetoci2 = 'http://localhost:3000/totalasetoci2';
-  private urltotalfsb = 'http://localhost:3000/totalasetfsb';
-  private urloci1good = 'http://localhost:3000/totaloci1good';
-  private urloci1satis = 'http://localhost:3000/totaloci1satis';
-  private urloci1unsatis = 'http://localhost:3000/totaloci1unsatis';
-  private urloci1unacc = 'http://localhost:3000/totaloci1unacc';
-  private urloci2good = 'http://localhost:3000/totaloci2good';
-  private urloci2satis = 'http://localhost:3000/totaloci2satis';
-  private urloci2unsatis = 'http://localhost:3000/totaloci2unsatis';
-  private urloci2unacc = 'http://localhost:3000/totaloci2unacc';
-  private urlfsbgood = 'http://localhost:3000/totalfsbgood';
-  private urlfsbsatis = 'http://localhost:3000/totalfsbsatis';
-  private urlfsbunsatis = 'http://localhost:3000/totalfsbunsatis';
-  private urlfsbunacc = 'http://localhost:3000/totalfsbunacc';
-  private urlTotalFindingM = 'http://localhost:3000/totalfindingm';
-  private urlTotalPendingFindingM = 'http://localhost:3000/totalpendingexecutem';
-  private urlTotalReadyFindingM = 'http://localhost:3000/totalreadyexecutem';
-  private urlTotalFinishFindingM = 'http://localhost:3000/totalfinishexecutem';
-  private urlFindingPending = 'http://localhost:3000/findingpending';
-  private urlTotalLevel = 'http://localhost:3000/levelam';
-  private urlTotalFindingMoci2 = 'http://localhost:3000/totalfindingmoci2';
-  private urlTotalPendingFindingMoci2 = 'http://localhost:3000/totalpendingexecutemoci2';
-  private urlTotalReadyFindingMoci2 = 'http://localhost:3000/totalreadyexecutemoci2';
-  private urlTotalFinishFindingMoci2 = 'http://localhost:3000/totalfinishexecutemoci2';
-  private urlFindingPendingoci2 = 'http://localhost:3000/findingpendingoci2';
-  private urlTotalLeveloci2 = 'http://localhost:3000/levelamoci2';
-  private urlTotalFindingMfsb = 'http://localhost:3000/totalfindingmfsb';
-  private urlTotalPendingFindingMfsb = 'http://localhost:3000/totalpendingexecutemfsb';
-  private urlTotalReadyFindingMfsb = 'http://localhost:3000/totalreadyexecutemfsb';
-  private urlTotalFinishFindingMfsb = 'http://localhost:3000/totalfinishexecutemfsb';
-  private urlFindingPendingfsb = 'http://localhost:3000/findingpendingfsb';
-  private urlTotalLevelfsb = 'http://localhost:3000/levelamfsb';
-  private urlFinishJobTodayoci1 = 'http://localhost:3000/finishtodaylistoci1';
-  private urlFinishJobTodayoci2 = 'http://localhost:3000/finishtodaylistoci2';
-  private urlFinishJobTodayfsb = 'http://localhost:3000/finishtodaylistfsb';
-  private urlvibrationlineoci1 = 'http://localhost:3000/vibrationlineoci1';
-  private urlvibrationlineoci2 = 'http://localhost:3000/vibrationlineoci2';
-  private urlvibrationlinefsb = 'http://localhost:3000/vibrationlinefsb';
-  private urlamperelineoci1 = 'http://localhost:3000/amperelineoci1';
-  private urlamperelineoci2 = 'http://localhost:3000/amperelineoci2';
-  private urlamperelinefsb = 'http://localhost:3000/amperelinefsb';
-  private urltemperaturelineoci1 = 'http://localhost:3000/temperaturelineoci1';
-  private urltemperaturelineoci2 = 'http://localhost:3000/temperaturelineoci2';
-  private urltemperaturelinefsb = 'http://localhost:3000/temperaturelinefsb';
-  private urlKategori = 'http://localhost:3000/kategori';
-
   constructor(private httpClient: HttpClient) { }
-  getTemperatureLineoci1(){
-    return this.httpClient.get(this.urltemperaturelineoci1);
-  }
-  getTemperatureLineoci2(){
-    return this.httpClient.get(this.urltemperaturelineoci2);
-  }
-  getTemperatureLinefsb(){
-    return this.httpClient.get(this.urltemperaturelinefsb);
-  }
-  getAmpereLineoci1(){
-    return this.httpClient.get(this.urlamperelineoci1);
-  }
-  getAmpereLineoci2(){
-    return this.httpClient.get(this.urlamperelineoci2);
-  }
-  getAmpereLinefsb(){
-    return this.httpClient.get(this.urlamperelinefsb);
-  }
-  getVibrationLinefsb(){
-    return this.httpClient.get(this.urlvibrationlinefsb);
-  }
-  getVibrationLineoci2(){
-    return this.httpClient.get(this.urlvibrationlineoci2);
-  }
-  getVibrationLineoci1(){
-    return this.httpClient.get(this.urlvibrationlineoci1);
-  }
-  getCountTotalFinding(){
-    return this.httpClient.get(this.url);
-  }
-  getReadPendingExecute(){
-    return this.httpClient.get(this.urlpendingexecute);
-  }
-  getReadReadyExecute(){
-    return this.httpClient.get(this.urlreadyexecute);
-  }
-  getReadFinishExecute(){
-    return this.httpClient.get(this.urlfinishexecute);
-  }
-  getReadTotalPdmAsset(){
-    return this.httpClient.get(this.urltotalpdmasset);
-  }
-  getReadTotalPdmAssetoci1(){
-    return this.httpClient.get(this.urltotalpdmassetoci1);
-  }
-  getReadTotalPdmAssetoci2(){
-    return this.httpClient.get(this.urltotalpdmassetoci2);
-  }
-  getReadTotalPdmAssetfsb(){
-    return this.httpClient.get(this.urltotalpdmassetfsb);
-  }
-  getReadPdmFinish(){
-    return this.httpClient.get(this.urltotalpdmfinish);
-  }
-  getReadPdmFinishoci1(){
-    return this.httpClient.get(this.urltotalpdmfinishoci1);
-  }
-  getReadPdmFinishoci2(){
-    return this.httpClient.get(this.urltotalpdmfinishoci2);
-  }
-  getReadPdmFinishfsb(){
-    return this.httpClient.get(this.urltotalpdmfinishfsb);
-  }
-  getReadGoodAndSatis(){
-    return this.httpClient.get(this.urltotalgoodandsatis);
-  }
-  getReadGoodAndSatisoci1(){
-    return this.httpClient.get(this.urltotalgoodandsatisoci1);
-  }
-  getReadGoodAndSatisoci2(){
-    return this.httpClient.get(this.urltotalgoodandsatisoci2);
-  }
-  getReadGoodAndSatisfsb(){
-    return this.httpClient.get(this.urltotalgoodandsatisfsb);
-  }
-  getReadunsatissunac(){
-    return this.httpClient.get(this.urltotalunsatisunac);
-  }
-  getReadunsatissunacoci1(){
-    return this.httpClient.get(this.urltotalunsatisunacoci1);
-  }
-  getReadunsatissunacoci2(){
-    return this.httpClient.get(this.urltotalunsatisunacoci2);
-  }
-  getReadunsatissunacfsb(){
-    return this.httpClient.get(this.urltotalunsatisunacfsb);
-  }
-  getTotalAssetOci1(){
-    return this.httpClient.get(this.urltotalassetoci1);
-  }
-  getTotalAssetOci2(){
-    return this.httpClient.get(this.urltotalassetoci2);
-  }
-  getTotalAssetFsb(){
-    return this.httpClient.get(this.urltotalfsb);
-  }
-  getTotalOci1Good(){
-    return this.httpClient.get(this.urloci1good);
-  }
-  getTotalOci1Satis () {
-    return this.httpClient.get(this.urloci1satis);
-  }
-  getTotalOci1UnSatis () {
-    return this.httpClient.get(this.urloci1unsatis);
-  }
-  getTotalOci1Unacc(){
-    return this.httpClient.get(this.urloci1unacc);
-  }
-  getTotalOci2Good(){
-    return this.httpClient.get(this.urloci2good);
-  }
-  getTotalOci2Satis () {
-    return this.httpClient.get(this.urloci2satis);
-  }
-  getTotalOci2UnSatis () {
-    return this.httpClient.get(this.urloci2unsatis);
-  }
-  getTotalOci2Unacc(){
-    return this.httpClient.get(this.urloci2unacc);
-  }
-  getTotalFsbGood(){
-    return this.httpClient.get(this.urlfsbgood);
-  }
-  getTotalFsbSatis () {
-    return this.httpClient.get(this.urlfsbsatis);
-  }
-  getTotalFsbUnSatis () {
-    return this.httpClient.get(this.urlfsbunsatis);
-  }
-  getTotalFsbUnacc(){
-    return this.httpClient.get(this.urlfsbunacc);
-  }
-  getTotalFindingM () {
-    return this.httpClient.get(this.urlTotalFindingM);
-  }
-  getTotalPendingFindingM () {
-    return this.httpClient.get(this.urlTotalPendingFindingM);
-  }
-  getTotalReadyFindingM () {
-    return this.httpClient.get(this.urlTotalReadyFindingM);
-  }
-  getTotalFinsihFindingM () {
-    return this.httpClient.get(this.urlTotalFinishFindingM);
-  }
-  getReadFindingPending(){
-    return this.httpClient.get(this.urlFindingPending);
-  }
-  getReadLevelTotal(){
-    return this.httpClient.get(this.urlTotalLevel);
-  }
-  getTotalFindingMoci2 () {
-    return this.httpClient.get(this.urlTotalFindingMoci2);
-  }
-  getTotalPendingFindingMoci2 () {
-    return this.httpClient.get(this.urlTotalPendingFindingMoci2);
-  }
-  getTotalReadyFindingMoci2 () {
-    return this.httpClient.get(this.urlTotalReadyFindingMoci2);
-  }
-  getTotalFinsihFindingMoci2 () {
-    return this.httpClient.get(this.urlTotalFinishFindingMoci2);
-  }
-  getReadFindingPendingoci2(){
-    return this.httpClient.get(this.urlFindingPendingoci2);
-  }
-  getReadLevelTotaloci2(){
-    return this.httpClient.get(this.urlTotalLeveloci2);
-  }
-  getTotalFindingMfsb () {
-    return this.httpClient.get(this.urlTotalFindingMfsb);
-  }
-  getTotalPendingFindingMfsb () {
-    return this.httpClient.get(this.urlTotalPendingFindingMfsb);
-  }
-  getTotalReadyFindingMfsb () {
-    return this.httpClient.get(this.urlTotalReadyFindingMfsb);
-  }
-  getTotalFinsihFindingMfsb () {
-    return this.httpClient.get(this.urlTotalFinishFindingMfsb);
-  }
-  getReadFindingPendingfsb(){
-    return this.httpClient.get(this.urlFindingPendingfsb);
-  }
-  getReadLevelTotalfsb(){
-    return this.httpClient.get(this.urlTotalLevelfsb);
-  }
-  getReadFinishTodayoci1(){
-    return this.httpClient.get(this.urlFinishJobTodayoci1);
-  }
-  getReadFinishTodayoci2(){
-    return this.httpClient.get(this.urlFinishJobTodayoci2);
-  }
-  getReadFinishTodayfsb(){
-    return this.httpClient.get(this.urlFinishJobTodayfsb);
-  }
-  getKategori(){
-    return this.httpClient.get(this.urlKategori);
-  }
-}
+  public bigFive: any = [];
+  public bigFiveByMachine: any = [];
+  public bigFiveByMachineName: any = [];
+  public bigFiveByMachineValue: any = [];
+  public bigFiveMachine: any = [];
+  public bigFiveObject: object = {};
+  getTemperatureLineoci1() {
+    var url = api + "temperaturelineoci1";
+    return this.httpClient.get(url);
+  }
+  getTemperatureLineoci2() {
+    var url = api + "temperaturelineoci2";
+    return this.httpClient.get(url);
+  }
+  getTemperatureLinefsb() {
+    var url = api + "temperaturelinefsb";
+    return this.httpClient.get(url);
+  }
+  getAmpereLineoci1() {
+    var url = api + "amperelineoci1";
+    return this.httpClient.get(url);
+  }
+  getAmpereLineoci2() {
+    var url = api + "amperelineoci2";
+    return this.httpClient.get(url);
+  }
+  getAmpereLinefsb() {
+    var url = api + "amperelinefsb";
+    return this.httpClient.get(url);
+  }
+  getVibrationLinefsb() {
+    var url = api + "vibrationlinefsb";
+    return this.httpClient.get(url);
+  }
+  getVibrationLineoci2() {
+    var url = api + "vibrationlineoci2";
+    return this.httpClient.get(url);
+  }
+  getVibrationLineoci1() {
+    var url = api + "vibrationlineoci1";
+    return this.httpClient.get(url);
+  }
+  getCountTotalFinding() {
+    var url = api + "totalf";
+    return this.httpClient.get(url);
+  }
+  getReadPendingExecute() {
+    var url = api + "totalreadpendingexecute";
+    return this.httpClient.get(url);
+  }
+  getReadReadyExecute() {
+    var url = api + "totalreadreadyexecute";
+    return this.httpClient.get(url);
+  }
+  getReadFinishExecute() {
+    var url = api + "totalreadfinishexecute";
+    return this.httpClient.get(url);
+  }
+  getReadTotalPdmAsset() {
+    var url = api + "totalpdmasset";
+    return this.httpClient.get(url);
+  }
+  getReadTotalPdmAssetoci1() {
+    var url = api + "totalpdmassetoci1";
+    return this.httpClient.get(url);
+  }
+  getReadTotalPdmAssetoci2() {
+    var url = api + "totalpdmassetoci2";
+    return this.httpClient.get(url);
+  }
+  getReadTotalPdmAssetfsb() {
+    var url = api + "totalpdmassetfsb";
+    return this.httpClient.get(url);
+  }
+  getReadPdmFinish() {
+    var url = api + "totalreadfinishpdm";
+    return this.httpClient.get(url);
+  }
+  getReadPdmFinishoci1() {
+    var url = api + "totalreadfinishpdmoci1";
+    return this.httpClient.get(url);
+  }
+  getReadPdmFinishoci2() {
+    var url = api + "totalreadfinishpdmoci2";
+    return this.httpClient.get(url);
+  }
+  getReadPdmFinishfsb() {
+    var url = api + "totalreadfinishpdmfsb";
+    return this.httpClient.get(url);
+  }
+  getReadGoodAndSatis() {
+    var url = api + "totalgoodandsatis";
+    return this.httpClient.get(url);
+  }
+  getReadGoodAndSatisoci1() {
+    var url = api + "totalgoodandsatisoci1";
+    return this.httpClient.get(url);
+  }
+  getReadGoodAndSatisoci2() {
+    var url = api + "totalgoodandsatisoci2";
+    return this.httpClient.get(url);
+  }
+  getReadGoodAndSatisfsb() {
+    var url = api + "totalgoodandsatisfsb";
+    return this.httpClient.get(url);
+  }
+  getReadunsatissunac() {
+    var url = api + "totalunsatisunac";
+    return this.httpClient.get(url);
+  }
+  getReadunsatissunacoci1() {
+    var url = api + "totalunsatisunacoci1";
+    return this.httpClient.get(url);
+  }
+  getReadunsatissunacoci2() {
+    var url = api + "totalunsatisunacoci2";
+    return this.httpClient.get(url);
+  }
+  getReadunsatissunacfsb() {
+    var url = api + "totalunsatisunacfsb";
+    return this.httpClient.get(url);
+  }
+  getTotalAssetOci1() {
+    var url = api + "totalasetoci1";
+    return this.httpClient.get(url);
+  }
+  getTotalAssetOci2() {
+    var url = api + "totalasetoci2";
+    return this.httpClient.get(url);
+  }
+  getTotalAssetFsb() {
+    var url = api + "totalasetfsb";
+    return this.httpClient.get(url);
+  }
+  getTotalOci1Good() {
+    var url = api + "totaloci1good";
+    return this.httpClient.get(url);
+  }
+  getTotalOci1Satis() {
+    var url = api + "totaloci1satis";
+    return this.httpClient.get(url);
+  }
+  getTotalOci1UnSatis() {
+    var url = api + "totaloci1unsatis";
+    return this.httpClient.get(url);
+  }
+  getTotalOci1Unacc() {
+    var url = api + "totaloci1unacc";
+    return this.httpClient.get(url);
+  }
+  getTotalOci2Good() {
+    var url = api + "totaloci2good";
+    return this.httpClient.get(url);
+  }
+  getTotalOci2Satis() {
+    var url = api + "totaloci2satis";
+    return this.httpClient.get(url);
+  }
+  getTotalOci2UnSatis() {
+    var url = api + "totaloci2unsatis";
+    return this.httpClient.get(url);
+  }
+  getTotalOci2Unacc() {
+    var url = api + "totaloci2unacc";
+    return this.httpClient.get(url);
+  }
+  getTotalFsbGood() {
+    var url = api + "totalfsbgood";
+    return this.httpClient.get(url);
+  }
+  getTotalFsbSatis() {
+    var url = api + "totalfsbsatis";
+    return this.httpClient.get(url);
+  }
+  getTotalFsbUnSatis() {
+    var url = api + "totalfsbunsatis";
+    return this.httpClient.get(url);
+  }
+  getTotalFsbUnacc() {
+    var url = api + "totalfsbunacc";
+    return this.httpClient.get(url);
+  }
+  getTotalFindingM() {
+    var url = api + "TotalFindingM";
+    return this.httpClient.get(url);
+  }
+  getTotalPendingFindingM() {
+    var url = api + "totalpendingexecutem";
+    return this.httpClient.get(url);
+  }
+  getTotalReadyFindingM() {
+    var url = api + "totalreadyexecutem";
+    return this.httpClient.get(url);
+  }
+  getTotalFinsihFindingM() {
+    var url = api + "totalfinishexecutem";
+    return this.httpClient.get(url);
+  }
+  getReadFindingPending() {
+    var url = api + "findingpending";
+    return this.httpClient.get(url);
+  }
+  getReadLevelTotal() {
+    var url = api + "levelam";
+    return this.httpClient.get(url);
+  }
+  getTotalFindingMoci2() {
+    var url = api + "TotalFindingMoci2";
+    return this.httpClient.get(url);
+  }
+  getTotalPendingFindingMoci2() {
+    var url = api + "totalpendingexecutemoci2";
+    return this.httpClient.get(url);
+  }
+  getTotalReadyFindingMoci2() {
+    var url = api + "totalreadyexecutemoci2";
+    return this.httpClient.get(url);
+  }
+  getTotalFinsihFindingMoci2() {
+    var url = api + "totalfinishexecutemoci2";
+    return this.httpClient.get(url);
+  }
+  getReadFindingPendingoci2() {
+    var url = api + "findingpendingoci2";
+    return this.httpClient.get(url);
+  }
+  getReadLevelTotaloci2() {
+    var url = api + "levelamoci2";
+    return this.httpClient.get(url);
+  }
+  getTotalFindingMfsb() {
+    var url = api + "TotalFindingMfsb";
+    return this.httpClient.get(url);
+  }
+  getTotalPendingFindingMfsb() {
+    var url = api + "totalpendingexecutemfsb";
+    return this.httpClient.get(url);
+  }
+  getTotalReadyFindingMfsb() {
+    var url = api + "totalreadyexecutemfsb";
+    return this.httpClient.get(url);
+  }
+  getTotalFinsihFindingMfsb() {
+    var url = api + "totalfinishexecutemfsb";
+    return this.httpClient.get(url);
+  }
+  getReadFindingPendingfsb() {
+    var url = api + "findingpendingfsb";
+    return this.httpClient.get(url);
+  }
+  getReadLevelTotalfsb() {
+    var url = api + "levelamfsb";
+    return this.httpClient.get(url);
+  }
+  getReadFinishTodayoci1() {
+    var url = api + "finishtodaylistoci1";
+    return this.httpClient.get(url);
+  }
+  getReadFinishTodayoci2() {
+    var url = api + "finishtodaylistoci2";
+    return this.httpClient.get(url);
+  }
+  getReadFinishTodayfsb() {
+    var url = api + "finishtodaylistfsb";
+    return this.httpClient.get(url);
+  }
+  getKategori() {
+    var url = api + "kategori";
+    return this.httpClient.get(url);
+  }
+  getBigFive() {
+    var url = api + "big5/get";
+    this.httpClient.get(url).subscribe(data => {
+      this.bigFiveObject = data;
+      Object.values(this.bigFiveObject).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          // console.log(i)
+          var arrayy = Object.keys(array[i + 1]).map(function (key) {
+            return array[i + 1][key];
+          });
+          // console.log(arrayy);
+          let data: object = {};
+          for (let j = 0; j < arrayy.length; j++) {
+            var arrayyy = Object.keys(arrayy[j]).map(function (key) {
+              return arrayy[j][key];
+            });
+            // console.log(arrayyy);
+            for (let k = 0; k < arrayyy.length; k++) {
+              data = {
+                name: array[i],
+                device: arrayyy[k],
+                total: arrayyy[k + 1]
+              }
+              this.bigFive.splice(this.bigFive.length, 0, data);
+              k++;
+            }
+          }
+          this.bigFiveMachine.splice(this.bigFiveMachine.length, 0, array[i]);
+          i++;
+        }
+      })
+    });
+    // return this.httpClient.get(url);
+  }
+
+  getBigFiveByMachine(namee:String) {
+    var url = api + "big5/getbyid";
+    this.httpClient.post(url,{ name: namee }).subscribe(data => {
+      this.bigFiveObject = data;
+      Object.values(this.bigFiveObject).forEach(data => {
+        // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          var arrayy = Object.keys(array[i]).map(function (key) {
+            return array[i][key];
+          });
+          const data = [
+            arrayy[0],
+            arrayy[1]
+          ];
+          this.bigFiveByMachine.splice(this.bigFiveByMachine.length, 0, data);
+          this.bigFiveByMachineName.splice(this.bigFiveByMachineName.length, 0, arrayy[0]);
+          this.bigFiveByMachineValue.splice(this.bigFiveByMachineValue.length, 0, arrayy[1]);
+          // console.log(arrayy);
+        }
+      })
+    });
+    // return this.bigFiveByMachineName;
+  }
+};

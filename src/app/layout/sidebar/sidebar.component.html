@@ -555,11 +555,11 @@ else lain6
       </li>
       <div *ngIf="
       router.url === '/games' ||
-        router.url === '/suit';
+        router.url === '/suit'||
+        router.url === '/tictactoe';
       else games
     ">
-        <li
-          class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
+        <li class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
           <div
             class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
             <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -594,18 +594,31 @@ else lain6
         </li>
         <li *ngIf="sub3" class="ml-6">
           <ul class="py-2 space-y-2 ml-6">
-            <div *ngIf="router.url === '/suit'; else kategori1">
+            <div *ngIf="router.url === '/suit'; else suit">
               <li class="ml-6">
                 <a href="suit"
                   class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Suit
                   Games</a>
               </li>
             </div>
-            <ng-template #kategori1>
+            <ng-template #suit>
               <li class="ml-6">
                 <a href="suit"
                   class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Suit
                   Games</a>
+              </li>
+            </ng-template>
+            <div *ngIf="router.url === '/tictactoe'; else tictactoe">
+              <li class="ml-6">
+                <a href="tictactoe"
+                  class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">TicTacToe
+                </a>
+              </li>
+            </div>
+            <ng-template #tictactoe>
+              <li class="ml-6">
+                <a href="tictactoe"
+                  class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">TicTacToe</a>
               </li>
             </ng-template>
             <div *ngIf="router.url === '/games'; else kategori2">
@@ -626,8 +639,7 @@ else lain6
         </li>
       </div>
       <ng-template #games>
-        <li
-          class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
+        <li class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
           <div
             class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
             <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -667,6 +679,10 @@ else lain6
                 class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Suit
                 Games
               </a>
+            </li>
+            <li class="ml-6">
+              <a href="tictactoe"
+                class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">TicTacToe</a>
             </li>
             <li class="ml-6">
               <a href="games"
@@ -1243,7 +1259,8 @@ else lain6
         </li>
         <div *ngIf="
         router.url === '/games' ||
-          router.url === '/suit';
+          router.url === '/suit' ||
+          router.url === '/tictactoe';
         else games
       ">
           <li
@@ -1282,18 +1299,31 @@ else lain6
           </li>
           <li class="ml-6">
             <ul id="gamesb" class="py-2 space-y-2 ml-6">
-              <div *ngIf="router.url === '/suit'; else kategori1">
+              <div *ngIf="router.url === '/suit'; else kategori11">
                 <li class="ml-6">
                   <a href="suit"
                     class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Suit
                     Games</a>
                 </li>
               </div>
-              <ng-template #kategori1>
+              <ng-template #kategori11>
                 <li class="ml-6">
                   <a href="suit"
                     class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Suit
                     Games</a>
+                </li>
+              </ng-template>
+              <div *ngIf="router.url === '/tictactoe'; else kategori1">
+                <li class="ml-6">
+                  <a href="tictactoe"
+                    class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">TicTacToe
+                  </a>
+                </li>
+              </div>
+              <ng-template #kategori1>
+                <li class="ml-6">
+                  <a href="tictactoe"
+                    class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">TicTacToe</a>
                 </li>
               </ng-template>
               <div *ngIf="router.url === '/games'; else kategori2">
@@ -1355,6 +1385,11 @@ else lain6
                   class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Suit
                   Games
                 </a>
+              </li>
+              <li class="ml-6">
+                <a href="tictactoe"
+                  class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Tic
+                  Tac Toe</a>
               </li>
               <li class="ml-6">
                 <a href="games"

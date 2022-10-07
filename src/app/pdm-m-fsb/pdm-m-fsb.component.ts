@@ -310,15 +310,15 @@ export class PdmMFsbComponent implements OnInit {
           }
         }
       });
-      if (count == 2) {
+      if (count == 3) {
         console.log("2");
         this.spinner.hide();
         this.resolved = true;
-      } else if (count == 3) {
+      } else if (count == 4) {
         console.log("3");
         clearInterval(a);
       }
-    }, 50);
+    }, 100);
   });
     console.log("1");
     this.spinner.show();

@@ -471,7 +471,7 @@ export class PdmDashboardComponent implements OnInit {
     var count = 0;
     var a = setInterval(() => {
       count++;
-      this.resolved = true;
+      //this.resolved = true;
       this.coba = new Chart('dum', {
         type: 'doughnut',
         data: {
@@ -567,17 +567,17 @@ export class PdmDashboardComponent implements OnInit {
         },
       }
       );
-      if (count == 2) {
-        console.log("2");
+     if (count == 3) {
+        // console.log("2");
         this.spinner.hide();
         this.resolved = true;
-      } else if (count == 3) {
-        console.log("3");
+      } else if (count == 4) {
+        // console.log("3");
         clearInterval(a);
       }
-    }, 50);
+    }, 100);
   });
-    console.log("1");
+    // console.log("1");
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { CountService } from '../services/count.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-big5',
@@ -7,75 +9,76 @@ import { Chart } from 'chart.js';
   styleUrls: ['./big5.component.css']
 })
 export class Big5Component implements OnInit {
-
-
+  constructor(private service: CountService, private spinner: NgxSpinnerService) { }
+  labels: any = [];
+  datas: any = [];
   coba: any = [];
-  donut:any = [];
-  ngOnInit(): void {
-    this.coba = {
-      label: 'Density of Planets (kg/m3)',
-      data: [5427, 5243, 5514, 3933, 1326, 687, 1271, 1638],
-      backgroundColor: [
-        'rgba(0, 99, 132, 0.6)',
-        'rgba(30, 99, 132, 0.6)',
-        'rgba(60, 99, 132, 0.6)',
-        'rgba(90, 99, 132, 0.6)',
-        'rgba(120, 99, 132, 0.6)',
-        'rgba(150, 99, 132, 0.6)',
-        'rgba(180, 99, 132, 0.6)',
-        'rgba(210, 99, 132, 0.6)',
-        'rgba(240, 99, 132, 0.6)'
-      ],
-      borderColor: [
-        'rgba(0, 99, 132, 1)',
-        'rgba(30, 99, 132, 1)',
-        'rgba(60, 99, 132, 1)',
-        'rgba(90, 99, 132, 1)',
-        'rgba(120, 99, 132, 1)',
-        'rgba(150, 99, 132, 1)',
-        'rgba(180, 99, 132, 1)',
-        'rgba(210, 99, 132, 1)',
-        'rgba(240, 99, 132, 1)'
-      ],
-      borderWidth: 2,
-      hoverBorderWidth: 0
-    };
+  donut: any = [];
+  public loaddata: any;
+  public resolved: boolean = false;
+  async ngOnInit(): Promise<void> {
+    this.loaddata = new Promise(resolve => {
+      // this.service.getBigFive();
+      this.service.getBigFiveByMachine("caser_oc2");
+      // console.log(this.service.getBigFiveByMachine("AlarmInformation_OC2"));
+      // console.log(this.service.bigFiveByMachine.length);
+      var array = this.service.bigFiveByMachine;
 
-    var chartOptions = {
-      scales: {
-        yAxes: [{
-          barPercentage: 0.5
-        }]
-      },
-      elements: {
-        rectangle: {
-          borderSkipped: 'left',
-        }
+      for (let i = 0; i < array.length; i++) {
+        console.log(array[i]);
       }
-    };
 
-    var barChart = new Chart("dum", {
-      type: 'horizontalBar',
-      data: {
-        labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
-        datasets: [{
-          label: 'Finding in this month',
-          data: [12, 19, 3, 5],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-          ],
-          borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-          ],
-          borderWidth: 1
-      }],
-      },
+
+      var chartOptions = {
+        scales: {
+          yAxes: [{
+            barPercentage: 0.5
+          }]
+        },
+        elements: {
+          rectangle: {
+            borderSkipped: 'left',
+          }
+        }
+      };
+      var count = 0;
+      var a = setInterval(() => {
+        count++;
+        var barChart = new Chart("dum", {
+          type: 'horizontalBar',
+          data: {
+            labels: this.service.bigFiveByMachineName,
+            datasets: [{
+              label: 'Caser OCI2',
+              data: this.service.bigFiveByMachineValue,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+              ],
+              borderWidth: 1
+            }],
+          },
+        });
+        if (count == 3) {
+          console.log("2");
+          this.spinner.hide();
+          this.resolved = true;
+        } else if (count == 4) {
+          console.log("3");
+          clearInterval(a);
+        }
+      }, 100);
     });
-
-}};
+    // console.log(this.service.bigFiveByMachineValue);
+    this.spinner.show();
+    this.loaddata = await this.loaddata;
+  }
+};

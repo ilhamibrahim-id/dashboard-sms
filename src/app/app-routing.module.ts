@@ -18,6 +18,7 @@ import { AddNodeComponent } from './add-node/add-node.component';
 import { AddTablesComponent } from './add-tables/add-tables.component';
 import { GamesComponent } from './games/games.component';
 import { SuitComponent } from './suit/suit.component';
+import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'addtables', component: AddTablesComponent},
   {path: 'games', component: GamesComponent},
   {path: 'suit', component: SuitComponent},
+  {path: 'tictactoe', component: TicTacToeComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
