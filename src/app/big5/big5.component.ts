@@ -67,13 +67,19 @@ export class Big5Component implements OnInit {
             }],
           },
         });
-        if (count == 3) {
-          console.log("2");
+        if (count == 3 && this.service.bigFiveByMachineValue != 0) {
+          //console.log("2");
           this.spinner.hide();
           this.resolved = true;
-        } else if (count == 4) {
-          console.log("3");
+        } else if (count == 4 && this.service.bigFiveByMachineValue != 0) {
+          //console.log("3");
+          this.spinner.hide();
+          this.resolved = true;
           clearInterval(a);
+        } else if (count == 6 && this.service.bigFiveByMachineValue == 0){
+          setInterval(() => {
+            location.reload();
+            },1500);
         }
       }, 100);
     });

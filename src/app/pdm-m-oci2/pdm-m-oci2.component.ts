@@ -310,13 +310,19 @@ export class PdmMOci2Component implements OnInit {
           }
         }
       });
-      if (count == 3) {
-        console.log("2");
+      if (count == 3 && this.totalasset != null) {
+        //console.log("2");
         this.spinner.hide();
         this.resolved = true;
-      } else if (count == 4) {
-        console.log("3");
+      } else if (count == 4 && this.totalasset != null) {
+        this.spinner.hide();
+        this.resolved = true;
+        //console.log("3");
         clearInterval(a);
+      } else if (count == 6 && this.totalasset == null) {
+        setInterval(() => {
+          location.reload();
+          },1500);
       }
     }, 100);
   });

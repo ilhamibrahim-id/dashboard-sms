@@ -228,17 +228,26 @@ export class DashboardComponent implements OnInit {
             }
           }
         });
-        if (count == 3) {
-          console.log("2");
+        //console.log(this.totalfinding4);
+
+        if (count == 3 && this.totalfinding4 != null) {
+          // console.log("2");
           this.spinner.hide();
           this.resolved = true;
-        } else if (count == 4) {
-          console.log("3");
+        } else if (count == 4 && this.totalfinding4 != null) {
+          // console.log("3");
+          this.spinner.hide();
+          this.resolved = true;
           clearInterval(a);
+        } else if (count == 7 && this.totalfinding4 == null){
+          // this.spinner.show();
+          setInterval(() => {
+          location.reload();
+          },1500);
         }
       }, 100);
     });
-    console.log("1");
+    //console.log("1");
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }

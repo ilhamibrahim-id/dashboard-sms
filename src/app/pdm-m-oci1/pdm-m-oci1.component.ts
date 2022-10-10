@@ -41,7 +41,13 @@ export class PdmMOci1Component implements OnInit {
   temperature: object = {};
   totaltemperaturelist: any = [];
   totaltemperaturedate: any = [];
+  headertitle: any = [];
+  devicename: any = [];
+  statusdevice: any = [];
   public loaddata: any;
+  uniqueChars: any;
+  uniqueChars2: any;
+  uniqueChars3: any;
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
     this.service.getTemperatureLineoci1().subscribe(data => {
@@ -137,6 +143,18 @@ export class PdmMOci1Component implements OnInit {
         for (let i = 0; i < array.length; i++) {
           this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
         }
+        //console.log(array.length);
+
+        for (let i = 0; i< this.totalfinishtoday2.length; i++) {
+          this.headertitle[i] = this.totalfinishtoday2[i].test_name;
+          this.devicename[i] = this.totalfinishtoday2[i].device_name;
+          this.statusdevice[i] = this.totalfinishtoday2[i].status;
+        }
+        this.uniqueChars = [...new Set(this.headertitle)];
+        this.uniqueChars2 = [...new Set(this.devicename)];
+        console.log(this.totalfinishtoday2);
+        //console.log(this.statusdevice);
+
 
         // console.log(this.findingpending2);
       })
@@ -310,13 +328,19 @@ export class PdmMOci1Component implements OnInit {
           }
         }
       });
-      if (count == 3) {
-        console.log("2");
+      if (count == 3 && this.totalasset != null) {
+        //console.log("2");
         this.spinner.hide();
         this.resolved = true;
-      } else if (count == 4) {
-        console.log("3");
+      } else if (count == 4 && this.totalasset != null) {
+        this.spinner.hide();
+        this.resolved = true;
+        //console.log("3");
         clearInterval(a);
+      } else if (count == 6 && this.totalasset == null) {
+        setInterval(() => {
+          location.reload();
+          },1500);
       }
     }, 100);
   });

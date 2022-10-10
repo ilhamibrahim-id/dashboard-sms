@@ -36,6 +36,9 @@ export class AmMOci1Component implements OnInit {
   totalfinding3: any;
   public loaddata: any;
   totalfinding4: any;
+  cobasaja(){
+    window.alert("hai");
+  }
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
     this.service.getReadLevelTotal().subscribe(data => {
@@ -279,13 +282,19 @@ export class AmMOci1Component implements OnInit {
           }]
         },
       });
-      if (count == 3) {
-        console.log("2");
+      if (count == 3 && this.totalfinding3 != null) {
+        //console.log("2");
         this.spinner.hide();
         this.resolved = true;
-      } else if (count == 4) {
-        console.log("3");
+      } else if (count == 4 && this.totalfinding3 != null) {
+        //console.log("3");
+        this.spinner.hide();
+        this.resolved = true;
         clearInterval(a);
+      } else if (count == 6 && this.totalfinding3 == null) {
+        setInterval(() => {
+          location.reload();
+          },1500);
       }
     }, 100);
   });
