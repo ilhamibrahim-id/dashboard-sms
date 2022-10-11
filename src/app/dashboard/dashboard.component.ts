@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   public loaddata: any;
   donut: any = [];
   coba: any = [];
+  deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
@@ -146,106 +147,110 @@ export class DashboardComponent implements OnInit {
         })
       }
       );
+      var count2 = 0;
       var count = 0;
       var a = setInterval(() => {
         count++;
-        this.donut = new Chart('donut', {
-          type: 'doughnut',
-          data: {
-            labels: ["Setting", "Replacement", "Improvement"],
-            datasets: [{
-              label: 'Data',
-              data: [this.Setting, this.Replacement, this.Improvement],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-              ],
-              borderWidth: 1
-            }]
-          },
-        });
-        this.coba = new Chart('dum', {
-          type: 'bar',
-          data: {
-            labels: ["Data %"],
-            datasets: [
-              {
-                label: 'Pending Execute',
-                data: [Math.round((this.totalfinding[1] / this.totalfinding[0]) * 100)],
-                backgroundColor: [
-                  'rgba(54, 162, 235, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(75, 192, 192, 0.2)'
-                ],
-                borderWidth: 1
-              },
-              {
-                label: 'Finish Execute',
-                data: [Math.round((this.totalfinding[2] / this.totalfinding[0]) * 100)],
-                backgroundColor: [
-                  'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(75, 192, 192, 1)'
-                ],
-                borderWidth: 1
-              },
-              {
-                label: 'Ready Execute',
-                data: [Math.round((this.totalfinding[3] / this.totalfinding[0]) * 100)],
-                backgroundColor: [
-                  'rgba(75, 192, 192, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(75, 192, 192, 1)'
-                ],
-                borderWidth: 1
-              },
-            ]
-          }, options: {
-            scales: {
-              yAxes: [{
-                ticks: {
-                  min: 0,
-                  max: 100,
-                  callback: function (value) { return value + "%" },
-                  //beginAtZero: true
-                },
-                scaleLabel: {
-                  display: true,
-                  labelString: "Percentage"
-                }
-              }]
-            }
-          }
-        });
-        //console.log(this.totalfinding4);
-
-        if (count == 3 && this.totalfinding4 != null) {
-          // console.log("2");
-          this.spinner.hide();
-          this.resolved = true;
-        } else if (count == 4 && this.totalfinding4 != null) {
+        if (this.totalfinding4 != null) {
           // console.log("3");
+          var b = setInterval(() => {
+            count2++;
+            this.donut = new Chart('donut', {
+              type: 'doughnut',
+              data: {
+                labels: ["Setting", "Replacement", "Improvement"],
+                datasets: [{
+                  label: 'Data',
+                  data: [this.Setting, this.Replacement, this.Improvement],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+            });
+            this.coba = new Chart('dum', {
+              type: 'bar',
+              data: {
+                labels: ["Data %"],
+                datasets: [
+                  {
+                    label: 'Pending Execute',
+                    data: [Math.round((this.totalfinding[1] / this.totalfinding[0]) * 100)],
+                    backgroundColor: [
+                      'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderWidth: 1
+                  },
+                  {
+                    label: 'Finish Execute',
+                    data: [Math.round((this.totalfinding[2] / this.totalfinding[0]) * 100)],
+                    backgroundColor: [
+                      'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                  },
+                  {
+                    label: 'Ready Execute',
+                    data: [Math.round((this.totalfinding[3] / this.totalfinding[0]) * 100)],
+                    backgroundColor: [
+                      'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                  },
+                ]
+              }, options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      callback: function (value) { return value + "%" },
+                      //beginAtZero: true
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Percentage"
+                    }
+                  }]
+                }
+              }
+            });
+            if (count2 = 3) {
+              clearInterval(b);
+            }
+          }, 50);
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);
-        } else if (count == 7 && this.totalfinding4 == null){
+        } else {
           // this.spinner.show();
-          setInterval(() => {
-          location.reload();
-          },1500);
+          this.deskripsi = 'Reconnect To Server';
+          this.spinner.show();
+            this.ngOnInit();
         }
-      }, 100);
+        if (count = 1) {
+          clearInterval(a);
+        }
+      }, 750);
     });
     //console.log("1");
     this.spinner.show();

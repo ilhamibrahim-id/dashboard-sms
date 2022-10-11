@@ -70,6 +70,7 @@ export class PdmDashboardComponent implements OnInit {
   fsbunacc: object = {};
   fsbunacc2: any = [];
   totalfsbunacc: any;
+  deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
   donut: any = [];
@@ -469,309 +470,126 @@ export class PdmDashboardComponent implements OnInit {
       }
       );
       var count = 0;
+      var count2 = 0;
       var a = setInterval(() => {
         count++;
-        //this.resolved = true;
-        this.coba = new Chart('dum', {
-          type: 'doughnut',
-          data: {
-            labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-            datasets: [{
-              label: '# of Votes',
-              data: this.oci,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-              ],
-              borderWidth: 1
-            }]
-          },
-        });
-        this.coba = new Chart('donut', {
-          type: 'doughnut',
-          data: {
-            labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-            datasets: [{
-              label: '# of Votes',
-              data: this.oci2,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-              ],
-              borderWidth: 1
-            }]
-          },
-        });
-        this.coba = new Chart('donutku', {
-          type: 'doughnut',
-          options: {
-            plugins: {
-              datalabels: {
-                display: true,
-                backgroundColor: '#ccc',
-                borderRadius: 3,
-                font: {
-                  color: 'red',
-                  weight: 'bold',
+        if (this.totalfsb != null) {
+          // console.log("3");
+          var b = setInterval(() => {
+            count2++;
+            //this.resolved = true;
+            this.coba = new Chart('dum', {
+              type: 'doughnut',
+              data: {
+                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+                datasets: [{
+                  label: '# of Votes',
+                  data: this.oci,
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+            });
+            this.coba = new Chart('donut', {
+              type: 'doughnut',
+              data: {
+                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+                datasets: [{
+                  label: '# of Votes',
+                  data: this.oci2,
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+            });
+            this.coba = new Chart('donutku', {
+              type: 'doughnut',
+              options: {
+                plugins: {
+                  datalabels: {
+                    display: true,
+                    backgroundColor: '#ccc',
+                    borderRadius: 3,
+                    font: {
+                      color: 'red',
+                      weight: 'bold',
+                    }
+                  },
+                  doughnutlabel: {
+                    labels: [{
+                      text: '550',
+                      font: {
+                        size: 20,
+                        weight: 'bold'
+                      }
+                    }, {
+                      text: 'total'
+                    }]
+                  }
                 }
               },
-              doughnutlabel: {
-                labels: [{
-                  text: '550',
-                  font: {
-                    size: 20,
-                    weight: 'bold'
-                  }
-                }, {
-                  text: 'total'
-                }]
-              }
+              data: {
+                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+                datasets: [{
+                  label: 'oi',
+                  data: this.fsb,
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }],
+
+              },
             }
-          },
-          data: {
-            labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-            datasets: [{
-              label: 'oi',
-              data: this.fsb,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-              ],
-              borderWidth: 1
-            }],
-
-          },
-        }
-        );
-        if (count == 3 && this.totalfsb != null) {
-          this.coba = new Chart('dum', {
-            type: 'doughnut',
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: '# of Votes',
-                data: this.oci,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }]
-            },
-          });
-          this.coba = new Chart('donut', {
-            type: 'doughnut',
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: '# of Votes',
-                data: this.oci2,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }]
-            },
-          });
-          this.coba = new Chart('donutku', {
-            type: 'doughnut',
-            options: {
-              plugins: {
-                datalabels: {
-                  display: true,
-                  backgroundColor: '#ccc',
-                  borderRadius: 3,
-                  font: {
-                    color: 'red',
-                    weight: 'bold',
-                  }
-                },
-                doughnutlabel: {
-                  labels: [{
-                    text: '550',
-                    font: {
-                      size: 20,
-                      weight: 'bold'
-                    }
-                  }, {
-                    text: 'total'
-                  }]
-                }
-              }
-            },
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: 'oi',
-                data: this.fsb,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }],
-
-            },
-          }
-          );
-          // console.log("2");
-          this.spinner.hide();
-          this.resolved = true;
-        } else if (count == 4 && this.totalfsb != null) {
-          this.coba = new Chart('dum', {
-            type: 'doughnut',
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: '# of Votes',
-                data: this.oci,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }]
-            },
-          });
-          this.coba = new Chart('donut', {
-            type: 'doughnut',
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: '# of Votes',
-                data: this.oci2,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }]
-            },
-          });
-          this.coba = new Chart('donutku', {
-            type: 'doughnut',
-            options: {
-              plugins: {
-                datalabels: {
-                  display: true,
-                  backgroundColor: '#ccc',
-                  borderRadius: 3,
-                  font: {
-                    color: 'red',
-                    weight: 'bold',
-                  }
-                },
-                doughnutlabel: {
-                  labels: [{
-                    text: '550',
-                    font: {
-                      size: 20,
-                      weight: 'bold'
-                    }
-                  }, {
-                    text: 'total'
-                  }]
-                }
-              }
-            },
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: 'oi',
-                data: this.fsb,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1
-              }],
-
-            },
-          }
-          );
-          // console.log("3");
+            );
+            if (count2 = 3) {
+              clearInterval(b);
+            }
+          }, 50);
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);
-        } else if (count == 6 && this.totalfsb == null) {
-          setInterval(() => {
-            location.reload();
-          }, 1500);
+        } else {
+          // this.spinner.show();
+          this.deskripsi = 'Reconnect To Server';
+          this.spinner.show();
+            this.ngOnInit();
         }
-      }, 100);
+        if (count = 1) {
+          clearInterval(a);
+        }
+      }, 750);
     });
     // console.log("1");
     this.spinner.show();

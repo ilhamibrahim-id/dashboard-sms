@@ -15,8 +15,10 @@ export class AppsLinkComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
       this.spinner.show();
-      this.spinner.hide();
-      this.resolved = true;
+      setInterval(()=>{
+        this.spinner.hide();
+        this.resolved = true;
+      },500);
     });
     this.loaddata = await this.loaddata;
   }

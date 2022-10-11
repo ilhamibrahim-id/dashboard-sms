@@ -54,3 +54,31 @@ h1 {
   color: dodgerblue;
   font-size: 17px;
 }
+.wrapper {
+  /*This part is important for centering*/
+  /* height: 100vh; */
+  display: grid;
+  place-items: center;
+}
+
+.typing-demo {
+  width: 21ch;
+  animation: typing 0.5s steps(21), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}

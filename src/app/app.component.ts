@@ -9,10 +9,6 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  public warna: any = 'home';
-  gantiwarna(warna:any){
-    this.warna = warna;
-  }
   ngOnInit(): void {
   }
 }

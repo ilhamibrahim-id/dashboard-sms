@@ -9,279 +9,218 @@ var api = 'http://192.168.152.47:3000/';
 })
 export class CountService {
   constructor(private httpClient: HttpClient) { }
+
+  public bigFiveObject: object = {};
   public bigFive: any = [];
   public bigFiveByMachine: any = [];
   public bigFiveByMachineName: any = [];
   public bigFiveByMachineValue: any = [];
   public bigFiveMachine: any = [];
-  public bigFiveObject: object = {};
+
+  public tableObject: object = {};
+  public table: any = [];
+
   getTemperatureLineoci1() {
-    var url = api + "temperaturelineoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "temperaturelineoci1");
   }
+
   getTemperatureLineoci2() {
-    var url = api + "temperaturelineoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "temperaturelineoci2");
   }
   getTemperatureLinefsb() {
-    var url = api + "temperaturelinefsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "temperaturelinefsb");
   }
   getAmpereLineoci1() {
-    var url = api + "amperelineoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "amperelineoci1");
   }
   getAmpereLineoci2() {
-    var url = api + "amperelineoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "amperelineoci2");
   }
   getAmpereLinefsb() {
-    var url = api + "amperelinefsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "amperelinefsb");
   }
   getVibrationLinefsb() {
-    var url = api + "vibrationlinefsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "vibrationlinefsb");
   }
   getVibrationLineoci2() {
-    var url = api + "vibrationlineoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "vibrationlineoci2");
   }
   getVibrationLineoci1() {
-    var url = api + "vibrationlineoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "vibrationlineoci1");
   }
   getCountTotalFinding() {
-    var url = api + "totalf";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalf");
   }
   getReadPendingExecute() {
-    var url = api + "totalreadpendingexecute";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadpendingexecute");
   }
   getReadReadyExecute() {
-    var url = api + "totalreadreadyexecute";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadreadyexecute");
   }
   getReadFinishExecute() {
-    var url = api + "totalreadfinishexecute";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadfinishexecute");
   }
   getReadTotalPdmAsset() {
-    var url = api + "totalpdmasset";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpdmasset");
   }
   getReadTotalPdmAssetoci1() {
-    var url = api + "totalpdmassetoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpdmassetoci1");
   }
   getReadTotalPdmAssetoci2() {
-    var url = api + "totalpdmassetoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpdmassetoci2");
   }
   getReadTotalPdmAssetfsb() {
-    var url = api + "totalpdmassetfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpdmassetfsb");
   }
   getReadPdmFinish() {
-    var url = api + "totalreadfinishpdm";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadfinishpdm");
   }
   getReadPdmFinishoci1() {
-    var url = api + "totalreadfinishpdmoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadfinishpdmoci1");
   }
   getReadPdmFinishoci2() {
-    var url = api + "totalreadfinishpdmoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadfinishpdmoci2");
   }
   getReadPdmFinishfsb() {
-    var url = api + "totalreadfinishpdmfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadfinishpdmfsb");
   }
   getReadGoodAndSatis() {
-    var url = api + "totalgoodandsatis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalgoodandsatis");
   }
   getReadGoodAndSatisoci1() {
-    var url = api + "totalgoodandsatisoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalgoodandsatisoci1");
   }
   getReadGoodAndSatisoci2() {
-    var url = api + "totalgoodandsatisoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalgoodandsatisoci2");
   }
   getReadGoodAndSatisfsb() {
-    var url = api + "totalgoodandsatisfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalgoodandsatisfsb");
   }
   getReadunsatissunac() {
-    var url = api + "totalunsatisunac";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalunsatisunac");
   }
   getReadunsatissunacoci1() {
-    var url = api + "totalunsatisunacoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalunsatisunacoci1");
   }
   getReadunsatissunacoci2() {
-    var url = api + "totalunsatisunacoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalunsatisunacoci2");
   }
   getReadunsatissunacfsb() {
-    var url = api + "totalunsatisunacfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalunsatisunacfsb");
   }
   getTotalAssetOci1() {
-    var url = api + "totalasetoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalasetoci1");
   }
   getTotalAssetOci2() {
-    var url = api + "totalasetoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalasetoci2");
   }
   getTotalAssetFsb() {
-    var url = api + "totalasetfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalasetfsb");
   }
   getTotalOci1Good() {
-    var url = api + "totaloci1good";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci1good");
   }
   getTotalOci1Satis() {
-    var url = api + "totaloci1satis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci1satis");
   }
   getTotalOci1UnSatis() {
-    var url = api + "totaloci1unsatis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci1unsatis");
   }
   getTotalOci1Unacc() {
-    var url = api + "totaloci1unacc";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci1unacc");
   }
   getTotalOci2Good() {
-    var url = api + "totaloci2good";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci2good");
   }
   getTotalOci2Satis() {
-    var url = api + "totaloci2satis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci2satis");
   }
   getTotalOci2UnSatis() {
-    var url = api + "totaloci2unsatis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci2unsatis");
   }
   getTotalOci2Unacc() {
-    var url = api + "totaloci2unacc";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totaloci2unacc");
   }
   getTotalFsbGood() {
-    var url = api + "totalfsbgood";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfsbgood");
   }
   getTotalFsbSatis() {
-    var url = api + "totalfsbsatis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfsbsatis");
   }
   getTotalFsbUnSatis() {
-    var url = api + "totalfsbunsatis";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfsbunsatis");
   }
   getTotalFsbUnacc() {
-    var url = api + "totalfsbunacc";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfsbunacc");
   }
   getTotalFindingM() {
-    var url = api + "TotalFindingM";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "TotalFindingM");
   }
   getTotalPendingFindingM() {
-    var url = api + "totalpendingexecutem";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpendingexecutem");
   }
   getTotalReadyFindingM() {
-    var url = api + "totalreadyexecutem";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadyexecutem");
   }
   getTotalFinsihFindingM() {
-    var url = api + "totalfinishexecutem";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfinishexecutem");
   }
   getReadFindingPending() {
-    var url = api + "findingpending";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "findingpending");
   }
   getReadLevelTotal() {
-    var url = api + "levelam";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "levelam");
   }
   getTotalFindingMoci2() {
-    var url = api + "TotalFindingMoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "TotalFindingMoci2");
   }
   getTotalPendingFindingMoci2() {
-    var url = api + "totalpendingexecutemoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpendingexecutemoci2");
   }
   getTotalReadyFindingMoci2() {
-    var url = api + "totalreadyexecutemoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadyexecutemoci2");
   }
   getTotalFinsihFindingMoci2() {
-    var url = api + "totalfinishexecutemoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfinishexecutemoci2");
   }
   getReadFindingPendingoci2() {
-    var url = api + "findingpendingoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "findingpendingoci2");
   }
   getReadLevelTotaloci2() {
-    var url = api + "levelamoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "levelamoci2");
   }
   getTotalFindingMfsb() {
-    var url = api + "TotalFindingMfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "TotalFindingMfsb");
   }
   getTotalPendingFindingMfsb() {
-    var url = api + "totalpendingexecutemfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalpendingexecutemfsb");
   }
   getTotalReadyFindingMfsb() {
-    var url = api + "totalreadyexecutemfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalreadyexecutemfsb");
   }
   getTotalFinsihFindingMfsb() {
-    var url = api + "totalfinishexecutemfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "totalfinishexecutemfsb");
   }
   getReadFindingPendingfsb() {
-    var url = api + "findingpendingfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "findingpendingfsb");
   }
   getReadLevelTotalfsb() {
-    var url = api + "levelamfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "levelamfsb");
   }
   getReadFinishTodayoci1() {
-    var url = api + "finishtodaylistoci1";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "finishtodaylistoci1");
   }
   getReadFinishTodayoci2() {
-    var url = api + "finishtodaylistoci2";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "finishtodaylistoci2");
   }
   getReadFinishTodayfsb() {
-    var url = api + "finishtodaylistfsb";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "finishtodaylistfsb");
   }
   getKategori() {
-    var url = api + "kategori";
-    return this.httpClient.get(url);
+    return this.httpClient.get(api + "kategori");
   }
   getBigFive() {
-    var url = api + "big5/get";
-    this.httpClient.get(url).subscribe(data => {
+    this.httpClient.get(api + "big5/get").subscribe(data => {
       this.bigFiveObject = data;
       Object.values(this.bigFiveObject).forEach(data => {
         // console.log(data);
@@ -320,6 +259,9 @@ export class CountService {
   }
 
   getBigFiveByMachine(namee:String) {
+    this.bigFiveByMachine = [];
+    this.bigFiveByMachineName = [];
+    this.bigFiveByMachineValue = [];
     var url = api + "big5/getbyid";
     this.httpClient.post(url,{ name: namee }).subscribe(data => {
       this.bigFiveObject = data;

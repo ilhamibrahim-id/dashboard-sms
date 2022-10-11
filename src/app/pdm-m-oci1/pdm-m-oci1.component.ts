@@ -48,6 +48,7 @@ export class PdmMOci1Component implements OnInit {
   uniqueChars: any;
   uniqueChars2: any;
   uniqueChars3: any;
+  deskripsi: any = 'Loading..';
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
     this.service.getTemperatureLineoci1().subscribe(data => {
@@ -213,138 +214,145 @@ export class PdmMOci1Component implements OnInit {
     }
     );
     var count = 0;
-    var a = setInterval(() => {
-      count++;
-      this.coba = new Chart('dum', {
-        type: 'line',
-        data: {
-          labels: this.totalvibrationdate,
-          datasets: [{
-            label: 'Data Vibration',
-            data: this.totalvibrationlist,
-            backgroundColor: [
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(75, 192, 192, 1)',
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-            ],
-            borderWidth: 1
-          }]
-        },options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
+    var count2 = 0;
+      var a = setInterval(() => {
+        count++;
+        if (this.totalasset != null) {
+          var b = setInterval(() => {
+            count2++;
+            this.coba = new Chart('dum', {
+              type: 'line',
+              data: {
+                labels: this.totalvibrationdate,
+                datasets: [{
+                  label: 'Data Vibration',
+                  data: this.totalvibrationlist,
+                  backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              }, options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
               }
-            }]
-          }
-        }
-      });
-      this.coba2 = new Chart('dumdum', {
-        type: 'line',
-        data: {
-          labels: this.totalamperedate,
-          datasets: [{
-            label: 'Ampere',
-            data: this.totalamperelist,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
+            });
+            this.coba2 = new Chart('dumdum', {
+              type: 'line',
+              data: {
+                labels: this.totalamperedate,
+                datasets: [{
+                  label: 'Ampere',
+                  data: this.totalamperelist,
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              }, options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
               }
-            }]
-          }
-        }
-      });
-      this.coba = new Chart('donut', {
-        type: 'doughnut',
-        data: {
-          labels: ['Finish Check', 'Total Good And SatisFactory', 'Total Unsatisactory and Unacceptable'],
-          datasets: [{
-            label: '# of Votes',
-            data: [this.totalfinish, this.totalgoodsatis, this.totalunsatis],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-          }]
-        },
-      });
-      this.coba2 = new Chart('dumdumdum', {
-        type: 'line',
-        data: {
-          labels: this.totaltemperaturedate,
-          datasets: [{
-            label: 'Ampere',
-            data: this.totaltemperaturelist,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
+            });
+            this.coba = new Chart('donut', {
+              type: 'doughnut',
+              data: {
+                labels: ['Finish Check', 'Total Good And SatisFactory', 'Total Unsatisactory and Unacceptable'],
+                datasets: [{
+                  label: '# of Votes',
+                  data: [this.totalfinish, this.totalgoodsatis, this.totalunsatis],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+            });
+            this.coba2 = new Chart('dumdumdum', {
+              type: 'line',
+              data: {
+                labels: this.totaltemperaturedate,
+                datasets: [{
+                  label: 'Ampere',
+                  data: this.totaltemperaturelist,
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              }, options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
               }
-            }]
-          }
+            });
+            if (count2 = 3) {
+              clearInterval(b);
+            }
+          }, 50);
+          this.spinner.hide();
+          this.resolved = true;
+          //console.log("3");
+          clearInterval(a);
+        } else {
+          // this.spinner.show();
+          this.deskripsi = 'Reconnect To Server';
+          this.spinner.show();
+            this.ngOnInit();
         }
-      });
-      if (count == 3 && this.totalasset != null) {
-        //console.log("2");
-        this.spinner.hide();
-        this.resolved = true;
-      } else if (count == 4 && this.totalasset != null) {
-        this.spinner.hide();
-        this.resolved = true;
-        //console.log("3");
-        clearInterval(a);
-      } else if (count == 6 && this.totalasset == null) {
-        setInterval(() => {
-          location.reload();
-          },1500);
-      }
-    }, 100);
-  });
-    console.log("1");
+        if (count = 1) {
+          clearInterval(a);
+        }
+      }, 750);
+    });
+    //console.log("1");
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }

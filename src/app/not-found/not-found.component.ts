@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-not-found',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService) { }
+  public resolved: boolean = false;
+  public loaddata: any;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.loaddata = new Promise(resolve => {
+      this.spinner.show();
+      this.spinner.hide();
+      this.resolved = true;
+    });
+    this.loaddata = await this.loaddata;
   }
 
 }
