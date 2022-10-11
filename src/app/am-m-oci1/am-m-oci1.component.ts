@@ -36,7 +36,12 @@ export class AmMOci1Component implements OnInit {
   totalfinding3: any;
   public loaddata: any;
   totalfinding4: any;
+  funloc: any;
   deskripsi: any = 'Loading..';
+  data($event: any) {
+    this.funloc = $event;
+    console.log(this.funloc);
+  }
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
       this.service.getReadLevelTotal().subscribe(data => {
@@ -296,7 +301,7 @@ export class AmMOci1Component implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-            this.ngOnInit();
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);

@@ -33,7 +33,7 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
             </div>
           </div>
           <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button type="button" aria-controls="konfirm" data-collapse-toggle="konfirm"
+            <button (click)="insert()" type="button" aria-controls="konfirm" data-collapse-toggle="konfirm"
               class="btn mb-1 w-full rounded-lg btn-green cursor: pointer;" onclick="window.location='/big5';">
               Simpan
             </button>
@@ -86,9 +86,9 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
   <div class="mb-1">
     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
       <div class="flex-auto p-4">
-        <label for="default-input"
+        <label for="deviceA"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Device</label>
-        <input type="text" id="default-input"
+        <input type="text" [formControl]="deviceA" id="deviceA"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       </div>
     </div>
@@ -97,7 +97,7 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
       <div class="flex-auto p-4">
         <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Node</label>
-        <input type="text" id="default-input"
+        <input type="text" [formControl]="nodeA"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       </div>
     </div>
@@ -107,13 +107,24 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
       <div class="flex-auto p-4">
         <label for="default-input"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
-        <input type="text" id="default-input"
+        <input type="text" [formControl]="descriptionA"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       </div>
     </div>
   </div>
+  <div class="mb-2">
+    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+      <div class="flex-auto p-4">
+        <label for="default-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Machine</label>
+          <select [ngModel]="machineA" (ngModelChange)="changeTable($event)" name="sel2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option [value]="i" *ngFor="let i of machine">{{i}}</option>
+          </select>
+      </div>
+    </div>
+  </div>
   <div class='flex items-center rounded-lg mt-1 justify-center'>
-    <button type="button" aria-controls="konfirm" data-collapse-toggle="konfirm" class="btn w-full rounded-lg btn-blue">
+    <button type="button" (click)="insert()" aria-controls="konfirm" data-collapse-toggle="konfirm" class="btn w-full rounded-lg btn-blue">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
       </svg>
@@ -147,95 +158,23 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700" *ngFor="let header of listNode;let i = index;">
               <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Apple MacBook Pro 17"
+                {{i+1}}
               </th>
-              <td class="py-4 px-6">
-                Sliver
+              <!-- <td class="py-4 px-6">
+                {{header.device}}
               </td>
               <td class="py-4 px-6">
-                Laptop
+                {{header.node}}
               </td>
               <td class="py-4 px-6">
-                $2999
+                {{header.description}}
               </td>
               <td class="py-4 px-6">
                 <button class="btn2 mr-1"><i class="fa fa-bars"></i></button>
                 <button aria-controls="konfirm" data-collapse-toggle="konfirm2" class="btn3"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Microsoft Surface Pro
-              </th>
-              <td class="py-4 px-6">
-                White
-              </td>
-              <td class="py-4 px-6">
-                Laptop PC
-              </td>
-              <td class="py-4 px-6">
-                $1999
-              </td>
-              <td class="py-4 px-6">
-                <button class="btn2 mr-1"><i class="fa fa-bars"></i></button>
-                <button aria-controls="konfirm" data-collapse-toggle="konfirm2" class="btn3"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Magic Mouse 2
-              </th>
-              <td class="py-4 px-6">
-                Black
-              </td>
-              <td class="py-4 px-6">
-                Accessories
-              </td>
-              <td class="py-4 px-6">
-                $99
-              </td>
-              <td class="py-4 px-6">
-                <button class="btn2 mr-1"><i class="fa fa-bars"></i></button>
-                <button aria-controls="konfirm" data-collapse-toggle="konfirm2" class="btn3"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Google Pixel Phone
-              </th>
-              <td class="py-4 px-6">
-                Gray
-              </td>
-              <td class="py-4 px-6">
-                Phone
-              </td>
-              <td class="py-4 px-6">
-                $799
-              </td>
-              <td class="py-4 px-6">
-                <button class="btn2 mr-1"><i class="fa fa-bars"></i></button>
-                <button aria-controls="konfirm" data-collapse-toggle="konfirm2" class="btn3"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Apple Watch 5
-              </th>
-              <td class="py-4 px-6">
-                Red
-              </td>
-              <td class="py-4 px-6">
-                Wearables
-              </td>
-              <td class="py-4 px-6">
-                $999
-              </td>
-              <td class="py-4 px-6">
-                <button class="btn2 mr-1"><i class="fa fa-bars"></i></button>
-                <button aria-controls="konfirm" data-collapse-toggle="konfirm2" class="btn3"><i class="fa fa-trash"></i></button>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>

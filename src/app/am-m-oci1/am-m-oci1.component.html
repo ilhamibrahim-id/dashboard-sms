@@ -200,7 +200,7 @@
                           <td class="py-4 px-6">
                             {{findingpending.level}}
                           </td>
-                          <td class="py-4 px-6" >
+                          <td (click)="data(findingpending.func_loc)" class="py-4 px-6" >
                             {{findingpending.func_loc}}
                           </td>
                           <td class="py-4 px-6">
@@ -242,6 +242,9 @@
                           <th scope="col" class="py-3 px-6">
                             Area
                           </th>
+                        </tr>
+                        <tr>
+                          <td>{{funloc}}</td>
                         </tr>
                       </thead>
                       <tbody>

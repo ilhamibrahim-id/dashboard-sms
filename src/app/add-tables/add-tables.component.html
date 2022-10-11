@@ -1,4 +1,7 @@
-<a href="/addnode" class="flex mb-1 items-center justify-end"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add Node</a>
+<a href="/addnode" class="flex mb-1 items-center justify-end"><svg class="w-6 h-6" fill="none" stroke="currentColor"
+    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+  </svg>Add Node</a>
 <h1 class="text-center overflow-hidden before:h-[1px] after:h-[1px] after:bg-black
 after:inline-block after:relative after:align-middle after:w-1/4
 before:bg-black before:inline-block before:relative before:align-middle
@@ -33,7 +36,7 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
             </div>
           </div>
           <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button type="button" aria-controls="konfirm" data-collapse-toggle="konfirm"
+            <button type="button" (click)="insert()" aria-controls="konfirm" data-collapse-toggle="konfirm"
               class="btn mb-1 w-full rounded-lg btn-green cursor: pointer;" onclick="window.location='/big5';">
               Simpan
             </button>
@@ -44,51 +47,11 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
       </div>
     </div>
   </div>
-  <div id="konfirm2" class="hidden flex items-center rounded-lg mt-1 justify-center relative z-10"
-    aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-    <div class="fixed inset-0 z-10 overflow-y-auto">
-      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-        <div
-          class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div class="sm:flex sm:items-start">
-              <div
-                class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                <!-- Heroicon name: outline/exclamation-triangle -->
-                <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                  stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 10.5v3.75m-9.303 3.376C1.83 19.126 2.914 21 4.645 21h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 4.88c-.866-1.501-3.032-1.501-3.898 0L2.697 17.626zM12 17.25h.007v.008H12v-.008z" />
-                </svg>
-              </div>
-              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Apakah Yakin Untuk Menghapus Tables ?</h3>
-                <div class="mt-2">
-                  <p class="text-sm text-gray-500">Apakah kamu yakin tables (tables) akan dihapus ?
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button type="button" aria-controls="konfirm" data-collapse-toggle="konfirm"
-              class="btn mb-1 w-full rounded-lg btn-green cursor: pointer;" onclick="window.location='/big5';">
-              Hapus
-            </button>
-            <button type="button" aria-controls="konfirm" data-collapse-toggle="konfirm2"
-              class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="mb-1">
     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
       <div class="flex-auto p-4">
-        <label for="default-input"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tables</label>
-        <input type="text" id="default-input"
+        <label for="nameA" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Machine</label>
+        <input type="text" id="nameA" [formControl]="nameA"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       </div>
     </div>
@@ -106,7 +69,7 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
   <div class="relative flex flex-col min-w-1 break-words bg-white shadow-soft-xl rounded-2xl mt-4 mb-1 bg-clip-border">
     <div class="flex-auto p-6">
       <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-        <p>Data Node</p>
+        <p>Data Machine</p>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -114,7 +77,7 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
                 No
               </th>
               <th scope="col" class="py-3 px-6">
-                Tables
+                Machine
               </th>
               <th scope="col" class="py-3 px-6">
                 Action
@@ -122,17 +85,60 @@ before:w-1/4 before:right-2 after:left-2 text-xl p-4 bg-white rounded-lg shadow-
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+              *ngFor="let header of machine;let i = index;">
               <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-               1
+                {{i+1}}
               </th>
               <td class="py-4 px-6">
-                mst_alarm
+                {{header}}
               </td>
               <td class="py-4 px-6">
                 <button class="btn2 mr-1"><i class="fa fa-bars"></i></button>
-                <button aria-controls="konfirm" data-collapse-toggle="konfirm2" class="btn3"><i class="fa fa-trash"></i></button>
+                <button type="button" aria-controls="konfirm2" data-collapse-toggle="konfirm2" class="btn3"><i
+                    class="fa fa-trash"></i></button>
               </td>
+              <div id="konfirm2" class="hidden flex items-center rounded-lg mt-1 justify-center relative z-10"
+                aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div class="fixed inset-0 z-10 overflow-y-auto">
+                  <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div
+                      class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                          <div
+                            class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <!-- Heroicon name: outline/exclamation-triangle -->
+                            <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 10.5v3.75m-9.303 3.376C1.83 19.126 2.914 21 4.645 21h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 4.88c-.866-1.501-3.032-1.501-3.898 0L2.697 17.626zM12 17.25h.007v.008H12v-.008z" />
+                            </svg>
+                          </div>
+                          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Apakah Yakin Untuk
+                              Menghapus Tables ?</h3>
+                            <div class="mt-2">
+                              <p class="text-sm text-gray-500">Apakah kamu yakin tables (tables) akan dihapus ?
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <button type="button" aria-controls="konfirm2" data-collapse-toggle="konfirm2"
+                          class="btn mb-1 w-full rounded-lg btn-green cursor: pointer;"
+                          (click)="delete(header)">
+                          Hapus
+                        </button>
+                        <button type="button" aria-controls="konfirm2" data-collapse-toggle="konfirm2"
+                          class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </tr>
           </tbody>
         </table>

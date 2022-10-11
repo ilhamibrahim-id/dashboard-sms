@@ -54,5 +54,10 @@ export const routingComponent = [
   PdmMOci2Component,
   PdmMFsbComponent,
   AppsLinkComponent,
-  Big5Component
+  Big5Component,
+  AddNodeComponent,
+  AddTablesComponent,
+  SuitComponent,
+  TicTacToeComponent,
+  GamesComponent
 ]

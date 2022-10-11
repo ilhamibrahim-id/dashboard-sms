@@ -2,311 +2,319 @@
   <!-- row 1 -->
   <!-- <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
     <div class="flex-auto p-6"> -->
-      <div class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+  <div class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+    <div class="flex-auto p-4">
+      <div class="wrapper">
+        <h5 class="typing-demo">PDM Monitoring - FSB
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3">
+    <!-- card1 -->
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
         <div class="flex-auto p-4">
-          <div class="wrapper">
-            <h5 class="typing-demo">PDM Monitoring - FSB
-          </h5>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-wrap -mx-3">
-        <!-- card1 -->
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <div class="flex flex-row -mx-3">
-                <div class="flex-none w-2/3 max-w-full px-3">
-                  <div>
-                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                      Total Asset
-                    </p>
-                    <h5 class="mb-0 font-bold">
-                      {{totalasset}}
-                      <span> Asset</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-                  </div>
-                </div>
+          <div class="flex flex-row -mx-3">
+            <div class="flex-none w-2/3 max-w-full px-3">
+              <div>
+                <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                  Total Asset
+                </p>
+                <h5 class="mb-0 font-bold">
+                  {{totalasset}}
+                  <span> Asset</span>
+                </h5>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <div class="flex flex-row -mx-3">
-                <div class="flex-none w-2/3 max-w-full px-3">
-                  <div>
-                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                      Finish Check
-                    </p>
-                    <h5 class="mb-0 font-bold">
-                      {{totalfinish}}
-                      <span>/ Month</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <div class="flex flex-row -mx-3">
-                <div class="flex-none w-2/3 max-w-full px-3">
-                  <div>
-                    <p class="mb-0 font-sans font-semibold leading-normal text-xs">
-                      Total Good And SatisFactory
-                    </p>
-                    <h5 class="mb-0 font-bold">
-                      {{totalgoodsatis}}
-                      <span>/ Month</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <div class="flex flex-row -mx-3">
-                <div class="flex-none w-2/3 max-w-full px-3">
-                  <div>
-                    <p class="mb-0 font-sans font-semibold leading-normal text-xs">
-                      Total Unsatisactory and Unacceptable
-                    </p>
-                    <h5 class="mb-0 font-bold">
-                      {{totalunsatis}}
-                      <span>/ Month</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                    <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-                  </div>
-                </div>
+            <div class="px-3 text-right basis-1/3">
+              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap -mx-3">
-        <div class="w-full px-1 py-1 mx-auto">
-          <div class="flex flex-wrap -mx-1 lg:-mx-3">
-            <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-6">
-                  <p class="text-left">List Job Finish Today</p>
-                  <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                      <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                        <tr>
-                          <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-                            No
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Device Name
-                          </th>
-                          <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-                            Test Name
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Point Test
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Do Date
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Plan Date
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            PIC
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Status
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="border-b border-gray-200 dark:border-gray-700"
-                          *ngFor="let totalfinishtoday of totalfinishtoday2; let i = index">
-                          <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            {{i+1}}
-                          </th>
-                          <td class="py-4 px-6">
-                            {{totalfinishtoday.device_name}}
-                          </td>
-                          <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
-                            {{totalfinishtoday.test_name}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{totalfinishtoday.name_point_test}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{totalfinishtoday.do_date}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{totalfinishtoday.plan_date}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{totalfinishtoday.PIC}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{totalfinishtoday.status}}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <div class="flex flex-row -mx-3">
+            <div class="flex-none w-2/3 max-w-full px-3">
+              <div>
+                <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                  Finish Check
+                </p>
+                <h5 class="mb-0 font-bold">
+                  {{totalfinish}}
+                  <span>/ Month</span>
+                </h5>
+              </div>
+            </div>
+            <div class="px-3 text-right basis-1/3">
+              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap -mx-3">
-        <div class="w-full px-1 py-1 mx-auto">
-          <div class="flex flex-wrap -mx-1 lg:-mx-3">
-            <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                  <h5 class="text-center">FSB</h5>
-                </div>
-              </div>
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-6">
-                  <canvas id="donut" width="310" height="300"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                  <h5 class="text-center">List Abnormal Asset</h5>
-                </div>
-              </div>
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-6">
-                  <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                      <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                        <tr>
-                          <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-                            No
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Device
-                          </th>
-                          <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-                            Value
-                          </th>
-                          <th scope="col" class="py-3 px-6">
-                            Status
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="border-b border-gray-200 dark:border-gray-700"
-                          *ngFor="let getdata of totalabnormallisttrue; let i = index">
-                          <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                            {{i+1}}
-                          </th>
-                          <td class="py-4 px-6">
-                            {{getdata.device_name}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{getdata.value}}
-                          </td>
-                          <td class="py-4 px-6">
-                            {{getdata.status}}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <div class="flex flex-row -mx-3">
+            <div class="flex-none w-2/3 max-w-full px-3">
+              <div>
+                <p class="mb-0 font-sans font-semibold leading-normal text-xs">
+                  Total Good And SatisFactory
+                </p>
+                <h5 class="mb-0 font-bold">
+                  {{totalgoodsatis}}
+                  <span>/ Month</span>
+                </h5>
               </div>
             </div>
-            <div class="w-full px-1 py-1 mx-auto mt-4">
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                  <h5 class="text-center">List Abnormal Asset</h5>
-                </div>
+            <div class="px-3 text-right basis-1/3">
+              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
               </div>
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-                <div class="flex-auto p-6">
-                  <div class="flex flex-wrap -mx-1 lg:-mx-3">
-                    <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-                      <div
-                        class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                        <div class="flex-auto p-2">
-                          <h5 class="text-center">Vibration</h5>
-                        </div>
-                      </div>
-                      <canvas id="dum" width="310" height="300"></canvas>
-                    </div>
-                    <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
-                      <div
-                        class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                        <div class="flex-auto p-2">
-                          <h5 class="text-center">Ampere</h5>
-                        </div>
-                      </div>
-                      <canvas id="dumdum" width="310" height="300"></canvas>
-                    </div>
-                    <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
-                      <div
-                        class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                        <div class="flex-auto p-2">
-                          <h5 class="text-center">Temperature</h5>
-                        </div>
-                      </div>
-                      <canvas id="dumdumdum" width="310" height="300"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <div class="flex flex-row -mx-3">
+            <div class="flex-none w-2/3 max-w-full px-3">
+              <div>
+                <p class="mb-0 font-sans font-semibold leading-normal text-xs">
+                  Total Unsatisactory and Unacceptable
+                </p>
+                <h5 class="mb-0 font-bold">
+                  {{totalunsatis}}
+                  <span>/ Month</span>
+                </h5>
+              </div>
+            </div>
+            <div class="px-3 text-right basis-1/3">
+              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3">
+    <div class="w-full px-1 py-1 mx-auto">
+      <div class="flex flex-wrap -mx-1 lg:-mx-3">
+        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <p class="text-left">List Job Finish Today</p>
+              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                  <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        No
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        Device Name
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        2H
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        R
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        S
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        T
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        Thermal
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        Frequency
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        Status
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b border-gray-200 dark:border-gray-700"
+                      *ngFor="let header of totalfinishtoday2;let i = index;">
+                      <th
+                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                        {{i+1}}
+                      </th>
+                      <td class="py-4 px-6">
+                        {{header.device_name}}
+                      </td>
+                      <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
+                      <td class="py-4 px-6">
+                        {{header.Two_H}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.R}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.S}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.T}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.Thermal}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.Frequency}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6" bgcolor="green">
+                        {{header.Stat}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6" bgcolor="yellow">
+                        {{header.Stat}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6" bgcolor="orange">
+                        {{header.Stat}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6" bgcolor="red">
+                        {{header.Stat}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3">
+    <div class="w-full px-1 py-1 mx-auto">
+      <div class="flex flex-wrap -mx-1 lg:-mx-3">
+        <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <h5 class="text-center">FSB</h5>
+            </div>
+          </div>
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <canvas id="donut" width="310" height="300"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <h5 class="text-center">List Abnormal Asset</h5>
+            </div>
+          </div>
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                  <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        No
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Device
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        Value
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Status
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b border-gray-200 dark:border-gray-700"
+                      *ngFor="let getdata of totalabnormallisttrue; let i = index">
+                      <th scope="row"
+                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                        {{i+1}}
+                      </th>
+                      <td class="py-4 px-6">
+                        {{getdata.device_name}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{getdata.value}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{getdata.status}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full px-1 py-1 mx-auto mt-4">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <h5 class="text-center">List Abnormal Asset</h5>
+            </div>
+          </div>
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <div class="flex flex-wrap -mx-1 lg:-mx-3">
+                <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
+                  <div
+                    class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-2">
+                      <h5 class="text-center">Vibration</h5>
                     </div>
                   </div>
+                  <canvas id="dum" width="310" height="300"></canvas>
+                </div>
+                <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
+                  <div
+                    class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-2">
+                      <h5 class="text-center">Ampere</h5>
+                    </div>
+                  </div>
+                  <canvas id="dumdum" width="310" height="300"></canvas>
+                </div>
+                <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
+                  <div
+                    class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-2">
+                      <h5 class="text-center">Temperature</h5>
+                    </div>
+                  </div>
+                  <canvas id="dumdumdum" width="310" height="300"></canvas>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <!-- </div>
+    </div>
+  </div>
+  <!-- </div>
   </div> -->
 </div>
 <ng-template #loading2>
-  <ngx-spinner  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"type="ball-beat"> <p style="font-size: 20px; color: white">{{deskripsi}}</p></ngx-spinner>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+    <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+  </ngx-spinner>
 </ng-template>
