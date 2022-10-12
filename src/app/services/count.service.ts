@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlHandlingStrategy } from '@angular/router';
 import { environment } from 'src/environments/environment';
-
 
 var api = environment.baseUrlApi;
 
@@ -29,7 +28,7 @@ export class CountService {
   public machine: string | any;
   public idmachine: number | any;
 
-  public listNodeObject: any = {};
+  public listNodeObject: object = {};
   public listNode: any = [];
 
   getBigFive() {
@@ -151,8 +150,15 @@ export class CountService {
       this.listNodeObject = data;
       Object.values(this.listNodeObject).forEach(data => {
         // console.log(data);
-        this.listNode.splice(this.listNode.length, 0, data)
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        console.log(array.length);
+        for (let i = 0; i < array.length; i++) {
+          this.listNode.splice(this.listNode.length, 0, array[i]);
+        }
       });
+      // console.log(this.listNode);
     });
   }
 

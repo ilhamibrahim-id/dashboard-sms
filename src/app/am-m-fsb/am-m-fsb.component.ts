@@ -10,6 +10,11 @@ import { CountService } from '../services/count.service';
 })
 export class AmMFsbComponent implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
+  itemsPerPage: number = 0;
+  currentPage: number = 1;
+  absoluteIndex(indexOnPage: number): number {
+    return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
+  }
   public resolved: boolean = false;
   totalfm: object = {};
   totalfm2: any = [];

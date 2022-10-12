@@ -190,9 +190,9 @@
                       </thead>
                       <tbody>
                         <tr class="bg-white border-b Success:bg-gray-900 Success:border-gray-700"
-                          *ngFor="let findingpending of findingpending2; let i = index">
+                          *ngFor="let findingpending of findingpending2| paginate: { currentPage: currentPage, itemsPerPage: 5 }; let i = index">
                           <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{i+1}}
+                            {{(currentPage-1) * 5 + i + 1}}
                           </th>
                           <td class="py-4 px-6">
                             {{findingpending.finding}}
@@ -211,6 +211,7 @@
                     </table>
                   </div>
                 </div>
+                <pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
               </div>
             </div>
             <div class="my-1 px-1 w-full md:w-full lg:my-6 lg:px-6">

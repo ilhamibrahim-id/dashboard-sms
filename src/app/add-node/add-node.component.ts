@@ -11,6 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-node.component.css']
 })
 export class AddNodeComponent implements OnInit {
+  itemsPerPage: number = 0;
+  currentPage: number = 1;
+  deskripsi: any = 'Loading..';
+  absoluteIndex(indexOnPage: number): number {
+    return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
+  }
+  p: number = 1;
   constructor(private service: CountService, private spinner: NgxSpinnerService, private router: Router) { }
   machine: any;
   machineA: string = "Cap_Checker_OC1";
@@ -24,7 +31,7 @@ export class AddNodeComponent implements OnInit {
   refresh() {
     this.machine = this.service.bigFiveMachine;
     this.listNode = this.service.listNode;
-    console.log(this.listNode);
+    console.log(this.listNode.length);
   };
 
   changeTable(value: any) {
@@ -49,9 +56,24 @@ export class AddNodeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
+      let count = 0;
       this.service.getListNode();
       this.service.getBigFive();
       this.refresh();
+      var a = setInterval(() => {
+        count++;
+        if (this.listNode == 0) {
+          this.deskripsi = 'Reconnect To Server';
+          this.spinner.show();
+          this.ngOnInit();
+        } else {
+          this.spinner.hide();
+          this.resolved = true;
+        }
+        if (count = 1) {
+          clearInterval(a);
+        }
+      }, 500);
     });
     // console.log(this.service.bigFiveByMachineValue);
     this.spinner.show();

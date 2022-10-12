@@ -19,6 +19,7 @@ import { AddTablesComponent } from './add-tables/add-tables.component';
 import { GamesComponent } from './games/games.component';
 import { SuitComponent } from './suit/suit.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
+import { SnakeComponent } from './snake/snake.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'games', component: GamesComponent},
   {path: 'suit', component: SuitComponent},
   {path: 'tictactoe', component: TicTacToeComponent},
+  {path: 'snake', component: SnakeComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -59,5 +61,6 @@ export const routingComponent = [
   AddTablesComponent,
   SuitComponent,
   TicTacToeComponent,
-  GamesComponent
+  GamesComponent,
+  SnakeComponent
 ]

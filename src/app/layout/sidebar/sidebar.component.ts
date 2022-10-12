@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   public sub1: boolean = false;
   public sub2: boolean = false;
   public sub3: boolean = false;
+  public sub4: boolean = false;
   constructor(public router: Router) {}
 
   ngOnInit(): void {
@@ -27,5 +28,8 @@ export class SidebarComponent implements OnInit {
   }
   gamessub(){
     this.sub3 = !this.sub3;
+  }
+  big5sub(){
+    this.sub4 = !this.sub4;
   }
 }

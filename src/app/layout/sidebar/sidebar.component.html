@@ -1,8 +1,8 @@
 <aside *ngIf="resolved; else side2"
   class="max-w-62.5 bg-white ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 p-0 antialiased shadow-none transition-transform duration-200 xl:bg-white shadow-soft-2xl translate-x-0">
   <div class="h-19.5">
-    <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="/">
-      <img src="../assets/img/logo1.png"
+    <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="">
+      <img src="assets/img/logo1.png"
         class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
       <span class="ml-2 font-semibold transition-all duration-200 ease-nav-brand">SMS Dashboard</span>
     </a>
@@ -15,7 +15,7 @@
       <div *ngIf="router.url === '/'; else lain">
         <li class="mt-0.5 w-full">
           <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors"
-            href="/">
+            href="">
             <div
               class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@
       <ng-template #lain>
         <li class="mt-0.5 w-full">
           <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center px-4 text-slate-700 transition-colors"
-            href="/">
+            href="">
             <div
               class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@
       <div *ngIf="router.url === '/pdm_dashboard'; else lain2">
         <li class="mt-0.5 w-full">
           <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors"
-            href="/pdm_dashboard">
+            href="pdm_dashboard">
             <div
               class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@
       <ng-template #lain2>
         <li class="mt-0.5 w-full">
           <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-            href="/pdm_dashboard">
+            href="pdm_dashboard">
             <div
               class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -418,7 +418,7 @@
     ">
         <li class="mt-0.5 w-full">
           <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-            href="/apps_link">
+            href="apps_link">
             <div
               class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -450,7 +450,7 @@
       <ng-template #lain5>
         <li class="mt-0.5 w-full">
           <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-            href="/apps_link">
+            href="apps_link">
             <div
               class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -487,67 +487,93 @@ router.url === '/big5' || router.url === '/addnode'
 || router.url === '/addtables';
 else lain6
 ">
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-            href="big5">
-            <div
-              class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-              <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>customer-support</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(1.000000, 0.000000)">
-                        <path class="opacity-60"
-                          d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
-                        </path>
-                        <path class=""
-                          d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
-                        </path>
-                        <path class=""
-                          d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
-                        </path>
-                      </g>
+        <li class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
+          <div
+            class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+            <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>Big 5</title>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                  <g transform="translate(1716.000000, 291.000000)">
+                    <g transform="translate(1.000000, 0.000000)">
+                      <path class="opacity-60"
+                        d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
+                      </path>
+                      <path class=""
+                        d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
+                      </path>
+                      <path class=""
+                        d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
+                      </path>
                     </g>
                   </g>
                 </g>
-              </svg>
-            </div>
+              </g>
+            </svg>
+          </div>
+          <button type="button" (click)="big5sub()">
             <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Big 5 Error Message</span>
-          </a>
+          </button>
+        </li>
+        <li *ngIf="sub4" class="ml-6">
+          <ul class="py-2 space-y-2 ml-6">
+            <div *ngIf="router.url === '/big5'; else kategori11">
+              <li class="ml-6">
+                <a href="big5"
+                  class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Big
+                  5</a>
+              </li>
+            </div>
+            <ng-template #kategori11>
+              <li class="ml-6">
+                <a href="big5"
+                  class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Big
+                  5</a>
+              </li>
+            </ng-template>
+          </ul>
         </li>
       </div>
       <ng-template #lain6>
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-            href="big5">
-            <div
-              class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-              <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>customer-support</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(1.000000, 0.000000)">
-                        <path class="fill-slate-800 opacity-60"
-                          d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
-                        </path>
-                        <path class="fill-slate-800"
-                          d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
-                        </path>
-                        <path class="fill-slate-800"
-                          d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
-                        </path>
-                      </g>
+        <li class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
+          <div
+            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
+            <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>Big 5</title>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                  <g transform="translate(1716.000000, 291.000000)">
+                    <g transform="translate(1.000000, 0.000000)">
+                      <path class="fill-slate-800 opacity-60"
+                        d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
+                      </path>
+                      <path class="fill-slate-800"
+                        d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
+                      </path>
+                      <path class="fill-slate-800"
+                        d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
+                      </path>
                     </g>
                   </g>
                 </g>
-              </svg>
-            </div>
+              </g>
+            </svg>
+          </div>
+          <button type="button" (click)="big5sub()">
             <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Big 5 Error Message</span>
-          </a>
+          </button>
+        </li>
+        <li *ngIf="sub4" class="ml-6">
+          <ul class="py-2 space-y-2 ml-6">
+            <li class="ml-6">
+              <a href="big5"
+                class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Big
+                5
+              </a>
+            </li>
+          </ul>
         </li>
       </ng-template>
       <li class="w-full mt-4">
@@ -556,7 +582,8 @@ else lain6
       <div *ngIf="
       router.url === '/games' ||
         router.url === '/suit'||
-        router.url === '/tictactoe';
+        router.url === '/tictactoe' ||
+        router.url === '/snake';
       else games
     ">
         <li class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
@@ -634,7 +661,19 @@ else lain6
                   class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Get
                   Mouse</a>
               </li>
-            </ng-template>
+              </ng-template>
+              <div *ngIf="router.url === '/snake'; else snakes">
+                <li class="ml-6">
+                  <a href="snake"
+                    class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Snake</a>
+                </li>
+              </div>
+              <ng-template #snakes>
+                <li class="ml-6">
+                  <a href="snake"
+                    class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Snake</a>
+                </li>
+              </ng-template>
           </ul>
         </li>
       </div>
@@ -689,6 +728,10 @@ else lain6
                 class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Get
                 Mouse</a>
             </li>
+            <li class="ml-6">
+              <a href="snake"
+                class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Snake</a>
+            </li>
           </ul>
         </li>
       </ng-template>
@@ -699,8 +742,8 @@ else lain6
   <aside
     class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 bg-white shadow-soft-3xl">
     <div class="h-19.5">
-      <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="/">
-        <img src="../assets/img/logo1.png"
+      <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="">
+        <img src="assets/img/logo1.png"
           class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
         <span class="ml-2 font-semibold transition-all duration-200 ease-nav-brand">SMS Dashboard</span>
       </a>
@@ -713,7 +756,7 @@ else lain6
         <div *ngIf="router.url === '/'; else lain">
           <li class="mt-0.5 w-full">
             <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors"
-              href="/">
+              href="">
               <div
                 class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -742,7 +785,7 @@ else lain6
         <ng-template #lain>
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center px-4 text-slate-700 transition-colors"
-              href="/">
+              href="">
               <div
                 class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -773,7 +816,7 @@ else lain6
         <div *ngIf="router.url === '/pdm_dashboard'; else lain2">
           <li class="mt-0.5 w-full">
             <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors"
-              href="/pdm_dashboard">
+              href="pdm_dashboard">
               <div
                 class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -802,7 +845,7 @@ else lain6
         <ng-template #lain2>
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-              href="/pdm_dashboard">
+              href="pdm_dashboard">
               <div
                 class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -1120,7 +1163,7 @@ else lain6
       ">
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-              href="/apps_link">
+              href="apps_link">
               <div
                 class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -1152,7 +1195,7 @@ else lain6
         <ng-template #lain5>
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-              href="/apps_link">
+              href="apps_link">
               <div
                 class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -1191,67 +1234,95 @@ router.url === '/big5' || router.url === '/addnode'
 || router.url === '/addtables';
 else lain6
 ">
-          <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-              href="big5">
-              <div
-                class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <title>customer-support</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                      <g transform="translate(1716.000000, 291.000000)">
-                        <g transform="translate(1.000000, 0.000000)">
-                          <path class="opacity-60"
-                            d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
-                          </path>
-                          <path class=""
-                            d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
-                          </path>
-                          <path class=""
-                            d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
-                          </path>
-                        </g>
+          <li
+            class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
+            <div
+              class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+              <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Big 5</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(1.000000, 0.000000)">
+                        <path class="opacity-60"
+                          d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
+                        </path>
+                        <path class=""
+                          d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
+                        </path>
+                        <path class=""
+                          d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
+                        </path>
                       </g>
                     </g>
                   </g>
-                </svg>
-              </div>
+                </g>
+              </svg>
+            </div>
+            <button type="button" aria-controls="big5sb" data-collapse-toggle="big5sb">
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Big 5 Error Message</span>
-            </a>
+            </button>
+          </li>
+          <li class="ml-6">
+            <ul id="big5sb" class="py-2 space-y-2 ml-6">
+              <div *ngIf="router.url === '/big5'; else kategori11">
+                <li class="ml-6">
+                  <a href="big5"
+                    class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Big
+                    5</a>
+                </li>
+              </div>
+              <ng-template #kategori11>
+                <li class="ml-6">
+                  <a href="big5"
+                    class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Big
+                    5</a>
+                </li>
+              </ng-template>
+            </ul>
           </li>
         </div>
         <ng-template #lain6>
-          <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-              href="big5">
-              <div
-                class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <title>customer-support</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                      <g transform="translate(1716.000000, 291.000000)">
-                        <g transform="translate(1.000000, 0.000000)">
-                          <path class="fill-slate-800 opacity-60"
-                            d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
-                          </path>
-                          <path class="fill-slate-800"
-                            d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
-                          </path>
-                          <path class="fill-slate-800"
-                            d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
-                          </path>
-                        </g>
+          <li
+            class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
+            <div
+              class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
+              <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Big 5</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(1.000000, 0.000000)">
+                        <path class="fill-slate-800 opacity-60"
+                          d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z">
+                        </path>
+                        <path class="fill-slate-800"
+                          d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z">
+                        </path>
+                        <path class="fill-slate-800"
+                          d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z">
+                        </path>
                       </g>
                     </g>
                   </g>
-                </svg>
-              </div>
+                </g>
+              </svg>
+            </div>
+            <button type="button" aria-controls="big5sb" data-collapse-toggle="big5sb">
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Big 5 Error Message</span>
-            </a>
+            </button>
+          </li>
+          <li class="ml-6">
+            <ul id="big5sb" class="hidden py-2 space-y-2 ml-6">
+              <li class="ml-6">
+                <a href="big5"
+                  class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Big
+                  5
+                </a>
+              </li>
+            </ul>
           </li>
         </ng-template>
         <li class="w-full mt-4">
@@ -1260,7 +1331,8 @@ else lain6
         <div *ngIf="
         router.url === '/games' ||
           router.url === '/suit' ||
-          router.url === '/tictactoe';
+          router.url === '/tictactoe'||
+          router.url === '/snake';
         else games
       ">
           <li
@@ -1340,6 +1412,18 @@ else lain6
                     Mouse</a>
                 </li>
               </ng-template>
+              <div *ngIf="router.url === '/snake'; else snakes">
+                <li class="ml-6">
+                  <a href="snake"
+                    class="rounded-lg shadow-soft-md bg-white flex items-center w-1/2 p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Snake</a>
+                </li>
+              </div>
+              <ng-template #snakes>
+                <li class="ml-6">
+                  <a href="snake"
+                    class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Snake</a>
+                </li>
+              </ng-template>
             </ul>
           </li>
         </div>
@@ -1396,6 +1480,10 @@ else lain6
                   class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Get
                   Mouse</a>
               </li>
+              <li class="ml-6">
+                <a href="snake"
+                  class="flex items-center w-full p-1 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Snake</a>
+              </li>
             </ul>
           </li>
         </ng-template>
@@ -1423,7 +1511,7 @@ else lain6
           <h6 class="mb-0 font-bold capitalize">AM Dashboard</h6>
         </nav>
       </div>
-      <div *ngIf="router.url === '/pdm_dashboard'">
+      <div *ngIf="router.url === 'pdm_dashboard'">
         <nav>
           <!-- breadcrumb -->
           <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
@@ -1555,4 +1643,3 @@ else lain6
     </div>
   </a>
 </div>
-

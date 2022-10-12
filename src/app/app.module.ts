@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
