@@ -187,7 +187,9 @@ export class CountService {
       // console.log(data);
     });
   }
-
+  getOrder(){
+    return this.httpClient.get(api + "getorder");
+  }
   getTemperatureLineoci1() {
     return this.httpClient.get(api + "temperaturelineoci1");
   }
