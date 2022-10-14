@@ -14,8 +14,6 @@ import { PdmMFsbComponent } from './pdm-m-fsb/pdm-m-fsb.component';
 import { AppsLinkComponent } from './apps-link/apps-link.component';
 import { Big5Component } from './big5/big5.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AddNodeComponent } from './add-node/add-node.component';
-import { AddTablesComponent } from './add-tables/add-tables.component';
 import { GamesComponent } from './games/games.component';
 import { SuitComponent } from './suit/suit.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
@@ -32,8 +30,6 @@ const routes: Routes = [
   {path: 'pdm_m_fsb',component: PdmMFsbComponent},
   {path: 'apps_link', component: AppsLinkComponent},
   {path: 'big5', component: Big5Component},
-  {path: 'addnode', component: AddNodeComponent},
-  {path: 'addtables', component: AddTablesComponent},
   {path: 'games', component: GamesComponent},
   {path: 'suit', component: SuitComponent},
   {path: 'tictactoe', component: TicTacToeComponent},
@@ -57,8 +53,6 @@ export const routingComponent = [
   PdmMFsbComponent,
   AppsLinkComponent,
   Big5Component,
-  AddNodeComponent,
-  AddTablesComponent,
   SuitComponent,
   TicTacToeComponent,
   GamesComponent,

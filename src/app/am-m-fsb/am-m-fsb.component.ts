@@ -15,6 +15,11 @@ export class AmMFsbComponent implements OnInit {
   absoluteIndex(indexOnPage: number): number {
     return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
   }
+  itemsPerPage2: number = 0;
+  currentPage2: number = 1;
+  absoluteIndex2(indexOnPage: number): number {
+    return this.itemsPerPage2 * (this.currentPage2 - 1) + indexOnPage;
+  }
   public resolved: boolean = false;
   totalfm: object = {};
   totalfm2: any = [];
@@ -41,9 +46,45 @@ export class AmMFsbComponent implements OnInit {
   totalfinding3: any;
   public loaddata: any;
   totalfinding4: any;
+  funloc: any;
+  funloclist: any = [];
+  orderarr: any = [];
   deskripsi: any = 'Loading..';
+  orderobj: object = {};
+  data($event: any) {
+    //console.log($event);
+    this.funloclist = [];
+    this.funloc = $event;
+    console.log(this.funloc);
+    for (let i = 0; i < this.orderarr.length; i++) {
+      if(this.orderarr[i].func_loc === this.funloc){
+      this.funloclist[i] = this.orderarr[i];
+      }
+    }
+    this.funloclist = this.funloclist.filter(function (e: any) { return e != null; });
+    console.log(this.funloclist);
+  }
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
+      this.service.getOrder().subscribe(data => {
+        this.orderobj = data;
+        Object.values(this.orderobj).forEach(data => {
+          // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.orderarr.splice(this.orderarr.lenght, 0, array[i]);
+          }
+          console.log(this.orderarr);
+
+          // console.log(this.findingpending2);
+        })
+
+
+      }
+      );
       this.service.getReadLevelTotalfsb().subscribe(data => {
         this.totallevel = data;
         Object.values(this.totallevel).forEach(data => {
