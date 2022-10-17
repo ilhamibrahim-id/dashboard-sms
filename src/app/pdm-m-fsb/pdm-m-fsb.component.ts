@@ -11,6 +11,10 @@ import { CountService } from '../services/count.service';
 export class PdmMFsbComponent implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
+  good: number = 0;
+  satis: number = 0;
+  unsatisf: number = 0;
+  unacc: number = 0;
   coba: any = [];
   donut: any = [];
   coba2: any = [];
@@ -143,28 +147,27 @@ export class PdmMFsbComponent implements OnInit {
         })
       }
       );
-      this.service.getReadunsatissunacfsb().subscribe(data => {
-        this.unsatis = data;
-        Object.values(this.unsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.unsatis2.splice(this.unsatis2.lenght, 0, array[0]);
-          for (let elem of this.unsatis2) {
-            this.totalunsatis = elem.total;
-          }
-        })
-      }
-      );
       this.service.getReadGoodAndSatisfsb().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+            this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
+          }
           for (let elem of this.goodsatis2) {
-            this.totalgoodsatis = elem.total;
+            if (elem.total == 'Good') {
+              this.good += 1;
+            } else if (elem.total == 'Satisfactory'){
+              this.satis += 1;
+            } else if (elem.total == 'Unsatisactory'){
+              this.unsatisf += 1;
+            } else if (elem.total == 'Unacceptable'){
+              this.unacc += 1;
+            }
+            //console.log(this.good);
+
           }
         })
       }
@@ -175,7 +178,9 @@ export class PdmMFsbComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.finish2.splice(this.finish2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+            this.finish2.splice(this.finish2.lenght, 0, array[0]);
+            }
           for (let elem of this.finish2) {
             this.totalfinish = elem.total;
           }
@@ -264,21 +269,21 @@ export class PdmMFsbComponent implements OnInit {
             this.coba = new Chart('donut', {
               type: 'doughnut',
               data: {
-                labels: ['Finish Check', 'Total Good And SatisFactory', 'Total Unsatisactory and Unacceptable'],
+                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: [this.totalfinish, this.totalgoodsatis, this.totalunsatis],
+                  data: [this.good, this.satis, this.unsatisf,this.unacc],
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
+                    'green',
+                    'rgb(230, 230, 0)',
+                    'orange',
+                    'red',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
+                    'white',
+                    'white',
+                    'white',
+                    'white',
                   ],
                   borderWidth: 1
                 }]

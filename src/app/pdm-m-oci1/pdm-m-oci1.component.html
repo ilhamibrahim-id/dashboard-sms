@@ -46,7 +46,7 @@
                   Finish Check
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalfinish}}
+                  {{this.finish2.length}}
                   <span>/ Month</span>
                 </h5>
               </div>
@@ -70,7 +70,7 @@
                   Total Good And SatisFactory
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalgoodsatis}}
+                  {{good+satis}}
                   <span>/ Month</span>
                 </h5>
               </div>
@@ -94,7 +94,7 @@
                   Total Unsatisactory and Unacceptable
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalunsatis}}
+                  {{unsatisf+unacc}}
                   <span>/ Month</span>
                 </h5>
               </div>
@@ -145,6 +145,18 @@
                         Frequency
                       </th>
                       <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        CF+ 2H
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        VC
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        PIC
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        Do Date
+                      </th>
+                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
                         Status
                       </th>
                     </tr>
@@ -179,6 +191,27 @@
                         {{header.Frequency}}
                       </td>
                       <td class="py-4 px-6">
+                        {{header.CF}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.VC}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.PIC}}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{header.do_date}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6" bgcolor="green">
+                        {{header.Stat}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6" bgcolor="yellow">
+                        {{header.Stat}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6" bgcolor="orange">
+                        {{header.Stat}}
+                      </td>
+                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6" bgcolor="red">
                         {{header.Stat}}
                       </td>
                     </tr>
@@ -204,6 +237,12 @@
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
               <canvas id="donut" width="310" height="300"></canvas>
+              <div class="px-6 pt-4 pb-2 text-center">
+                <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Good: {{good}}</span>
+                <span style="background-color: rgb(230, 230, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{satis}}</span>
+                <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{unsatisf}}</span>
+                <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{unacc}}</span>
+              </div>
             </div>
           </div>
         </div>
