@@ -10,7 +10,7 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap -mx-3">
+      <div class="flex flex-wrap -mx-3 duration-2000">
         <!-- card1 -->
         <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
@@ -23,13 +23,12 @@
                     </p>
                     <h5 class="mb-0 font-bold">
                       {{totalfinding1}}
-                      <span>/ Month</span>
+                      <span> / Year</span>
                     </h5>
                   </div>
                 </div>
                 <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                  <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
                     <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
                   </div>
                 </div>
@@ -47,14 +46,13 @@
                       Pending execute
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{totalfinding2}}
-                      <span>/ Month</span>
+                      {{totalfinding2}} /
+                      <span class="text-lime-500">{{(totalfinding2 * 100 / totalfinding1).toFixed(2)}} %</span>
                     </h5>
                   </div>
                 </div>
                 <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                  <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
                     <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
                   </div>
                 </div>
@@ -72,14 +70,13 @@
                       Finish Execute
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{totalfinding3}}
-                      <span>/ Month</span>
+                      {{totalfinding3}} /
+                      <span class="text-lime-500">{{(totalfinding3 * 100 / totalfinding1).toFixed(2)}} %</span>
                     </h5>
                   </div>
                 </div>
                 <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                  <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
                     <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
                   </div>
                 </div>
@@ -97,14 +94,13 @@
                       Ready Execute
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{totalfinding4}}
-                      <span>/ Month</span>
+                      {{totalfinding4}} /
+                      <span class="text-lime-500">{{(totalfinding4 * 100 / totalfinding1).toFixed(2)}} %</span>
                     </h5>
                   </div>
                 </div>
                 <div class="px-3 text-right basis-1/3">
-                  <div
-                    class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                  <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
                     <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
                   </div>
                 </div>

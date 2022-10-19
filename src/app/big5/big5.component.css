@@ -35,3 +35,18 @@
     border-color: transparent;
   }
 }
+
+.mat-calendar-body-active{
+  color: red;
+  background-color: blue;
+}
+
+.mat-form-field-label {
+  color: red;
+}
+.mat-date-range-input {
+  color: blue;
+}
+.mat-date-range-input-separator {
+  color: blue;
+}

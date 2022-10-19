@@ -67,23 +67,23 @@ export class CountService {
           }
           let mach = {
             name: array[i],
-            id: array[i+1]
+            id: array[i + 1]
           }
           this.bigFiveMachine.splice(this.bigFiveMachine.length, 0, array[i]);
           this.bigFiveByMachineId.splice(this.bigFiveByMachineId.length, 0, mach);
-          i+=2;
+          i += 2;
         }
       })
     });
     // return this.httpClient.get(url);
   }
 
-  getBigFiveByMachine(namee:String) {
+  getBigFiveByMachine(namee: String, start: String, end: String) {
     this.bigFiveByMachine = [];
     this.bigFiveByMachineName = [];
     this.bigFiveByMachineValue = [];
-    var url = api + "big5/getbyid";
-    this.httpClient.post(url,{ name: namee }).subscribe(data => {
+    var url = api + "big5/getbydate";
+    this.httpClient.post(url, { name: namee, startDate: start, endDate: end }).subscribe(data => {
       this.bigFiveObject = data;
       Object.values(this.bigFiveObject).forEach(data => {
         // console.log(data);
@@ -109,7 +109,7 @@ export class CountService {
     // return this.bigFiveByMachineName;
   }
 
-  insertNewNode(){
+  insertNewNode() {
     // console.log(this.bigFiveByMachineId.length);
     for (let i = 0; i < this.bigFiveByMachineId.length; i++) {
       if (this.bigFiveByMachineId[i].name == this.machine) {
@@ -119,12 +119,12 @@ export class CountService {
     };
     // console.log(this.idmachine);
     var url = api + "alarm/create";
-    this.httpClient.post(url,{ device: this.device, node: this.node, description: this.description, tableId: this.idmachine }).subscribe(data => {
+    this.httpClient.post(url, { device: this.device, node: this.node, description: this.description, tableId: this.idmachine }).subscribe(data => {
       // console.log(data);
     });
   }
 
-  deleteNode(){
+  deleteNode() {
     // console.log(this.bigFiveByMachineId.length);
     // console.log(this.idmachine);
     var url = api + "alarm/delete";
@@ -139,12 +139,12 @@ export class CountService {
         tableId: this.idmachine
       },
     };
-    this.httpClient.delete(url,options).subscribe(data => {
+    this.httpClient.delete(url, options).subscribe(data => {
       // console.log(data);
     });
   }
 
-  getListNode(){
+  getListNode() {
     this.listNode = [];
     this.httpClient.get(api + "alarm/get").subscribe(data => {
       this.listNodeObject = data;
@@ -162,16 +162,16 @@ export class CountService {
     });
   }
 
-  insertNewTable(){
+  insertNewTable() {
     // console.log(this.bigFiveByMachineId.length);
     // console.log(this.idmachine);
     var url = api + "table/create";
-    this.httpClient.post(url,{ name: this.table}).subscribe(data => {
+    this.httpClient.post(url, { name: this.table }).subscribe(data => {
       // console.log(data);
     });
   }
 
-  deleteTable(){
+  deleteTable() {
     // console.log(this.bigFiveByMachineId.length);
     // console.log(this.idmachine);
     var url = api + "table/delete";
@@ -183,11 +183,11 @@ export class CountService {
         name: this.table,
       },
     };
-    this.httpClient.delete(url,options).subscribe(data => {
+    this.httpClient.delete(url, options).subscribe(data => {
       // console.log(data);
     });
   }
-  getOrder(){
+  getOrder() {
     return this.httpClient.get(api + "getorder");
   }
   getTemperatureLineoci1() {

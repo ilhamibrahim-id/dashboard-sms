@@ -83,7 +83,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.fsbunacc2.splice(this.fsbunacc2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.fsbunacc2.splice(this.fsbunacc2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.fsbunacc2) {
             // this.totalfinding[0] = elem.total;
@@ -104,7 +106,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.fsbunsatis2.splice(this.fsbunsatis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.fsbunsatis2.splice(this.fsbunsatis2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.fsbunsatis2) {
             // this.totalfinding[0] = elem.total;
@@ -125,7 +129,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.fsbsatis2.splice(this.fsbsatis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.fsbsatis2.splice(this.fsbsatis2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.fsbsatis2) {
             // this.totalfinding[0] = elem.total;
@@ -146,7 +152,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.fsbgood2.splice(this.fsbgood2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.fsbgood2.splice(this.fsbgood2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.fsbgood2) {
             // this.totalfinding[0] = elem.total;
@@ -167,7 +175,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci2unacc2.splice(this.oci2unacc2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci2unacc2.splice(this.oci2unacc2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci2unacc2) {
             // this.totalfinding[0] = elem.total;
@@ -188,7 +198,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci2unsatis2.splice(this.oci2unsatis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci2unsatis2.splice(this.oci2unsatis2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci2unsatis2) {
             // this.totalfinding[0] = elem.total;
@@ -209,7 +221,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci2satis2.splice(this.oci2satis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci2satis2.splice(this.oci2satis2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci2satis2) {
             // this.totalfinding[0] = elem.total;
@@ -230,7 +244,10 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci2good2.splice(this.oci2good2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci2good2.splice(this.oci2good2.lenght, 0, array[i]);
+          }
+
           // console.log(this.const2);
           for (let elem of this.oci2good2) {
             // this.totalfinding[0] = elem.total;
@@ -251,7 +268,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci1unacc2.splice(this.oci1unacc2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci1unacc2.splice(this.oci1unacc2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci1unacc2) {
             // this.totalfinding[0] = elem.total;
@@ -272,7 +291,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci1unsatis2.splice(this.oci1unsatis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci1unsatis2.splice(this.oci1unsatis2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci1unsatis2) {
             // this.totalfinding[0] = elem.total;
@@ -293,7 +314,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci1satis2.splice(this.oci1satis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci1satis2.splice(this.oci1satis2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci1satis2) {
             // this.totalfinding[0] = elem.total;
@@ -314,7 +337,9 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.oci1good2.splice(this.oci1good2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.oci1good2.splice(this.oci1good2.lenght, 0, array[i]);
+          }
           // console.log(this.const2);
           for (let elem of this.oci1good2) {
             // this.totalfinding[0] = elem.total;
@@ -355,7 +380,11 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[i]);
+          }
+          console.log();
+
           // console.log(this.const2);
           for (let elem of this.pdmfinish2) {
             // this.totalfinding[0] = elem.total;
@@ -375,7 +404,11 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
+          }
+          console.log(this.goodsatis2);
+
           // console.log(this.const2);
           for (let elem of this.goodsatis2) {
             // this.totalfinding[0] = elem.total;
@@ -395,7 +428,11 @@ export class PdmDashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.unsatisunac2.splice(this.unsatisunac2.lenght, 0, array[0]);
+          for (let i = 0; i < array.length; i++) {
+          this.unsatisunac2.splice(this.unsatisunac2.lenght, 0, array[i]);
+          }
+          //console.log(this.unsatisunac2);
+
           // console.log(this.const2);
           for (let elem of this.unsatisunac2) {
             // this.totalfinding[0] = elem.total;
@@ -484,7 +521,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: this.oci,
+                  data: [this.oci1good2.length,this.oci1satis2.length,this.oci1unsatis2.length,this.oci1unacc2.length],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -507,7 +544,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: this.oci2,
+                  data: [this.oci2good2.length,this.oci2satis2.length,this.oci2unsatis2.length,this.oci2unacc2.length],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -554,7 +591,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: 'oi',
-                  data: this.fsb,
+                  data: [this.fsbgood2.length,this.fsbsatis2.length,this.fsbunsatis2.length,this.fsbunacc2.length],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',

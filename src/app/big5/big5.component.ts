@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { CountService } from '../services/count.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as moment from 'moment';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-big5',
@@ -14,6 +16,12 @@ export class Big5Component implements OnInit {
   datas: any;
   machine: any;
   machineA: string = "Cap_Checker_OC1";
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+  start: string = moment().subtract(7, 'd').format("YYYY-MM-DD");
+  end: string = moment().format("YYYY-MM-DD");
   coba: any = [];
   donut: any = [];
   barchart: any;
@@ -30,7 +38,20 @@ export class Big5Component implements OnInit {
   bigFiveByMachine(value: any) {
     console.log(value);
     this.machineA = value;
-    this.service.getBigFiveByMachine(this.machineA);
+    this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
+    this.refresh();
+    // console.log(this.labels);
+    // this.chart();
+    this.updateChart();
+  }
+
+  dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
+    // console.log(dateRangeStart.value);
+    // console.log(dateRangeEnd.value);
+    this.start = moment(dateRangeStart.value).format("YYYY-MM-DD");
+    this.end = moment(dateRangeEnd.value).format("YYYY-MM-DD");
+    // console.log(this.start);
+    this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
     this.refresh();
     // console.log(this.labels);
     // this.chart();
@@ -173,7 +194,8 @@ export class Big5Component implements OnInit {
 
   ngOnInit(): void {
       // this.service.getBigFive();
-      this.service.getBigFiveByMachine(this.machineA);
+      console.log(this.start);
+      this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
       // console.log(this.service.getBigFiveByMachine("AlarmInformation_OC2"));
       // console.log(this.service.bigFiveByMachine.length);
       this.service.getBigFive();

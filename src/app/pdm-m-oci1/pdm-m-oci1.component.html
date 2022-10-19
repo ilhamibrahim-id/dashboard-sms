@@ -46,8 +46,8 @@
                   Finish Check
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{this.finish2.length}}
-                  <span>/ Month</span>
+                  {{this.finish2.length}} /
+                  <span class="text-lime-500">{{(this.finish2.length * 100 / totalasset).toFixed(2)}} %</span>
                 </h5>
               </div>
             </div>
@@ -70,8 +70,8 @@
                   Total Good And SatisFactory
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{good+satis}}
-                  <span>/ Month</span>
+                  {{good+satis}} /
+                  <span class="text-lime-500">{{((good+satis) * 100 / totalasset).toFixed(2)}} %</span>
                 </h5>
               </div>
             </div>
@@ -94,8 +94,8 @@
                   Total Unsatisactory and Unacceptable
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{unsatisf+unacc}}
-                  <span>/ Month</span>
+                  {{unsatisf+unacc}} /
+                  <span class="text-lime-500">{{((unsatisf+unacc) * 100 / totalasset).toFixed(2)}} %</span>
                 </h5>
               </div>
             </div>
@@ -200,18 +200,18 @@
                         {{header.PIC}}
                       </td>
                       <td class="py-4 px-6">
-                        {{header.do_date}}
+                        {{header.dodate}}
                       </td>
-                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6" bgcolor="green">
+                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text-white" bgcolor="green">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6" bgcolor="yellow">
+                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 text-white" bgcolor="yellow">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6" bgcolor="orange">
+                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white" bgcolor="orange">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6" bgcolor="red">
+                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6 text-white" bgcolor="red">
                         {{header.Stat}}
                       </td>
                     </tr>

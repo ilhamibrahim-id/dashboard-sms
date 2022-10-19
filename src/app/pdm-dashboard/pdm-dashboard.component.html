@@ -50,8 +50,8 @@
                       Finish Check
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{totalpdmfinish}}
-                      <span>/ Years</span>
+                      {{pdmfinish2.length}} /
+                      <span class="text-lime-500">{{(pdmfinish2.length * 100 / totalasset).toFixed(2)}} %</span>
                     </h5>
                   </div>
                 </div>
@@ -75,8 +75,8 @@
                       Total Good Dan SatisFactory
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{totalgoodsatis}}
-                      <span>/ Years</span>
+                      {{goodsatis2.length}} /
+                      <span class="text-lime-500">{{(goodsatis2.length * 100 / totalasset).toFixed(2)}} %</span>
                     </h5>
                   </div>
                 </div>
@@ -100,8 +100,8 @@
                       Total Unsatisactory and Unacceptable
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{totalunsatisunac}}
-                      <span>/ Years</span>
+                      {{unsatisunac2.length}} /
+                      <span class="text-lime-500">{{(unsatisunac2.length * 100 / totalasset).toFixed(2)}} %</span>
                     </h5>
                   </div>
                 </div>
@@ -131,10 +131,10 @@
                 <div class="flex-auto p-6">
                   <canvas id="dum" width="310" height="300"></canvas>
                   <div class="px-6 pt-4 pb-2 text-center">
-                    <span style="background-color: green;" class="text-white inline-block bg-red rounded-full text-xs px-3 py-1 font-semibold mr-2 mb-2">Good: {{this.oci[0]}}</span>
-                    <span style="background-color: rgb(230, 230, 0)" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{this.oci[1]}}</span>
-                    <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{this.oci[2]}}</span>
-                    <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{this.oci[3]}}</span>
+                    <span style="background-color: green;" class="text-white inline-block bg-red rounded-full text-xs px-3 py-1 font-semibold mr-2 mb-2">Good: {{this.oci1good2.length}}</span>
+                    <span style="background-color: rgb(230, 230, 0)" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{this.oci1satis2.length}}</span>
+                    <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{this.oci1unsatis2.length}}</span>
+                    <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{this.oci1unacc2.length}}</span>
                   </div>
                 </div>
               </div>
@@ -151,10 +151,10 @@
                 <div class="flex-auto p-6">
                   <canvas id="donut" width="310" height="300"></canvas>
                   <div class="px-6 pt-4 pb-2 text-center">
-                    <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Good: {{this.oci2[0]}}</span>
-                    <span style="background-color: rgb(230, 230, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{this.oci2[1]}}</span>
-                    <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{this.oci2[2]}}</span>
-                    <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{this.oci2[3]}}</span>
+                    <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Good: {{this.oci2good2.length}}</span>
+                    <span style="background-color: rgb(230, 230, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{this.oci2satis2.length}}</span>
+                    <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{this.oci2unsatis2.length}}</span>
+                    <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{this.oci2unacc2.length}}</span>
                   </div>
                 </div>
               </div>
@@ -171,10 +171,10 @@
                 <div class="flex-auto p-6">
                   <canvas id="donutku" width="310" height="300"></canvas>
                   <div class="px-6 pt-4 pb-2 text-center">
-                    <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Good: {{this.fsb[0]}}</span>
-                    <span style="background-color: rgb(230, 230, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{this.fsb[1]}}</span>
-                    <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{this.fsb[2]}}</span>
-                    <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{this.fsb[3]}}</span>
+                    <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Good: {{this.fsbgood2.length}}</span>
+                    <span style="background-color: rgb(230, 230, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">SatisFactory: {{this.fsbsatis2.length}}</span>
+                    <span style="background-color: orange;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">UnSatisFactory: {{this.fsbunsatis2.length}}</span>
+                    <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Unacceptable: {{this.fsbunacc2.length}}</span>
                   </div>
                 </div>
               </div>

@@ -188,13 +188,13 @@ export class PdmMOci1Component implements OnInit {
             this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
           }
           for (let elem of this.goodsatis2) {
-            if (elem.total == 'Good') {
+            if (elem.status == 'Good') {
               this.good += 1;
-            } else if (elem.total == 'Satisfactory'){
+            } else if (elem.status == 'Satisfactory'){
               this.satis += 1;
-            } else if (elem.total == 'Unsatisactory'){
+            } else if (elem.status == 'Unsatisactory'){
               this.unsatisf += 1;
-            } else if (elem.total == 'Unacceptable'){
+            } else if (elem.status == 'Unacceptable'){
               this.unacc += 1;
             }
             //console.log(this.good);
