@@ -46,8 +46,8 @@
                   Finish Check
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{this.finish2.length}} /
-                  <span class="text-lime-500">{{(this.finish2.length * 100 / totalasset).toFixed(2)}} %</span>
+                  {{this.finish2.length}}
+                  <span class="text-lime-500 ml-1">({{(this.finish2.length * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 </p>
                 <h5 class="mb-0 font-bold">
                   {{good+satis}}
-                  <span class="text-lime-500">{{((good+satis) * 100 / totalasset).toFixed(2)}} %</span>
+                  <span class="text-lime-500 ml-1">({{((good+satis) * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -95,7 +95,7 @@
                 </p>
                 <h5 class="mb-0 font-bold">
                   {{unsatisf+unacc}}
-                  <span class="text-lime-500">{{((unsatisf+unacc) * 100 / totalasset).toFixed(2)}} %</span>
+                  <span class="text-lime-500 ml-1">({{((unsatisf+unacc) * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
