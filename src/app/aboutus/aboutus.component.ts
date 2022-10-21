@@ -20,15 +20,14 @@ export class AboutusComponent {
   email: any;
   pesan: any;
   sukses: any;
+  load: any;
   public  sendEmail(e: Event) {
-    if(this.name == null || this.email == null || this.pesan == null){
-      alert('Please fill in the blank data');
-      return;
-    } else {
+    this.load = 'Dont Press Your Data Button In Process'
     e.preventDefault();
     emailjs.sendForm('service_f8er4jj', 'template_le007ag', e.target as HTMLFormElement, 'Pz1kVyNAMBldwqz7E')
       .then((result: EmailJSResponseStatus) => {
         console.log(result.text);
+        this.load = null;
         this.name = null;
         this.pesan = null;
         this.email = null;
@@ -36,7 +35,6 @@ export class AboutusComponent {
       }, (error) => {
         console.log(error.text);
       });
-    }
   }
 
 }
