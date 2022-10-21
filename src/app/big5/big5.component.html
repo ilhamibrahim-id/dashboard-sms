@@ -6,26 +6,24 @@
       </div>
     </div>
   </div>
-  <div class="relative flex flex-col mt-2 mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-    <div class="flex-auto p-4">
-      <div class="wrapper">
+  <div class="relative flex flex-col text-center mb-4 min-w-0 bg-white rounded-2xl">
+    <div class="flex flex-wrap -mx-3 p-4">
+      <div class="w-full mb-4 max-w-full px-2">
+        <h5>Select To Find Data</h5>
+      </div>
+      <div class="w-full max-w-full mt-6 px-2 lg-max:mt-6 xl:w-4/12 md:w-4/12 xs:w-4/12">
         <select [ngModel]="machineA" (ngModelChange)="bigFiveByMachine($event)" name="sel2"
           style="font-size: 20px;font-weight: bold;">
           <option class="text-xl bold" [value]="i" *ngFor="let i of machine">{{i}}</option>
         </select>
-        <mbsc-calendar [(ngModel)]="start">My Birthday</mbsc-calendar>
-        <div class="calendar-wrapper">
-          <mat-form-field appearance="legacy">
-            <mat-label>Choose Date Range</mat-label>
-            <mat-date-range-input [rangePicker]="picker" [formGroup]="range">
-              <input matStartDate placeholder="Start Date" formControlName="start" #dateRangeStart>
-              <input matEndDate placeholder="End Date" formControlName="end" #dateRangeEnd
-                (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
-            </mat-date-range-input>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-          </mat-form-field>
-        </div>
+      </div>
+      <div class="w-full max-w-full px-2 lg-max:mt-6 md:w-4/12 xl:w-4/12 xs:w-4/12">
+        <label for="dateofbirth">Start Date</label>
+        <input type="date" name="dateofbirth" id="dateofbirth" #startt [(ngModel)]="start" (change)="dateRangeChange(startt, endd)">
+      </div>
+      <div class="w-full max-w-full px-2 lg-max:mt-6 md:w-4/12 xl:w-4/12 xs:w-4/12">
+        <label for="dateofbirth">End Date</label>
+        <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="end" #endd (change)="dateRangeChange(startt, endd)">
       </div>
     </div>
   </div>

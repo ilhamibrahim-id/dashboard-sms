@@ -45,11 +45,11 @@ export class Big5Component implements OnInit {
     this.updateChart();
   }
 
-  dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
+  dateRangeChange(start: HTMLInputElement, end: HTMLInputElement) {
     // console.log(dateRangeStart.value);
     // console.log(dateRangeEnd.value);
-    this.start = moment(dateRangeStart.value).format("YYYY-MM-DD");
-    this.end = moment(dateRangeEnd.value).format("YYYY-MM-DD");
+    this.start = moment(start.value).format("YYYY-MM-DD");
+    this.end = moment(end.value).format("YYYY-MM-DD");
     // console.log(this.start);
     this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
     this.refresh();

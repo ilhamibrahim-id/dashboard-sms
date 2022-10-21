@@ -163,16 +163,14 @@ export class DashboardComponent implements OnInit {
                   label: 'Data',
                   data: [this.Setting, this.Replacement, this.Improvement],
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
+                    'red',
+                    'rgb(112, 112, 0)',
+                    'green',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
+                    'white',
+                    'white',
+                    'white',
                   ],
                   borderWidth: 1
                 }]
@@ -187,10 +185,10 @@ export class DashboardComponent implements OnInit {
                     label: 'Pending Execute',
                     data: [Math.round((this.totalfinding[1] / this.totalfinding[0]) * 100)],
                     backgroundColor: [
-                      'rgba(54, 162, 235, 0.2)'
+                      'red'
                     ],
                     borderColor: [
-                      'rgba(75, 192, 192, 0.2)'
+                      'white'
                     ],
                     borderWidth: 1
                   },
@@ -198,10 +196,10 @@ export class DashboardComponent implements OnInit {
                     label: 'Finish Execute',
                     data: [Math.round((this.totalfinding[2] / this.totalfinding[0]) * 100)],
                     backgroundColor: [
-                      'rgba(255, 206, 86, 0.2)'
+                      'rgb(112, 112, 0)'
                     ],
                     borderColor: [
-                      'rgba(75, 192, 192, 1)'
+                      'white'
                     ],
                     borderWidth: 1
                   },
@@ -209,10 +207,10 @@ export class DashboardComponent implements OnInit {
                     label: 'Ready Execute',
                     data: [Math.round((this.totalfinding[3] / this.totalfinding[0]) * 100)],
                     backgroundColor: [
-                      'rgba(75, 192, 192, 0.2)'
+                      'green'
                     ],
                     borderColor: [
-                      'rgba(75, 192, 192, 1)'
+                      'white'
                     ],
                     borderWidth: 1
                   },

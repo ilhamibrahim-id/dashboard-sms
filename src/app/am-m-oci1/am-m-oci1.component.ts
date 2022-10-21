@@ -232,10 +232,10 @@ export class AmMOci1Component implements OnInit {
                     label: 'Total Finding',
                     data: [this.totalfindingmonitorbar[0]],
                     backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
+                      'red',
                     ],
                     borderColor: [
-                      'rgba(255, 99, 132, 1)',
+                      'white',
                     ],
                     borderWidth: 1
                   },
@@ -244,10 +244,10 @@ export class AmMOci1Component implements OnInit {
                     label: 'Pending Execute',
                     data: [this.totalfindingmonitorbar[1]],
                     backgroundColor: [
-                      'rgba(54, 162, 235, 0.2)',
+                      'rgb(112, 112, 0)',
                     ],
                     borderColor: [
-                      'rgba(54, 162, 235, 1)',
+                      'white',
                     ],
                     borderWidth: 1
                   },
@@ -255,10 +255,10 @@ export class AmMOci1Component implements OnInit {
                     label: 'Ready Execute',
                     data: [this.totalfindingmonitorbar[2]],
                     backgroundColor: [
-                      'rgba(255, 206, 86, 0.2)',
+                      'blue',
                     ],
                     borderColor: [
-                      'rgba(255, 206, 86, 0.2)',
+                      'white',
                     ],
                     borderWidth: 1
                   },
@@ -266,10 +266,10 @@ export class AmMOci1Component implements OnInit {
                     label: 'Finish Execute',
                     data: [this.totalfindingmonitorbar[3]],
                     backgroundColor: [
-                      'rgba(75, 192, 192, 0.2)',
+                      'green',
                     ],
                     borderColor: [
-                      'rgba(75, 192, 192, 0.2)',
+                      'white',
                     ],
                     borderWidth: 1
                   },
@@ -293,16 +293,16 @@ export class AmMOci1Component implements OnInit {
                   label: '# of Votes',
                   data: this.totalfindingmonitordonut,
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
+                    'red',
+                    'rgb(112, 112, 0)',
+                    'blue',
+                    'green',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
+                    'white',
+                    'white',
+                    'white',
+                    'white',
                   ],
                   borderWidth: 1
                 }]
@@ -316,16 +316,16 @@ export class AmMOci1Component implements OnInit {
                   label: '# of Votes',
                   data: [this.low, this.medium, this.high],
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
+                    'red',
+                    'rgb(112, 112, 0)',
+                    'blue',
+                    'green',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
+                    'white',
+                    'white',
+                    'white',
+                    'white',
                   ],
                   borderWidth: 1
                 }]
