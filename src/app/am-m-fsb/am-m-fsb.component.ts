@@ -22,6 +22,8 @@ export class AmMFsbComponent implements OnInit {
   }
   public resolved: boolean = false;
   totalfm: object = {};
+  searchText: any;
+  searchText2: any;
   totalfm2: any = [];
   findingpending: object = {};
   findingpending2: any = [];

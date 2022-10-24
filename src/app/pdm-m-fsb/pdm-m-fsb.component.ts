@@ -11,6 +11,12 @@ import { CountService } from '../services/count.service';
 export class PdmMFsbComponent implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
+  itemsPerPage: number = 0;
+  currentPage: number = 1;
+  absoluteIndex(indexOnPage: number): number {
+    return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
+  }
+  searchText: any;
   good: number = 0;
   satis: number = 0;
   unsatisf: number = 0;

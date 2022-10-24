@@ -13,6 +13,12 @@ export class PdmMOci2Component implements OnInit {
   public resolved: boolean = false;
   good: number = 0;
   satis: number = 0;
+  itemsPerPage: number = 0;
+  searchText: any;
+  currentPage: number = 1;
+  absoluteIndex(indexOnPage: number): number {
+    return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
+  }
   unsatisf: number = 0;
   unacc: number = 0;
   coba: any = [];
@@ -182,8 +188,10 @@ export class PdmMOci2Component implements OnInit {
             return data[key];
           });
           for (let i = 0; i < array.length; i++) {
-          this.finish2.splice(this.finish2.lenght, 0, array[0]);
+          this.finish2.splice(this.finish2.lenght, 0, array[i]);
           }
+          console.log(this.finish2);
+
           for (let elem of this.finish2) {
             this.totalfinish = elem.total;
           }

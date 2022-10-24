@@ -14,6 +14,12 @@ export class PdmMOci1Component implements OnInit {
   good: number = 0;
   satis: number = 0;
   unsatisf: number = 0;
+  itemsPerPage: number = 0;
+  currentPage: number = 1;
+  absoluteIndex(indexOnPage: number): number {
+    return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
+  }
+  searchText: any;
   unacc: number = 0;
   coba: any = [];
   donut: any = [];

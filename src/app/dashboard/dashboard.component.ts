@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   const2: any = [];
   angka: number = 0;
   totalfinding: any = [];
+  currentDate = new Date();
   totalfindingd: any = [];
   totalfinding1: any;
   totalfinding2: any;

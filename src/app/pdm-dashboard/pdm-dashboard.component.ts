@@ -383,7 +383,7 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[i]);
           }
-          console.log();
+          console.log(this.pdmfinish2);
 
           // console.log(this.const2);
           for (let elem of this.pdmfinish2) {

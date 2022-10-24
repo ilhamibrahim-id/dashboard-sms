@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   public sub1: boolean = false;
   public sub2: boolean = false;
   public sub3: boolean = false;
+  currentDate = new Date();
   public sub4: boolean = false;
   constructor(public router: Router) {}
 
