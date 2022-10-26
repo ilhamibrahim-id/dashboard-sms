@@ -43,11 +43,11 @@ export class DashboardComponent implements OnInit {
       this.service.getKategori().subscribe(data => {
         this.totalkategori = data;
         Object.values(this.totalkategori).forEach(data => {
-          // console.log(data);
+          // // console.log(data);
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          // console.log(array);
+          // // console.log(array);
           for (let i = 0; i < array.length; i++) {
             this.totalkategoriarr.splice(this.totalkategoriarr.lenght, 0, array[i]);
           }
@@ -62,10 +62,10 @@ export class DashboardComponent implements OnInit {
               this.Improvement += 1;
             }
           }
-          //console.log(this.totalkategoriarr);
+          //// console.log(this.totalkategoriarr);
 
-          // console.log(this.medium);
-          // console.log(this.totallevel2);
+          // // console.log(this.medium);
+          // // console.log(this.totallevel2);
         })
 
 
@@ -79,15 +79,15 @@ export class DashboardComponent implements OnInit {
             return data[key];
           });
           this.const2.splice(this.const2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.const2) {
             this.totalfinding[0] = elem.total;
             this.totalfindingd[0] = elem.total;
             this.totalfinding1 = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -100,13 +100,13 @@ export class DashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          // console.log(array[0]);
+          // // console.log(array[0]);
           this.pendingexecute2.splice(this.pendingexecute2.lenght, 0, array[0]);
           for (let elem of this.pendingexecute2) {
             this.totalfinding[1] = elem.total;
             this.totalfindingd[1] = elem.total;
             this.totalfinding2 = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
         })
       }
@@ -123,9 +123,9 @@ export class DashboardComponent implements OnInit {
             this.totalfinding[2] = elem.total;
             this.totalfindingd[2] = elem.total;
             this.totalfinding3 = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
-          //  console.log(this.finishexecute2.splice(this.finishexecute2.lenght,0,array[0]).total);
+          //  // console.log(this.finishexecute2.splice(this.finishexecute2.lenght,0,array[0]).total);
         })
 
       }
@@ -137,13 +137,13 @@ export class DashboardComponent implements OnInit {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          // console.log(array[0]);
+          // // console.log(array[0]);
           this.readyexecute2.splice(this.readyexecute2.lenght, 0, array[0]);
           for (let elem of this.readyexecute2) {
             this.totalfinding[3] = elem.total;
             this.totalfindingd[3] = elem.total;
             this.totalfinding4 = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
         })
       }
@@ -153,7 +153,7 @@ export class DashboardComponent implements OnInit {
       var a = setInterval(() => {
         count++;
         if (this.totalfinding4 != null) {
-          // console.log("3");
+          // // console.log("3");
           var b = setInterval(() => {
             count2++;
             this.donut = new Chart('donut', {
@@ -251,7 +251,7 @@ export class DashboardComponent implements OnInit {
         }
       }, 750);
     });
-    //console.log("1");
+    //// console.log("1");
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }

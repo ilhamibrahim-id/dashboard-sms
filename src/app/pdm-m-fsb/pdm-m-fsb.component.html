@@ -226,6 +226,9 @@
                       <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6 text-white" bgcolor="red">
                         {{header.Stat}}
                       </td>
+                      <td *ngIf="header.Stat != 0 || header.Stat == '-'" class="py-4 px-6 text-center">
+                        -
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -269,6 +272,18 @@
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
               <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <p class="text-center" style="color: red;">Click Device Name For Show Chart Abnormal Asset</p>
+                <div class="flex items-center text-center p-4">
+                  <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                    <span
+                      class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                      <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text"
+                      class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                      placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
+                  </div>
+                </div>
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                     <tr>
@@ -278,9 +293,6 @@
                       <th scope="col" class="py-3 px-6">
                         Device
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-                        Value
-                      </th>
                       <th scope="col" class="py-3 px-6">
                         Status
                       </th>
@@ -288,25 +300,27 @@
                   </thead>
                   <tbody>
                     <tr class="border-b border-gray-200 dark:border-gray-700"
-                      *ngFor="let getdata of totalabnormallisttrue; let i = index">
+                      *ngFor="let getdata of totalabnormallisttrue| filter:searchText2 |paginate: { id:'pagination2', currentPage: currentPage2, itemsPerPage: 5 }; let i = index;">
                       <th scope="row"
                         class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                        {{i+1}}
+                        {{(currentPage2-1) * 5 + i + 1}}
                       </th>
-                      <td class="py-4 px-6">
+                      <td (click)="data(getdata.device_name)" class="py-4 px-6">
                         {{getdata.device_name}}
                       </td>
-                      <td class="py-4 px-6">
-                        {{getdata.value}}
+                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white" bgcolor="orange">
+                        {{getdata.Stat}}
                       </td>
-                      <td class="py-4 px-6">
-                        {{getdata.status}}
+                      <td *ngIf="getdata.Stat == 'Unacceptable'" class="py-4 px-6 text-white" bgcolor="red">
+                        {{getdata.Stat}}
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
+            <pagination-controls class="text-center" id="pagination2" (pageChange)="currentPage2 = $event">
+            </pagination-controls>
           </div>
         </div>
         <div class="w-full px-1 py-1 mx-auto mt-4">
@@ -318,6 +332,7 @@
           </div>
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
+              <p class="text-center" style="color: red;">{{funloc}}</p>
               <div class="flex flex-wrap -mx-1 lg:-mx-3">
                 <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
                   <div

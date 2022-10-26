@@ -10,6 +10,18 @@ import { CountService } from '../services/count.service';
 })
 export class PdmDashboardComponent implements OnInit {
   coba: any = [];
+  good: number = 0;
+  satis: number = 0;
+  unsatisf: number = 0;
+  unacc: number = 0;
+  goodoci1: number = 0;
+  satisoci1: number = 0;
+  unsatisfoci1: number = 0;
+  unaccoci1: number = 0;
+  goodfsb: number = 0;
+  satisfsb: number = 0;
+  unsatisffsb: number = 0;
+  unaccfsb: number = 0;
   asset: object = {};
   asset2: any = [];
   totalasset: any;
@@ -18,6 +30,10 @@ export class PdmDashboardComponent implements OnInit {
   totalpdmfinish: any;
   goodsatis: object = {};
   goodsatis2: any = [];
+  goodsatisoci1: object = {};
+  goodsatis2oci1: any = [];
+  goodsatisfsb: object = {};
+  goodsatis2fsb: any = [];
   totalgoodsatis: any;
   unsatisunac: object = {};
   unsatisunac2: any = [];
@@ -77,6 +93,56 @@ export class PdmDashboardComponent implements OnInit {
   public loaddata: any;
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
+      this.service.getReadGoodAndSatisfsb().subscribe(data => {
+        this.goodsatisfsb = data;
+        Object.values(this.goodsatisfsb).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          for (let i = 0; i < array.length; i++) {
+            this.goodsatis2fsb.splice(this.goodsatis2fsb.lenght, 0, array[i]);
+          }
+          for (let elem of this.goodsatis2fsb) {
+            if (elem.status == 'Good') {
+              this.goodfsb += 1;
+            } else if (elem.status == 'Satisfactory'){
+              this.satisfsb += 1;
+            } else if (elem.status == 'Unsatisfactory'){
+              this.unsatisffsb += 1;
+            } else if (elem.status == 'Unacceptable'){
+              this.unaccfsb += 1;
+            }
+            //// console.log(this.good);
+
+          }
+        })
+      }
+      );
+      this.service.getReadGoodAndSatisoci1().subscribe(data => {
+        this.goodsatisoci1 = data;
+        Object.values(this.goodsatisoci1).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          for (let i = 0; i < array.length; i++) {
+            this.goodsatis2oci1.splice(this.goodsatis2oci1.lenght, 0, array[i]);
+          }
+          for (let elem of this.goodsatis2oci1) {
+            if (elem.status == 'Good') {
+              this.goodoci1 += 1;
+            } else if (elem.status == 'Satisfactory'){
+              this.satisoci1 += 1;
+            } else if (elem.status == 'Unsatisfactory'){
+              this.unsatisfoci1 += 1;
+            } else if (elem.status == 'Unacceptable'){
+              this.unaccoci1 += 1;
+            }
+            //// console.log(this.good);
+
+          }
+        })
+      }
+      );
       this.service.getTotalFsbUnacc().subscribe(data => {
         this.fsbunacc = data;
         Object.values(this.fsbunacc).forEach(data => {
@@ -86,15 +152,15 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.fsbunacc2.splice(this.fsbunacc2.lenght, 0, array[i]);
           }
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.fsbunacc2) {
             // this.totalfinding[0] = elem.total;
             this.fsb[3] = elem.total;
             this.totalfsbunacc = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -109,15 +175,15 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.fsbunsatis2.splice(this.fsbunsatis2.lenght, 0, array[i]);
           }
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.fsbunsatis2) {
             // this.totalfinding[0] = elem.total;
             this.fsb[2] = elem.total;
             this.totalfsbunsatis = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -132,15 +198,15 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.fsbsatis2.splice(this.fsbsatis2.lenght, 0, array[i]);
           }
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.fsbsatis2) {
             // this.totalfinding[0] = elem.total;
             this.fsb[1] = elem.total;
             this.totalfsbsatis = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -155,203 +221,45 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.fsbgood2.splice(this.fsbgood2.lenght, 0, array[i]);
           }
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.fsbgood2) {
             // this.totalfinding[0] = elem.total;
             this.fsb[0] = elem.total;
             this.totalfsbgood = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
       }
       );
-      this.service.getTotalOci2Unacc().subscribe(data => {
-        this.oci2unacc = data;
-        Object.values(this.oci2unacc).forEach(data => {
+      this.service.getReadGoodAndSatisoci2().subscribe(data => {
+        this.goodsatis = data;
+        Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
           for (let i = 0; i < array.length; i++) {
-          this.oci2unacc2.splice(this.oci2unacc2.lenght, 0, array[i]);
+            this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
           }
-          // console.log(this.const2);
-          for (let elem of this.oci2unacc2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci2[3] = elem.total;
-            this.totaloci2unacc = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
+          // console.log(this.goodsatis2);
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          for (let elem of this.goodsatis2) {
+            if (elem.status == 'Good') {
+              this.good += 1;
+            } else if (elem.status == 'Satisfactory'){
+              this.satis += 1;
+            } else if (elem.status == 'Unsatisfactory'){
+              this.unsatisf += 1;
+            } else if (elem.status == 'Unacceptable'){
+              this.unacc += 1;
+            }
+            //// console.log(this.good);
+
+          }
         })
-
-
-      }
-      );
-      this.service.getTotalOci2UnSatis().subscribe(data => {
-        this.oci2unsatis = data;
-        Object.values(this.oci2unsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci2unsatis2.splice(this.oci2unsatis2.lenght, 0, array[i]);
-          }
-          // console.log(this.const2);
-          for (let elem of this.oci2unsatis2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci2[2] = elem.total;
-            this.totaloci2unsatis = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalOci2Satis().subscribe(data => {
-        this.oci2satis = data;
-        Object.values(this.oci2satis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci2satis2.splice(this.oci2satis2.lenght, 0, array[i]);
-          }
-          // console.log(this.const2);
-          for (let elem of this.oci2satis2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci2[1] = elem.total;
-            this.totaloci2satis = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalOci2Good().subscribe(data => {
-        this.oci2good = data;
-        Object.values(this.oci2good).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci2good2.splice(this.oci2good2.lenght, 0, array[i]);
-          }
-
-          // console.log(this.const2);
-          for (let elem of this.oci2good2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci2[0] = elem.total;
-            this.totaloci2good = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalOci1Unacc().subscribe(data => {
-        this.oci1unacc = data;
-        Object.values(this.oci1unacc).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci1unacc2.splice(this.oci1unacc2.lenght, 0, array[i]);
-          }
-          // console.log(this.const2);
-          for (let elem of this.oci1unacc2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci[3] = elem.total;
-            this.totaloci1unacc = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalOci1UnSatis().subscribe(data => {
-        this.oci1unsatis = data;
-        Object.values(this.oci1unsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci1unsatis2.splice(this.oci1unsatis2.lenght, 0, array[i]);
-          }
-          // console.log(this.const2);
-          for (let elem of this.oci1unsatis2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci[2] = elem.total;
-            this.totaloci1unsatis = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalOci1Satis().subscribe(data => {
-        this.oci1satis = data;
-        Object.values(this.oci1satis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci1satis2.splice(this.oci1satis2.lenght, 0, array[i]);
-          }
-          // console.log(this.const2);
-          for (let elem of this.oci1satis2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci[1] = elem.total;
-            this.totaloci1satis = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalOci1Good().subscribe(data => {
-        this.oci1good = data;
-        Object.values(this.oci1good).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.oci1good2.splice(this.oci1good2.lenght, 0, array[i]);
-          }
-          // console.log(this.const2);
-          for (let elem of this.oci1good2) {
-            // this.totalfinding[0] = elem.total;
-            this.oci[0] = elem.total;
-            this.totaloci1good = elem.total;
-            //console.log(this.totalfinding[0]);
-          }
-
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
       }
       );
       this.service.getReadTotalPdmAsset().subscribe(data => {
@@ -361,14 +269,14 @@ export class PdmDashboardComponent implements OnInit {
             return data[key];
           });
           this.asset2.splice(this.asset2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.asset2) {
             // this.totalfinding[0] = elem.total;
             this.totalasset = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -383,16 +291,16 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[i]);
           }
-          console.log(this.pdmfinish2);
+          // console.log(this.pdmfinish2);
 
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.pdmfinish2) {
             // this.totalfinding[0] = elem.total;
             this.totalpdmfinish = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -407,16 +315,16 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
           }
-          console.log(this.goodsatis2);
+          // console.log(this.goodsatis2);
 
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.goodsatis2) {
             // this.totalfinding[0] = elem.total;
             this.totalgoodsatis = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -431,16 +339,16 @@ export class PdmDashboardComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
           this.unsatisunac2.splice(this.unsatisunac2.lenght, 0, array[i]);
           }
-          //console.log(this.unsatisunac2);
+          //// console.log(this.unsatisunac2);
 
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.unsatisunac2) {
             // this.totalfinding[0] = elem.total;
             this.totalunsatisunac = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -453,14 +361,14 @@ export class PdmDashboardComponent implements OnInit {
             return data[key];
           });
           this.assetoci12.splice(this.assetoci12.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.assetoci12) {
             // this.totalfinding[0] = elem.total;
             this.totalassetoci1 = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -473,14 +381,14 @@ export class PdmDashboardComponent implements OnInit {
             return data[key];
           });
           this.assetoci22.splice(this.assetoci22.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.assetoci22) {
             // this.totalfinding[0] = elem.total;
             this.totalassetoci2 = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -493,14 +401,14 @@ export class PdmDashboardComponent implements OnInit {
             return data[key];
           });
           this.assetfsb2.splice(this.assetfsb2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.assetfsb2) {
             // this.totalfinding[0] = elem.total;
             this.totalfsb = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -511,7 +419,7 @@ export class PdmDashboardComponent implements OnInit {
       var a = setInterval(() => {
         count++;
         if (this.totalfsb != null) {
-          // console.log("3");
+          // // console.log("3");
           var b = setInterval(() => {
             count2++;
             //this.resolved = true;
@@ -521,7 +429,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: [this.oci1good2.length,this.oci1satis2.length,this.oci1unsatis2.length,this.oci1unacc2.length],
+                  data: [this.goodoci1,this.satisoci1,this.unsatisfoci1,this.unaccoci1],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -544,7 +452,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: [this.oci2good2.length,this.oci2satis2.length,this.oci2unsatis2.length,this.oci2unacc2.length],
+                  data: [this.good,this.satis,this.unsatisf,this.unacc],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -591,7 +499,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: 'oi',
-                  data: [this.fsbgood2.length,this.fsbsatis2.length,this.fsbunsatis2.length,this.fsbunacc2.length],
+                  data: [this.goodfsb,this.satisfsb,this.unsatisffsb,this.unaccfsb],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -628,7 +536,7 @@ export class PdmDashboardComponent implements OnInit {
         }
       }, 750);
     });
-    // console.log("1");
+    // // console.log("1");
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }

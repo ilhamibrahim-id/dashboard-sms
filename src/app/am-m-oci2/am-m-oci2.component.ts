@@ -54,34 +54,34 @@ export class AmMOci2Component implements OnInit {
   deskripsi: any = 'Loading..';
   orderobj: object = {};
   data($event: any) {
-    //console.log($event);
+    //// console.log($event);
     this.funloclist = [];
     this.funloc = $event;
-    console.log(this.funloc);
+    // console.log(this.funloc);
     for (let i = 0; i < this.orderarr.length; i++) {
       if(this.orderarr[i].func_loc === this.funloc){
       this.funloclist[i] = this.orderarr[i];
       }
     }
     this.funloclist = this.funloclist.filter(function (e: any) { return e != null; });
-    console.log(this.funloclist);
+    // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
       this.service.getOrder().subscribe(data => {
         this.orderobj = data;
         Object.values(this.orderobj).forEach(data => {
-          // console.log(data);
+          // // console.log(data);
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          // console.log(array);
+          // // console.log(array);
           for (let i = 0; i < array.length; i++) {
             this.orderarr.splice(this.orderarr.lenght, 0, array[i]);
           }
-          console.log(this.orderarr);
+          // console.log(this.orderarr);
 
-          // console.log(this.findingpending2);
+          // // console.log(this.findingpending2);
         })
 
 
@@ -90,11 +90,11 @@ export class AmMOci2Component implements OnInit {
       this.service.getReadLevelTotaloci2().subscribe(data => {
         this.totallevel = data;
         Object.values(this.totallevel).forEach(data => {
-          // console.log(data);
+          // // console.log(data);
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          // console.log(array);
+          // // console.log(array);
           for (let i = 0; i < array.length; i++) {
             this.totallevel2.splice(this.totallevel2.lenght, 0, array[i]);
           }
@@ -109,8 +109,8 @@ export class AmMOci2Component implements OnInit {
               this.high += 1;
             }
           }
-          // console.log(this.medium);
-          // console.log(this.totallevel2);
+          // // console.log(this.medium);
+          // // console.log(this.totallevel2);
         })
 
 
@@ -119,16 +119,16 @@ export class AmMOci2Component implements OnInit {
       this.service.getReadFindingPendingoci2().subscribe(data => {
         this.findingpending = data;
         Object.values(this.findingpending).forEach(data => {
-          // console.log(data);
+          // // console.log(data);
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          // console.log(array);
+          // // console.log(array);
           for (let i = 0; i < array.length; i++) {
             this.findingpending2.splice(this.findingpending2.lenght, 0, array[i]);
           }
 
-          // console.log(this.findingpending2);
+          // // console.log(this.findingpending2);
         })
 
 
@@ -141,15 +141,15 @@ export class AmMOci2Component implements OnInit {
             return data[key];
           });
           this.totalfm2.splice(this.totalfm2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.totalfm2) {
             this.totalfinding1 = elem.total;
             this.totalfindingmonitorbar[0] = elem.total;
             this.totalfindingmonitordonut[0] = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -162,15 +162,15 @@ export class AmMOci2Component implements OnInit {
             return data[key];
           });
           this.totalpm2.splice(this.totalpm2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.totalpm2) {
             this.totalfinding2 = elem.total;
             this.totalfindingmonitorbar[1] = elem.total;
             this.totalfindingmonitordonut[1] = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -183,15 +183,15 @@ export class AmMOci2Component implements OnInit {
             return data[key];
           });
           this.totalffm2.splice(this.totalffm2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.totalffm2) {
             this.totalfinding4 = elem.total;
             this.totalfindingmonitorbar[2] = elem.total;
             this.totalfindingmonitordonut[2] = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -204,15 +204,15 @@ export class AmMOci2Component implements OnInit {
             return data[key];
           });
           this.totalrm2.splice(this.totalrm2.lenght, 0, array[0]);
-          // console.log(this.const2);
+          // // console.log(this.const2);
           for (let elem of this.totalrm2) {
             this.totalfinding3 = elem.total;
             this.totalfindingmonitorbar[3] = elem.total;
             this.totalfindingmonitordonut[3] = elem.total;
-            //console.log(this.totalfinding[0]);
+            //// console.log(this.totalfinding[0]);
           }
 
-          // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 
 
@@ -223,7 +223,7 @@ export class AmMOci2Component implements OnInit {
       var a = setInterval(() => {
         count++;
         if (this.totalfinding3 != null) {
-          //console.log("3");
+          //// console.log("3");
           var b = setInterval(() => {
             count2++;
             this.coba = new Chart('dum', {
@@ -351,7 +351,7 @@ export class AmMOci2Component implements OnInit {
         }
       }, 750);
     });
-    console.log("1");
+    // console.log("1");
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }
