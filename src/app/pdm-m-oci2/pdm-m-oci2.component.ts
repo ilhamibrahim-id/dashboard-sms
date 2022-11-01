@@ -288,6 +288,10 @@ export class PdmMOci2Component implements OnInit {
     // // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
+    this.good = 0;
+    this.satis = 0;
+    this.unsatisf = 0;
+    this.unacc = 0;
     this.loaddata = new Promise(resolve => {
       this.service.getReadFinishTodayoci2().subscribe(data => {
         this.abnormal = data;

@@ -67,6 +67,9 @@ export class AmMOci1Component implements OnInit {
     // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
+    this.low= 0;
+    this.medium= 0;
+    this.high= 0;
     this.loaddata = new Promise(resolve => {
       this.service.getOrder().subscribe(data => {
         this.orderobj = data;

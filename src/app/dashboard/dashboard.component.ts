@@ -39,6 +39,9 @@ export class DashboardComponent implements OnInit {
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   async ngOnInit(): Promise<void> {
+    this.Setting = 0;
+    this.Replacement = 0;
+    this.Improvement = 0;
     this.loaddata = new Promise(resolve => {
       this.service.getKategori().subscribe(data => {
         this.totalkategori = data;

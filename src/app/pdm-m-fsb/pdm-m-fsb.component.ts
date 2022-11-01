@@ -288,6 +288,10 @@ export class PdmMFsbComponent implements OnInit {
     // // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
+    this.good = 0;
+    this.satis = 0;
+    this.unsatisf = 0;
+    this.unacc = 0;
     this.loaddata = new Promise(resolve => {
       this.service.getReadFinishTodayfsb().subscribe(data => {
         this.abnormal = data;

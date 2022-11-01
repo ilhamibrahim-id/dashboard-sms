@@ -92,6 +92,18 @@ export class PdmDashboardComponent implements OnInit {
   donut: any = [];
   public loaddata: any;
   async ngOnInit(): Promise<void> {
+    this.good = 0;
+    this.goodoci1 = 0;
+    this.satisoci1 = 0;
+    this.satis = 0;
+    this.goodfsb = 0;
+    this.satisfsb = 0;
+    this.unsatisfoci1 = 0;
+    this.unsatisf = 0;
+    this.unacc = 0;
+    this.unaccoci1 = 0;
+    this.unsatisffsb = 0;
+    this.unaccfsb = 0;
     this.loaddata = new Promise(resolve => {
       this.service.getReadGoodAndSatisoci2().subscribe(data => {
         this.goodsatis = data;
