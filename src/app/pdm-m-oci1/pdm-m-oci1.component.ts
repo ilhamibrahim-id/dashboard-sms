@@ -137,6 +137,8 @@ export class PdmMOci1Component implements OnInit {
             this.totalamperedate.splice(this.totalamperedate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
+        //console.log(this.totalamperelist);
+
         for (let i = 0; i < this.totalamperelist.length; i++) {
           if (this.totalamperelist[i].device_name === this.funloc) {
             this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i].value);
@@ -147,8 +149,10 @@ export class PdmMOci1Component implements OnInit {
             this.amperedate.splice(this.amperedate.lenght, 0, this.totalamperedate[i].do_date);
           }
         }
-        this.amperelist = this.temperaturelist.filter(function (e: any) { return e != null; });
-        this.amperedate = this.temperaturedate.filter(function (e: any) { return e != null; });
+        this.amperelist = this.amperelist.filter(function (e: any) { return e != null; });
+        this.amperedate = this.amperedate.filter(function (e: any) { return e != null; });
+        //console.log(this.amperelist);
+
         // // console.log(this.vibration);
         //// console.log(this.totalvibrationlist);
       })
@@ -167,7 +171,7 @@ export class PdmMOci1Component implements OnInit {
             this.totalvibrationdate.splice(this.totalvibrationdate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
-        console.log(this.totalvibrationlist);
+        //console.log(this.totalvibrationlist);
 
         for (let i = 0; i < this.totalvibrationlist.length; i++) {
           if (this.totalvibrationlist[i].device_name === this.funloc) {

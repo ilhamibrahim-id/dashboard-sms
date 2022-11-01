@@ -1,6 +1,9 @@
 import { AppComponent } from 'src/app/app.component';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'
+import { VERSION } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,14 +17,22 @@ export class SidebarComponent implements OnInit {
   public sub3: boolean = false;
   currentDate = new Date();
   public sub4: boolean = false;
-  constructor(public router: Router) {}
+  constructor(public router: Router,@Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit(): void {
   }
   ameventclick(){
     this.resolved = !this.resolved;
   }
-  refreshpage(){
+  scrollToTop(): void {
+    // scroll to the top of the body
+    return this.document.body.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'start'
+    });
+  }
+  refreshPage(){
     window.location.reload();
   }
   ammonitoringsub(){

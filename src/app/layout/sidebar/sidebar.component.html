@@ -1795,8 +1795,16 @@ else lain6
   </nav>
 </div>
 <div fixed-plugin>
-  <a fixed-plugin-button (click)="refreshpage()"
-    class="bottom-7.5 p-4 left-2 ml-6 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer py-3 bg-white text-slate-700">
+  <a fixed-plugin-button (click)="scrollToTop()"
+    class="bottom-7.5 right-7.5 p-4 text-sm z-990 shadow-soft-lg rounded-circle fixed cursor-pointer py-3 bg-white text-slate-700" style="margin-right: 46.5px;">
+    <div class="w-full">
+      <i class="fa fa-arrow-up fa-1" aria-hidden="true"></i>
+    </div>
+  </a>
+</div>
+<div fixed-plugin>
+  <a fixed-plugin-button (click)="refreshPage()"
+    class="bottom-7.5 right-7.5 p-4 text-sm z-990 shadow-soft-lg rounded-circle fixed cursor-pointer py-3 bg-white text-slate-700">
     <div class="w-full">
       <i class="fa fa-refresh fa-1" aria-hidden="true"></i>
     </div>
@@ -1804,11 +1812,9 @@ else lain6
 </div>
 <div fixed-plugin class="xl:hidden">
   <a fixed-plugin-button (click)="ameventclick()"
-    class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-4 text-slate-700">
-    <div class="w-4.5 overflow-hidden">
-      <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-      <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-      <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+    class="bottom-7.5 right-7.5 p-4 text-sm z-990 shadow-soft-lg rounded-circle fixed cursor-pointer py-3 bg-white text-slate-700" style="margin-right: 93px;">
+    <div class="w-full">
+      <i class="fa fa-list fa-1" aria-hidden="true"></i>
     </div>
   </a>
 </div>
