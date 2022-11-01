@@ -93,6 +93,33 @@ export class PdmDashboardComponent implements OnInit {
   public loaddata: any;
   async ngOnInit(): Promise<void> {
     this.loaddata = new Promise(resolve => {
+      this.service.getReadGoodAndSatisoci2().subscribe(data => {
+        this.goodsatis = data;
+        Object.values(this.goodsatis).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          for (let i = 0; i < array.length; i++) {
+            this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
+          }
+          // console.log(this.goodsatis2);
+
+          for (let elem of this.goodsatis2) {
+            if (elem.status == 'Good') {
+              this.good += 1;
+            } else if (elem.status == 'Satisfactory'){
+              this.satis += 1;
+            } else if (elem.status == 'Unsatisfactory'){
+              this.unsatisf += 1;
+            } else if (elem.status == 'Unacceptable'){
+              this.unacc += 1;
+            }
+            //// console.log(this.good);
+
+          }
+        })
+      }
+      );
       this.service.getReadGoodAndSatisfsb().subscribe(data => {
         this.goodsatisfsb = data;
         Object.values(this.goodsatisfsb).forEach(data => {
@@ -143,125 +170,6 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getTotalFsbUnacc().subscribe(data => {
-        this.fsbunacc = data;
-        Object.values(this.fsbunacc).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.fsbunacc2.splice(this.fsbunacc2.lenght, 0, array[i]);
-          }
-          // // console.log(this.const2);
-          for (let elem of this.fsbunacc2) {
-            // this.totalfinding[0] = elem.total;
-            this.fsb[3] = elem.total;
-            this.totalfsbunacc = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalFsbUnSatis().subscribe(data => {
-        this.fsbunsatis = data;
-        Object.values(this.fsbunsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.fsbunsatis2.splice(this.fsbunsatis2.lenght, 0, array[i]);
-          }
-          // // console.log(this.const2);
-          for (let elem of this.fsbunsatis2) {
-            // this.totalfinding[0] = elem.total;
-            this.fsb[2] = elem.total;
-            this.totalfsbunsatis = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalFsbSatis().subscribe(data => {
-        this.fsbsatis = data;
-        Object.values(this.fsbsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.fsbsatis2.splice(this.fsbsatis2.lenght, 0, array[i]);
-          }
-          // // console.log(this.const2);
-          for (let elem of this.fsbsatis2) {
-            // this.totalfinding[0] = elem.total;
-            this.fsb[1] = elem.total;
-            this.totalfsbsatis = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getTotalFsbGood().subscribe(data => {
-        this.fsbgood = data;
-        Object.values(this.fsbgood).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.fsbgood2.splice(this.fsbgood2.lenght, 0, array[i]);
-          }
-          // // console.log(this.const2);
-          for (let elem of this.fsbgood2) {
-            // this.totalfinding[0] = elem.total;
-            this.fsb[0] = elem.total;
-            this.totalfsbgood = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getReadGoodAndSatisoci2().subscribe(data => {
-        this.goodsatis = data;
-        Object.values(this.goodsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-            this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
-          }
-          // console.log(this.goodsatis2);
-
-          for (let elem of this.goodsatis2) {
-            if (elem.status == 'Good') {
-              this.good += 1;
-            } else if (elem.status == 'Satisfactory'){
-              this.satis += 1;
-            } else if (elem.status == 'Unsatisfactory'){
-              this.unsatisf += 1;
-            } else if (elem.status == 'Unacceptable'){
-              this.unacc += 1;
-            }
-            //// console.log(this.good);
-
-          }
-        })
-      }
-      );
       this.service.getReadTotalPdmAsset().subscribe(data => {
         this.asset = data;
         Object.values(this.asset).forEach(data => {
@@ -297,54 +205,6 @@ export class PdmDashboardComponent implements OnInit {
           for (let elem of this.pdmfinish2) {
             // this.totalfinding[0] = elem.total;
             this.totalpdmfinish = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getReadGoodAndSatis().subscribe(data => {
-        this.goodsatis = data;
-        Object.values(this.goodsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
-          }
-          // console.log(this.goodsatis2);
-
-          // // console.log(this.const2);
-          for (let elem of this.goodsatis2) {
-            // this.totalfinding[0] = elem.total;
-            this.totalgoodsatis = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getReadunsatissunac().subscribe(data => {
-        this.unsatisunac = data;
-        Object.values(this.unsatisunac).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-          this.unsatisunac2.splice(this.unsatisunac2.lenght, 0, array[i]);
-          }
-          //// console.log(this.unsatisunac2);
-
-          // // console.log(this.const2);
-          for (let elem of this.unsatisunac2) {
-            // this.totalfinding[0] = elem.total;
-            this.totalunsatisunac = elem.total;
             //// console.log(this.totalfinding[0]);
           }
 
@@ -529,7 +389,7 @@ export class PdmDashboardComponent implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-            this.ngOnInit();
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);

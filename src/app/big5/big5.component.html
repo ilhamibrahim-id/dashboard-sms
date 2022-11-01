@@ -7,23 +7,29 @@
       </div>
     </div>
   </div>
-  <div class="relative flex flex-col text-center mb-4 min-w-0 bg-white rounded-2xl">
+  <div class="relative flex flex-col text-center mb-4 min-w-0 bg-white rounded-2xl" style="font-weight: bold;">
     <div class="flex flex-wrap -mx-3 p-4">
-      <div class="w-full mb-4 max-w-full px-2">
-        <h5>Select To Find Data</h5>
+      <div class="w-full mb-2 max-w-full px-2">
+        <h5>Select To Find Data :</h5>
       </div>
-      <div class="w-full max-w-full mt-6 px-2 lg-max:mt-6 xl:w-4/12 md:w-4/12 xs:w-4/12">
+      <div class="w-full max-w-full px-2  xl:w-4/12 md:w-4/12 xs:w-4/12">
+        <label for="Machine">Name Machine :</label>
         <select [ngModel]="machineA" (ngModelChange)="bigFiveByMachine($event)" name="sel2"
-          style="font-size: 20px;font-weight: bold;">
+          style="font-size: 18px;margin-left: 10px; border-radius: 5px;
+          border: 2px solid #6d6d6d;
+          display: inline;
+          top: 3px;
+          position: relative;
+          ">
           <option class="text-xl bold" [value]="i" *ngFor="let i of machine">{{i}}</option>
         </select>
       </div>
-      <div class="w-full max-w-full px-2 lg-max:mt-6 md:w-4/12 xl:w-4/12 xs:w-4/12">
-        <label for="dateofbirth">Start Date</label>
+      <div class="w-full max-w-full px-2 md:w-4/12 xl:w-4/12 xs:w-4/12">
+        <label for="dateofbirth">Start Date :</label>
         <input type="date" name="dateofbirth" id="dateofbirth" #startt [(ngModel)]="start" (change)="dateRangeChange(startt, endd)">
       </div>
-      <div class="w-full max-w-full px-2 lg-max:mt-6 md:w-4/12 xl:w-4/12 xs:w-4/12">
-        <label for="dateofbirth">End Date</label>
+      <div class="w-full max-w-full px-2  md:w-4/12 xl:w-4/12 xs:w-4/12">
+        <label for="dateofbirth">End Date :</label>
         <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="end" #endd (change)="dateRangeChange(startt, endd)">
       </div>
     </div>
@@ -34,7 +40,7 @@
         <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
-              <canvas id="dum" width="400" height="300"></canvas>
+              <canvas id="dum" height="150"></canvas>
             </div>
           </div>
         </div>

@@ -145,7 +145,7 @@ export class Big5Component implements OnInit {
         var b = setInterval(() => {
           count2++;
           this.barchart = new Chart("dum", {
-            type: 'horizontalBar',
+            type: 'bar',
             data: {
               labels: this.service.bigFiveByMachineName,
               datasets: [{
@@ -167,11 +167,11 @@ export class Big5Component implements OnInit {
               }],
             },
           });
-          if (count2 = 3) {
+          if (count2 = 1) {
             clearInterval(b);
           }
-        }, 50);
-        if (this.service.bigFiveByMachineValue != 0) {
+        }, 5);
+        if (this.service.bigFiveByMachineValue != null) {
           //console.log("3");
           this.spinner.hide();
           this.resolved = true;

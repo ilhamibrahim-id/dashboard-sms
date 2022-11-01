@@ -21,6 +21,9 @@ export class SidebarComponent implements OnInit {
   ameventclick(){
     this.resolved = !this.resolved;
   }
+  refreshpage(){
+    window.location.reload();
+  }
   ammonitoringsub(){
     this.sub1 = !this.sub1;
   }
