@@ -1,0 +1,13 @@
+.blink_text {
+  animation: blinker 1s linear infinite;
+}
+
+.blink_img {
+  animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+@keyframes blin {
+  50% { opacity: 0; }
+}
