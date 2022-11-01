@@ -214,19 +214,19 @@
                       <td class="py-4 px-6">
                         {{header.dodate}}
                       </td>
-                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text-white" bgcolor="green">
+                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text-white text-center" bgcolor="green">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 text-white" bgcolor="#E0F200">
+                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 text-white text-center" bgcolor="#D8E80C">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white" bgcolor="orange">
+                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center" bgcolor="orange">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6 text-white" bgcolor="red">
+                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6 text-white text-center" bgcolor="red">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat != 0 || header.Stat == '-'" class="py-4 px-6 text-center">
+                      <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6 text-center">
                         -
                       </td>
                     </tr>
@@ -316,10 +316,10 @@
                       <td (click)="data(getdata.device_name)" class="py-4 px-6">
                         {{getdata.device_name}}
                       </td>
-                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white" bgcolor="orange">
+                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center" bgcolor="orange">
                         {{getdata.Stat}}
                       </td>
-                      <td *ngIf="getdata.Stat == 'Unacceptable'" class="py-4 px-6 text-white" bgcolor="red">
+                      <td *ngIf="getdata.Stat == 'Unacceptable'" class="py-4 px-6 text-white text-center" bgcolor="red">
                         {{getdata.Stat}}
                       </td>
                     </tr>
