@@ -1,5 +1,5 @@
 import { AppComponent } from 'src/app/app.component';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'
 import { VERSION } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -23,14 +23,6 @@ export class SidebarComponent implements OnInit {
   }
   ameventclick(){
     this.resolved = !this.resolved;
-  }
-  scrollToTop(): void {
-    // scroll to the top of the body
-    return this.document.body.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'start'
-    });
   }
   refreshPage(){
     window.location.reload();

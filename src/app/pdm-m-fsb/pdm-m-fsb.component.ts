@@ -75,6 +75,7 @@ export class PdmMFsbComponent implements OnInit {
   myNameElem!: ElementRef;
   generatePaginate(){
     this.showPaginate = this.totalfinishtoday2.length;
+    this.currentPage = 1;
   }
   done(){
     this.showPaginate = 5;
@@ -255,19 +256,13 @@ export class PdmMFsbComponent implements OnInit {
         data: {
           labels: this.amperedate,
           datasets: [{
-            label: 'Ampere',
+            label: 'Data Ampere',
             data: this.amperelist,
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
               'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
             ],
             borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
+              '#A0AC00',
             ],
             borderWidth: 1
           }]
@@ -286,7 +281,7 @@ export class PdmMFsbComponent implements OnInit {
         data: {
           labels: this.temperaturedate,
           datasets: [{
-            label: 'Ampere',
+            label: 'Data Temperature',
             data: this.temperaturelist,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
