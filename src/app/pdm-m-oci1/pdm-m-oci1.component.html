@@ -116,7 +116,22 @@
         <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
-              <p class="text-left">List Job Finish Today</p>
+              <p class="text-left text-md">List Job Finish Today
+                <button *ngIf="showPaginate == 5" (click)="generatePaginate()"
+                  class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Click
+                  To Export Data</button>
+                <button *ngIf="showPaginate != 5" (click)="print()"
+                  class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i
+                    class="mr-1 fas fa-file-pdf text-md"></i> PDF </button>
+                <button
+                  class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                  *ngIf="showPaginate != 5" (click)="exportTable()"><i class="fa fa-file-excel-o fa-1"></i>
+                  Excel</button>
+                  <button
+                  class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                  *ngIf="showPaginate != 5" (click)="done()"><i class="fa fa-window-close fa-1"></i>
+                  Reset</button>
+              </p>
               <div class="flex items-center text-center p-4">
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
                   <span
@@ -128,8 +143,8 @@
                     placeholder="Type here..." name="search" [(ngModel)]="searchText" />
                 </div>
               </div>
-              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <div class="overflow-x-auto relative shadow-md sm:rounded-lg" id="prinsection" #printsection>
+                <table border="1" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                     <tr>
                       <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
@@ -175,10 +190,10 @@
                   </thead>
                   <tbody>
                     <tr class="border-b border-gray-200 dark:border-gray-700"
-                      *ngFor="let header of totalfinishtoday2| filter:searchText | paginate: { currentPage: currentPage, itemsPerPage: 5 }; let i = index;">
+                      *ngFor="let header of totalfinishtoday2| filter:searchText | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }; let i = index;">
                       <th
                         class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                        {{(currentPage-1) * 5 + i + 1}}
+                        {{(currentPage-1) * showPaginate + i + 1}}
                       </th>
                       <td class="py-4 px-6">
                         {{header.device_name}}
@@ -214,13 +229,15 @@
                       <td class="py-4 px-6">
                         {{header.dodate}}
                       </td>
-                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text-white text-center" bgcolor="green">
+                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text-white text-center good" bgcolor="green">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 text-white text-center" bgcolor="#D8E80C">
+                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 text-white text-center"
+                        bgcolor="#D8E80C">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center" bgcolor="orange">
+                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center"
+                        bgcolor="orange">
                         {{header.Stat}}
                       </td>
                       <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6 text-white text-center" bgcolor="red">
@@ -316,7 +333,8 @@
                       <td (click)="data(getdata.device_name)" class="py-4 px-6">
                         {{getdata.device_name}}
                       </td>
-                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center" bgcolor="orange">
+                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center"
+                        bgcolor="orange">
                         {{getdata.Stat}}
                       </td>
                       <td *ngIf="getdata.Stat == 'Unacceptable'" class="py-4 px-6 text-white text-center" bgcolor="red">

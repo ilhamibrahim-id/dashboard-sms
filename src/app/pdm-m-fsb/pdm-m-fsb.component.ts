@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from '../services/count.service';
+import { TableUtil } from "../services/tabelUtil";
 
 @Component({
   selector: 'app-pdm-m-fsb',
@@ -68,6 +69,42 @@ export class PdmMFsbComponent implements OnInit {
   vibrationdate: any = [];
   amperelist: any = [];
   amperedate: any = [];
+  cd: number = 0;
+  showPaginate: number = 5;
+  @ViewChild("printsection")
+  myNameElem!: ElementRef;
+  generatePaginate(){
+    this.showPaginate = this.totalfinishtoday2.length;
+  }
+  done(){
+    this.showPaginate = 5;
+  }
+  exportTable() {
+    TableUtil.exportTableToExcel("prinsection");
+  }
+  print(): void {
+    let printContents, popupWin: any;
+    printContents = this.myNameElem.nativeElement.innerHTML;
+    //console.log(printContents);
+
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Reporting Daily</title>
+          <style>
+          *{
+            text-align: center;
+          }
+          </style>
+        </head>
+    <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    this.showPaginate = 5;
+    popupWin.document.close();
+}
   data($event: any) {
     //// console.log($event);
     this.totaltemperaturedate = [];
@@ -127,8 +164,8 @@ export class PdmMFsbComponent implements OnInit {
         });
         // // console.log(array);
         for (let i = 0; i < array.length; i++) {
-            this.totalamperelist.splice(this.totalamperelist.lenght, 0, array[i]);
-            this.totalamperedate.splice(this.totalamperedate.lenght, 0, array[i]);
+          this.totalamperelist.splice(this.totalamperelist.lenght, 0, array[i]);
+          this.totalamperedate.splice(this.totalamperedate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
         for (let i = 0; i < this.totalamperelist.length; i++) {
@@ -157,8 +194,8 @@ export class PdmMFsbComponent implements OnInit {
         });
         // // console.log(array);
         for (let i = 0; i < array.length; i++) {
-            this.totalvibrationlist.splice(this.totalvibrationlist.lenght, 0, array[i]);
-            this.totalvibrationdate.splice(this.totalvibrationdate.lenght, 0, array[i]);
+          this.totalvibrationlist.splice(this.totalvibrationlist.lenght, 0, array[i]);
+          this.totalvibrationdate.splice(this.totalvibrationdate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
         //console.log(this.totalvibrationlist);
@@ -349,11 +386,11 @@ export class PdmMFsbComponent implements OnInit {
           for (let elem of this.goodsatis2) {
             if (elem.status == 'Good') {
               this.good += 1;
-            } else if (elem.status == 'Satisfactory'){
+            } else if (elem.status == 'Satisfactory') {
               this.satis += 1;
-            } else if (elem.status == 'Unsatisfactory'){
+            } else if (elem.status == 'Unsatisfactory') {
               this.unsatisf += 1;
-            } else if (elem.status == 'Unacceptable'){
+            } else if (elem.status == 'Unacceptable') {
               this.unacc += 1;
             }
             //// console.log(this.good);
@@ -370,7 +407,7 @@ export class PdmMFsbComponent implements OnInit {
           });
           for (let i = 0; i < array.length; i++) {
             this.finish2.splice(this.finish2.lenght, 0, array[i]);
-            }
+          }
           for (let elem of this.finish2) {
             this.totalfinish = elem.total;
           }
@@ -403,7 +440,7 @@ export class PdmMFsbComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: [this.good, this.satis, this.unsatisf,this.unacc],
+                  data: [this.good, this.satis, this.unsatisf, this.unacc],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -432,7 +469,7 @@ export class PdmMFsbComponent implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-            this.ngOnInit();
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);

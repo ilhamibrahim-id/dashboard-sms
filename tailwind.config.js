@@ -1038,6 +1038,7 @@ module.exports = {
     objectPosition: {
       bottom: "bottom",
       center: "center",
+      right: "right",
       left: "left",
       "left-bottom": "left bottom",
       "left-top": "left top",

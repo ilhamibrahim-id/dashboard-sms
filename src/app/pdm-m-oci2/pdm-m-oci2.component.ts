@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from '../services/count.service';
+import { TableUtil } from "../services/tabelUtil";
 
 @Component({
   selector: 'app-pdm-m-oci2',
@@ -68,6 +69,41 @@ export class PdmMOci2Component implements OnInit {
   vibrationdate: any = [];
   amperelist: any = [];
   amperedate: any = [];
+  showPaginate: number = 5;
+  @ViewChild("printsection")
+  myNameElem!: ElementRef;
+  generatePaginate(){
+    this.showPaginate = this.totalfinishtoday2.length;
+  }
+  done(){
+    this.showPaginate = 5;
+  }
+  exportTable() {
+    TableUtil.exportTableToExcel("prinsection");
+  }
+  print(): void {
+    let printContents, popupWin: any;
+    printContents = this.myNameElem.nativeElement.innerHTML;
+    //console.log(printContents);
+
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Reporting Daily</title>
+          <style>
+          *{
+            text-align: center;
+          }
+          </style>
+        </head>
+    <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    this.showPaginate = 5;
+    popupWin.document.close();
+}
   data($event: any) {
     //// console.log($event);
     this.totaltemperaturedate = [];
