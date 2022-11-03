@@ -86,6 +86,12 @@ export class PdmDashboardComponent implements OnInit {
   fsbunacc: object = {};
   fsbunacc2: any = [];
   totalfsbunacc: any;
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio.mp3";
+    audio.load();
+    audio.play();
+  }
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
@@ -395,6 +401,10 @@ export class PdmDashboardComponent implements OnInit {
               clearInterval(b);
             }
           }, 50);
+          this.playAudio();
+          if (count = 1) {
+            clearInterval(a);
+          }
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);

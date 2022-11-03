@@ -18,7 +18,6 @@ export class SidebarComponent implements OnInit {
   currentDate = new Date();
   public sub4: boolean = false;
   constructor(public router: Router,@Inject(DOCUMENT) private document: Document) {}
-
   ngOnInit(): void {
   }
   ameventclick(){

@@ -52,6 +52,12 @@ export class AmMOci1Component implements OnInit {
   totalfinding4: any;
   funloc: any;
   funloclist: any = [];
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio.mp3";
+    audio.load();
+    audio.play();
+  }
   deskripsi: any = 'Loading..';
   data($event: any) {
     //// console.log($event);
@@ -341,6 +347,10 @@ export class AmMOci1Component implements OnInit {
               clearInterval(b);
             }
           }, 50);
+          this.playAudio();
+          if (count = 1) {
+            clearInterval(a);
+          }
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);

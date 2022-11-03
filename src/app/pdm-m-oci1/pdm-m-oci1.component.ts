@@ -77,6 +77,12 @@ export class PdmMOci1Component implements OnInit {
   amperelist: any = [];
   amperedate: any = [];
   showPaginate: number = 5;
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio.mp3";
+    audio.load();
+    audio.play();
+  }
   @ViewChild("printsection")
   myNameElem!: ElementRef;
   generatePaginate(){
@@ -497,6 +503,10 @@ export class PdmMOci1Component implements OnInit {
               clearInterval(b);
             }
           }, 50);
+          this.playAudio();
+          if (count = 1) {
+            clearInterval(a);
+          }
           this.spinner.hide();
           this.resolved = true;
           //// console.log("3");

@@ -9,6 +9,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class TicTacToeComponent implements OnInit {
   deskripsi: any = 'Loading..';
   public resolved: boolean = false;
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio.mp3";
+    audio.load();
+    audio.play();
+  }
   constructor(private spinner: NgxSpinnerService) {
     window.scrollTo(0, 0);
    }
@@ -22,6 +28,7 @@ export class TicTacToeComponent implements OnInit {
       this.resolved = true;
       if(count = 1){
         clearInterval(a);
+        this.playAudio();
       }
     },500);
   }

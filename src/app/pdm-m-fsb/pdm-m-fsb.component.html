@@ -143,9 +143,9 @@
                     placeholder="Type here..." name="search" [(ngModel)]="searchText" />
                 </div>
               </div>
-              <div class="overflow-x-auto relative shadow-md sm:rounded-lg" id="prinsection" #printsection>
-                <table border="1" class="w-full text-sm text-left text-gray-500 text-md dark:text-gray-400 text-center">
-                  <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg" id="prinsection" #printsection>
+                <table border="1" class="w-full text-lg text-left text-gray-500 text-md dark:text-gray-400 text-center">
+                  <thead class="text-gray-700 uppercase dark:text-gray-400">
                     <tr>
                       <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         No
@@ -195,38 +195,38 @@
                         class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
                         {{(currentPage-1) * showPaginate + i + 1}}
                       </th>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
                         {{header.device_name}}
                       </td>
                       <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.Two_H}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.R}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.S}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.T}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.Thermal}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.Frequency}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.CF}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.VC}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.PIC}}
                       </td>
-                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
                         {{header.dodate}}
                       </td>
                       <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center" style="color: #000000;" bgcolor="#94D977">
@@ -308,9 +308,9 @@
                     placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
                 </div>
               </div>
-              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                <table border="1" style="border-collapse: collapse;" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                  <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+                <table border="1" style="border-collapse: collapse;" class="w-full text-lg text-left text-gray-500 dark:text-gray-400">
+                  <thead class=" text-gray-700 uppercase dark:text-gray-400">
                     <tr>
                       <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
                         No
@@ -330,7 +330,7 @@
                         class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
                         {{(currentPage2-1) * 5 + i + 1}}
                       </th>
-                      <td (click)="data(getdata.device_name)" class="py-4 px-6">
+                      <td (click)="data(getdata.device_name)" style="color: #000000;" class="py-4 px-6">
                         {{getdata.device_name}}
                       </td>
                       <td *ngIf="getdata.Stat == 'Unsatisfactory'" style="color: #000000;" class="py-4 px-6 font-semibold text-center"

@@ -36,6 +36,12 @@ export class DashboardComponent implements OnInit {
   public loaddata: any;
   donut: any = [];
   coba: any = [];
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio.mp3";
+    audio.load();
+    audio.play();
+  }
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   async ngOnInit(): Promise<void> {
@@ -241,6 +247,10 @@ export class DashboardComponent implements OnInit {
               clearInterval(b);
             }
           }, 50);
+          this.playAudio();
+          if (count = 1) {
+            clearInterval(a);
+          }
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);

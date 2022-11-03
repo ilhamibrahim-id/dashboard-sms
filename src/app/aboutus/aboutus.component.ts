@@ -19,6 +19,7 @@ export class AboutusComponent{
       this.resolved = true;
       if(count = 1){
         clearInterval(a);
+        this.playAudio();
       }
     },500);
   }
@@ -26,9 +27,19 @@ export class AboutusComponent{
   email: any;
   pesan: any;
   sukses: any;
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio.mp3";
+    audio.load();
+    audio.play();
+  }
   load: any;
   public  sendEmail(e: Event) {
-    this.load = 'Dont Press Your Data Button In Process'
+    this.load = null;
+    this.name = null;
+    this.pesan = null;
+    this.email = null;
+    this.sukses = 'Your Message In Progress';
     e.preventDefault();
     emailjs.sendForm('service_f8er4jj', 'template_le007ag', e.target as HTMLFormElement, 'Pz1kVyNAMBldwqz7E')
       .then((result: EmailJSResponseStatus) => {
