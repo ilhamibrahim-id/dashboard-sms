@@ -88,6 +88,7 @@ export class PdmMOci1Component implements OnInit {
   }
   exportTable() {
     TableUtil.exportTableToExcel("prinsection");
+    this.showPaginate = 5;
   }
   print(): void {
     let printContents, popupWin: any;
@@ -103,6 +104,10 @@ export class PdmMOci1Component implements OnInit {
           <style>
           *{
             text-align: center;
+            font-family:  'Times New Roman', serif;
+          }
+          table {
+            border-collapse: collapse;
           }
           </style>
         </head>
@@ -330,11 +335,12 @@ export class PdmMOci1Component implements OnInit {
     // // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
-    this.good = 0;
-    this.satis = 0;
-    this.unsatisf = 0;
-    this.unacc = 0;
+    window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.good = 0;
+      this.satis = 0;
+      this.unsatisf = 0;
+      this.unacc = 0;
       this.service.getReadFinishTodayoci1().subscribe(data => {
         this.abnormal = data;
         Object.values(this.abnormal).forEach(data => {
@@ -487,7 +493,7 @@ export class PdmMOci1Component implements OnInit {
                 }]
               },
             });
-            if (count2 = 3) {
+            if (count2 = 1) {
               clearInterval(b);
             }
           }, 50);

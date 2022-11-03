@@ -132,7 +132,7 @@
                   *ngIf="showPaginate != 5" (click)="done()"><i class="fa fa-window-close fa-1"></i>
                   Reset</button>
               </p>
-              <div class="flex items-center text-center p-4">
+              <div class="flex items-center text-center mb-4">
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
                   <span
                     class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
@@ -144,104 +144,106 @@
                 </div>
               </div>
               <div class="overflow-x-auto relative shadow-md sm:rounded-lg" id="prinsection" #printsection>
-                <table border="1" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table border="1" class="w-full text-sm text-left text-gray-500 text-md dark:text-gray-400 text-center">
                   <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                     <tr>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         No
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         Device Name
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         2H
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         R
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         S
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         T
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         Thermal
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         Frequency
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         CF+ 2H
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         VC
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         PIC
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-                        Do Date
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                        Execution Date
                       </th>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                         Status
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr class="border-b border-gray-200 dark:border-gray-700"
-                    *ngFor="let header of totalfinishtoday2| filter:searchText | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }; let i = index;">
-                    <th
-                      class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                      {{(currentPage-1) * showPaginate + i + 1}}
-                    </th>
-                      <td class="py-4 px-6">
+                      *ngFor="let header of totalfinishtoday2| filter:searchText | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }; let i = index;">
+                      <th
+                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                        {{(currentPage-1) * showPaginate + i + 1}}
+                      </th>
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.device_name}}
                       </td>
                       <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.Two_H}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.R}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.S}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.T}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.Thermal}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.Frequency}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.CF}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.VC}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.PIC}}
                       </td>
-                      <td class="py-4 px-6">
+                      <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{header.dodate}}
                       </td>
-                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text-white text-center" bgcolor="green">
+                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center" style="color: #000000;" bgcolor="#94D977">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 text-white text-center" bgcolor="#D8E80C">
+                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 font-semibold text-center"
+                        bgcolor="#F5FF25" style="color: #000000;">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center" bgcolor="orange">
+                      <td *ngIf="header.Stat == 'Unsatisfactory'" style="color: #000000;" class="py-4 px-6 font-semibold text-center"
+                        bgcolor="#FED033">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 'Unacceptable'" class="py-4 px-6 text-white text-center" bgcolor="red">
+                      <td *ngIf="header.Stat == 'Unacceptable'" style="color: #000000;" class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
                         {{header.Stat}}
                       </td>
-                      <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6 text-center">
+                      <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6  font-semibold text-center">
                         -
                       </td>
                     </tr>
@@ -262,7 +264,7 @@
           <div
             class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-4">
-              <h5 class="text-center">OCI 2</h5>
+              <h5 class="text-center">OCI 1</h5>
             </div>
           </div>
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
@@ -295,7 +297,7 @@
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
               <p class="text-center" style="color: red;">Click Device Name For Show Chart Abnormal Asset</p>
-              <div class="flex items-center text-center p-4">
+              <div class="flex items-center text-center mb-4">
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
                   <span
                     class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
@@ -307,16 +309,16 @@
                 </div>
               </div>
               <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table border="1" style="border-collapse: collapse;" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                     <tr>
-                      <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
                         No
                       </th>
-                      <th scope="col" class="py-3 px-6">
+                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
                         Device
                       </th>
-                      <th scope="col" class="py-3 px-6">
+                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
                         Status
                       </th>
                     </tr>
@@ -325,16 +327,17 @@
                     <tr class="border-b border-gray-200 dark:border-gray-700"
                       *ngFor="let getdata of totalabnormallisttrue| filter:searchText2 |paginate: { id:'pagination2', currentPage: currentPage2, itemsPerPage: 5 }; let i = index;">
                       <th scope="row"
-                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
                         {{(currentPage2-1) * 5 + i + 1}}
                       </th>
                       <td (click)="data(getdata.device_name)" class="py-4 px-6">
                         {{getdata.device_name}}
                       </td>
-                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" class="py-4 px-6 text-white text-center" bgcolor="orange">
+                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" style="color: #000000;" class="py-4 px-6 font-semibold text-center"
+                      bgcolor="#FED033">
                         {{getdata.Stat}}
                       </td>
-                      <td *ngIf="getdata.Stat == 'Unacceptable'" class="py-4 px-6 text-white text-center" bgcolor="red">
+                      <td *ngIf="getdata.Stat == 'Unacceptable'" style="color: #000000;" class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
                         {{getdata.Stat}}
                       </td>
                     </tr>

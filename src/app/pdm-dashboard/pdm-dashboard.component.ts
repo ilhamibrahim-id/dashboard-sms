@@ -92,19 +92,20 @@ export class PdmDashboardComponent implements OnInit {
   donut: any = [];
   public loaddata: any;
   async ngOnInit(): Promise<void> {
-    this.good = 0;
-    this.goodoci1 = 0;
-    this.satisoci1 = 0;
-    this.satis = 0;
-    this.goodfsb = 0;
-    this.satisfsb = 0;
-    this.unsatisfoci1 = 0;
-    this.unsatisf = 0;
-    this.unacc = 0;
-    this.unaccoci1 = 0;
-    this.unsatisffsb = 0;
-    this.unaccfsb = 0;
+    window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.good = 0;
+      this.goodoci1 = 0;
+      this.satisoci1 = 0;
+      this.satis = 0;
+      this.goodfsb = 0;
+      this.satisfsb = 0;
+      this.unsatisfoci1 = 0;
+      this.unsatisf = 0;
+      this.unacc = 0;
+      this.unaccoci1 = 0;
+      this.unsatisffsb = 0;
+      this.unaccfsb = 0;
       this.service.getReadGoodAndSatisoci2().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
@@ -119,11 +120,11 @@ export class PdmDashboardComponent implements OnInit {
           for (let elem of this.goodsatis2) {
             if (elem.status == 'Good') {
               this.good += 1;
-            } else if (elem.status == 'Satisfactory'){
+            } else if (elem.status == 'Satisfactory') {
               this.satis += 1;
-            } else if (elem.status == 'Unsatisfactory'){
+            } else if (elem.status == 'Unsatisfactory') {
               this.unsatisf += 1;
-            } else if (elem.status == 'Unacceptable'){
+            } else if (elem.status == 'Unacceptable') {
               this.unacc += 1;
             }
             //// console.log(this.good);
@@ -144,11 +145,11 @@ export class PdmDashboardComponent implements OnInit {
           for (let elem of this.goodsatis2fsb) {
             if (elem.status == 'Good') {
               this.goodfsb += 1;
-            } else if (elem.status == 'Satisfactory'){
+            } else if (elem.status == 'Satisfactory') {
               this.satisfsb += 1;
-            } else if (elem.status == 'Unsatisfactory'){
+            } else if (elem.status == 'Unsatisfactory') {
               this.unsatisffsb += 1;
-            } else if (elem.status == 'Unacceptable'){
+            } else if (elem.status == 'Unacceptable') {
               this.unaccfsb += 1;
             }
             //// console.log(this.good);
@@ -169,11 +170,11 @@ export class PdmDashboardComponent implements OnInit {
           for (let elem of this.goodsatis2oci1) {
             if (elem.status == 'Good') {
               this.goodoci1 += 1;
-            } else if (elem.status == 'Satisfactory'){
+            } else if (elem.status == 'Satisfactory') {
               this.satisoci1 += 1;
-            } else if (elem.status == 'Unsatisfactory'){
+            } else if (elem.status == 'Unsatisfactory') {
               this.unsatisfoci1 += 1;
-            } else if (elem.status == 'Unacceptable'){
+            } else if (elem.status == 'Unacceptable') {
               this.unaccoci1 += 1;
             }
             //// console.log(this.good);
@@ -209,7 +210,7 @@ export class PdmDashboardComponent implements OnInit {
             return data[key];
           });
           for (let i = 0; i < array.length; i++) {
-          this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[i]);
+            this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[i]);
           }
           // console.log(this.pdmfinish2);
 
@@ -301,7 +302,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: [this.goodoci1,this.satisoci1,this.unsatisfoci1,this.unaccoci1],
+                  data: [this.goodoci1, this.satisoci1, this.unsatisfoci1, this.unaccoci1],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -324,7 +325,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
-                  data: [this.good,this.satis,this.unsatisf,this.unacc],
+                  data: [this.good, this.satis, this.unsatisf, this.unacc],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -371,7 +372,7 @@ export class PdmDashboardComponent implements OnInit {
                 labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
                 datasets: [{
                   label: 'oi',
-                  data: [this.goodfsb,this.satisfsb,this.unsatisffsb,this.unaccfsb],
+                  data: [this.goodfsb, this.satisfsb, this.unsatisffsb, this.unaccfsb],
                   backgroundColor: [
                     'green',
                     'rgb(230, 230, 0)',
@@ -390,7 +391,7 @@ export class PdmDashboardComponent implements OnInit {
               },
             }
             );
-            if (count2 = 3) {
+            if (count2 = 1) {
               clearInterval(b);
             }
           }, 50);

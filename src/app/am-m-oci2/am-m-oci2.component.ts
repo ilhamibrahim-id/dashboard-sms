@@ -67,10 +67,11 @@ export class AmMOci2Component implements OnInit {
     // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
-    this.low= 0;
-    this.medium= 0;
-    this.high= 0;
+    window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.low= 0;
+      this.medium= 0;
+      this.high= 0;
       this.service.getOrder().subscribe(data => {
         this.orderobj = data;
         Object.values(this.orderobj).forEach(data => {
@@ -336,7 +337,7 @@ export class AmMOci2Component implements OnInit {
                 }]
               },
             });
-            if (count2 = 3) {
+            if (count2 = 1) {
               clearInterval(b);
             }
           }, 50);

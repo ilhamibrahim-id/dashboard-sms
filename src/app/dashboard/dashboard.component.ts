@@ -39,10 +39,11 @@ export class DashboardComponent implements OnInit {
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   async ngOnInit(): Promise<void> {
-    this.Setting = 0;
-    this.Replacement = 0;
-    this.Improvement = 0;
+    window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.Setting = 0;
+      this.Replacement = 0;
+      this.Improvement = 0;
       this.service.getKategori().subscribe(data => {
         this.totalkategori = data;
         Object.values(this.totalkategori).forEach(data => {
@@ -236,7 +237,7 @@ export class DashboardComponent implements OnInit {
                 }
               }
             });
-            if (count2 = 3) {
+            if (count2 = 1) {
               clearInterval(b);
             }
           }, 50);

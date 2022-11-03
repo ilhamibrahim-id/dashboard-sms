@@ -13,6 +13,7 @@ export class NotFoundComponent implements OnInit {
   public loaddata: any;
 
   async ngOnInit(): Promise<void> {
+    window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
       this.spinner.show();
       this.spinner.hide();

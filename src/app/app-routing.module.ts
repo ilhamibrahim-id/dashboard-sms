@@ -17,7 +17,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { GamesComponent } from './games/games.component';
 import { SuitComponent } from './suit/suit.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
-import { SnakeComponent } from './snake/snake.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 
 const routes: Routes = [
@@ -34,7 +33,6 @@ const routes: Routes = [
   {path: 'games', component: GamesComponent},
   {path: 'suit', component: SuitComponent},
   {path: 'tictactoe', component: TicTacToeComponent},
-  {path: 'snake', component: SnakeComponent},
   {path: 'aboutus', component: AboutusComponent},
   {path: '**', component: NotFoundComponent},
 ];
@@ -58,6 +56,5 @@ export const routingComponent = [
   SuitComponent,
   TicTacToeComponent,
   GamesComponent,
-  SnakeComponent,
   AboutusComponent
 ]

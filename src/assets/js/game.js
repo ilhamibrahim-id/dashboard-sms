@@ -234,7 +234,6 @@ function myfunc() {
 
 // Function to reset game
 function myfunc_2() {
-  location.reload();
   document.getElementById('b1').value = '';
   document.getElementById("b2").value = '';
   document.getElementById("b3").value = '';

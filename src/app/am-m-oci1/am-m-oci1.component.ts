@@ -59,18 +59,19 @@ export class AmMOci1Component implements OnInit {
     this.funloc = $event;
     // console.log(this.funloc);
     for (let i = 0; i < this.orderarr.length; i++) {
-      if(this.orderarr[i].func_loc === this.funloc){
-      this.funloclist[i] = this.orderarr[i];
+      if (this.orderarr[i].func_loc === this.funloc) {
+        this.funloclist[i] = this.orderarr[i];
       }
     }
     this.funloclist = this.funloclist.filter(function (e: any) { return e != null; });
     // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
-    this.low= 0;
-    this.medium= 0;
-    this.high= 0;
+    window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.low = 0;
+      this.medium = 0;
+      this.high = 0;
       this.service.getOrder().subscribe(data => {
         this.orderobj = data;
         Object.values(this.orderobj).forEach(data => {
@@ -336,7 +337,7 @@ export class AmMOci1Component implements OnInit {
                 }]
               },
             });
-            if (count2 = 3) {
+            if (count2 = 1) {
               clearInterval(b);
             }
           }, 50);

@@ -12,6 +12,7 @@ export class SpinnerComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();

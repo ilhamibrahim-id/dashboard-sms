@@ -11,16 +11,22 @@ export class AppsLinkComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
   public loaddata: any;
-
+  deskripsi: any = 'Loading..';
   async ngOnInit(): Promise<void> {
+    window.scrollTo(0, 0);
+    this.spinner.show();
+    this.loaddata = await this.loaddata;
+    var count = 0;
     this.loaddata = new Promise(resolve => {
-      this.spinner.show();
-      setInterval(()=>{
+      var a = setInterval(()=>{
+        count ++;
         this.spinner.hide();
         this.resolved = true;
+        if(count = 1){
+          clearInterval(a);
+        }
       },500);
     });
-    this.loaddata = await this.loaddata;
   }
 
 }

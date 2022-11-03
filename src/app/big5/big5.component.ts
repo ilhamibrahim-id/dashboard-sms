@@ -193,6 +193,7 @@ export class Big5Component implements OnInit {
   };
 
   ngOnInit(): void {
+      window.scrollTo(0, 0);
       // this.service.getBigFive();
       console.log(this.start);
       this.service.getBigFiveByMachine(this.machineA,this.start,this.end);

@@ -6,14 +6,20 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './aboutus.component.html',
   styleUrls: ['./aboutus.component.css']
 })
-export class AboutusComponent {
+export class AboutusComponent{
   public resolved: boolean = false;
   deskripsi: any = 'Loading..';
   constructor(private spinner: NgxSpinnerService) {
+    window.scrollTo(0, 0);
     this.spinner.show();
-    setInterval(() => {
+    var count = 0;
+    var a = setInterval(() => {
+      count++;
       this.spinner.hide();
       this.resolved = true;
+      if(count = 1){
+        clearInterval(a);
+      }
     },500);
   }
   name: any;
