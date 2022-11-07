@@ -386,6 +386,15 @@ export class CountService {
   getReadFinishTodayfsb() {
     return this.httpClient.get(api + "finishtodaylistfsb");
   }
+  getReadFinishTodayoci1abnormal() {
+    return this.httpClient.get(api + "finishtodaylistoci1abnormal");
+  }
+  getReadFinishTodayoci2abnormal() {
+    return this.httpClient.get(api + "finishtodaylistoci2abnormal");
+  }
+  getReadFinishTodayfsbabnormal() {
+    return this.httpClient.get(api + "finishtodaylistfsbabnormal");
+  }
   getKategori() {
     return this.httpClient.get(api + "kategori");
   }

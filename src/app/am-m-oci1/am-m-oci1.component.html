@@ -123,16 +123,16 @@
             <canvas id="dum" width="10"></canvas>
             <div class="px-6 pt-4 pb-2 text-center">
               <span style="background-color: red;"
-                class="text-white inline-block bg-red rounded-full text-xs px-3 py-1 font-semibold mr-2 mb-2">Total:
+                class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Total:
                 {{[this.totalfindingmonitorbar[0]]}}</span>
               <span style="background-color: rgb(112, 112, 0);"
-                class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Pending:
+                class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending:
                 {{[this.totalfindingmonitorbar[1]]}}</span>
               <span style="background-color: blue;"
-                class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Ready:
+                class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready:
                 {{[this.totalfindingmonitorbar[2]]}}</span>
               <span style="background-color: green;"
-                class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Finish:
+                class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish:
                 {{[this.totalfindingmonitorbar[3]]}}</span>
             </div>
           </div>
@@ -152,16 +152,16 @@
               <canvas id="donut" width="575" height="480"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
                 <span style="background-color: red;"
-                  class="text-white inline-block bg-red rounded-full text-xs px-3 py-1 font-semibold mr-2 mb-2">Total:
+                  class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Total:
                   {{this.totalfindingmonitordonut[0]}}</span>
                 <span style="background-color: rgb(112, 112, 0);"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Pending:
+                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending:
                   {{this.totalfindingmonitordonut[1]}}</span>
                 <span style="background-color: blue;"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Ready:
+                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready:
                   {{this.totalfindingmonitordonut[2]}}</span>
                 <span style="background-color: green;"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Finish:
+                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish:
                   {{this.totalfindingmonitordonut[3]}}</span>
               </div>
             </div>
@@ -180,13 +180,13 @@
               <canvas id="donut2" width="575" height="480"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
                 <span style="background-color: red;"
-                  class="text-white inline-block bg-red rounded-full text-xs px-3 py-1 font-semibold mr-2 mb-2">Low:
+                  class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Low:
                   {{this.low}}</span>
                 <span style="background-color: rgb(112, 112, 0);"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">Medium:
+                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Medium:
                   {{this.medium}}</span>
                 <span style="background-color: blue;"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">High:
+                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">High:
                   {{this.high}}</span>
               </div>
             </div>
@@ -201,7 +201,6 @@
           </div>
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
-              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <p class="text-center" style="color: red;">Click Funlock For Show History Finding Close</p>
                 <div class="flex items-center text-center p-4">
                   <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
@@ -214,6 +213,7 @@
                       placeholder="Type here..." name="search" [(ngModel)]="searchText" />
                   </div>
                 </div>
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -271,7 +271,6 @@
           <div
             class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mt-1 mb-1 bg-clip-border">
             <div class="flex-auto p-6">
-              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <p class="text-center" style="color: red;">Name Machine : {{funloc}}</p>
                 <div class="flex items-center text-center p-4">
                   <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
@@ -284,6 +283,7 @@
                       placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
                   </div>
                 </div>
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>

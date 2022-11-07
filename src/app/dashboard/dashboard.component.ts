@@ -12,7 +12,6 @@ export class DashboardComponent implements OnInit {
   public resolved: boolean = false;
   const: object = {};
   const2: any = [];
-  angka: number = 0;
   totalfinding: any = [];
   currentDate = new Date();
   totalfindingd: any = [];
@@ -36,20 +35,11 @@ export class DashboardComponent implements OnInit {
   public loaddata: any;
   donut: any = [];
   coba: any = [];
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.Setting = 0;
-      this.Replacement = 0;
-      this.Improvement = 0;
       this.service.getKategori().subscribe(data => {
         this.totalkategori = data;
         Object.values(this.totalkategori).forEach(data => {
@@ -247,10 +237,6 @@ export class DashboardComponent implements OnInit {
               clearInterval(b);
             }
           }, 50);
-          this.playAudio();
-          if (count = 1) {
-            clearInterval(a);
-          }
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);
@@ -258,7 +244,9 @@ export class DashboardComponent implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-            this.ngOnInit();
+          setInterval (() =>{
+            window.location.reload();
+          },2000);
         }
         if (count = 1) {
           clearInterval(a);

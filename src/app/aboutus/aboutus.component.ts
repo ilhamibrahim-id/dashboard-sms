@@ -19,7 +19,6 @@ export class AboutusComponent{
       this.resolved = true;
       if(count = 1){
         clearInterval(a);
-        this.playAudio();
       }
     },500);
   }
@@ -27,12 +26,6 @@ export class AboutusComponent{
   email: any;
   pesan: any;
   sukses: any;
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   load: any;
   public  sendEmail(e: Event) {
     this.load = null;

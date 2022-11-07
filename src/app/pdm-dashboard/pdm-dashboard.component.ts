@@ -86,12 +86,6 @@ export class PdmDashboardComponent implements OnInit {
   fsbunacc: object = {};
   fsbunacc2: any = [];
   totalfsbunacc: any;
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
@@ -100,18 +94,6 @@ export class PdmDashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.good = 0;
-      this.goodoci1 = 0;
-      this.satisoci1 = 0;
-      this.satis = 0;
-      this.goodfsb = 0;
-      this.satisfsb = 0;
-      this.unsatisfoci1 = 0;
-      this.unsatisf = 0;
-      this.unacc = 0;
-      this.unaccoci1 = 0;
-      this.unsatisffsb = 0;
-      this.unaccfsb = 0;
       this.service.getReadGoodAndSatisoci2().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
@@ -401,18 +383,15 @@ export class PdmDashboardComponent implements OnInit {
               clearInterval(b);
             }
           }, 50);
-          this.playAudio();
-          if (count = 1) {
-            clearInterval(a);
-          }
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
-          this.spinner.show();
-          this.ngOnInit();
+          setInterval (() =>{
+            window.location.reload();
+          },2000);
         }
         if (count = 1) {
           clearInterval(a);

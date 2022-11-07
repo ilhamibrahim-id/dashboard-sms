@@ -52,12 +52,6 @@ export class AmMOci1Component implements OnInit {
   totalfinding4: any;
   funloc: any;
   funloclist: any = [];
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   deskripsi: any = 'Loading..';
   data($event: any) {
     //// console.log($event);
@@ -75,9 +69,6 @@ export class AmMOci1Component implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.low = 0;
-      this.medium = 0;
-      this.high = 0;
       this.service.getOrder().subscribe(data => {
         this.orderobj = data;
         Object.values(this.orderobj).forEach(data => {
@@ -347,10 +338,6 @@ export class AmMOci1Component implements OnInit {
               clearInterval(b);
             }
           }, 50);
-          this.playAudio();
-          if (count = 1) {
-            clearInterval(a);
-          }
           this.spinner.hide();
           this.resolved = true;
           clearInterval(a);
@@ -358,7 +345,9 @@ export class AmMOci1Component implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-          this.ngOnInit();
+          setInterval (() =>{
+            window.location.reload();
+          },2000);
         }
         if (count = 1) {
           clearInterval(a);

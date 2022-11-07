@@ -12,12 +12,6 @@ export class AppsLinkComponent implements OnInit {
   public resolved: boolean = false;
   public loaddata: any;
   deskripsi: any = 'Loading..';
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.spinner.show();
@@ -30,7 +24,6 @@ export class AppsLinkComponent implements OnInit {
         this.resolved = true;
         if(count = 1){
           clearInterval(a);
-          this.playAudio();
         }
       },500);
     });

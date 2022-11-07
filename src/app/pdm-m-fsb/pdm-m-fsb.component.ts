@@ -71,6 +71,8 @@ export class PdmMFsbComponent implements OnInit {
   amperedate: any = [];
   cd: number = 0;
   showPaginate: number = 5;
+  abnormalasset: object = {};
+  abnormalassetlist: any = [];
   playAudio(){
     let audio = new Audio();
     audio.src = "assets/audio.mp3";
@@ -117,22 +119,162 @@ export class PdmMFsbComponent implements OnInit {
     this.showPaginate = 5;
     popupWin.document.close();
 }
-  data($event: any) {
-    //// console.log($event);
-    this.totaltemperaturedate = [];
-    this.totaltemperaturelist = [];
-    this.totalamperedate = [];
-    this.totalamperelist = [];
-    this.totalvibrationdate = [];
-    this.totalvibrationlist = [];
-    this.temperaturelist = [];
-    this.temperaturedate = [];
-    this.amperelist = [];
-    this.amperedate = [];
-    this.vibrationlist = [];
-    this.vibrationdate = [];
-    this.funloc = $event;
-    // console.log(this.funloc);
+data($event: any) {
+  this.temperaturelist = [];
+  this.temperaturedate = [];
+  this.amperelist = [];
+  this.amperedate = [];
+  this.vibrationlist = [];
+  this.vibrationdate = [];
+  this.funloc = $event;
+  var countagain = 0;
+  for (let i = 0; i < this.totaltemperaturelist.length; i++) {
+    if (this.totaltemperaturelist[i].device_name === this.funloc) {
+      this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i].value);
+    }
+  }
+  for (let i = 0; i < this.totaltemperaturedate.length; i++) {
+    if (this.totaltemperaturedate[i].device_name === this.funloc) {
+      this.temperaturedate.splice(this.temperaturedate.lenght, 0, this.totaltemperaturedate[i].do_date);
+    }
+  }
+  this.temperaturelist = this.temperaturelist.filter(function (e: any) { return e != null; });
+  this.temperaturedate = this.temperaturedate.filter(function (e: any) { return e != null; });
+  for (let i = 0; i < this.totalamperelist.length; i++) {
+    if (this.totalamperelist[i].device_name === this.funloc) {
+      this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i].value);
+    }
+  }
+  for (let i = 0; i < this.totalamperedate.length; i++) {
+    if (this.totalamperedate[i].device_name === this.funloc) {
+      this.amperedate.splice(this.amperedate.lenght, 0, this.totalamperedate[i].do_date);
+    }
+  }
+  this.amperelist = this.amperelist.filter(function (e: any) { return e != null; });
+  this.amperedate = this.amperedate.filter(function (e: any) { return e != null; });
+  for (let i = 0; i < this.totalvibrationlist.length; i++) {
+    if (this.totalvibrationlist[i].device_name === this.funloc) {
+      this.vibrationlist.splice(this.vibrationlist.lenght, 0, this.totalvibrationlist[i].value);
+    }
+  }
+  for (let i = 0; i < this.totalvibrationdate.length; i++) {
+    if (this.totalvibrationdate[i].device_name === this.funloc) {
+      this.vibrationdate.splice(this.vibrationdate.lenght, 0, this.totalvibrationdate[i].do_date);
+    }
+  }
+  //console.log(this.vibrationlist);
+
+  this.vibrationlist = this.vibrationlist.filter(function (e: any) { return e != null; });
+  this.vibrationdate = this.vibrationdate.filter(function (e: any) { return e != null; });
+  var loadagain = setInterval(() => {
+    countagain++;
+    this.coba = new Chart('dum', {
+      type: 'line',
+      data: {
+        labels: this.vibrationdate,
+        datasets: [{
+          label: 'Data Vibration',
+          data: this.vibrationlist,
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.2)',
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth: 1
+        }]
+      }, options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    this.coba2 = new Chart('dumdum', {
+      type: 'line',
+      data: {
+        labels: this.amperedate,
+        datasets: [{
+          label: 'Data Ampere',
+          data: this.amperelist,
+          backgroundColor: [
+            'rgba(255, 206, 86, 0.2)',
+          ],
+          borderColor: [
+            '#A0AC00',
+          ],
+          borderWidth: 1
+        }]
+      }, options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    this.coba3 = new Chart('dumdumdum', {
+      type: 'line',
+      data: {
+        labels: this.temperaturedate,
+        datasets: [{
+          label: 'Data Temperature',
+          data: this.temperaturelist,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+          ],
+          borderWidth: 1
+        }]
+      }, options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    if (countagain == 1) {
+      clearInterval(loadagain);
+    }
+  }, 300);
+}
+async ngOnInit(): Promise<void> {
+  window.scrollTo(0, 0);
+  this.loaddata = new Promise(resolve => {
+    this.service.getReadFinishTodayfsbabnormal().subscribe(data => {
+      this.abnormalasset = data;
+      Object.values(this.abnormalasset).forEach(data => {
+        // // console.log(data);
+        var array = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+
+        // // console.log(array);
+        for (let i = 0; i < array.length; i++) {
+          this.abnormalassetlist.splice(this.abnormalassetlist.lenght, 0, array[i]);
+        }
+      })
+    }
+    );
     this.service.getTemperatureLinefsb().subscribe(data => {
       this.temperature = data;
       Object.values(this.temperature).forEach(data => {
@@ -147,23 +289,6 @@ export class PdmMFsbComponent implements OnInit {
           this.totaltemperaturedate.splice(this.totaltemperaturedate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
-        //console.log(this.totaltemperaturelist);
-        for (let i = 0; i < this.totaltemperaturelist.length; i++) {
-          if (this.totaltemperaturelist[i].device_name === this.funloc) {
-            this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i].value);
-          }
-        }
-        for (let i = 0; i < this.totaltemperaturedate.length; i++) {
-          if (this.totaltemperaturedate[i].device_name === this.funloc) {
-            this.temperaturedate.splice(this.temperaturedate.lenght, 0, this.totaltemperaturedate[i].do_date);
-          }
-        }
-        this.temperaturelist = this.temperaturelist.filter(function (e: any) { return e != null; });
-        this.temperaturedate = this.temperaturedate.filter(function (e: any) { return e != null; });
-        //console.log(this.temperaturelist);
-
-        // // console.log(this.vibration);
-        //// console.log(this.totalvibrationlist);
       })
     }
     );
@@ -180,20 +305,6 @@ export class PdmMFsbComponent implements OnInit {
           this.totalamperedate.splice(this.totalamperedate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
-        for (let i = 0; i < this.totalamperelist.length; i++) {
-          if (this.totalamperelist[i].device_name === this.funloc) {
-            this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i].value);
-          }
-        }
-        for (let i = 0; i < this.totalamperedate.length; i++) {
-          if (this.totalamperedate[i].device_name === this.funloc) {
-            this.amperedate.splice(this.amperedate.lenght, 0, this.totalamperedate[i].do_date);
-          }
-        }
-        this.amperelist = this.amperelist.filter(function (e: any) { return e != null; });
-        this.amperedate = this.amperedate.filter(function (e: any) { return e != null; });
-        // // console.log(this.vibration);
-        //// console.log(this.totalvibrationlist);
       })
     }
     );
@@ -210,133 +321,9 @@ export class PdmMFsbComponent implements OnInit {
           this.totalvibrationdate.splice(this.totalvibrationdate.lenght, 0, array[i]);
           //// console.log(array[i]);
         }
-        //console.log(this.totalvibrationlist);
-
-        for (let i = 0; i < this.totalvibrationlist.length; i++) {
-          if (this.totalvibrationlist[i].device_name === this.funloc) {
-            this.vibrationlist.splice(this.vibrationlist.lenght, 0, this.totalvibrationlist[i].value);
-          }
-        }
-        for (let i = 0; i < this.totalvibrationdate.length; i++) {
-          if (this.totalvibrationdate[i].device_name === this.funloc) {
-            this.vibrationdate.splice(this.vibrationdate.lenght, 0, this.totalvibrationdate[i].do_date);
-          }
-        }
-        //console.log(this.vibrationlist);
-
-        this.vibrationlist = this.vibrationlist.filter(function (e: any) { return e != null; });
-        this.vibrationdate = this.vibrationdate.filter(function (e: any) { return e != null; });
-        // // console.log(this.vibration);
-        // // console.log(this.totalvibrationlist);
       })
     }
     );
-    var countagain = 0;
-    var loadagain = setInterval(() => {
-      countagain++;
-      this.coba = new Chart('dum', {
-        type: 'line',
-        data: {
-          labels: this.vibrationdate,
-          datasets: [{
-            label: 'Data Vibration',
-            data: this.vibrationlist,
-            backgroundColor: [
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(75, 192, 192, 1)',
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      });
-      this.coba2 = new Chart('dumdum', {
-        type: 'line',
-        data: {
-          labels: this.amperedate,
-          datasets: [{
-            label: 'Data Ampere',
-            data: this.amperelist,
-            backgroundColor: [
-              'rgba(255, 206, 86, 0.2)',
-            ],
-            borderColor: [
-              '#A0AC00',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      });
-      this.coba3 = new Chart('dumdumdum', {
-        type: 'line',
-        data: {
-          labels: this.temperaturedate,
-          datasets: [{
-            label: 'Data Temperature',
-            data: this.temperaturelist,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      });
-      if (countagain == 1) {
-        clearInterval(loadagain);
-      }
-    }, 300);
-    // for (let i = 0; i < this.orderarr.length; i++) {
-    //   if(this.orderarr[i].func_loc === this.funloc){
-    //   this.funloclist[i] = this.orderarr[i];
-    //   }
-    // }
-    // this.funloclist = this.funloclist.filter(function (e: any) { return e != null; });
-    // // console.log(this.funloclist);
-  }
-  async ngOnInit(): Promise<void> {
-    window.scrollTo(0, 0);
-    this.loaddata = new Promise(resolve => {
-      this.good = 0;
-      this.satis = 0;
-      this.unsatisf = 0;
-      this.unacc = 0;
       this.service.getReadFinishTodayfsb().subscribe(data => {
         this.abnormal = data;
         Object.values(this.abnormal).forEach(data => {
@@ -348,20 +335,6 @@ export class PdmMFsbComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalabnormal.splice(this.totalabnormal.lenght, 0, array[i]);
           }
-          for (var i = 0; i < this.totalabnormal.length; i++) {
-            if (this.totalabnormal[i].length === 0) {
-              continue;
-            } else {
-              if (this.totalabnormal[i].Stat === 'Unsatisfactory' || this.totalabnormal[i].Stat === 'Unacceptable') {
-                this.totalabnormallist[i] = this.totalabnormal[i];
-                //this.totalabnormallist[i] = this.totalabnormal[i];
-              }
-            }
-          }
-          //// console.log(this.totalabnormal);
-          this.totalabnormallisttrue = this.totalabnormallist.filter(function (e: any) { return e != null; });
-
-          // // console.log(this.findingpending2);
         })
       }
       );
@@ -469,9 +442,6 @@ export class PdmMFsbComponent implements OnInit {
             }
           }, 50);
           this.playAudio();
-          if (count = 1) {
-            clearInterval(a);
-          }
           this.spinner.hide();
           this.resolved = true;
           //// console.log("3");
@@ -480,7 +450,9 @@ export class PdmMFsbComponent implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-          this.ngOnInit();
+          setInterval (() =>{
+            window.location.reload();
+          },2000);
         }
         if (count = 1) {
           clearInterval(a);

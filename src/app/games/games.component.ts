@@ -7,12 +7,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   constructor(private spinner: NgxSpinnerService) {
     window.scrollTo(0, 0);
    }
@@ -27,7 +21,6 @@ export class GamesComponent implements OnInit {
       this.resolved = true;
       if(count = 1){
         clearInterval(a);
-        this.playAudio();
       }
     },500);
   }

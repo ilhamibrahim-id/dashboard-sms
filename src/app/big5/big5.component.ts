@@ -15,12 +15,6 @@ export class Big5Component implements OnInit {
   labels: any;
   datas: any;
   machine: any;
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
   machineA: string = "Cap_Checker_OC1";
   range = new FormGroup({
     start: new FormControl(),
@@ -178,7 +172,6 @@ export class Big5Component implements OnInit {
           }
         }, 5);
         if (this.service.bigFiveByMachineValue != null) {
-          this.playAudio();
           //console.log("3");
           this.spinner.hide();
           this.resolved = true;

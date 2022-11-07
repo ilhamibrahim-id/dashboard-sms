@@ -70,19 +70,15 @@ export class PdmMOci2Component implements OnInit {
   amperelist: any = [];
   amperedate: any = [];
   showPaginate: number = 5;
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "assets/audio.mp3";
-    audio.load();
-    audio.play();
-  }
+  abnormalasset: object = {};
+  abnormalassetlist: any = [];
   @ViewChild("printsection")
   myNameElem!: ElementRef;
-  generatePaginate(){
+  generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
     this.currentPage = 1;
   }
-  done(){
+  done() {
     this.showPaginate = 5;
   }
   exportTable() {
@@ -115,15 +111,8 @@ export class PdmMOci2Component implements OnInit {
     );
     this.showPaginate = 5;
     popupWin.document.close();
-}
+  }
   data($event: any) {
-    //// console.log($event);
-    this.totaltemperaturedate = [];
-    this.totaltemperaturelist = [];
-    this.totalamperedate = [];
-    this.totalamperelist = [];
-    this.totalvibrationdate = [];
-    this.totalvibrationlist = [];
     this.temperaturelist = [];
     this.temperaturedate = [];
     this.amperelist = [];
@@ -131,106 +120,45 @@ export class PdmMOci2Component implements OnInit {
     this.vibrationlist = [];
     this.vibrationdate = [];
     this.funloc = $event;
-    // console.log(this.funloc);
-    this.service.getTemperatureLineoci2().subscribe(data => {
-      this.temperature = data;
-      Object.values(this.temperature).forEach(data => {
-        // // console.log(data);
-        var array = Object.keys(data).map(function (key) {
-          return data[key];
-        });
-
-        // // console.log(array);
-        for (let i = 0; i < array.length; i++) {
-          this.totaltemperaturelist.splice(this.totaltemperaturelist.lenght, 0, array[i]);
-          this.totaltemperaturedate.splice(this.totaltemperaturedate.lenght, 0, array[i]);
-          //// console.log(array[i]);
-        }
-        //console.log(this.totaltemperaturelist);
-        for (let i = 0; i < this.totaltemperaturelist.length; i++) {
-          if (this.totaltemperaturelist[i].device_name === this.funloc) {
-            this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i].value);
-          }
-        }
-        for (let i = 0; i < this.totaltemperaturedate.length; i++) {
-          if (this.totaltemperaturedate[i].device_name === this.funloc) {
-            this.temperaturedate.splice(this.temperaturedate.lenght, 0, this.totaltemperaturedate[i].do_date);
-          }
-        }
-        this.temperaturelist = this.temperaturelist.filter(function (e: any) { return e != null; });
-        this.temperaturedate = this.temperaturedate.filter(function (e: any) { return e != null; });
-        //console.log(this.temperaturelist);
-
-        // // console.log(this.vibration);
-        //// console.log(this.totalvibrationlist);
-      })
-    }
-    );
-    this.service.getAmpereLineoci2().subscribe(data => {
-      this.ampere = data;
-      Object.values(this.ampere).forEach(data => {
-        // // console.log(data);
-        var array = Object.keys(data).map(function (key) {
-          return data[key];
-        });
-        // // console.log(array);
-        for (let i = 0; i < array.length; i++) {
-            this.totalamperelist.splice(this.totalamperelist.lenght, 0, array[i]);
-            this.totalamperedate.splice(this.totalamperedate.lenght, 0, array[i]);
-          //// console.log(array[i]);
-        }
-        for (let i = 0; i < this.totalamperelist.length; i++) {
-          if (this.totalamperelist[i].device_name === this.funloc) {
-            this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i].value);
-          }
-        }
-        for (let i = 0; i < this.totalamperedate.length; i++) {
-          if (this.totalamperedate[i].device_name === this.funloc) {
-            this.amperedate.splice(this.amperedate.lenght, 0, this.totalamperedate[i].do_date);
-          }
-        }
-        this.amperelist = this.amperelist.filter(function (e: any) { return e != null; });
-        this.amperedate = this.amperedate.filter(function (e: any) { return e != null; });
-        // // console.log(this.vibration);
-        //// console.log(this.totalvibrationlist);
-      })
-    }
-    );
-    this.service.getVibrationLineoci2().subscribe(data => {
-      this.vibration = data;
-      Object.values(this.vibration).forEach(data => {
-        // // console.log(data);
-        var array = Object.keys(data).map(function (key) {
-          return data[key];
-        });
-        // // console.log(array);
-        for (let i = 0; i < array.length; i++) {
-            this.totalvibrationlist.splice(this.totalvibrationlist.lenght, 0, array[i]);
-            this.totalvibrationdate.splice(this.totalvibrationdate.lenght, 0, array[i]);
-          //// console.log(array[i]);
-        }
-        //console.log(this.totalvibrationlist);
-
-        for (let i = 0; i < this.totalvibrationlist.length; i++) {
-          if (this.totalvibrationlist[i].device_name === this.funloc) {
-            this.vibrationlist.splice(this.vibrationlist.lenght, 0, this.totalvibrationlist[i].value);
-          }
-        }
-        for (let i = 0; i < this.totalvibrationdate.length; i++) {
-          if (this.totalvibrationdate[i].device_name === this.funloc) {
-            this.vibrationdate.splice(this.vibrationdate.lenght, 0, this.totalvibrationdate[i].do_date);
-          }
-        }
-        //console.log(this.vibrationlist);
-
-        this.vibrationlist = this.vibrationlist.filter(function (e: any) { return e != null; });
-        this.vibrationdate = this.vibrationdate.filter(function (e: any) { return e != null; });
-        // // console.log(this.vibration);
-        // // console.log(this.totalvibrationlist);
-      })
-    }
-    );
     var countagain = 0;
+    for (let i = 0; i < this.totaltemperaturelist.length; i++) {
+      if (this.totaltemperaturelist[i].device_name === this.funloc) {
+        this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i].value);
+      }
+    }
+    for (let i = 0; i < this.totaltemperaturedate.length; i++) {
+      if (this.totaltemperaturedate[i].device_name === this.funloc) {
+        this.temperaturedate.splice(this.temperaturedate.lenght, 0, this.totaltemperaturedate[i].do_date);
+      }
+    }
+    this.temperaturelist = this.temperaturelist.filter(function (e: any) { return e != null; });
+    this.temperaturedate = this.temperaturedate.filter(function (e: any) { return e != null; });
+    for (let i = 0; i < this.totalamperelist.length; i++) {
+      if (this.totalamperelist[i].device_name === this.funloc) {
+        this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i].value);
+      }
+    }
+    for (let i = 0; i < this.totalamperedate.length; i++) {
+      if (this.totalamperedate[i].device_name === this.funloc) {
+        this.amperedate.splice(this.amperedate.lenght, 0, this.totalamperedate[i].do_date);
+      }
+    }
+    this.amperelist = this.amperelist.filter(function (e: any) { return e != null; });
+    this.amperedate = this.amperedate.filter(function (e: any) { return e != null; });
+    for (let i = 0; i < this.totalvibrationlist.length; i++) {
+      if (this.totalvibrationlist[i].device_name === this.funloc) {
+        this.vibrationlist.splice(this.vibrationlist.lenght, 0, this.totalvibrationlist[i].value);
+      }
+    }
+    for (let i = 0; i < this.totalvibrationdate.length; i++) {
+      if (this.totalvibrationdate[i].device_name === this.funloc) {
+        this.vibrationdate.splice(this.vibrationdate.lenght, 0, this.totalvibrationdate[i].do_date);
+      }
+    }
+    //console.log(this.vibrationlist);
+
+    this.vibrationlist = this.vibrationlist.filter(function (e: any) { return e != null; });
+    this.vibrationdate = this.vibrationdate.filter(function (e: any) { return e != null; });
     var loadagain = setInterval(() => {
       countagain++;
       this.coba = new Chart('dum', {
@@ -321,21 +249,74 @@ export class PdmMOci2Component implements OnInit {
         clearInterval(loadagain);
       }
     }, 300);
-    // for (let i = 0; i < this.orderarr.length; i++) {
-    //   if(this.orderarr[i].func_loc === this.funloc){
-    //   this.funloclist[i] = this.orderarr[i];
-    //   }
-    // }
-    // this.funloclist = this.funloclist.filter(function (e: any) { return e != null; });
-    // // console.log(this.funloclist);
   }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.good = 0;
-      this.satis = 0;
-      this.unsatisf = 0;
-      this.unacc = 0;
+      this.service.getReadFinishTodayoci2abnormal().subscribe(data => {
+        this.abnormalasset = data;
+        Object.values(this.abnormalasset).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.abnormalassetlist.splice(this.abnormalassetlist.lenght, 0, array[i]);
+          }
+        })
+      }
+      );
+      this.service.getTemperatureLineoci2().subscribe(data => {
+        this.temperature = data;
+        Object.values(this.temperature).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.totaltemperaturelist.splice(this.totaltemperaturelist.lenght, 0, array[i]);
+            this.totaltemperaturedate.splice(this.totaltemperaturedate.lenght, 0, array[i]);
+            //// console.log(array[i]);
+          }
+        })
+      }
+      );
+      this.service.getAmpereLineoci2().subscribe(data => {
+        this.ampere = data;
+        Object.values(this.ampere).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.totalamperelist.splice(this.totalamperelist.lenght, 0, array[i]);
+            this.totalamperedate.splice(this.totalamperedate.lenght, 0, array[i]);
+            //// console.log(array[i]);
+          }
+        })
+      }
+      );
+      this.service.getVibrationLineoci2().subscribe(data => {
+        this.vibration = data;
+        Object.values(this.vibration).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.totalvibrationlist.splice(this.totalvibrationlist.lenght, 0, array[i]);
+            this.totalvibrationdate.splice(this.totalvibrationdate.lenght, 0, array[i]);
+            //// console.log(array[i]);
+          }
+        })
+      }
+      );
       this.service.getReadFinishTodayoci2().subscribe(data => {
         this.abnormal = data;
         Object.values(this.abnormal).forEach(data => {
@@ -347,23 +328,6 @@ export class PdmMOci2Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalabnormal.splice(this.totalabnormal.lenght, 0, array[i]);
           }
-          // console.log(this.totalabnormal);
-
-          for (var i = 0; i < this.totalabnormal.length; i++) {
-            if (this.totalabnormal[i].length === 0) {
-              continue;
-            } else {
-              if (this.totalabnormal[i].Stat === 'Unsatisfactory' || this.totalabnormal[i].Stat === 'Unacceptable') {
-                this.totalabnormallist[i] = this.totalabnormal[i];
-                //this.totalabnormallist[i] = this.totalabnormal[i];
-              }
-            }
-          }
-          //// console.log(this.totalabnormal);
-          this.totalabnormallisttrue = this.totalabnormallist.filter(function (e: any) { return e != null; });
-          // console.log(this.totalabnormallisttrue);
-
-          // // console.log(this.findingpending2);
         })
       }
       );
@@ -378,9 +342,6 @@ export class PdmMOci2Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
           }
-          // console.log(this.totalfinishtoday2);
-
-          // // console.log(this.findingpending2);
         })
       }
       );
@@ -477,10 +438,6 @@ export class PdmMOci2Component implements OnInit {
               clearInterval(b);
             }
           }, 50);
-          this.playAudio();
-          if (count = 1) {
-            clearInterval(a);
-          }
           this.spinner.hide();
           this.resolved = true;
           //// console.log("3");
@@ -489,7 +446,9 @@ export class PdmMOci2Component implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           this.spinner.show();
-          this.ngOnInit();
+          setInterval (() =>{
+            window.location.reload();
+          },2000);
         }
         if (count = 1) {
           clearInterval(a);
