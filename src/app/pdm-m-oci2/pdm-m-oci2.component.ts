@@ -72,6 +72,15 @@ export class PdmMOci2Component implements OnInit {
   showPaginate: number = 5;
   abnormalasset: object = {};
   abnormalassetlist: any = [];
+  ampereR: any = [];
+  ampereS: any = [];
+  ampereT: any = [];
+  ampereDate: any = [];
+  vibration2H: any = [];
+  vibrationCF: any = [];
+  vibrationDate: any = [];
+  temperatureThermal: any = [];
+  temperatureDate: any = [];
   @ViewChild("printsection")
   myNameElem!: ElementRef;
   generatePaginate() {
@@ -113,142 +122,171 @@ export class PdmMOci2Component implements OnInit {
     popupWin.document.close();
   }
   data($event: any) {
+    if(this.coba != null && this.coba2 != null && this.coba3 != null){
+      this.coba.destroy();
+      this.coba2.destroy();
+      this.coba3.destroy();
+    }
     this.temperaturelist = [];
-    this.temperaturedate = [];
     this.amperelist = [];
-    this.amperedate = [];
     this.vibrationlist = [];
-    this.vibrationdate = [];
+    this.ampereDate = [];
+    this.vibrationDate = [];
+    this.temperatureDate = [];
+    this.ampereR = [];
+    this.ampereS = [];
+    this.ampereT = [];
+    this.vibration2H = [];
+    this.vibrationCF = [];
+    this.temperatureThermal = [];
     this.funloc = $event;
     var countagain = 0;
     for (let i = 0; i < this.totaltemperaturelist.length; i++) {
       if (this.totaltemperaturelist[i].device_name === this.funloc) {
-        this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i].value);
-      }
-    }
-    for (let i = 0; i < this.totaltemperaturedate.length; i++) {
-      if (this.totaltemperaturedate[i].device_name === this.funloc) {
-        this.temperaturedate.splice(this.temperaturedate.lenght, 0, this.totaltemperaturedate[i].do_date);
+        this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i]);
       }
     }
     this.temperaturelist = this.temperaturelist.filter(function (e: any) { return e != null; });
-    this.temperaturedate = this.temperaturedate.filter(function (e: any) { return e != null; });
-    for (let i = 0; i < this.totalamperelist.length; i++) {
-      if (this.totalamperelist[i].device_name === this.funloc) {
-        this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i].value);
+    //console.log(this.temperaturelist);
+
+    for (let i = 0; i < this.temperaturelist.length; i++) {
+      if (this.temperaturelist[i].test_name === 'Thermal') {
+        this.temperatureThermal.splice(this.temperatureThermal.lenght, 0, this.temperaturelist[i].value);
+        this.temperatureDate.splice(this.temperatureDate.lenght, 0, this.temperaturelist[i].do_date);
       }
     }
-    for (let i = 0; i < this.totalamperedate.length; i++) {
-      if (this.totalamperedate[i].device_name === this.funloc) {
-        this.amperedate.splice(this.amperedate.lenght, 0, this.totalamperedate[i].do_date);
+    //console.log(this.temperatureDate);
+
+
+    for (let i = 0; i < this.totalamperelist.length; i++) {
+      if (this.totalamperelist[i].device_name === this.funloc) {
+        this.amperelist.splice(this.amperelist.lenght, 0, this.totalamperelist[i]);
       }
     }
     this.amperelist = this.amperelist.filter(function (e: any) { return e != null; });
-    this.amperedate = this.amperedate.filter(function (e: any) { return e != null; });
+    for (let i = 0; i < this.amperelist.length; i++) {
+      if (this.amperelist[i].test_name === 'R') {
+        this.ampereR.splice(this.ampereR.lenght, 0, this.amperelist[i].value);
+        this.ampereDate.splice(this.ampereDate.lenght, 0, this.amperelist[i].do_date);
+      } else if (this.amperelist[i].test_name === 'S') {
+        this.ampereS.splice(this.ampereS.lenght, 0, this.amperelist[i].value);
+      } else if (this.amperelist[i].test_name === 'T') {
+        this.ampereT.splice(this.ampereT.lenght, 0, this.amperelist[i].value);
+      }
+    }
+
+
     for (let i = 0; i < this.totalvibrationlist.length; i++) {
       if (this.totalvibrationlist[i].device_name === this.funloc) {
-        this.vibrationlist.splice(this.vibrationlist.lenght, 0, this.totalvibrationlist[i].value);
+        this.vibrationlist.splice(this.vibrationlist.lenght, 0, this.totalvibrationlist[i]);
       }
     }
-    for (let i = 0; i < this.totalvibrationdate.length; i++) {
-      if (this.totalvibrationdate[i].device_name === this.funloc) {
-        this.vibrationdate.splice(this.vibrationdate.lenght, 0, this.totalvibrationdate[i].do_date);
-      }
-    }
-    //console.log(this.vibrationlist);
 
     this.vibrationlist = this.vibrationlist.filter(function (e: any) { return e != null; });
-    this.vibrationdate = this.vibrationdate.filter(function (e: any) { return e != null; });
+    for (let i = 0; i < this.vibrationlist.length; i++) {
+      if (this.vibrationlist[i].test_name === '2H') {
+        this.vibration2H.splice(this.vibration2H.lenght, 0, this.vibrationlist[i].value);
+        this.vibrationDate.splice(this.vibrationDate.lenght, 0, this.vibrationlist[i].do_date);
+      } else if (this.vibrationlist[i].test_name === 'CF+ (2H)') {
+        this.vibrationCF.splice(this.vibrationCF.lenght, 0, this.vibrationlist[i].value);
+      }
+    }
+    var dataVibration = {
+      labels: this.vibrationDate,
+      datasets: [
+        {
+          label: '2H',
+          data: this.vibration2H,
+          backgroundColor: 'blue',
+          borderColor: 'lightblue',
+          fill: false,
+          lineTension: 0,
+          radius: 5,
+        },
+        {
+          label: 'CF+ 2H',
+          data: this.vibrationCF,
+          backgroundColor: 'green',
+          borderColor: 'lightgreen',
+          fill: false,
+          lineTension: 0,
+          radius: 6,
+        },
+      ],
+    };
+    var dataAmpere = {
+      labels: this.ampereDate,
+      datasets: [
+        {
+          label: 'R',
+          data: this.ampereR,
+          backgroundColor: 'blue',
+          borderColor: 'lightblue',
+          fill: false,
+          lineTension: 0,
+          radius: 5,
+        },
+        {
+          label: 'S',
+          data: this.ampereS,
+          backgroundColor: 'green',
+          borderColor: 'lightgreen',
+          fill: false,
+          lineTension: 0,
+          radius: 7,
+        },
+        {
+          label: 'T',
+          data: this.ampereT,
+          backgroundColor: 'red',
+          borderColor: 'red',
+          fill: false,
+          lineTension: 0,
+          radius: 9,
+        },
+      ], options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    };
+    var dataTemperature = {
+      labels: this.temperatureDate,
+      datasets: [
+        {
+          label: 'Thermal',
+          data: this.temperatureThermal,
+          backgroundColor: 'blue',
+          borderColor: 'lightblue',
+          fill: false,
+          lineTension: 0,
+          radius: 5,
+        },
+      ],
+    };
     var loadagain = setInterval(() => {
-      countagain++;
+      countagain++;;
       this.coba = new Chart('dum', {
         type: 'line',
-        data: {
-          labels: this.vibrationdate,
-          datasets: [{
-            label: 'Data Vibration',
-            data: this.vibrationlist,
-            backgroundColor: [
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(75, 192, 192, 1)',
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      });
+        data: dataVibration,
+      }
+      );
       this.coba2 = new Chart('dumdum', {
         type: 'line',
-        data: {
-          labels: this.amperedate,
-          datasets: [{
-            label: 'Data Ampere',
-            data: this.amperelist,
-            backgroundColor: [
-              'rgba(255, 206, 86, 0.2)',
-            ],
-            borderColor: [
-              '#A0AC00',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
+        data: dataAmpere,
       });
       this.coba3 = new Chart('dumdumdum', {
         type: 'line',
-        data: {
-          labels: this.temperaturedate,
-          datasets: [{
-            label: 'Data Temperature',
-            data: this.temperaturelist,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-          }]
-        }, options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
+        data: dataTemperature,
       });
       if (countagain == 1) {
         clearInterval(loadagain);
       }
-    }, 300);
+    }, 500);
   }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
