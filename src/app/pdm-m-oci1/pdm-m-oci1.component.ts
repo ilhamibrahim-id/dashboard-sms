@@ -3,7 +3,8 @@ import { Chart } from 'chart.js';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from '../services/count.service';
 import { TableUtil } from "../services/tabelUtil";
-
+import { NgxCaptureService } from 'ngx-capture';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-pdm-m-oci1',
@@ -11,8 +12,9 @@ import { TableUtil } from "../services/tabelUtil";
   styleUrls: ['./pdm-m-oci1.component.css']
 })
 export class PdmMOci1Component implements OnInit {
-  constructor(private service: CountService, private spinner: NgxSpinnerService) { }
+  constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
+  @ViewChild('screen', { static: true }) screen: any;
   good: number = 0;
   satis: number = 0;
   unsatisf: number = 0;
@@ -20,6 +22,42 @@ export class PdmMOci1Component implements OnInit {
   searchText: any;
   searchText2: any;
   currentPage: number = 1;
+  public img = "";
+  imgBase64 = '';
+  @ViewChild("ss")
+  taptap!: ElementRef;
+  capture() {
+    this.captureService
+      .getImage(this.taptap.nativeElement, true)
+      .subscribe((img:any) => {
+        this.imgBase64 = img;
+        this.downloadJson();
+      });
+  }
+
+  downloadJson() {
+    var element = document.createElement('a');
+    element.setAttribute('href', this.imgBase64);
+    element.setAttribute('download', 'reportingdaily.png');
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+  DataURIToBlob(dataURI: string) {
+    const splitDataURI = dataURI.split(',');
+    const byteString =
+      splitDataURI[0].indexOf('base64') >= 0
+        ? atob(splitDataURI[1])
+        : decodeURI(splitDataURI[1]);
+    const mimeString = splitDataURI[0].split(':')[1].split(';')[0];
+
+    const ia = new Uint8Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++)
+      ia[i] = byteString.charCodeAt(i);
+
+    return new Blob([ia], { type: mimeString });
+  }
   absoluteIndex(indexOnPage: number): number {
     return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
   }
@@ -28,6 +66,7 @@ export class PdmMOci1Component implements OnInit {
   absoluteIndex2(indexOnPage: number): number {
     return this.itemsPerPage2 * (this.currentPage2 - 1) + indexOnPage;
   }
+
   unacc: number = 0;
   coba: any;
   donut: any = [];
@@ -68,6 +107,7 @@ export class PdmMOci1Component implements OnInit {
   uniqueChars3: any;
   deskripsi: any = 'Loading..';
   funloc: any;
+  funlocabnormaldate: any;
   funloclist: any = [];
   temperaturelist: any = [];
   temperaturedate: any = [];
@@ -76,6 +116,7 @@ export class PdmMOci1Component implements OnInit {
   amperelist: any = [];
   amperedate: any = [];
   showPaginate: number = 5;
+  showPaginate2: number = 5;
   abnormalasset: object = {};
   abnormalassetlist: any = [];
   ampereR: any = [];
@@ -89,16 +130,25 @@ export class PdmMOci1Component implements OnInit {
   temperatureDate: any = [];
   @ViewChild("printsection")
   myNameElem!: ElementRef;
+
   generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
+    this.showPaginate2 = this.abnormalassetlist.length;
     this.currentPage = 1;
+    this.currentPage2 = 1;
   }
   done() {
     this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
   }
   exportTable() {
     TableUtil.exportTableToExcel("prinsection");
     this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
   }
   print(): void {
     let printContents, popupWin: any;
@@ -125,9 +175,12 @@ export class PdmMOci1Component implements OnInit {
       </html>`
     );
     this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
     popupWin.document.close();
   }
-  data($event: any) {
+  data($event: any,$event2 : any) {
     if(this.coba != null && this.coba2 != null && this.coba3 != null){
       this.coba.destroy();
       this.coba2.destroy();
@@ -146,6 +199,7 @@ export class PdmMOci1Component implements OnInit {
     this.vibrationCF = [];
     this.temperatureThermal = [];
     this.funloc = $event;
+    this.funlocabnormaldate = $event2;
     var countagain = 0;
     for (let i = 0; i < this.totaltemperaturelist.length; i++) {
       if (this.totaltemperaturelist[i].device_name === this.funloc) {

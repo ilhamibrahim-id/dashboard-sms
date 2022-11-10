@@ -17,7 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { NgxCaptureModule } from 'ngx-capture';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NgxPaginationModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxCaptureModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

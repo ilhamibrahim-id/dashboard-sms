@@ -50,8 +50,8 @@
                       Finish Check
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{pdmfinish2.length}}
-                      <span class="text-lime-500 ml-1">({{(pdmfinish2.length * 100 / totalasset).toFixed(1)}} %)</span>
+                      {{(this.good + this.goodoci1 + this.satisoci1 + this.satis + this.goodfsb + this.satisfsb + this.unsatisfoci1 + this.unsatisf + this.unacc + this.unaccoci1 + this.unsatisffsb + this.unaccfsb)}}
+                      <span class="text-lime-500 ml-1">({{((this.good + this.goodoci1 + this.satisoci1 + this.satis + this.goodfsb + this.satisfsb + this.unsatisfoci1 + this.unsatisf + this.unacc + this.unaccoci1 + this.unsatisffsb + this.unaccfsb) * 100 / totalasset).toFixed(1)}} %)</span>
                     </h5>
                   </div>
                 </div>

@@ -110,289 +110,309 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-wrap -mx-3">
-    <div class="w-full px-1 py-1 mx-auto">
-      <div class="flex flex-wrap -mx-1 lg:-mx-3">
-        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-6">
-              <p class="text-left text-md">List Job Finish Today
-                <button *ngIf="showPaginate == 5" (click)="generatePaginate()"
-                  class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Click
-                  To Export Data</button>
-                <button *ngIf="showPaginate != 5" (click)="print()"
-                  class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i
-                    class="mr-1 fas fa-file-pdf text-md"></i> PDF </button>
-                <button
-                  class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
-                  *ngIf="showPaginate != 5" (click)="exportTable()"><i class="fa fa-file-excel-o fa-1"></i>
-                  Excel</button>
+  <div id="ss" #ss>
+    <div class="flex flex-wrap -mx-3">
+      <div class="w-full px-1 py-1 mx-auto">
+        <div class="flex flex-wrap -mx-1 lg:-mx-3">
+          <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <p class="text-left text-md">List Job Finish Today
+                  <button *ngIf="showPaginate == 5" (click)="generatePaginate()"
+                    class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Click
+                    To Export Data</button>
+                  <button *ngIf="showPaginate != 5" (click)="print()"
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i
+                      class="mr-1 fas fa-file-pdf text-md"></i> PDF </button>
                   <button
-                  class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
-                  *ngIf="showPaginate != 5" (click)="done()"><i class="fa fa-window-close fa-1"></i>
-                  Reset</button>
-              </p>
-              <h5 class="text-right">Total Data : {{totalfinishtoday2.length}}</h5>
-              <div class="flex items-center text-center mb-4">
-                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
-                  <span
-                    class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text"
-                    class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
-                    placeholder="Type here..." name="search" [(ngModel)]="searchText" />
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                    *ngIf="showPaginate != 5" (click)="exportTable()"><i class="fa fa-file-excel-o fa-1"></i>
+                    Excel</button>
+                  <button
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                    *ngIf="showPaginate != 5" (click)="capture()"><i class="fa fa-camera fa-1"></i>
+                    Capture (minimize screen)</button>
+                  <button
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                    *ngIf="showPaginate != 5" (click)="done()"><i class="fa fa-window-close fa-1"></i>
+                    Reset</button>
+                </p>
+                <div class="flex items-center text-center mb-4">
+                  <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                    <span
+                      class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                      <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text"
+                      class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                      placeholder="Type here..." name="search" [(ngModel)]="searchText" />
+                  </div>
                 </div>
+                <div class="overflow-x-auto relative shadow-lg sm:rounded-lg" id="prinsection" #printsection>
+                  <table border="1"
+                    class="w-full text-lg text-left text-gray-500 text-md dark:text-gray-400 text-center">
+                    <thead class="text-gray-700 uppercase dark:text-gray-400">
+                      <tr>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          No
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Device Name
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          2H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          R
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          S
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          T
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Thermal
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Frequency
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          CF+ 2H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          VC
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          PIC
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Execution Date
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200 dark:border-gray-700"
+                        *ngFor="let header of totalfinishtoday2| filter:searchText | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }; let i = index;">
+                        <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                          {{(currentPage-1) * showPaginate + i + 1}}
+                        </th>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
+                          {{header.device_name}}
+                        </td>
+                        <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.Two_H}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.R}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.S}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.T}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.Thermal}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.Frequency}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.CF}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.VC}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.PIC}}
+                        </td>
+                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                          style="color: black">
+                          {{header.dodate}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center"
+                          style="color: #000000;" bgcolor="#94D977">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 font-semibold text-center"
+                          bgcolor="#F5FF25" style="color: #000000;">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Unsatisfactory'" style="color: #000000;"
+                          class="py-4 px-6 font-semibold text-center" bgcolor="#FED033">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Unacceptable'" style="color: #000000;"
+                          class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6  font-semibold text-center">
+                          -
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h5 class="text-right text-md mt-4 mr-4">Total Data : {{totalfinishtoday2.length}}</h5>
               </div>
-              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg" id="prinsection" #printsection>
-                <table border="1" class="w-full text-lg text-left text-gray-500 text-md dark:text-gray-400 text-center">
-                  <thead class="text-gray-700 uppercase dark:text-gray-400">
-                    <tr>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        No
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        Device Name
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        2H
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        R
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        S
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        T
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        Thermal
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        Frequency
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        CF+ 2H
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        VC
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        PIC
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        Execution Date
-                      </th>
-                      <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                        Status
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="border-b border-gray-200 dark:border-gray-700"
-                      *ngFor="let header of totalfinishtoday2| filter:searchText | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }; let i = index;">
-                      <th
-                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
-                        {{(currentPage-1) * showPaginate + i + 1}}
-                      </th>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
-                        {{header.device_name}}
-                      </td>
-                      <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.Two_H}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.R}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.S}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.T}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.Thermal}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.Frequency}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.CF}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.VC}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.PIC}}
-                      </td>
-                      <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800" style="color: black">
-                        {{header.dodate}}
-                      </td>
-                      <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center" style="color: #000000;" bgcolor="#94D977">
-                        {{header.Stat}}
-                      </td>
-                      <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 font-semibold text-center"
-                        bgcolor="#F5FF25" style="color: #000000;">
-                        {{header.Stat}}
-                      </td>
-                      <td *ngIf="header.Stat == 'Unsatisfactory'" style="color: #000000;" class="py-4 px-6 font-semibold text-center"
-                        bgcolor="#FED033">
-                        {{header.Stat}}
-                      </td>
-                      <td *ngIf="header.Stat == 'Unacceptable'" style="color: #000000;" class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
-                        {{header.Stat}}
-                      </td>
-                      <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6  font-semibold text-center">
-                        -
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
             </div>
-            <pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="flex flex-wrap -mx-3">
-    <div class="w-full px-1 py-1 mx-auto">
-      <div class="flex flex-wrap -mx-1 lg:-mx-3">
-        <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <h5 class="text-center">OCI 1</h5>
-            </div>
-          </div>
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-6">
-              <canvas id="donut" width="310" height="300"></canvas>
-              <div class="px-6 pt-4 pb-2 text-center">
-                <span style="background-color: green;"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Good:
-                  {{good}}</span>
-                <span style="background-color: rgb(230, 230, 0);"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">SatisFactory:
-                  {{satis}}</span>
-                <span style="background-color: orange;"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">UnSatisFactory:
-                  {{unsatisf}}</span>
-                <span style="background-color: red;"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Unacceptable:
-                  {{unacc}}</span>
+    <div class="flex flex-wrap -mx-3">
+      <div class="w-full px-1 py-1 mx-auto">
+        <div class="flex flex-wrap -mx-1 lg:-mx-3">
+          <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
+            <div
+              class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-4">
+                <h5 class="text-center">OCI 2</h5>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <h5 class="text-center">List Abnormal Asset</h5>
-            </div>
-          </div>
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-6">
-              <p class="text-center" style="color: red;">Click Device Name For Show Chart Abnormal Asset</p>
-              <div class="flex items-center text-center mb-4">
-                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
-                  <span
-                    class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text"
-                    class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
-                    placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <canvas id="donut" width="310" height="300"></canvas>
+                <div class="px-6 pt-4 pb-2 text-center">
+                  <span style="background-color: green;"
+                    class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Good:
+                    {{good}}</span>
+                  <span style="background-color: rgb(230, 230, 0);"
+                    class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">SatisFactory:
+                    {{satis}}</span>
+                  <span style="background-color: orange;"
+                    class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">UnSatisFactory:
+                    {{unsatisf}}</span>
+                  <span style="background-color: red;"
+                    class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Unacceptable:
+                    {{unacc}}</span>
                 </div>
               </div>
-              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-                <table border="1" style="border-collapse: collapse;" class="w-full text-lg text-left text-gray-500 dark:text-gray-400">
-                  <thead class=" text-gray-700 uppercase dark:text-gray-400">
-                    <tr>
-                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
-                        No
-                      </th>
-                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
-                        Device
-                      </th>
-                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
-                        EXECUTION DATE
-                      </th>
-                      <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
-                        Status
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="border-b border-gray-200 dark:border-gray-700"
-                      *ngFor="let getdata of abnormalassetlist| filter:searchText2 |paginate: { id:'pagination2', currentPage: currentPage2, itemsPerPage: 5 }; let i = index;">
-                      <th scope="row"
-                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
-                        {{(currentPage2-1) * 5 + i + 1}}
-                      </th>
-                      <td (click)="data(getdata.device_name)" style="color: #000000;" class="py-4 px-6">
-                        {{getdata.device_name}}
-                      </td>
-                      <td style="color: #000000;" class="py-4 px-6">
-                        {{getdata.dodate}}
-                      </td>
-                      <td *ngIf="getdata.Stat == 'Unsatisfactory'" style="color: #000000;" class="py-4 px-6 font-semibold text-center"
-                      bgcolor="#FED033">
-                        {{getdata.Stat}}
-                      </td>
-                      <td *ngIf="getdata.Stat == 'Unacceptable'" style="color: #000000;" class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
-                        {{getdata.Stat}}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            </div>
+          </div>
+          <div class="my-1 px-1 w-full max-w-full md:w-1/2 lg:my-6 lg:px-6">
+            <div
+              class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-4">
+                <h5 class="text-center">List Abnormal Asset</h5>
               </div>
             </div>
-            <pagination-controls class="text-center" id="pagination2" (pageChange)="currentPage2 = $event">
-            </pagination-controls>
-          </div>
-        </div>
-        <div class="w-full px-1 py-1 mx-auto mt-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <h5 class="text-center">List Abnormal Asset</h5>
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <p class="text-center" style="color: red;">Click Device Name For Show Chart Abnormal Asset</p>
+                <div class="flex items-center text-center mb-4">
+                  <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                    <span
+                      class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                      <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text"
+                      class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                      placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
+                  </div>
+                </div>
+                <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+                  <table border="1" style="border-collapse: collapse;"
+                    class="w-full text-lg text-left text-gray-500 dark:text-gray-400">
+                    <thead class=" text-gray-700 uppercase dark:text-gray-400">
+                      <tr>
+                        <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
+                          No
+                        </th>
+                        <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
+                          Device
+                        </th>
+                        <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
+                          EXECUTION DATE
+                        </th>
+                        <th scope="col" class="py-3 px-6 text-white" bgcolor="#878790">
+                          Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200 dark:border-gray-700"
+                        *ngFor="let getdata of abnormalassetlist| filter:searchText2 |paginate: { id:'pagination2', currentPage: currentPage2, itemsPerPage: showPaginate2 }; let i = index;">
+                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white"
+                          bgcolor="#878790">
+                          {{(currentPage2-1) * showPaginate2 + i + 1}}
+                        </th>
+                        <td (click)="data(getdata.device_name)" style="color: #000000;" class="py-4 px-6">
+                          {{getdata.device_name}}
+                        </td>
+                        <td style="color: #000000;" class="py-4 px-6">
+                          {{getdata.dodate}}
+                        </td>
+                        <td *ngIf="getdata.Stat == 'Unsatisfactory'" style="color: #000000;"
+                          class="py-4 px-6 font-semibold text-center" bgcolor="#FED033">
+                          {{getdata.Stat}}
+                        </td>
+                        <td *ngIf="getdata.Stat == 'Unacceptable'" style="color: #000000;"
+                          class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
+                          {{getdata.Stat}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <pagination-controls class="text-center" id="pagination2" (pageChange)="currentPage2 = $event">
+              </pagination-controls>
             </div>
           </div>
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-6">
-              <p class="text-center" style="color: red;">Device Name : {{funloc}}</p>
-              <div class="flex flex-wrap -mx-1 lg:-mx-3">
-                <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
-                  <div
-                    class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                    <div class="flex-auto p-2">
-                      <h5 class="text-center">Vibration</h5>
+          <div class="w-full px-1 py-1 mx-auto mt-4">
+            <div
+              class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-4">
+                <h5 class="text-center">List Abnormal Asset</h5>
+              </div>
+            </div>
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <p class="text-center" style="color: red;">Device Name : {{funloc}}</p>
+                <div class="flex flex-wrap -mx-1 lg:-mx-3">
+                  <div class="my-1 px-1 w-full max-w-full md:w-4/12 lg:my-6 lg:px-6">
+                    <div
+                      class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+                      <div class="flex-auto p-2">
+                        <h5 class="text-center">Vibration</h5>
+                      </div>
                     </div>
+                    <canvas id="dum" width="310" height="300"></canvas>
                   </div>
-                  <canvas id="dum" width="310" height="300"></canvas>
-                </div>
-                <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
-                  <div
-                    class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                    <div class="flex-auto p-2">
-                      <h5 class="text-center">Ampere</h5>
+                  <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
+                    <div
+                      class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+                      <div class="flex-auto p-2">
+                        <h5 class="text-center">Ampere</h5>
+                      </div>
                     </div>
+                    <canvas id="dumdum" width="310" height="300"></canvas>
                   </div>
-                  <canvas id="dumdum" width="310" height="300"></canvas>
-                </div>
-                <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
-                  <div
-                    class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-                    <div class="flex-auto p-2">
-                      <h5 class="text-center">Temperature</h5>
+                  <div class="my-1 px-1 w-full md:w-4/12 lg:my-6 lg:px-6">
+                    <div
+                      class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+                      <div class="flex-auto p-2">
+                        <h5 class="text-center">Temperature</h5>
+                      </div>
                     </div>
+                    <canvas id="dumdumdum" width="310" height="300"></canvas>
                   </div>
-                  <canvas id="dumdumdum" width="310" height="300"></canvas>
                 </div>
               </div>
             </div>

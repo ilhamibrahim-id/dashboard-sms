@@ -266,6 +266,15 @@ export class CountService {
   getReadGoodAndSatisfsb() {
     return this.httpClient.get(api + "totalgoodandsatisfsb");
   }
+  getReadGoodAndSatisoci1y() {
+    return this.httpClient.get(api + "totalgoodandsatisoci1y");
+  }
+  getReadGoodAndSatisoci2y() {
+    return this.httpClient.get(api + "totalgoodandsatisoci2y");
+  }
+  getReadGoodAndSatisfsby() {
+    return this.httpClient.get(api + "totalgoodandsatisfsby");
+  }
   getReadunsatissunac() {
     return this.httpClient.get(api + "totalunsatisunac");
   }

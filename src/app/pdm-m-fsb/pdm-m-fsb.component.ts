@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { NgxCaptureService } from 'ngx-capture';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from '../services/count.service';
 import { TableUtil } from "../services/tabelUtil";
@@ -10,12 +11,48 @@ import { TableUtil } from "../services/tabelUtil";
   styleUrls: ['./pdm-m-fsb.component.css']
 })
 export class PdmMFsbComponent implements OnInit {
-  constructor(private service: CountService, private spinner: NgxSpinnerService) { }
+  constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
   itemsPerPage: number = 0;
   searchText: any;
   searchText2: any;
   currentPage: number = 1;
+  public img = "";
+  imgBase64 = '';
+  @ViewChild("ss")
+  taptap!: ElementRef;
+  capture() {
+    this.captureService
+      .getImage(this.taptap.nativeElement, true)
+      .subscribe((img:any) => {
+        this.imgBase64 = img;
+        this.downloadJson();
+      });
+  }
+
+  downloadJson() {
+    var element = document.createElement('a');
+    element.setAttribute('href', this.imgBase64);
+    element.setAttribute('download', 'reportingdaily.png');
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+  DataURIToBlob(dataURI: string) {
+    const splitDataURI = dataURI.split(',');
+    const byteString =
+      splitDataURI[0].indexOf('base64') >= 0
+        ? atob(splitDataURI[1])
+        : decodeURI(splitDataURI[1]);
+    const mimeString = splitDataURI[0].split(':')[1].split(';')[0];
+
+    const ia = new Uint8Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++)
+      ia[i] = byteString.charCodeAt(i);
+
+    return new Blob([ia], { type: mimeString });
+  }
   absoluteIndex(indexOnPage: number): number {
     return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
   }
@@ -71,6 +108,7 @@ export class PdmMFsbComponent implements OnInit {
   amperedate: any = [];
   cd: number = 0;
   showPaginate: number = 5;
+  showPaginate2: number = 5;
   abnormalasset: object = {};
   abnormalassetlist: any = [];
   ampereR: any = [];
@@ -84,16 +122,24 @@ export class PdmMFsbComponent implements OnInit {
   temperatureDate: any = [];
   @ViewChild("printsection")
   myNameElem!: ElementRef;
-  generatePaginate(){
+  generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
+    this.showPaginate2 = this.abnormalassetlist.length;
     this.currentPage = 1;
+    this.currentPage2 = 1;
   }
-  done(){
+  done() {
     this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
   }
   exportTable() {
     TableUtil.exportTableToExcel("prinsection");
     this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
   }
   print(): void {
     let printContents, popupWin: any;
@@ -120,8 +166,11 @@ export class PdmMFsbComponent implements OnInit {
       </html>`
     );
     this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
     popupWin.document.close();
-}
+  }
 data($event: any) {
   if(this.coba != null && this.coba2 != null && this.coba3 != null){
     this.coba.destroy();

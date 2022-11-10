@@ -25,8 +25,6 @@ export class PdmDashboardComponent implements OnInit {
   asset: object = {};
   asset2: any = [];
   totalasset: any;
-  pdmfinish: object = {};
-  pdmfinish2: any = [];
   totalpdmfinish: any;
   goodsatis: object = {};
   goodsatis2: any = [];
@@ -94,7 +92,7 @@ export class PdmDashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getReadGoodAndSatisoci2().subscribe(data => {
+      this.service.getReadGoodAndSatisoci2y().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -121,7 +119,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadGoodAndSatisfsb().subscribe(data => {
+      this.service.getReadGoodAndSatisfsby().subscribe(data => {
         this.goodsatisfsb = data;
         Object.values(this.goodsatisfsb).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -146,7 +144,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadGoodAndSatisoci1().subscribe(data => {
+      this.service.getReadGoodAndSatisoci1y().subscribe(data => {
         this.goodsatisoci1 = data;
         Object.values(this.goodsatisoci1).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -182,30 +180,6 @@ export class PdmDashboardComponent implements OnInit {
           for (let elem of this.asset2) {
             // this.totalfinding[0] = elem.total;
             this.totalasset = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.service.getReadPdmFinish().subscribe(data => {
-        this.pdmfinish = data;
-        Object.values(this.pdmfinish).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-            this.pdmfinish2.splice(this.pdmfinish2.lenght, 0, array[i]);
-          }
-          // console.log(this.pdmfinish2);
-
-          // // console.log(this.const2);
-          for (let elem of this.pdmfinish2) {
-            // this.totalfinding[0] = elem.total;
-            this.totalpdmfinish = elem.total;
             //// console.log(this.totalfinding[0]);
           }
 
