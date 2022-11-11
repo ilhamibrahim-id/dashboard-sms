@@ -121,6 +121,11 @@ export class PdmMOci2Component implements OnInit {
   temperatureDate: any = [];
   @ViewChild("printsection")
   myNameElem!: ElementRef;
+  notepdm: object = {};
+  notepdmlist: any = [];
+  funlocabnormaldate: any;
+  picture: any;
+  note: any;
   generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
     this.showPaginate2 = this.abnormalassetlist.length;
@@ -170,12 +175,14 @@ export class PdmMOci2Component implements OnInit {
     this.currentPage2 = 1;
     popupWin.document.close();
   }
-  data($event: any) {
+  data($event: any,$event2: any) {
     if(this.coba != null && this.coba2 != null && this.coba3 != null){
       this.coba.destroy();
       this.coba2.destroy();
       this.coba3.destroy();
     }
+    this.note = '';
+    this.picture = '';
     this.temperaturelist = [];
     this.amperelist = [];
     this.vibrationlist = [];
@@ -188,8 +195,16 @@ export class PdmMOci2Component implements OnInit {
     this.vibration2H = [];
     this.vibrationCF = [];
     this.temperatureThermal = [];
+    this.funlocabnormaldate = $event2;
     this.funloc = $event;
     var countagain = 0;
+    for (let i = 0; i < this.notepdmlist.length; i++) {
+      if (this.notepdmlist[i].device_name === this.funloc && this.notepdmlist[i].do_date === $event2) {
+        this.note = this.notepdmlist[i].note;
+        this.picture = 'http://192.168.9.47/plan_pdm/files/' + this.notepdmlist[i].picture;
+        break;
+      }
+    }
     for (let i = 0; i < this.totaltemperaturelist.length; i++) {
       if (this.totaltemperaturelist[i].device_name === this.funloc) {
         this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i]);
@@ -340,6 +355,22 @@ export class PdmMOci2Component implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.service.getNotePdm().subscribe(data => {
+        this.notepdm = data;
+        Object.values(this.notepdm).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.notepdmlist.splice(this.notepdmlist.lenght, 0, array[i]);
+          }
+        })
+
+      }
+      );
       this.service.getReadFinishTodayoci2abnormal().subscribe(data => {
         this.abnormalasset = data;
         Object.values(this.abnormalasset).forEach(data => {

@@ -407,5 +407,7 @@ export class CountService {
   getKategori() {
     return this.httpClient.get(api + "kategori");
   }
-
+  getNotePdm () {
+    return this.httpClient.get(api + "notepdm");
+  }
 };

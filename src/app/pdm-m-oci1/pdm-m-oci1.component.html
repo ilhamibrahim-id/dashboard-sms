@@ -349,7 +349,8 @@
                           bgcolor="#878790">
                           {{(currentPage2-1) * showPaginate2 + i + 1}}
                         </th>
-                        <td (click)="data(getdata.device_name,getdata.dodate)" style="color: #000000;" class="py-4 px-6">
+                        <td (click)="data(getdata.device_name,getdata.dodate)" style="color: #000000;"
+                          class="py-4 px-6">
                           {{getdata.device_name}}
                         </td>
                         <td style="color: #000000;" class="py-4 px-6">
@@ -389,21 +390,22 @@
                     <tbody>
                       <tr class="border-b border-gray-200 dark:border-gray-700">
                         <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
-                          <img src="https://www.doktermobil.com/wp-content/uploads/2021/10/Komponen-Mesin-Mobil-2-1024x576.jpg" style=" width: 100%;
-                          max-width: 700px;
+                          <div *ngIf="note == null"><img src="assets/img/nodata.jpeg" style=" width: 100%;
+                            max-width: 400px;
+                            height: auto;" class="center"></div>
+                          <div *ngIf="note != null">
+                            <img src="{{picture}}" style=" width: 100%;
+                          max-width: 400px;
                           height: auto;" class="center">
+                          </div>
                         </td>
                       </tr>
                       <tr class="border-b border-gray-200 dark:border-gray-700">
                         <td width="100" class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
-                         mesin dalam keadaaan ya begitu yaudah sih ya
+                          <div *ngIf="note != null" [innerHTML]='note'></div>
+                          <div *ngIf="note == null">
+                            <p>Tidak Ada Data</p>
+                          </div>
                         </td>
                       </tr>
                     </tbody>
