@@ -14,6 +14,7 @@ import { tap } from 'rxjs';
 export class PdmMOci1Component implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
+  public exportdata: boolean = false;
   @ViewChild('screen', { static: true }) screen: any;
   good: number = 0;
   satis: number = 0;
@@ -148,8 +149,10 @@ export class PdmMOci1Component implements OnInit {
     this.showPaginate2 = this.abnormalassetlist.length;
     this.currentPage = 1;
     this.currentPage2 = 1;
+    this.exportdata = !this.exportdata;
   }
   done() {
+    this.exportdata = !this.exportdata;
     this.showPaginate = 5;
     this.showPaginate2 = 5;
     this.currentPage = 1;
