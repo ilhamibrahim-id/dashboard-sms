@@ -35,12 +35,17 @@ export class DashboardComponent implements OnInit {
   public loaddata: any;
   donut: any = [];
   coba: any = [];
+  private kategori: any;
+  private totalfindingsub: any;
+  private pendingexecutesub: any;
+  private finishexecutesub: any;
+  private readyexecutesub: any;
   deskripsi: any = 'Loading..';
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getKategori().subscribe(data => {
+      this.kategori = this.service.getKategori().subscribe(data => {
         this.totalkategori = data;
         Object.values(this.totalkategori).forEach(data => {
           // // console.log(data);
@@ -72,7 +77,7 @@ export class DashboardComponent implements OnInit {
       }
       );
       //totalfinding
-      this.service.getCountTotalFinding().subscribe(data => {
+      this.totalfindingsub = this.service.getCountTotalFinding().subscribe(data => {
         this.const = data;
         Object.values(this.const).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -94,7 +99,7 @@ export class DashboardComponent implements OnInit {
       }
       );
       //readpendingexecute
-      this.service.getReadPendingExecute().subscribe(data => {
+      this.pendingexecutesub = this.service.getReadPendingExecute().subscribe(data => {
         this.pendingexecute = data;
         Object.values(this.pendingexecute).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -112,7 +117,7 @@ export class DashboardComponent implements OnInit {
       }
       );
       //readfinishexecute
-      this.service.getReadFinishExecute().subscribe(data => {
+      this.finishexecutesub = this.service.getReadFinishExecute().subscribe(data => {
         this.finishexecute = data;
         Object.values(this.finishexecute).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -131,7 +136,7 @@ export class DashboardComponent implements OnInit {
       }
       );
       //readreadyexecute
-      this.service.getReadReadyExecute().subscribe(data => {
+      this.readyexecute = this.service.getReadReadyExecute().subscribe(data => {
         this.readyexecute = data;
         Object.values(this.readyexecute).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -243,10 +248,13 @@ export class DashboardComponent implements OnInit {
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
-          this.spinner.show();
-          setInterval (() =>{
-            window.location.reload();
-          },2000);
+          this.kategori.unsubscribe();
+          this.totalfindingsub.unsubscribe();
+          this.pendingexecutesub.unsubscribe();
+          this.finishexecutesub.unsubscribe();
+          this.readyexecutesub.unsubscribe();
+          clearInterval(a);
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);

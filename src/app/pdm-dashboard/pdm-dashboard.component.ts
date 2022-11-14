@@ -85,6 +85,13 @@ export class PdmDashboardComponent implements OnInit {
   fsbunacc2: any = [];
   totalfsbunacc: any;
   deskripsi: any = 'Loading..';
+  private goodsatisoci2y:any;
+  private goodsatisoci1y:any;
+  private goodsatisfsby:any;
+  private totalpdmasset:any;
+  private totalpdmassetoci1:any;
+  private totalpdmassetoci2:any;
+  private totalpdmassetfsb:any;
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
   donut: any = [];
@@ -92,7 +99,7 @@ export class PdmDashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getReadGoodAndSatisoci2y().subscribe(data => {
+      this.goodsatisoci2y = this.service.getReadGoodAndSatisoci2y().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -119,7 +126,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadGoodAndSatisfsby().subscribe(data => {
+      this.goodsatisfsby = this.service.getReadGoodAndSatisfsby().subscribe(data => {
         this.goodsatisfsb = data;
         Object.values(this.goodsatisfsb).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -144,7 +151,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadGoodAndSatisoci1y().subscribe(data => {
+      this.goodsatisoci1y = this.service.getReadGoodAndSatisoci1y().subscribe(data => {
         this.goodsatisoci1 = data;
         Object.values(this.goodsatisoci1).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -169,7 +176,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadTotalPdmAsset().subscribe(data => {
+      this.totalpdmasset = this.service.getReadTotalPdmAsset().subscribe(data => {
         this.asset = data;
         Object.values(this.asset).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -189,7 +196,7 @@ export class PdmDashboardComponent implements OnInit {
 
       }
       );
-      this.service.getTotalAssetOci1().subscribe(data => {
+     this.totalpdmassetoci1 = this.service.getTotalAssetOci1().subscribe(data => {
         this.assetoci1 = data;
         Object.values(this.assetoci1).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -209,7 +216,7 @@ export class PdmDashboardComponent implements OnInit {
 
       }
       );
-      this.service.getTotalAssetOci2().subscribe(data => {
+      this.totalpdmassetoci2 = this.service.getTotalAssetOci2().subscribe(data => {
         this.assetoci2 = data;
         Object.values(this.assetoci2).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -229,7 +236,7 @@ export class PdmDashboardComponent implements OnInit {
 
       }
       );
-      this.service.getTotalAssetFsb().subscribe(data => {
+      this.totalpdmassetfsb = this.service.getTotalAssetFsb().subscribe(data => {
         this.assetfsb = data;
         Object.values(this.assetfsb).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -363,9 +370,15 @@ export class PdmDashboardComponent implements OnInit {
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
-          setInterval (() =>{
-            window.location.reload();
-          },2000);
+          clearInterval(a);
+          this.goodsatisoci1y.unsubscribe();
+          this.goodsatisoci2y.unsubscribe();
+          this.goodsatisfsby.unsubscribe();
+          this.totalpdmasset.unsubscribe();
+          this.totalpdmassetoci1.unsubscribe();
+          this.totalpdmassetoci2.unsubscribe();
+          this.totalpdmassetfsb.unsubscribe();
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);

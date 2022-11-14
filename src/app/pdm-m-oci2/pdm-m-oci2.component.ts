@@ -13,8 +13,10 @@ import { TableUtil } from "../services/tabelUtil";
 export class PdmMOci2Component implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
+  @ViewChild('screen', { static: true }) screen: any;
   good: number = 0;
   satis: number = 0;
+  unsatisf: number = 0;
   itemsPerPage: number = 0;
   searchText: any;
   searchText2: any;
@@ -63,7 +65,7 @@ export class PdmMOci2Component implements OnInit {
   absoluteIndex2(indexOnPage: number): number {
     return this.itemsPerPage2 * (this.currentPage2 - 1) + indexOnPage;
   }
-  unsatisf: number = 0;
+
   unacc: number = 0;
   coba: any;
   donut: any = [];
@@ -71,11 +73,10 @@ export class PdmMOci2Component implements OnInit {
   coba3: any;
   asset: object = {};
   asset2: any = [];
-  totalabnormallisttrue: any = [];
   totalasset: any;
   finish: object = {};
   finish2: any = [];
-  totalfinish: any = [];
+  totalfinish: any;
   goodsatis: object = {};
   goodsatis2: any = [];
   totalgoodsatis: any;
@@ -96,9 +97,16 @@ export class PdmMOci2Component implements OnInit {
   temperature: object = {};
   totaltemperaturelist: any = [];
   totaltemperaturedate: any = [];
+  headertitle: any = [];
+  devicename: any = [];
+  statusdevice: any = [];
   public loaddata: any;
+  uniqueChars: any;
+  uniqueChars2: any;
+  uniqueChars3: any;
   deskripsi: any = 'Loading..';
   funloc: any;
+  funlocabnormaldate: any;
   funloclist: any = [];
   temperaturelist: any = [];
   temperaturedate: any = [];
@@ -123,9 +131,17 @@ export class PdmMOci2Component implements OnInit {
   myNameElem!: ElementRef;
   notepdm: object = {};
   notepdmlist: any = [];
-  funlocabnormaldate: any;
   picture: any;
   note: any;
+  private goodsatisoci2:any;
+  private pdmfinish:any;
+  private finishtoday:any;
+  private finishabnormal: any;
+  private notepdmunsub:any;
+  private temperaturelinesub:any;
+  private amperesub: any;
+  private vibtrationsub: any;
+  private totalassetsub: any;
   generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
     this.showPaginate2 = this.abnormalassetlist.length;
@@ -175,7 +191,7 @@ export class PdmMOci2Component implements OnInit {
     this.currentPage2 = 1;
     popupWin.document.close();
   }
-  data($event: any,$event2: any) {
+  data($event: any,$event2 : any) {
     if(this.coba != null && this.coba2 != null && this.coba3 != null){
       this.coba.destroy();
       this.coba2.destroy();
@@ -195,9 +211,10 @@ export class PdmMOci2Component implements OnInit {
     this.vibration2H = [];
     this.vibrationCF = [];
     this.temperatureThermal = [];
-    this.funlocabnormaldate = $event2;
     this.funloc = $event;
+    this.funlocabnormaldate = $event2;
     var countagain = 0;
+
     for (let i = 0; i < this.notepdmlist.length; i++) {
       if (this.notepdmlist[i].device_name === this.funloc && this.notepdmlist[i].do_date === $event2) {
         this.note = this.notepdmlist[i].note;
@@ -205,6 +222,8 @@ export class PdmMOci2Component implements OnInit {
         break;
       }
     }
+
+
     for (let i = 0; i < this.totaltemperaturelist.length; i++) {
       if (this.totaltemperaturelist[i].device_name === this.funloc) {
         this.temperaturelist.splice(this.temperaturelist.lenght, 0, this.totaltemperaturelist[i]);
@@ -355,7 +374,7 @@ export class PdmMOci2Component implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getNotePdm().subscribe(data => {
+      this.notepdmunsub = this.service.getNotePdm().subscribe(data => {
         this.notepdm = data;
         Object.values(this.notepdm).forEach(data => {
           // // console.log(data);
@@ -371,7 +390,7 @@ export class PdmMOci2Component implements OnInit {
 
       }
       );
-      this.service.getReadFinishTodayoci2abnormal().subscribe(data => {
+      this.finishabnormal = this.service.getReadFinishTodayoci2abnormal().subscribe(data => {
         this.abnormalasset = data;
         Object.values(this.abnormalasset).forEach(data => {
           // // console.log(data);
@@ -386,7 +405,7 @@ export class PdmMOci2Component implements OnInit {
         })
       }
       );
-      this.service.getTemperatureLineoci2().subscribe(data => {
+      this.temperaturelinesub = this.service.getTemperatureLineoci2().subscribe(data => {
         this.temperature = data;
         Object.values(this.temperature).forEach(data => {
           // // console.log(data);
@@ -403,7 +422,7 @@ export class PdmMOci2Component implements OnInit {
         })
       }
       );
-      this.service.getAmpereLineoci2().subscribe(data => {
+      this.amperesub = this.service.getAmpereLineoci2().subscribe(data => {
         this.ampere = data;
         Object.values(this.ampere).forEach(data => {
           // // console.log(data);
@@ -419,7 +438,7 @@ export class PdmMOci2Component implements OnInit {
         })
       }
       );
-      this.service.getVibrationLineoci2().subscribe(data => {
+      this.vibtrationsub = this.service.getVibrationLineoci2().subscribe(data => {
         this.vibration = data;
         Object.values(this.vibration).forEach(data => {
           // // console.log(data);
@@ -435,21 +454,7 @@ export class PdmMOci2Component implements OnInit {
         })
       }
       );
-      this.service.getReadFinishTodayoci2().subscribe(data => {
-        this.abnormal = data;
-        Object.values(this.abnormal).forEach(data => {
-          // // console.log(data);
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          // // console.log(array);
-          for (let i = 0; i < array.length; i++) {
-            this.totalabnormal.splice(this.totalabnormal.lenght, 0, array[i]);
-          }
-        })
-      }
-      );
-      this.service.getReadFinishTodayoci2().subscribe(data => {
+      this.finishtoday = this.service.getReadFinishTodayoci2().subscribe(data => {
         this.totalfinishtoday = data;
         Object.values(this.totalfinishtoday).forEach(data => {
           // // console.log(data);
@@ -460,10 +465,24 @@ export class PdmMOci2Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
           }
+          //// console.log(array.length);
+
+          for (let i = 0; i < this.totalfinishtoday2.length; i++) {
+            this.headertitle[i] = this.totalfinishtoday2[i].test_name;
+            this.devicename[i] = this.totalfinishtoday2[i].device_name;
+            this.statusdevice[i] = this.totalfinishtoday2[i].status;
+          }
+          this.uniqueChars = [...new Set(this.headertitle)];
+          this.uniqueChars2 = [...new Set(this.devicename)];
+          // console.log(this.totalfinishtoday2);
+          //// console.log(this.statusdevice);
+
+
+          // // console.log(this.findingpending2);
         })
       }
       );
-      this.service.getReadGoodAndSatisoci2().subscribe(data => {
+      this.goodsatisoci2 = this.service.getReadGoodAndSatisoci2().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -472,8 +491,6 @@ export class PdmMOci2Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
           }
-          //// console.log(this.goodsatis2);
-
           for (let elem of this.goodsatis2) {
             if (elem.status == 'Good') {
               this.good += 1;
@@ -490,9 +507,8 @@ export class PdmMOci2Component implements OnInit {
         })
       }
       );
-      this.service.getReadPdmFinishoci2().subscribe(data => {
+      this.pdmfinish = this.service.getReadPdmFinishoci2().subscribe(data => {
         this.finish = data;
-
         Object.values(this.finish).forEach(data => {
           var array = Object.keys(data).map(function (key) {
             return data[key];
@@ -500,16 +516,13 @@ export class PdmMOci2Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.finish2.splice(this.finish2.lenght, 0, array[i]);
           }
-          //// console.log(this.finish2);
-
           for (let elem of this.finish2) {
             this.totalfinish = elem.total;
           }
-
         })
       }
       );
-      this.service.getReadTotalPdmAssetoci2().subscribe(data => {
+      this.totalassetsub = this.service.getReadTotalPdmAssetoci2().subscribe(data => {
         this.asset = data;
         Object.values(this.asset).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -558,15 +571,21 @@ export class PdmMOci2Component implements OnInit {
           }, 50);
           this.spinner.hide();
           this.resolved = true;
-          //// console.log("3");
           clearInterval(a);
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
-          this.spinner.show();
-          setInterval (() =>{
-            window.location.reload();
-          },2000);
+          this.goodsatisoci2.unsubscribe();
+          this.pdmfinish.unsubscribe();
+          this.finishtoday.unsubscribe();
+          this.finishabnormal.unsubscribe();
+          this.notepdmunsub.unsubscribe();
+          this.temperaturelinesub.unsubscribe();
+          this.amperesub.unsubscribe();
+          this.vibtrationsub.unsubscribe();
+          this.totalassetsub.unsubscribe();
+          clearInterval(a);
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);

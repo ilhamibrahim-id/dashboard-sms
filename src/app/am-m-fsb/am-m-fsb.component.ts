@@ -53,6 +53,13 @@ export class AmMFsbComponent implements OnInit {
   orderarr: any = [];
   deskripsi: any = 'Loading..';
   orderobj: object = {};
+  private leveltotal: any;
+  private ordersub: any;
+  private findingsub: any;
+  private totalfindingsub: any;
+  private totalfindingmsub: any;
+  private totalfinishmsub: any;
+  private totalreadymsub: any;
   data($event: any) {
     //// console.log($event);
     this.funloclist = [];
@@ -69,7 +76,7 @@ export class AmMFsbComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getOrder().subscribe(data => {
+      this.ordersub = this.service.getOrder().subscribe(data => {
         this.orderobj = data;
         Object.values(this.orderobj).forEach(data => {
           // // console.log(data);
@@ -88,7 +95,7 @@ export class AmMFsbComponent implements OnInit {
 
       }
       );
-      this.service.getReadLevelTotalfsb().subscribe(data => {
+      this.leveltotal = this.service.getReadLevelTotalfsb().subscribe(data => {
         this.totallevel = data;
         Object.values(this.totallevel).forEach(data => {
           // // console.log(data);
@@ -117,7 +124,7 @@ export class AmMFsbComponent implements OnInit {
 
       }
       );
-      this.service.getReadFindingPendingfsb().subscribe(data => {
+      this.findingsub =this.service.getReadFindingPendingfsb().subscribe(data => {
         this.findingpending = data;
         Object.values(this.findingpending).forEach(data => {
           // // console.log(data);
@@ -135,7 +142,7 @@ export class AmMFsbComponent implements OnInit {
 
       }
       );
-      this.service.getTotalFindingMfsb().subscribe(data => {
+      this.totalfindingsub = this.service.getTotalFindingMfsb().subscribe(data => {
         this.totalfm = data;
         Object.values(this.totalfm).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -156,7 +163,7 @@ export class AmMFsbComponent implements OnInit {
 
       }
       );
-      this.service.getTotalPendingFindingMfsb().subscribe(data => {
+      this.totalfindingmsub = this.service.getTotalPendingFindingMfsb().subscribe(data => {
         this.totalpm = data;
         Object.values(this.totalpm).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -177,7 +184,7 @@ export class AmMFsbComponent implements OnInit {
 
       }
       );
-      this.service.getTotalFinsihFindingMfsb().subscribe(data => {
+      this.totalfinishmsub = this.service.getTotalFinsihFindingMfsb().subscribe(data => {
         this.totalffm = data;
         Object.values(this.totalffm).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -198,7 +205,7 @@ export class AmMFsbComponent implements OnInit {
 
       }
       );
-      this.service.getTotalReadyFindingMfsb().subscribe(data => {
+      this.totalreadymsub = this.service.getTotalReadyFindingMfsb().subscribe(data => {
         this.totalrm = data;
         Object.values(this.totalrm).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -344,10 +351,15 @@ export class AmMFsbComponent implements OnInit {
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
-          this.spinner.show();
-          setInterval (() =>{
-            window.location.reload();
-          },2000);
+          clearInterval(a);
+          this.leveltotal.unsubscribe();
+          this.ordersub.unsubscribe();
+          this.findingsub.unsubscribe();
+          this.totalfindingmsub.unsubscribe();
+          this.totalfindingsub.unsubscribe();
+          this.totalfinishmsub.unsubscribe();
+          this.totalreadymsub.unsubscribe();
+          this.ngOnInit();
         }
         if (count = 1) {
           clearInterval(a);
