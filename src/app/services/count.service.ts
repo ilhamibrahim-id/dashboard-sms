@@ -18,6 +18,7 @@ export class CountService {
   public bigFiveByMachineName: any = [];
   public bigFiveByMachineValue: any = [];
   public bigFiveMachine: any = [];
+  public bigFiveDescription: any = [];
 
   public tableObject: object = {};
   public table: string | any;
@@ -82,12 +83,15 @@ export class CountService {
     this.bigFiveByMachine = [];
     this.bigFiveByMachineName = [];
     this.bigFiveByMachineValue = [];
+    this.bigFiveDescription = [];
     var url = api + "big5/getbydate";
     this.httpClient.post(url, { name: namee, startDate: start, endDate: end }).subscribe(data => {
       this.bigFiveObject = data;
+      // console.log(this.bigFiveObject);
       Object.values(this.bigFiveObject).forEach(data => {
         // console.log(data);
         var array = Object.keys(data).map(function (key) {
+          // console.log(data[key]);S
           return data[key];
         });
         // console.log(array);
@@ -99,10 +103,15 @@ export class CountService {
             arrayy[0],
             arrayy[1]
           ];
+          const des = [
+            arrayy[0],
+            arrayy[2]
+          ];
           this.bigFiveByMachine.splice(this.bigFiveByMachine.length, 0, data);
           this.bigFiveByMachineName.splice(this.bigFiveByMachineName.length, 0, arrayy[0]);
           this.bigFiveByMachineValue.splice(this.bigFiveByMachineValue.length, 0, arrayy[1]);
-          // console.log(arrayy);
+          this.bigFiveDescription.splice(this.bigFiveDescription.length, 0, des);
+          console.log(des);
         }
       })
     });

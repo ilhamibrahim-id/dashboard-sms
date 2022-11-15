@@ -15,6 +15,7 @@ export class Big5Component implements OnInit {
   labels: any;
   datas: any;
   machine: any;
+  description: any;
   machineA: string = "Cap_Checker_OC1";
   range = new FormGroup({
     start: new FormControl(),
@@ -22,7 +23,7 @@ export class Big5Component implements OnInit {
   });
   start: string = moment().subtract(7, 'd').format("YYYY-MM-DD");
   end: string = moment().format("YYYY-MM-DD");
-  coba: any = [];
+  coba: any;
   donut: any = [];
   barchart: any;
   public loaddata: any;
@@ -33,6 +34,7 @@ export class Big5Component implements OnInit {
     this.labels = this.service.bigFiveByMachineName;
     this.datas = this.service.bigFiveByMachineValue;
     this.machine = this.service.bigFiveMachine;
+    this.description = this.service.bigFiveDescription;
   };
 
   bigFiveByMachine(value: any) {
@@ -96,7 +98,15 @@ export class Big5Component implements OnInit {
                 'rgba(75, 192, 192, 1)',
               ],
               borderWidth: 1
-            }],
+            }], options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
           };
           this.barchart.update();
           if (count2 = 1) {
@@ -111,6 +121,7 @@ export class Big5Component implements OnInit {
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
+          clearInterval(a);
           this.spinner.show();
             this.ngOnInit();
         }
@@ -165,7 +176,15 @@ export class Big5Component implements OnInit {
                 ],
                 borderWidth: 1
               }],
-            },
+            }, options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
           });
           if (count2 = 1) {
             clearInterval(b);

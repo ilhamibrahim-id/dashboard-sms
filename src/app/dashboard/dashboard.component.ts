@@ -136,7 +136,7 @@ export class DashboardComponent implements OnInit {
       }
       );
       //readreadyexecute
-      this.readyexecute = this.service.getReadReadyExecute().subscribe(data => {
+      this.readyexecutesub = this.service.getReadReadyExecute().subscribe(data => {
         this.readyexecute = data;
         Object.values(this.readyexecute).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -248,12 +248,12 @@ export class DashboardComponent implements OnInit {
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
+          clearInterval(a);
           this.kategori.unsubscribe();
           this.totalfindingsub.unsubscribe();
           this.pendingexecutesub.unsubscribe();
           this.finishexecutesub.unsubscribe();
           this.readyexecutesub.unsubscribe();
-          clearInterval(a);
           this.ngOnInit();
         }
         if (count = 1) {
