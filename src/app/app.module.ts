@@ -18,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxCaptureModule } from 'ngx-capture';
+import { FilterListPipe } from './filter-list.pipe';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NgxCaptureModule } from 'ngx-capture';
     HeaderComponent,
     FooterComponent,
     SpinnerComponent,
+    FilterListPipe
   ],
   imports: [
     Ng2SearchPipeModule,

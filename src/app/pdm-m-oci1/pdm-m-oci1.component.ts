@@ -5,6 +5,7 @@ import { CountService } from '../services/count.service';
 import { TableUtil } from "../services/tabelUtil";
 import { NgxCaptureService } from 'ngx-capture';
 import { tap } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-pdm-m-oci1',
@@ -12,6 +13,8 @@ import { tap } from 'rxjs';
   styleUrls: ['./pdm-m-oci1.component.css']
 })
 export class PdmMOci1Component implements OnInit {
+  currentDate = new Date();
+
   constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
   public exportdata: boolean = false;
@@ -21,6 +24,7 @@ export class PdmMOci1Component implements OnInit {
   unsatisf: number = 0;
   itemsPerPage: number = 0;
   searchText: any;
+  searchDate: any = moment().format("YYYY-MM-DD");
   searchText2: any;
   currentPage: number = 1;
   public img = "";
@@ -144,6 +148,19 @@ export class PdmMOci1Component implements OnInit {
   private amperesub: any;
   private vibtrationsub: any;
   private totalassetsub: any;
+  filterMetadata = { count: 0 };
+  filtre: any;
+  trackElement(index: number, element: any) {
+    return element ? element.id : null;
+  }
+  date(masukandate: HTMLInputElement){
+    //console.log(moment(masukandate.value).format("DD-MM-YYYY"));
+    this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
+    this.searchDate = masukandate.value;
+  }
   generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
     this.showPaginate2 = this.abnormalassetlist.length;
@@ -377,6 +394,7 @@ export class PdmMOci1Component implements OnInit {
   }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
+
     this.loaddata = new Promise(resolve => {
       this.notepdmunsub = this.service.getNotePdm().subscribe(data => {
         this.notepdm = data;
@@ -469,7 +487,7 @@ export class PdmMOci1Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
           }
-          //// console.log(array.length);
+          //console.log(this.totalfinishtoday2);
 
           for (let i = 0; i < this.totalfinishtoday2.length; i++) {
             this.headertitle[i] = this.totalfinishtoday2[i].test_name;

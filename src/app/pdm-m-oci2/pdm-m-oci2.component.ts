@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import * as moment from 'moment';
 import { NgxCaptureService } from 'ngx-capture';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from '../services/count.service';
@@ -17,6 +18,7 @@ export class PdmMOci2Component implements OnInit {
   @ViewChild('screen', { static: true }) screen: any;
   good: number = 0;
   satis: number = 0;
+  searchDate: any = moment().format("YYYY-MM-DD");
   unsatisf: number = 0;
   itemsPerPage: number = 0;
   searchText: any;
@@ -143,6 +145,19 @@ export class PdmMOci2Component implements OnInit {
   private amperesub: any;
   private vibtrationsub: any;
   private totalassetsub: any;
+  filterMetadata = { count: 0 };
+  filtre: any;
+  trackElement(index: number, element: any) {
+    return element ? element.id : null;
+  }
+  date(masukandate: HTMLInputElement){
+    //console.log(moment(masukandate.value).format("DD-MM-YYYY"));
+    this.showPaginate = 5;
+    this.showPaginate2 = 5;
+    this.currentPage = 1;
+    this.currentPage2 = 1;
+    this.searchDate = masukandate.value;
+  }
   generatePaginate() {
     this.showPaginate = this.totalfinishtoday2.length;
     this.showPaginate2 = this.abnormalassetlist.length;
