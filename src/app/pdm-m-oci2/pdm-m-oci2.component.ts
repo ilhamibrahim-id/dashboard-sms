@@ -152,10 +152,7 @@ export class PdmMOci2Component implements OnInit {
   }
   date(masukandate: HTMLInputElement){
     //console.log(moment(masukandate.value).format("DD-MM-YYYY"));
-    this.showPaginate = 5;
-    this.showPaginate2 = 5;
     this.currentPage = 1;
-    this.currentPage2 = 1;
     this.searchDate = masukandate.value;
   }
   generatePaginate() {
