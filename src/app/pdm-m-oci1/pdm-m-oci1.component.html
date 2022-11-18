@@ -116,8 +116,8 @@
               <div class="flex-auto p-6">
                 <p class="text-left text-md">List Job Finish Today
                   <button *ngIf="exportdata == false" (click)="generatePaginate()"
-                  class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Click
-                  To Export Data</button>
+                    class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Click
+                    To Export Data</button>
                   <button *ngIf="exportdata == true" (click)="print()"
                     class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i
                       class="mr-1 fas fa-file-pdf text-md"></i> PDF </button>
@@ -202,51 +202,95 @@
                     </thead>
                     <tbody>
                       <tr class="border-b border-gray-200 dark:border-gray-700"
-                        *ngFor="let header of totalfinishtoday2| filter:searchText  | filter:searchDate | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }| filterList:filtre:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement" [ngClass]="{ 'first': first, 'last': last}">
+                        *ngFor="let header of totalfinishtoday2| filter:searchText  | filter:searchDate | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }| filterList:filtre:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement"
+                        [ngClass]="{ 'first': first, 'last': last}">
                         <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
                           {{(currentPage-1) * showPaginate + i + 1}}
                         </th>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.device_name}}
                         </td>
                         <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="toFloat(header.Two_H) >= 4.50 && toFloat(header.Two_H) <= 7.10"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.Two_H) > 7.10 && toFloat(header.Two_H) <= 45.9"
+                          class="py-4 px-6 font-medium  font-semibold"
+                          style="background-color: #EA8686;color: #000000;">
+                          {{header.Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.Two_H) < 4.50"
+                          class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Two_H}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="header.Two_H == '-'"
+                        class="py-4 px-6 font-medium font-semibold"
+                        style="color: black">
+                        {{header.Two_H}}
+                      </td>
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.R}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.S}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.T}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Thermal}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Frequency}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="toFloat(header.CF) >= 11 && toFloat(header.CF) <= 15"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.CF}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF) > 15"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #EA8686;color: #000000;">
+                          {{header.CF}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF) < 11"
+                          class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.CF}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="header.CF == '-'"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="color: black">
+                          {{header.CF}}
+                        </td>
+                        <td *ngIf="header.VC == '3'"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.VC}}
+                        </td>
+                        <td *ngIf="header.VC == '4'"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.VC}}
+                        </td>
+                        <td *ngIf="header.VC == '1' || header.VC == '2' || header.VC == '-'"
+                          class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.VC}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.PIC}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.dodate}}
                         </td>
@@ -273,7 +317,8 @@
                     </tbody>
                   </table>
                 </div>
-                <h5 class="text-right text-md mt-4 mr-4" *ngIf="exportdata == true">Total Data : {{filterMetadata.count}}</h5>
+                <h5 class="text-right text-md mt-4 mr-4" *ngIf="exportdata == true">Total Data :
+                  {{filterMetadata.count}}</h5>
               </div>
               <pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
             </div>
@@ -426,12 +471,12 @@
           </div>
           <div class="w-full px-1 py-1 mx-auto">
             <div
-            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-            <div class="flex-auto p-4">
-              <h5 class="text-center">Chart Abnormal Asset</h5>
-              <p class="text-center" style="color: red;">Device Name : {{funloc}}</p>
+              class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-4">
+                <h5 class="text-center">Chart Abnormal Asset</h5>
+                <p class="text-center" style="color: red;">Device Name : {{funloc}}</p>
+              </div>
             </div>
-          </div>
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
               <div class="flex-auto p-6">
                 <!-- <p class="text-center" style="color: red;">Device Name : {{funloc}}</p> -->

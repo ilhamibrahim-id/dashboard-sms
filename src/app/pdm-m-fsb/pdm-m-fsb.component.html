@@ -202,51 +202,95 @@
                     </thead>
                     <tbody>
                       <tr class="border-b border-gray-200 dark:border-gray-700"
-                      *ngFor="let header of totalfinishtoday2| filter:searchText  | filter:searchDate | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }| filterList:filtre:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement" [ngClass]="{ 'first': first, 'last': last}">
+                        *ngFor="let header of totalfinishtoday2| filter:searchText  | filter:searchDate | paginate: { currentPage: currentPage, itemsPerPage: showPaginate }| filterList:filtre:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement"
+                        [ngClass]="{ 'first': first, 'last': last}">
                         <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
                           {{(currentPage-1) * showPaginate + i + 1}}
                         </th>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.device_name}}
                         </td>
                         <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="toFloat(header.Two_H) >= 4.50 && toFloat(header.Two_H) <= 7.10"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.Two_H) > 7.10 && toFloat(header.Two_H) <= 45.9"
+                          class="py-4 px-6 font-medium  font-semibold"
+                          style="background-color: #EA8686;color: #000000;">
+                          {{header.Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.Two_H) < 4.50"
+                          class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Two_H}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="header.Two_H == '-'"
+                        class="py-4 px-6 font-medium font-semibold"
+                        style="color: black">
+                        {{header.Two_H}}
+                      </td>
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.R}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.S}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.T}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Thermal}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Frequency}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="toFloat(header.CF) >= 11 && toFloat(header.CF) <= 15"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.CF}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF) > 15"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #EA8686;color: #000000;">
+                          {{header.CF}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF) < 11"
+                          class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.CF}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td *ngIf="header.CF == '-'"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="color: black">
+                          {{header.CF}}
+                        </td>
+                        <td *ngIf="header.VC == '3'"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.VC}}
+                        </td>
+                        <td *ngIf="header.VC == '4'"
+                          class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #FED033;color: #000000;">
+                          {{header.VC}}
+                        </td>
+                        <td *ngIf="header.VC == '1' || header.VC == '2' || header.VC == '-'"
+                          class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.VC}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.PIC}}
                         </td>
-                        <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50 dark:bg-gray-800"
+                        <td class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.dodate}}
                         </td>

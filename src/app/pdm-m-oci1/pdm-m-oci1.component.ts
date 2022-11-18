@@ -150,6 +150,12 @@ export class PdmMOci1Component implements OnInit {
   private totalassetsub: any;
   filterMetadata = { count: 0 };
   filtre: any;
+  isNumber(value: any) {
+    return Number.isNaN(value);
+  }
+  public toFloat(value: string): number {
+    return parseFloat(value);
+ }
   trackElement(index: number, element: any) {
     return element ? element.id : null;
   }
@@ -484,20 +490,6 @@ export class PdmMOci1Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
           }
-          //console.log(this.totalfinishtoday2);
-
-          for (let i = 0; i < this.totalfinishtoday2.length; i++) {
-            this.headertitle[i] = this.totalfinishtoday2[i].test_name;
-            this.devicename[i] = this.totalfinishtoday2[i].device_name;
-            this.statusdevice[i] = this.totalfinishtoday2[i].status;
-          }
-          this.uniqueChars = [...new Set(this.headertitle)];
-          this.uniqueChars2 = [...new Set(this.devicename)];
-          // console.log(this.totalfinishtoday2);
-          //// console.log(this.statusdevice);
-
-
-          // // console.log(this.findingpending2);
         })
       }
       );
