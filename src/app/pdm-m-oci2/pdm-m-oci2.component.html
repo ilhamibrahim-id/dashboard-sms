@@ -155,8 +155,7 @@
                   </div>
                 </div>
                 <div class="overflow-x-auto relative shadow-lg sm:rounded-lg" id="prinsection" #printsection>
-                  <table border="1"
-                    class="w-full text-lg text-left text-gray-500 text-md dark:text-gray-400 text-center">
+                  <table border="1" class="w-full text-lg text-gray-500 dark:text-gray-400 text-center">
                     <thead class="text-gray-700 uppercase dark:text-gray-400">
                       <tr>
                         <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
@@ -193,9 +192,6 @@
                           PIC
                         </th>
                         <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          Execution Date
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                           Status
                         </th>
                       </tr>
@@ -212,8 +208,7 @@
                         </td>
                         <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
                         <td *ngIf="toFloat(header.Two_H) >= 4.50 && toFloat(header.Two_H) <= 7.10"
-                          class="py-4 px-6 font-medium font-semibold"
-                          style="background-color: #FED033;color: #000000;">
+                          class="py-4 px-6 font-medium font-semibold" style="background-color: #FED033;color: #000000;">
                           {{header.Two_H}}
                         </td>
                         <td *ngIf="toFloat(header.Two_H) > 7.10 && toFloat(header.Two_H) <= 45.9"
@@ -221,78 +216,58 @@
                           style="background-color: #EA8686;color: #000000;">
                           {{header.Two_H}}
                         </td>
-                        <td *ngIf="toFloat(header.Two_H) < 4.50"
-                          class="py-4 px-6 font-medium font-semibold"
+                        <td *ngIf="toFloat(header.Two_H) < 4.50" class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.Two_H}}
                         </td>
-                        <td *ngIf="header.Two_H == '-'"
-                        class="py-4 px-6 font-medium font-semibold"
-                        style="color: black">
-                        {{header.Two_H}}
-                      </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
+                        <td *ngIf="header.Two_H == '-'" class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
+                          {{header.Two_H}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.R}}
                         </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.S}}
                         </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.T}}
                         </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.Thermal}}
                         </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.Frequency}}
                         </td>
                         <td *ngIf="toFloat(header.CF) >= 11 && toFloat(header.CF) <= 15"
-                          class="py-4 px-6 font-medium font-semibold"
-                          style="background-color: #FED033;color: #000000;">
+                          class="py-4 px-6 font-medium font-semibold" style="background-color: #FED033;color: #000000;">
                           {{header.CF}}
                         </td>
-                        <td *ngIf="toFloat(header.CF) > 15"
-                          class="py-4 px-6 font-medium font-semibold"
+                        <td *ngIf="toFloat(header.CF) > 15" class="py-4 px-6 font-medium font-semibold"
                           style="background-color: #EA8686;color: #000000;">
                           {{header.CF}}
                         </td>
-                        <td *ngIf="toFloat(header.CF) < 11"
-                          class="py-4 px-6 font-medium font-semibold"
+                        <td *ngIf="toFloat(header.CF) < 11" class="py-4 px-6 font-medium font-semibold"
                           style="color: black">
                           {{header.CF}}
                         </td>
-                        <td *ngIf="header.CF == '-'"
-                          class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                        <td *ngIf="header.CF == '-'" class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.CF}}
                         </td>
-                        <td *ngIf="header.VC == '3'"
-                          class="py-4 px-6 font-medium font-semibold"
+                        <td *ngIf="header.VC == '3'" class="py-4 px-6 font-medium font-semibold"
                           style="background-color: #FED033;color: #000000;">
                           {{header.VC}}
                         </td>
-                        <td *ngIf="header.VC == '4'"
-                          class="py-4 px-6 font-medium font-semibold"
+                        <td *ngIf="header.VC == '4'" class="py-4 px-6 font-medium font-semibold"
                           style="background-color: #FED033;color: #000000;">
                           {{header.VC}}
                         </td>
                         <td *ngIf="header.VC == '1' || header.VC == '2' || header.VC == '-'"
-                          class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                          class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.VC}}
                         </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.PIC}}
-                        </td>
-                        <td class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
-                          {{header.dodate}}
                         </td>
                         <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center"
                           style="color: #000000;" bgcolor="#94D977">
@@ -368,8 +343,7 @@
               <div class="flex-auto p-6">
                 <!-- <p class="text-center" style="color: red;">Device Name : {{funloc}}</p> -->
                 <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-                  <table border="1"
-                    class="w-full text-lg text-left text-gray-500 text-md dark:text-gray-400 text-center">
+                  <table border="1" class="w-full text-lg text-left text-gray-500 dark:text-gray-400 text-center">
                     <tbody>
                       <tr class="border-b border-gray-200 dark:border-gray-700">
                         <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
@@ -446,10 +420,10 @@
                           {{(currentPage2-1) * showPaginate2 + i + 1}}
                         </th>
                         <td (click)="data(getdata.device_name,getdata.dodate)" style="color: #000000;"
-                          class="py-4 px-6">
+                          class="py-4 px-6 py-4 px-6 font-medium font-semibold">
                           {{getdata.device_name}}
                         </td>
-                        <td style="color: #000000;" class="py-4 px-6">
+                        <td style="color: #000000;" class="py-4 px-6 font-medium font-semibold">
                           {{getdata.dodate}}
                         </td>
                         <td *ngIf="getdata.Stat == 'Unsatisfactory'" style="color: #000000;"
