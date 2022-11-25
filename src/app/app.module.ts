@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxCaptureModule } from 'ngx-capture';
 import { FilterListPipe } from './filter-list.pipe';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { FilterListPipe } from './filter-list.pipe';
     HeaderComponent,
     FooterComponent,
     SpinnerComponent,
-    FilterListPipe
+    FilterListPipe,
   ],
   imports: [
     Ng2SearchPipeModule,
@@ -44,7 +45,8 @@ import { FilterListPipe } from './filter-list.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    NgxCaptureModule
+    NgxCaptureModule,
+    PdfViewerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

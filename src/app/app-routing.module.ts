@@ -18,6 +18,11 @@ import { GamesComponent } from './games/games.component';
 import { SuitComponent } from './suit/suit.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { OilComponent } from './kluber/oil/oil.component';
+import { GreaseComponent } from './kluber/grease/grease.component';
+import { SpraysComponent } from './kluber/sprays/sprays.component';
+import { MaintenanceproductComponent } from './kluber/maintenanceproduct/maintenanceproduct.component';
+import { PasteComponent } from './kluber/paste/paste.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -34,6 +39,11 @@ const routes: Routes = [
   {path: 'suit', component: SuitComponent},
   {path: 'tictactoe', component: TicTacToeComponent},
   {path: 'aboutus', component: AboutusComponent},
+  {path: 'oil', component: OilComponent},
+  {path: 'grease', component: GreaseComponent},
+  {path: 'sprays', component: SpraysComponent},
+  {path: 'maintenanceproduct', component: MaintenanceproductComponent},
+  {path: 'paste', component: PasteComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -56,5 +66,10 @@ export const routingComponent = [
   SuitComponent,
   TicTacToeComponent,
   GamesComponent,
-  AboutusComponent
+  AboutusComponent,
+  OilComponent,
+  GreaseComponent,
+  SpraysComponent,
+  MaintenanceproductComponent,
+  PasteComponent
 ]

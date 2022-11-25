@@ -15,10 +15,14 @@ export class SidebarComponent implements OnInit {
   public sub1: boolean = false;
   public sub2: boolean = false;
   public sub3: boolean = false;
+  public lubisub: boolean = false;
   currentDate = new Date();
   public sub4: boolean = false;
   constructor(public router: Router,@Inject(DOCUMENT) private document: Document) {}
   ngOnInit(): void {
+  }
+  lubiClick(){
+    this.lubisub = !this.lubisub;
   }
   ameventclick(){
     this.resolved = !this.resolved;
