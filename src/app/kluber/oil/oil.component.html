@@ -1,3 +1,4 @@
+<div *ngIf="resolved; else loading2">
 <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
   class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
   <div class="flex-auto p-1">
@@ -24,10 +25,10 @@
                 <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                   Product Name
                 </th>
-                <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                <th width="15%" scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                   Symbol
                 </th>
-                <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                <th width="25%" scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                   Description
                 </th>
                 <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
@@ -45,24 +46,36 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-gray-200 dark:border-gray-700">
+              <tr *ngFor="let getdata of oilist;let i = index;" class="border-b border-gray-200 dark:border-gray-700">
                 <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
-                  1
+                  {{i+1}}
                 </th>
                 <td class="py-4 px-6 font-medium font-semibold" style="color: black;">
-                  try
+                  {{getdata.product_code}}
                 </td>
                 <td class="py-4 px-6 font-medium font-semibold" style="color: black;">
-                  try
+                  {{getdata.product_name}}
                 </td>
                 <td class="py-4 px-6 font-medium font-semibold" style="color: black;">
-                  try
+                  <img width="100%" height="100%" src="http://192.168.152.32/kluber_lubrication/files/{{getdata.symbol}}">
                 </td>
-                <td (click)="getpdfa()" class="py-4 px-6 font-medium font-semibold" style="color: black;">
-                  try
+                <td class="py-4 text-xs px-6 font-medium font-semibold" style="color: black;">
+                  {{getdata.description}}
                 </td>
-                <td (click)="getpdf()" class="py-4 px-6 font-medium font-semibold" style="color: black;">
-                  try
+                <td class="py-4 text-xs px-6 font-medium font-semibold" style="color: black;">
+                  {{getdata.application}}
+                </td>
+                <td (click)="getpdf(getdata.product_data_sheet)" class="py-4 px-6 font-medium font-semibold" style="color: black;">
+                  <i
+                      class="mr-1 fas fa-file-pdf text-md"></i><br/> PDF
+                </td>
+                <td (click)="getpdf(getdata.msds)" class="py-4 px-6 font-medium font-semibold" style="color: black;">
+                  <i
+                      class="mr-1 fas fa-file-pdf text-md"></i><br/>PDF
+                </td>
+                <td (click)="getpdf(getdata.nsf)" class="py-4 px-6 font-medium font-semibold" style="color: black;">
+                  <i
+                      class="mr-1 fas fa-file-pdf text-md"></i><br/>PDF
                 </td>
               </tr>
             </tbody>
@@ -72,44 +85,9 @@
     </div>
   </div>
 </div>
-<div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-  <div class="flex-auto p-1 mt-1">
-    <p class="text-center" style="color: red;">Product Name :</p>
-  </div>
 </div>
-<div class="flex flex-wrap -mx-3">
-  <div class="w-full px-3 py-1 mx-auto">
-    <div class="my-1 place-items-center max-w-full w-full">
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-        <p class="p-4">
-          <pdf-viewer [src]="src" [rotation]="0" [original-size]="false" [show-all]="true"
-            [fit-to-page]="false" [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
-            [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
-            style="width: 100%; height: 400px;"></pdf-viewer>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="w-full">
-
-  <div class="shadow w-full bg-grey-light">
-    <div class="bg-blue text-xs leading-none py-1 text-center text-white" style="width: 45%">45%</div>
-  </div>
-
-
-  <div class="shadow w-full bg-grey-light mt-2">
-    <div class="bg-teal text-xs leading-none py-1 text-center text-white" style="width: 55%">55%</div>
-  </div>
-
-
-  <div class="shadow w-full bg-grey-light mt-2">
-    <div class="bg-orange text-xs leading-none py-1 text-center text-white" style="width: 65%">65%</div>
-  </div>
-
-
-
-  <div class="shadow w-full bg-grey-light mt-2">
-    <div class="bg-red text-xs leading-none py-1 text-center text-white" style="width: 75%">75%</div>
-  </div>
-<div>
+<ng-template #loading2>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+    <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+  </ngx-spinner>
+</ng-template>

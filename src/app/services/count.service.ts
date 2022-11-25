@@ -419,4 +419,19 @@ export class CountService {
   getNotePdm () {
     return this.httpClient.get(api + "notepdm");
   }
+  getOilProduct () {
+    return this.httpClient.get(api + "oilproduct");
+  }
+  getGreaseProduct () {
+    return this.httpClient.get(api + "greaseproduct");
+  }
+  getSpraysProduct () {
+    return this.httpClient.get(api + "spraysproduct");
+  }
+  getMainenanceProduct () {
+    return this.httpClient.get(api + "maintenanceproduct");
+  }
+  getPasteProduct () {
+    return this.httpClient.get(api + "pasteproduct");
+  }
 };
