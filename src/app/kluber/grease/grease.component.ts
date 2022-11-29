@@ -38,7 +38,7 @@ export class GreaseComponent implements OnInit {
     var a = setInterval(() => {
       count++;
       if(this.greaselist.length > 0){
-        console.log(this.greaselist);
+        // console.log(this.greaselist);
 
         this.spinner.hide();
         this.resolved = true;

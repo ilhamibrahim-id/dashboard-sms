@@ -38,7 +38,7 @@ export class OilComponent implements OnInit {
     var a = setInterval(() => {
       count++;
       if(this.oilist.length > 0){
-        console.log(this.oilist);
+        // console.log(this.oilist);
 
         this.spinner.hide();
         this.resolved = true;

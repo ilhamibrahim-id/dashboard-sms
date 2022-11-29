@@ -434,4 +434,22 @@ export class CountService {
   getPasteProduct () {
     return this.httpClient.get(api + "pasteproduct");
   }
+  getOci1fNotFinish(){
+    return this.httpClient.get(api + "oci1fnotfinish");
+  }
+  getOci2fNotFinish(){
+    return this.httpClient.get(api + "oci2fnotfinish");
+  }
+  getFsbfNotFinish(){
+    return this.httpClient.get(api + "fsbfnotfinish");
+  }
+  getOci1Valuemonth(){
+    return this.httpClient.get(api + "oci1valuepermonth");
+  }
+  getOci2Valuemonth(){
+    return this.httpClient.get(api + "oci2valuepermonth");
+  }
+  getFsbValuemonth(){
+    return this.httpClient.get(api + "fsbvaluepermonth");
+  }
 };

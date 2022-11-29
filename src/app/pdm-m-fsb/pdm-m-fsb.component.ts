@@ -134,6 +134,9 @@ export class PdmMFsbComponent implements OnInit {
   myNameElem!: ElementRef;
   notepdm: object = {};
   notepdmlist: any = [];
+  valuemonth: object = {};
+  valuemonthlist: any = [];
+  valuepermonthchart: any;
   picture: any;
   note: any;
   private goodsatisfsb:any;
@@ -145,6 +148,35 @@ export class PdmMFsbComponent implements OnInit {
   private amperesub: any;
   private vibtrationsub: any;
   private totalassetsub: any;
+  private valuemountfunc: any;
+  finishnot: object = {};
+  finishnotlist: any = [];
+  private finishnotfinish: any;
+  pdmchartfinishnot: any;
+  wtp2: number = 0;
+  wtp2null: number = 0;
+  baking: number = 0;
+  bakingnull: number = 0;
+  forming: number = 0;
+  formingnull: number = 0;
+  mixing: number = 0;
+  mixingnull: number = 0;
+  pack:number = 0;
+  packnull: number = 0;
+  weig: number = 0;
+  weignull: number = 0;
+  januari: number = 0;
+  febuari: number = 0;
+  maret: number = 0;
+  april: number = 0;
+  mei: number = 0;
+  juni: number = 0;
+  juli: number = 0;
+  agustus: number = 0;
+  september: number = 0;
+  oktober: number = 0;
+  november: number = 0;
+  desember: number = 0;
   filterMetadata = { count: 0 };
   filtre: any;
   isNumber(value: any) {
@@ -395,6 +427,107 @@ export class PdmMFsbComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
+      this.valuemountfunc = this.service.getFsbValuemonth().subscribe(data => {
+        this.valuemonth = data;
+        Object.values(this.valuemonth).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.valuemonthlist.splice(this.valuemonthlist.lenght, 0, array[i]);
+          }
+          for (let elem of this.valuemonthlist) {
+            if(elem.bulan == 'January'){
+              this.januari += 1;
+            } else if (elem.bulan == 'February') {
+              this.febuari += 1;
+            } else if (elem.bulan == 'March') {
+              this.maret +=1;
+            } else if (elem.bulan == 'April') {
+              this.april += 1;
+            } else if (elem.bulan == 'May') {
+              this.mei += 1;
+            } else if (elem.bulan == 'June') {
+              this.juni += 1;
+            } else if (elem.bulan == 'July') {
+              this.juli += 1;
+            }else if (elem.bulan == 'August') {
+              this.agustus += 1;
+            } else if (elem.bulan == 'September') {
+              this.september += 1;
+            } else if (elem.bulan == 'October') {
+              this.oktober += 1;
+            } else if (elem.bulan == 'November') {
+              this.november += 1;
+            } else if (elem.bulan == 'December') {
+              this.desember += 1;
+            }
+          }
+        })
+
+      }
+      );
+      this.finishnotfinish = this.service.getFsbfNotFinish().subscribe(data => {
+        this.finishnot = data;
+        Object.values(this.finishnot).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.finishnotlist.splice(this.finishnotlist.lenght, 0, array[i]);
+          }
+          for (let elem of this.finishnotlist) {
+            if(elem.name_area == 'WTP2'){
+              if(elem.value == null){
+                this.wtp2null += 1;
+              } else {
+                this.wtp2 += 1;
+              }
+            } else if (elem.name_area == 'Baking Cooling'){
+              if(elem.value == null){
+                this.bakingnull += 1;
+              } else {
+                this.baking += 1;
+              }
+            } else if (elem.name_area == 'Forming'){
+              if(elem.value == null){
+                this.formingnull += 1;
+              } else {
+                this.forming += 1;
+              }
+            }else if (elem.name_area == 'Mixing'){
+              if(elem.value == null){
+                this.mixingnull += 1;
+              } else {
+                this.mixing += 1;
+              }
+            }else if (elem.name_area == 'Packing'){
+              if(elem.value == null){
+                this.packnull += 1;
+              } else {
+                this.packnull += 1;
+              }
+            }else if (elem.name_are == 'Weighing'){
+              if(elem.value == null){
+                this.weignull += 1;
+              } else {
+                this.weig += 1;
+              }
+            }
+          }
+
+        }
+        )
+        //console.log(this.finishnotlist);
+
+      }
+      );
       this.notepdmunsub = this.service.getNotePdm().subscribe(data => {
         this.notepdm = data;
         Object.values(this.notepdm).forEach(data => {
@@ -572,6 +705,66 @@ export class PdmMFsbComponent implements OnInit {
                 }]
               },
             });
+            this.pdmchartfinishnot = new Chart("pdmchartfinishnot", {
+              type: "bar",
+              data: {
+                labels: ["WTP2", "Baking Cooling", "Forming","Mixing","Packing","Weighing"],
+                datasets: [
+                  {
+                    "label": "Done",
+                    "data": [this.wtp2, this.baking, this.forming,this.mixing,this.pack,this.weig],
+                    "backgroundColor": "#34568B"
+                  },
+                  {
+                    "label": "Not Yet",
+                    "data": [this.wtp2null, this.bakingnull, this.formingnull,this.mixingnull,this.weignull,this.packnull],
+                    "backgroundColor": "#FF6F61"
+                  },
+                ]
+
+              },
+              options: {
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }
+                  ]
+                }
+              }
+            });
+            this.valuepermonthchart = new Chart("valuepermonthchart", {
+              type: "bar",
+              data: {
+                labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
+                datasets: [
+                  {
+                    "label": "Total Data FSB Data %",
+                    "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
+                    "backgroundColor": "#34568B"
+                  },
+                ]
+
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 200,
+                      callback: function (value) { return value + "%" },
+                      //beginAtZero: true
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Percentage"
+                    }
+                  }]
+                }
+              }
+            });
             if (count2 = 1) {
               clearInterval(b);
             }
@@ -591,6 +784,7 @@ export class PdmMFsbComponent implements OnInit {
           this.amperesub.unsubscribe();
           this.vibtrationsub.unsubscribe();
           this.totalassetsub.unsubscribe();
+          this.valuemountfunc.unsubscribe();
           clearInterval(a);
           this.ngOnInit();
         }

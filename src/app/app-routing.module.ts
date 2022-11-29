@@ -23,6 +23,10 @@ import { GreaseComponent } from './kluber/grease/grease.component';
 import { SpraysComponent } from './kluber/sprays/sprays.component';
 import { MaintenanceproductComponent } from './kluber/maintenanceproduct/maintenanceproduct.component';
 import { PasteComponent } from './kluber/paste/paste.component';
+import { Petline1Component } from './kluberplant/petline1/petline1.component';
+import { Petline2Component } from './kluberplant/petline2/petline2.component';
+import { PreparationroomComponent } from './kluberplant/preparationroom/preparationroom.component';
+import { OfflinepackingComponent } from './kluberplant/offlinepacking/offlinepacking.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -44,6 +48,10 @@ const routes: Routes = [
   {path: 'sprays', component: SpraysComponent},
   {path: 'maintenanceproduct', component: MaintenanceproductComponent},
   {path: 'paste', component: PasteComponent},
+  {path: 'petline1', component: Petline1Component},
+  {path: 'petline2', component: Petline2Component},
+  {path: 'preparationroom', component: PreparationroomComponent},
+  {path: 'offlinepacking', component: OfflinepackingComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -71,5 +79,9 @@ export const routingComponent = [
   GreaseComponent,
   SpraysComponent,
   MaintenanceproductComponent,
-  PasteComponent
+  PasteComponent,
+  Petline1Component,
+  Petline2Component,
+  PreparationroomComponent,
+  OfflinepackingComponent
 ]

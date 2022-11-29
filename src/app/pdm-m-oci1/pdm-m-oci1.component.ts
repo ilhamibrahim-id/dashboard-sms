@@ -137,8 +137,14 @@ export class PdmMOci1Component implements OnInit {
   myNameElem!: ElementRef;
   notepdm: object = {};
   notepdmlist: any = [];
+  finishnot: object = {};
+  finishnotlist: any = [];
+  valuemonth: object = {};
+  valuemonthlist: any = [];
   picture: any;
   note: any;
+  pdmchartfinishnot: any;
+  valuepermonthchart: any;
   private goodsatisoci1:any;
   private pdmfinish:any;
   private finishtoday:any;
@@ -148,8 +154,36 @@ export class PdmMOci1Component implements OnInit {
   private amperesub: any;
   private vibtrationsub: any;
   private totalassetsub: any;
+  private finishnotfinish: any;
+  private valuemountfunc: any;
   filterMetadata = { count: 0 };
   filtre: any;
+  preparation: number = 0;
+  preparationnull: number = 0;
+  injection: number = 0;
+  injectionnnull: number = 0;
+  blow: number = 0;
+  blownull: number = 0;
+  fill: number = 0;
+  fillnull: number = 0;
+  pack: number = 0;
+  packnull: number = 0;
+  pf: number = 0;
+  pfnull: number = 0;
+  stu: number = 0;
+  stunull: number = 0;
+  januari: number = 0;
+  febuari: number = 0;
+  maret: number = 0;
+  april: number = 0;
+  mei: number = 0;
+  juni: number = 0;
+  juli: number = 0;
+  agustus: number = 0;
+  september: number = 0;
+  oktober: number = 0;
+  november: number = 0;
+  desember: number = 0;
   isNumber(value: any) {
     return Number.isNaN(value);
   }
@@ -399,6 +433,113 @@ export class PdmMOci1Component implements OnInit {
     window.scrollTo(0, 0);
 
     this.loaddata = new Promise(resolve => {
+      this.valuemountfunc = this.service.getOci1Valuemonth().subscribe(data => {
+        this.valuemonth = data;
+        Object.values(this.valuemonth).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.valuemonthlist.splice(this.valuemonthlist.lenght, 0, array[i]);
+          }
+          for (let elem of this.valuemonthlist) {
+            if(elem.bulan == 'January'){
+              this.januari += 1;
+            } else if (elem.bulan == 'February') {
+              this.febuari += 1;
+            } else if (elem.bulan == 'March') {
+              this.maret +=1;
+            } else if (elem.bulan == 'April') {
+              this.april += 1;
+            } else if (elem.bulan == 'May') {
+              this.mei += 1;
+            } else if (elem.bulan == 'June') {
+              this.juni += 1;
+            } else if (elem.bulan == 'July') {
+              this.juli += 1;
+            }else if (elem.bulan == 'August') {
+              this.agustus += 1;
+            } else if (elem.bulan == 'September') {
+              this.september += 1;
+            } else if (elem.bulan == 'October') {
+              this.oktober += 1;
+            } else if (elem.bulan == 'November') {
+              this.november += 1;
+            } else if (elem.bulan == 'December') {
+              this.desember += 1;
+            }
+          }
+        })
+
+      }
+      );
+      this.finishnotfinish = this.service.getOci1fNotFinish().subscribe(data => {
+        this.finishnot = data;
+        Object.values(this.finishnot).forEach(data => {
+          // // console.log(data);
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+
+          // // console.log(array);
+          for (let i = 0; i < array.length; i++) {
+            this.finishnotlist.splice(this.finishnotlist.lenght, 0, array[i]);
+          }
+          for (let elem of this.finishnotlist) {
+            if(elem.name_area == 'PREPARATION'){
+              if(elem.value == null){
+                this.preparationnull += 1;
+              } else {
+                this.preparation += 1;
+              }
+            } else if (elem.name_area == 'INJECTION'){
+              if(elem.value == null){
+                this.injectionnnull += 1;
+              } else {
+                this.injection += 1;
+              }
+            } else if (elem.name_area == 'BLOW'){
+              if(elem.value == null){
+                this.blownull += 1;
+              } else {
+                this.blow += 1;
+              }
+            }else if (elem.name_area == 'FILL'){
+              if(elem.value == null){
+                this.fillnull += 1;
+              } else {
+                this.fill += 1;
+              }
+            }else if (elem.name_area == 'PACK'){
+              if(elem.value == null){
+                this.packnull += 1;
+              } else {
+                this.pack += 1;
+              }
+            }else if (elem.name_are == 'PF Transfer/KANESHO'){
+              if(elem.value == null){
+                this.pfnull += 1;
+              } else {
+                this.pf += 1;
+              }
+            } else if (elem.name_area == 'STU1'){
+              if(elem.value == null){
+                this.stunull += 1;
+              } else {
+                this.stu += 1;
+              }
+            }
+          }
+
+        }
+        )
+        //console.log(this.finishnotlist);
+
+      }
+      );
       this.notepdmunsub = this.service.getNotePdm().subscribe(data => {
         this.notepdm = data;
         Object.values(this.notepdm).forEach(data => {
@@ -576,6 +717,66 @@ export class PdmMOci1Component implements OnInit {
                 }]
               },
             });
+            this.pdmchartfinishnot = new Chart("pdmchartfinishnot", {
+              type: "bar",
+              data: {
+                labels: ["PREPARATION", "INJECTION", "BLOW","FILL","PACK","KANESHO","STU1"],
+                datasets: [
+                  {
+                    "label": "Done",
+                    "data": [this.preparation, this.injection, this.blow,this.fill,this.pack,this.pf,this.stu],
+                    "backgroundColor": "#34568B"
+                  },
+                  {
+                    "label": "Not Yet",
+                    "data": [this.preparationnull, this.injectionnnull, this.blownull,this.fillnull,this.packnull,this.pfnull,this.stunull],
+                    "backgroundColor": "#FF6F61"
+                  },
+                ]
+
+              },
+              options: {
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }
+                  ]
+                }
+              }
+            });
+            this.valuepermonthchart = new Chart("valuepermonthchart", {
+              type: "bar",
+              data: {
+                labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
+                datasets: [
+                  {
+                    "label": "Total Data OCI1 Data %",
+                    "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
+                    "backgroundColor": "#34568B"
+                  },
+                ]
+
+              },
+               options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 200,
+                      callback: function (value) { return value + "%" },
+                      //beginAtZero: true
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Percentage"
+                    }
+                  }]
+                }
+              }
+            });
             if (count2 = 1) {
               clearInterval(b);
             }
@@ -595,6 +796,8 @@ export class PdmMOci1Component implements OnInit {
           this.amperesub.unsubscribe();
           this.vibtrationsub.unsubscribe();
           this.totalassetsub.unsubscribe();
+          this.finishnotfinish.unsubscribe();
+          this.valuemountfunc.unsubscribe();
           clearInterval(a);
           this.ngOnInit();
         }
