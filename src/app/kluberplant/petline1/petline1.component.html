@@ -1,1 +1,42 @@
-<p>petline1 works!</p>
+<div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
+  class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+  <div class="flex-auto p-1">
+    <div class="wrapper">
+      <h5 class="typing-demo">PET LINE - 1
+      </h5>
+    </div>
+  </div>
+</div>
+<div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
+  <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+    <table class="w-full text-xxs text-center">
+      <tr>
+        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Injection Molder</button></td>
+        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Bottle Blower</button></td>
+        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Filler</button></td>
+        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Container Conveyors</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Labeller</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Divider</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Sheet Feeder</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Packer Shnrik Tray</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Pack Conveyors</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Pallet Conveyors</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Pallet Roller Conveyors</button></td>
+        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Palletiser</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border p-6">
+  <table style="text-align: center;" class="mb-4">
+    <button *ngIf="prevgambar" (click)="changeimage()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
+        aria-hidden="true"></i></button>
+    <button *ngIf="!prevgambar" (click)="changeimage2()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
+        aria-hidden="true"></i></button>
+  </table>
+  <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+    <img src="{{srcimage}}" style=" width: 100%;
+      width: auto;
+      max-height: 385px;" class="mb-2 center">
+  </div>
+</div>
