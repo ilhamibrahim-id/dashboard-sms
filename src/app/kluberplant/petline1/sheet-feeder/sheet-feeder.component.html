@@ -1,0 +1,45 @@
+<div *ngIf="resolved; else loading2">
+  <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
+    class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+    <div class="flex-auto p-1">
+      <div class="wrapper">
+        <h5 class="typing-demo">Sheet Feeder
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
+    <div class="w-full px-1 py-1 mx-auto">
+      <div class="flex flex-wrap -mx-1 lg:-mx-4">
+        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+          <div id="content">
+            <h5 class="text-center mt-2">Click For Detail</h5>
+            <div id="number_container" class="mb-2">
+              <ul>
+                <li><button routerLink="/injectionmolder" class="button button4 rounded-2xl">Lubrication Chart</button>
+                </li>
+                <li><button routerLink="/bottleshower" class="button button4 rounded-2xl">Manual</button></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+          <img src="assets/img/sf.png" style=" width: 100%;
+          width: 30%;
+          max-height: auto;" class="p-6 center">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+  class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+  <div class="flex-auto p-4">
+    <h5 class="text-center">Detail : </h5>
+  </div>
+  </div>
+  </div>
+  <ng-template #loading2>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+      <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+    </ngx-spinner>
+  </ng-template>

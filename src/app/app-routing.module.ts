@@ -27,6 +27,18 @@ import { Petline1Component } from './kluberplant/petline1/petline1.component';
 import { Petline2Component } from './kluberplant/petline2/petline2.component';
 import { PreparationroomComponent } from './kluberplant/preparationroom/preparationroom.component';
 import { OfflinepackingComponent } from './kluberplant/offlinepacking/offlinepacking.component';
+import { InjectionMolderComponent } from './kluberplant/petline1/injection-molder/injection-molder.component';
+import { BottleShowerComponent } from './kluberplant/petline1/bottle-shower/bottle-shower.component';
+import { FillerComponent } from './kluberplant/petline1/filler/filler.component';
+import { ContainerConveyorComponent } from './kluberplant/petline1/container-conveyor/container-conveyor.component';
+import { LabellerComponent } from './kluberplant/petline1/labeller/labeller.component';
+import { DividerComponent } from './kluberplant/petline1/divider/divider.component';
+import { SheetFeederComponent } from './kluberplant/petline1/sheet-feeder/sheet-feeder.component';
+import { ShrinkTrayComponent } from './kluberplant/petline1/shrink-tray/shrink-tray.component';
+import { PackConveyorComponent } from './kluberplant/petline1/pack-conveyor/pack-conveyor.component';
+import { PalletConveyorComponent } from './kluberplant/petline1/pallet-conveyor/pallet-conveyor.component';
+import { PalletiserComponent } from './kluberplant/petline1/palletiser/palletiser.component';
+import { PackRollerConveyorsComponent } from './kluberplant/petline1/pack-roller-conveyors/pack-roller-conveyors.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -52,6 +64,18 @@ const routes: Routes = [
   {path: 'petline2', component: Petline2Component},
   {path: 'preparationroom', component: PreparationroomComponent},
   {path: 'offlinepacking', component: OfflinepackingComponent},
+  {path: 'injectionmolder', component: InjectionMolderComponent},
+  {path: 'bottleshower', component: BottleShowerComponent},
+  {path: 'filler', component: FillerComponent},
+  {path: 'containerconveyor', component: ContainerConveyorComponent},
+  {path: 'labeller', component: LabellerComponent},
+  {path: 'divider', component: DividerComponent},
+  {path: 'sheetfeeder', component: SheetFeederComponent},
+  {path: 'shrinktray', component: ShrinkTrayComponent},
+  {path: 'packconveyor', component: PackConveyorComponent},
+  {path: 'palletconveyor', component: PalletConveyorComponent},
+  {path: 'palletiser', component: PalletiserComponent},
+  {path: 'packrollerconveyor', component: PackRollerConveyorsComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -83,5 +107,17 @@ export const routingComponent = [
   Petline1Component,
   Petline2Component,
   PreparationroomComponent,
-  OfflinepackingComponent
+  OfflinepackingComponent,
+  InjectionMolderComponent,
+  BottleShowerComponent,
+  FillerComponent,
+  ContainerConveyorComponent,
+  LabellerComponent,
+  DividerComponent,
+  SheetFeederComponent,
+  ShrinkTrayComponent,
+  PackConveyorComponent,
+  PalletConveyorComponent,
+  PalletiserComponent,
+  PackRollerConveyorsComponent,
 ]

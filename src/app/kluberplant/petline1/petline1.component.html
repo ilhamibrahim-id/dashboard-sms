@@ -1,42 +1,65 @@
-<div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
-  class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-  <div class="flex-auto p-1">
-    <div class="wrapper">
-      <h5 class="typing-demo">PET LINE - 1
-      </h5>
+<div *ngIf="resolved; else loading2">
+  <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
+    class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+    <div class="flex-auto p-1">
+      <div class="wrapper">
+        <h5 class="typing-demo">PET LINE - 1
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
+    <div id="content">
+      <h5 class="text-center mt-2">Click For Detail</h5>
+      <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+      <div id="number_container" class="mb-2">
+        <ul>
+          <li><button routerLink="/injectionmolder" *ngIf="prevgambar" class="button button4 rounded-2xl">Injection
+              Molder</button></li>
+          <li><button routerLink="/bottleshower" *ngIf="prevgambar" class="button button4 rounded-2xl">Bottle
+              Blower</button></li>
+          <li><button routerLink="/filler" *ngIf="prevgambar" class="button button4 rounded-2xl">Filler</button></li>
+          <li><button routerLink="/containerconveyor" *ngIf="prevgambar" class="button button4 rounded-2xl">Container
+              Conveyors</button></li>
+          <li><button routerLink="/labeller" *ngIf="prevgambar" class="button button4 rounded-2xl">Labeller</button>
+          </li>
+          <li><button routerLink="/divider" *ngIf="prevgambar" class="button button4 rounded-2xl">Divider</button>
+          </li>
+          <li><button routerLink="/sheetfeeder" *ngIf="prevgambar" class="button button4 rounded-2xl">Sheet
+              Feeder</button></li>
+          <li><button routerLink="/shrinktray" *ngIf="prevgambar" class="button button4 rounded-2xl">Packer Shnrik
+              Tray</button></li>
+          <li><button routerLink="/packconveyor" *ngIf="prevgambar" class="button button4 rounded-2xl">Pack
+              Conveyors</button></li>
+          <li><button routerLink="/palletconveyor" *ngIf="prevgambar" class="button button4 rounded-2xl">Pallet
+              Conveyors</button></li>
+          <li><button routerLink="/packrollerconveyor" *ngIf="prevgambar" class="button button4 rounded-2xl">Pallet
+              Roller Conveyors</button></li>
+          <li><button routerLink="/palletiser" *ngIf="prevgambar"
+              class="button button4 rounded-2xl">Palletiser</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="relative flex flex-col min-w-0 break-words bg-white s hadow-soft-lg rounded-2xl bg-clip-border p-6">
+    <table style="text-align: center;" class="mb-2">
+      <button *ngIf="prevgambar" (click)="changeimage()"><i class="fa fa-arrow-circle-right fa-2x mr-2"
+          aria-hidden="true"></i></button>
+      <button *ngIf="!prevgambar2" (click)="changeimage2()"><i class="fa fa-arrow-circle-left fa-2x ml-2"
+          aria-hidden="true"></i></button>
+    </table>
+    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+      <!-- <button routerLink="/injectionmolder" *ngIf="prevgambar" style="margin-top: 57px; margin-left: 23px;" class="button absolute">Injection <br />
+        Molder</button> -->
+      <img src="{{srcimage}}" style=" width: 100%;
+      width: auto;
+      max-height: 385px;" class="mb-2 center">
     </div>
   </div>
 </div>
-<div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
-  <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-    <table class="w-full text-xxs text-center">
-      <tr>
-        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Injection Molder</button></td>
-        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Bottle Blower</button></td>
-        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Filler</button></td>
-        <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Container Conveyors</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Labeller</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Divider</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Sheet Feeder</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Packer Shnrik Tray</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Pack Conveyors</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Pallet Conveyors</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Pallet Roller Conveyors</button></td>
-        <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Palletiser</button></td>
-      </tr>
-    </table>
-  </div>
-</div>
-<div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border p-6">
-  <table style="text-align: center;" class="mb-4">
-    <button *ngIf="prevgambar" (click)="changeimage()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
-        aria-hidden="true"></i></button>
-    <button *ngIf="!prevgambar" (click)="changeimage2()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
-        aria-hidden="true"></i></button>
-  </table>
-  <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-    <img src="{{srcimage}}" style=" width: 100%;
-      width: auto;
-      max-height: 385px;" class="mb-2 center">
-  </div>
-</div>
+<ng-template #loading2>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+    <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+  </ngx-spinner>
+</ng-template>

@@ -25,5 +25,8 @@ export class TicTacToeComponent implements OnInit {
       }
     },500);
   }
+  refresh(){
+    window.location.reload();
+  }
 
 }

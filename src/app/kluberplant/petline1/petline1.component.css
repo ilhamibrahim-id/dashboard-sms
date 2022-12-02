@@ -1,10 +1,11 @@
 .button {
-  background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 14px 30px;
   text-align: center;
   margin: 4px 2px;
+  font-size: 0.7em;
+  font-weight: bold;
 }
 
 .button2 {background-color: #008CBA;} /* Blue */
@@ -38,4 +39,33 @@
   50% {
     border-color: transparent
   }
+}
+#content{
+  /* margin: auto; */
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#heading{
+  text-align: center;
+}
+
+#number_container {
+  width: 1730px;
+        text-align: center;
+
+}
+
+ul{
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  list-style: none;
+  /* text-align: -webkit-match-parent; */
+}
+
+ul li button {
+  background-color: rgb(255,196,6); color: white;
 }

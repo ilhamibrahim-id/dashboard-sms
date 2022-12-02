@@ -1,1 +1,43 @@
-<p>preparationroom works!</p>
+<div *ngIf="resolved; else loading2">
+  <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
+    class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+    <div class="flex-auto p-1">
+      <div class="wrapper">
+        <h5 class="typing-demo">Preparation Room
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
+    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+      <table class="w-full text-xxs text-center">
+        <tr>
+          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">PET 1 Agitators</button></td>
+          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">PET 2 Agitators</button></td>
+          <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Lubrication Chart</button></td>
+          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Filler Press 1</button></td>
+          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Filler Press 2</button></td>
+          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">DPC 13 Pump</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border p-6">
+    <table style="text-align: center;" class="mb-4">
+      <button *ngIf="prevgambar" (click)="changeimage()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
+          aria-hidden="true"></i></button>
+      <button *ngIf="!prevgambar" (click)="changeimage2()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
+          aria-hidden="true"></i></button>
+    </table>
+    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+      <img src="{{srcimage}}" style=" width: 100%;
+        width: auto;
+        max-height: 385px;" class="mb-2 center">
+    </div>
+  </div>
+  </div>
+  <ng-template #loading2>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+      <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+    </ngx-spinner>
+  </ng-template>
