@@ -11,22 +11,13 @@ export class Petline1Component implements OnInit {
   prevgambar2: boolean = true;
   injectmodel: boolean = true;
   bottleshower: boolean = true;
-  srcimage: any = 'assets/img/petline1_1.png';
+  srcimage: any = 'assets/img/petline1.jpg';
   deskripsi: any = 'Loading..';
   public resolved: boolean = false;
   constructor(private spinner: NgxSpinnerService) {
     window.scrollTo(0, 0);
    }
-  changeimage(){
-    this.prevgambar = !this.prevgambar;
-    this.prevgambar2 = !this.prevgambar2;
-    this.srcimage = 'assets/img/petline1_2.png';
-  }
-  changeimage2(){
-    this.prevgambar = !this.prevgambar;
-    this.prevgambar2 = !this.prevgambar2;
-    this.srcimage = 'assets/img/petline1_1.png';
-  }
+
   ngOnInit(): void {
     this.spinner.show();
     var count = 0;
@@ -37,7 +28,7 @@ export class Petline1Component implements OnInit {
       if(count = 1){
         clearInterval(a);
       }
-    },500);
+    },100);
   }
 
 }
