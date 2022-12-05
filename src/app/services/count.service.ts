@@ -452,4 +452,13 @@ export class CountService {
   getFsbValuemonth(){
     return this.httpClient.get(api + "fsbvaluepermonth");
   }
+  getInject(){
+    return this.httpClient.get(api + "injection");
+  }
+  getBottle(){
+    return this.httpClient.get(api + "bottle");
+  }
+  getFillerPetLine1(){
+    return this.httpClient.get(api + "fillerpetline1");
+  }
 };

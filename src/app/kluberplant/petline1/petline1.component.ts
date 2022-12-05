@@ -28,7 +28,7 @@ export class Petline1Component implements OnInit {
       if(count = 1){
         clearInterval(a);
       }
-    },100);
+    },200);
   }
 
 }

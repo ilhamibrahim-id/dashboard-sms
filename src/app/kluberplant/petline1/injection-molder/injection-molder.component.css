@@ -132,12 +132,12 @@ p{
   position: relative;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 8px;
   line-height: 2;
   height: 50px;
   transition: all 200ms linear;
   border-radius: 4px;
-  width: 240px;
+  width: 100px;
   letter-spacing: 1px;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -196,7 +196,6 @@ p{
   color: #ffeba7;
 }
 .modal-btn:checked + label:after{
-  transition: opacity 300ms 300ms ease, transform 300ms 300ms ease, background-color 250ms linear, color 250ms linear;
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -220,7 +219,6 @@ p{
   background-color: rgba(31,32,41,.75);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 250ms 700ms ease;
 }
 .modal-btn:checked ~ .modal{
   pointer-events: auto;

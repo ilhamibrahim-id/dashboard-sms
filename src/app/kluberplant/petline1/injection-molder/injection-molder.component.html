@@ -17,9 +17,12 @@
             <div id="number_container" class="mb-2">
               <ul>
                 <li>
-                  <button routerLink="/bottleshower" class="button button4 rounded-2xl">Lubricantion Chart</button>
+                  <button (click)="show()" class="button button4 rounded-2xl">Lubricantion Chart</button>
                 </li>
-                <li><button routerLink="/bottleshower" class="button button4 rounded-2xl">Manual</button></li>
+                <li>
+                  <button (click)="bukapdf()" class="button button4 rounded-2xl">Manual</button>
+                </li>
+                <li><button routerLink="/petline1" class="button button4 rounded-2xl">Pet Line 1</button></li>
               </ul>
             </div>
           </div>
@@ -33,69 +36,202 @@
       </div>
     </div>
   </div>
-  <div class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
-    <div class="flex-auto p-4">
-      <h5 class="text-center">Detail : </h5>
-      <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <table border="1" class="w-full text-lg text-left text-gray-500 dark:text-gray-400 text-center">
-        <tbody>
-          <tr class="border-b border-gray-200 dark:border-gray-700">
-            <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
-              coba aja
-            </td>
-            <td width="100" class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-              <p>Tidak Ada Data</p>
-            </td>
-            <td width="100" class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-              <p>Tidak Ada Data</p>
-            </td>
-            <td width="100" class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-              <p>Tidak Ada Data</p>
-            </td>
-            <td width="100" class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-              <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
-              <label for="modal-btn">Open Modal<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                  preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                  <path fill="currentColor"
-                    d="M21 8a1 1 0 0 0 1-1V3a1 1 0 0 0-.08-.38a1 1 0 0 0-.54-.54A1 1 0 0 0 21 2h-4a1 1 0 0 0 0 2h1.59L12 10.59L5.41 4H7a1 1 0 0 0 0-2H3a1 1 0 0 0-.38.08a1 1 0 0 0-.54.54A1 1 0 0 0 2 3v4a1 1 0 0 0 2 0V5.41L10.59 12L4 18.59V17a1 1 0 0 0-2 0v4a1 1 0 0 0 .08.38a1 1 0 0 0 .54.54A1 1 0 0 0 3 22h4a1 1 0 0 0 0-2H5.41L12 13.41L18.59 20H17a1 1 0 0 0 0 2h4a1 1 0 0 0 .38-.08a1 1 0 0 0 .54-.54A1 1 0 0 0 22 21v-4a1 1 0 0 0-2 0v1.59L13.41 12L20 5.41V7a1 1 0 0 0 1 1Z" />
-                </svg></label>
-              <div class="modal">
-                <div class="modal-wrap xl:ml-68.5">
-                  <img src="https://assets.codepen.io/1462889/sl3.jpg" alt="">
-                  <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-                    <table style="width: 1200px;" class="w-full text-lg text-left text-gray-500 dark:text-gray-400 text-center">
-                      <tbody>
-                        <tr class="border-b border-gray-200 dark:border-gray-700">
-                          <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
-                            coba aja
-                          </td>
-                          <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-                            <p>Tidak Ada Data</p>
-                          </td>
-                          <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-                            <p>Tidak Ada Data</p>
-                          </td>
-                          <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-                            <p>Tidak Ada Data</p>
-                          </td>
-                          <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
-                            <p>Tidak Ada Data</p>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div *ngIf="showtable">
+    <div class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+      <div class="flex-auto p-4">
+        <h5 class="text-center">Machine : {{nameMachine}}</h5>
+        <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+          <table border="1" class="w-full text-xs text-left text-gray-500 dark:text-gray-400 text-center">
+            <thead class="text-gray-700 uppercase dark:text-gray-400">
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black;">
+                  Point
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Application
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Number of lube points
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Kluber Lubricant
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Symbol
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  QTY
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  NSF grade
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Method
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Task Owner
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  M/C Status
+                </td>
+                <td width="3%" class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Detail
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Re-lube in hours/D/M/Y
+                </td>
+                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                  Note
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-200 dark:border-gray-700"
+                *ngFor="let header of injectarr |paginate: { currentPage: currentPage, itemsPerPage: 5 }; let i = index;">
+                <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  {{header.lubrication_point}}
+                </th>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.Application}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.number_lube}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.kluber_lubricant}}
+                </td>
+                <td class=" font-medium font-semibold" style="color: black">
+                  <img src="http://192.168.152.32/kluber_lubrication/files/{{header.symbol}}">
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.qty}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.NSF_grade}}
+                </td>
+                <td class="font-medium font-semibold" style="color: black">
+                  <img width="100%" height="100%" src="http://192.168.152.32/kluber_lubrication/files/{{header.method}}">
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.Task}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.mc_status}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                    <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
+                    <label (click)="detaildata(header.id)" for="modal-btn">Klik Detail<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                          d="M21 8a1 1 0 0 0 1-1V3a1 1 0 0 0-.08-.38a1 1 0 0 0-.54-.54A1 1 0 0 0 21 2h-4a1 1 0 0 0 0 2h1.59L12 10.59L5.41 4H7a1 1 0 0 0 0-2H3a1 1 0 0 0-.38.08a1 1 0 0 0-.54.54A1 1 0 0 0 2 3v4a1 1 0 0 0 2 0V5.41L10.59 12L4 18.59V17a1 1 0 0 0-2 0v4a1 1 0 0 0 .08.38a1 1 0 0 0 .54.54A1 1 0 0 0 3 22h4a1 1 0 0 0 0-2H5.41L12 13.41L18.59 20H17a1 1 0 0 0 0 2h4a1 1 0 0 0 .38-.08a1 1 0 0 0 .54-.54A1 1 0 0 0 22 21v-4a1 1 0 0 0-2 0v1.59L13.41 12L20 5.41V7a1 1 0 0 0 1 1Z" />
+                      </svg></label>
+                    <div class="modal">
+                      <div class="modal-wrap xl:ml-68.5">
+                        <img src="{{gambar}}" alt="">
+                        <h5 class="text-center">Machine : {{nameMachine}}</h5>
+                        <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+                          <table style="width: 1200px;"
+                            class="w-full text-xs text-left text-gray-500 dark:text-gray-400 text-center">
+                              <thead class="text-gray-700 uppercase dark:text-gray-400">
+                              <tr class="border-b border-gray-200 dark:border-gray-700">
+                                <td width="1%" class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
+                                  Point
+                                </td>
+                                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Application
+                                </td>
+                                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Number of lube points
+                                </td>
+                                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Kluber Lubricant
+                                </td>
+                                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                 Symbol
+                                </td>
+                                <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  QTY
+                                 </td>
+                                 <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  NSF grade
+                                 </td>
+                                 <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Method
+                                 </td>
+                                 <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Task Owner
+                                 </td>
+                                 <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  M/C Status
+                                 </td>
+                                 <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Re-lube in hours/D/M/Y
+                                 </td>
+                                 <td class="font-medium p-6 mt-2 bg-gray-50" style="color: black;">
+                                  Note
+                                 </td>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="border-b border-gray-200 dark:border-gray-700"
+                                  *ngFor="let header of detailarr; let i = index;">
+                                  <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    {{header.lubrication_point}}
+                                  </th>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.Application}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.number_lube}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.kluber_lubricant}}
+                                  </td>
+                                  <td class="font-medium font-semibold" style="color: black">
+                                    <img width="200%" src="http://192.168.152.32/kluber_lubrication/files/{{header.symbol}}">
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.qty}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.NSF_grade}}
+                                  </td>
+                                  <td class="font-medium font-semibold" style="color: black">
+                                    <img width="100%" height="100%" src="http://192.168.152.32/kluber_lubrication/files/{{header.method}}">
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.Task}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.mc_status}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.relube}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.notes}}
+                                  </td>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.relube}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.notes}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
     </div>
   </div>
 </div>
-
 <ng-template #loading2>
   <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
     <p style="font-size: 20px; color: white">{{deskripsi}}</p>
