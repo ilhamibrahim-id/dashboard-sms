@@ -19,8 +19,8 @@
 }
 
 .typing-demo {
-  width: 16ch;
-  animation: typing 0.5s steps(16), blink .5s step-end infinite alternate;
+  width: 13ch;
+  animation: typing 0.5s steps(13), blink .5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
@@ -94,10 +94,6 @@ body{
 	color: #1f2029;
   	background-color: #fff;
   overflow: hidden;
-  background-image: url('https://assets.codepen.io/1462889/back-page.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 101%;
 }
 p{
 	font-family: 'Poppins', sans-serif;

@@ -1822,7 +1822,10 @@ else lain6
       router.url === '/petline1' ||
         router.url === '/petline2' ||
         router.url === '/preparationroom' ||
-        router.url === '/offlinepacking';
+        router.url === '/offlinepacking' ||
+        router.url === '/injectionmolder' ||
+        router.url === '/bottleshower' ||
+        router.url === '/filler';
         else lubricantplant
     ">
         <li class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors">
@@ -2342,6 +2345,48 @@ else lain6
               aria-current="page">Pet Line - 1</li>
           </ol>
           <h6 class="mb-0 font-bold capitalize">Pet Line - 1</h6>
+        </nav>
+      </div>
+      <div *ngIf="router.url === '/injectionmolder'">
+        <nav>
+          <!-- breadcrumb -->
+          <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="leading-normal text-sm">
+              <a class="opacity-50 text-slate-700" routerLink="javascript:;">Pages</a>
+            </li>
+            <li
+              class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
+              aria-current="page">Injection Molder</li>
+          </ol>
+          <h6 class="mb-0 font-bold capitalize">Injection Molder</h6>
+        </nav>
+      </div>
+      <div *ngIf="router.url === '/filler'">
+        <nav>
+          <!-- breadcrumb -->
+          <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="leading-normal text-sm">
+              <a class="opacity-50 text-slate-700" routerLink="javascript:;">Pages</a>
+            </li>
+            <li
+              class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
+              aria-current="page">Filler</li>
+          </ol>
+          <h6 class="mb-0 font-bold capitalize">Filler</h6>
+        </nav>
+      </div>
+      <div *ngIf="router.url === '/bottleshower'">
+        <nav>
+          <!-- breadcrumb -->
+          <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="leading-normal text-sm">
+              <a class="opacity-50 text-slate-700" routerLink="javascript:;">Pages</a>
+            </li>
+            <li
+              class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
+              aria-current="page">Bottle Shower</li>
+          </ol>
+          <h6 class="mb-0 font-bold capitalize">Bottle Shower</h6>
         </nav>
       </div>
       <div *ngIf="router.url === '/petline2'">
