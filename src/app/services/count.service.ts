@@ -461,4 +461,19 @@ export class CountService {
   getFillerPetLine1(){
     return this.httpClient.get(api + "fillerpetline1");
   }
+  getKrones(){
+    return this.httpClient.get(api + "krones");
+  }
+  getSanyu(){
+    return this.httpClient.get(api + "sanyu");
+  }
+  getLabeller(){
+    return this.httpClient.get(api + "labeller");
+  }
+  getDivider(){
+    return this.httpClient.get(api + "divider");
+  }
+  getSheetFeeder(){
+    return this.httpClient.get(api + "sheetfeeder");
+  }
 };

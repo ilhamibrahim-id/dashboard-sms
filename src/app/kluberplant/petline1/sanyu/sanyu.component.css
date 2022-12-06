@@ -19,8 +19,8 @@
 }
 
 .typing-demo {
-  width: 12ch;
-  animation: typing 0.5s steps(12), blink .5s step-end infinite alternate;
+  width: 5ch;
+  animation: typing 0.5s steps(5), blink .5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;

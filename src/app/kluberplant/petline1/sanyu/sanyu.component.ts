@@ -3,28 +3,27 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from 'src/app/services/count.service';
 
 @Component({
-  selector: 'app-sheet-feeder',
-  templateUrl: './sheet-feeder.component.html',
-  styleUrls: ['./sheet-feeder.component.css']
+  selector: 'app-sanyu',
+  templateUrl: './sanyu.component.html',
+  styleUrls: ['./sanyu.component.css']
 })
-export class SheetFeederComponent implements OnInit {
-
+export class SanyuComponent implements OnInit {
 
   public resolved: boolean = false;
   public showtable: boolean = false;
-  sheetfeeder: any;
+  sanyu: any;
   itemsPerPage: number = 0;
   currentPage: number = 1;
   absoluteIndex(indexOnPage: number): number {
     return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
   }
-  sheetfeederobj: object = {};
-  sheetfeederarr: any = [];
+  sanyuobj: object = {};
+  sanyuarr: any = [];
   detailarr: any = [];
   loaddata:any;
   gambar: any;
   deskripsi: any = 'Loading..';
-  nameMachine: any = 'Sanyu Sheet Supplier';
+  nameMachine: any = 'Sanyu Conveyors';
   constructor(private spinner: NgxSpinnerService, private service: CountService) {
     window.scrollTo(0, 0);
   }
@@ -37,10 +36,10 @@ export class SheetFeederComponent implements OnInit {
   detaildata(id: any) {
     this.gambar = '';
     this.detailarr = [];
-    for (let i = 0; i < this.sheetfeederarr.length; i++) {
-      if (this.sheetfeederarr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.sheetfeederarr[i].images;
-        this.detailarr.splice(this.detailarr.lenght, 0, this.sheetfeederarr[i]);
+    for (let i = 0; i < this.sanyuarr.length; i++) {
+      if (this.sanyuarr[i].id == id) {
+        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.sanyuarr[i].images;
+        this.detailarr.splice(this.detailarr.lenght, 0, this.sanyuarr[i]);
 
       }
     }
@@ -50,14 +49,14 @@ export class SheetFeederComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-    this.sheetfeeder = this.service.getSheetFeeder().subscribe(data => {
-      this.sheetfeederobj = data;
-      Object.values(this.sheetfeederobj).forEach(data => {
+    this.sanyu = this.service.getSanyu().subscribe(data => {
+      this.sanyuobj = data;
+      Object.values(this.sanyuobj).forEach(data => {
         var array = Object.keys(data).map(function (key) {
           return data[key];
         });
         for (let i = 0; i < array.length; i++) {
-          this.sheetfeederarr.splice(this.sheetfeederarr.lenght, 0, array[i]);
+          this.sanyuarr.splice(this.sanyuarr.lenght, 0, array[i]);
         }
 
       })
@@ -68,14 +67,14 @@ export class SheetFeederComponent implements OnInit {
     var count = 0;
     var a = setInterval(() => {
       count++;
-      if(this.sheetfeederarr.length > 0){
+      if(this.sanyuarr.length > 0){
         // console.log(this.greaselist);
 
         this.spinner.hide();
         this.resolved = true;
       } else {
         this.deskripsi = 'Reconnect To Server';
-        this.sheetfeeder.unsubscribe();
+        this.sanyu.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

@@ -39,6 +39,8 @@ import { PackConveyorComponent } from './kluberplant/petline1/pack-conveyor/pack
 import { PalletConveyorComponent } from './kluberplant/petline1/pallet-conveyor/pallet-conveyor.component';
 import { PalletiserComponent } from './kluberplant/petline1/palletiser/palletiser.component';
 import { PackRollerConveyorsComponent } from './kluberplant/petline1/pack-roller-conveyors/pack-roller-conveyors.component';
+import { SanyuComponent } from './kluberplant/petline1/sanyu/sanyu.component';
+import { KronesComponent } from './kluberplant/petline1/krones/krones.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -76,6 +78,8 @@ const routes: Routes = [
   {path: 'palletconveyor', component: PalletConveyorComponent},
   {path: 'palletiser', component: PalletiserComponent},
   {path: 'packrollerconveyor', component: PackRollerConveyorsComponent},
+  {path: 'sanyu', component: SanyuComponent},
+  {path: 'krones', component: KronesComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -120,4 +124,6 @@ export const routingComponent = [
   PalletConveyorComponent,
   PalletiserComponent,
   PackRollerConveyorsComponent,
+  SanyuComponent,
+  KronesComponent
 ]
