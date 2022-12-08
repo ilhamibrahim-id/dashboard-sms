@@ -798,6 +798,17 @@ export class PdmMOci1Component implements OnInit {
           this.totalassetsub.unsubscribe();
           this.finishnotfinish.unsubscribe();
           this.valuemountfunc.unsubscribe();
+          this.goodsatisoci1.unsubscribe();
+          this.pdmfinish.unsubscribe();
+          this.finishtoday.unsubscribe();
+          this.finishabnormal.unsubscribe();
+          this.notepdmunsub.unsubscribe();
+          this.temperaturelinesub.unsubscribe();
+          this.amperesub.unsubscribe();
+          this.vibtrationsub.unsubscribe();
+          this.totalassetsub.unsubscribe();
+          this.finishnotfinish.unsubscribe();
+          this.valuemountfunc.unsubscribe();
           clearInterval(a);
           this.ngOnInit();
         }

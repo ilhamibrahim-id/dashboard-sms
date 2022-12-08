@@ -41,7 +41,7 @@ export class AboutusComponent{
         this.name = null;
         this.pesan = null;
         this.email = null;
-        this.sukses = 'Your Message Has Been Sent To otsuka.ilhamibrahim@gmail.com';
+        this.sukses = 'Your Message Has Been Sent';
       }, (error) => {
         console.log(error.text);
       });

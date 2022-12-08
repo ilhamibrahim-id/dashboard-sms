@@ -9,7 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class PreparationroomComponent implements OnInit {
 
   prevgambar: boolean = true;
-  srcimage: any = 'assets/img/prep1_1.png';
+  srcimage: any = 'assets/img/preparation_room.jpg';
   deskripsi: any = 'Loading..';
   public resolved: boolean = false;
   constructor(private spinner: NgxSpinnerService) {

@@ -785,6 +785,16 @@ export class PdmMFsbComponent implements OnInit {
           this.vibtrationsub.unsubscribe();
           this.totalassetsub.unsubscribe();
           this.valuemountfunc.unsubscribe();
+          this.goodsatisfsb.unsubscribe();
+          this.pdmfinish.unsubscribe();
+          this.finishtoday.unsubscribe();
+          this.finishabnormal.unsubscribe();
+          this.notepdmunsub.unsubscribe();
+          this.temperaturelinesub.unsubscribe();
+          this.amperesub.unsubscribe();
+          this.vibtrationsub.unsubscribe();
+          this.totalassetsub.unsubscribe();
+          this.valuemountfunc.unsubscribe();
           clearInterval(a);
           this.ngOnInit();
         }

@@ -8,41 +8,69 @@
       </div>
     </div>
   </div>
-  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
-    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <table class="w-full text-xxs text-center">
-        <tr>
-          <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Bottle Blower</button></td>
-          <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Filler</button></td>
-          <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Conveyors</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Labeller</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Sanyu Divider</button></td>
-          <td><button *ngIf="prevgambar0" class="button button4 rounded-2xl">Injection
-            Molder</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Caser</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Sheet Feeder</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Pallet Conveyors</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Pack Conveyors</button></td>
-          <td><button *ngIf="!prevgambar3" class="button button4 rounded-2xl">Palletiser</button></td>
-        </tr>
-      </table>
+  <!-- <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
+    <div id="content">
+      <h5 class="text-center mt-2">Click For Detail</h5>
+      <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+      <div id="number_container" class="mb-2">
+        <ul>
+          <li><button routerLink="/injectionmolder"  class="button button4 rounded-2xl">Injection
+              Molder</button></li>
+          <li><button routerLink="/bottleshower"  class="button button4 rounded-2xl">Bottle
+              Blower</button></li>
+          <li><button routerLink="/filler"  class="button button4 rounded-2xl">Filler</button></li>
+          <li><button routerLink="/containerconveyor"  class="button button4 rounded-2xl">Container
+              Conveyors</button></li>
+          <li><button routerLink="/labeller"  class="button button4 rounded-2xl">Labeller</button>
+          </li>
+          <li><button routerLink="/divider"  class="button button4 rounded-2xl">Divider</button>
+          </li>
+          <li><button routerLink="/sheetfeeder"  class="button button4 rounded-2xl">Sheet
+              Feeder</button></li>
+          <li><button routerLink="/shrinktray"  class="button button4 rounded-2xl">Packer Shnrik
+              Tray</button></li>
+          <li><button routerLink="/packconveyor"  class="button button4 rounded-2xl">Pack
+              Conveyors</button></li>
+          <li><button routerLink="/palletconveyor"  class="button button4 rounded-2xl">Pallet
+              Conveyors</button></li>
+          <li><button routerLink="/packrollerconveyor"  class="button button4 rounded-2xl">Pallet
+              Roller Conveyors</button></li>
+          <li><button routerLink="/palletiser"
+              class="button button4 rounded-2xl">Palletiser</button></li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border p-6">
-    <table style="text-align: center;" class="mb-4">
-      <button *ngIf="prevgambar0" (click)="changeimage()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
-          aria-hidden="true"></i></button>
-      <button *ngIf="!prevgambar2" (click)="changeimage3()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
-          aria-hidden="true"></i></button>
-      <button *ngIf="!prevgambar" (click)="changeimage2()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
-          aria-hidden="true"></i></button>
-          <button *ngIf="!prevgambar3" (click)="changeimage4()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
-            aria-hidden="true"></i></button>
-    </table>
-    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <img src="{{srcimage}}" style=" width: 100%;
-        width: auto;
-        max-height: 385px;" class="mb-2 center">
+  </div> -->
+  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl p-1 rounded-2xl bg-clip-border">
+    <div class="overflow-x-auto relative shadow-lg">
+      <button routerLink="/injectmolderpt2" style="margin-top: 73px; margin-left: 140px;"
+        class="button button4 rounded-2xl absolute">Injection <br />
+        Molder</button>
+        <button routerLink="/bottleblowerpt2" style="margin-top: 530px; margin-left: 140px;"
+        class="button button4 rounded-2xl absolute">Bottle <br />
+        Blower</button>
+        <button routerLink="/fillerpt2" style="margin-top: 520px; margin-left: 340px;"
+        class="button button4 rounded-2xl absolute">Filler</button>
+        <button routerLink="/conveyorpt2" style="margin-top: 320px; margin-left: 590px;"
+        class="button button4 rounded-2xl absolute">Conveyors</button>
+        <button routerLink="/labellerpt2" style="margin-top: 650px; margin-left: 690px;"
+        class="button button4 rounded-2xl absolute">Labeller</button>
+        <button routerLink="/sanyudividerpt2" style="margin-top: 490px; margin-left: 830px;"
+        class="button button4 rounded-2xl absolute">Sanyu <br /> Divider</button>
+        <button routerLink="/caserpt2" style="margin-top: 510px; margin-left: 1000px;"
+        class="button button4 rounded-2xl absolute">Caser</button>
+        <button routerLink="/sheetfeederpt2" style="margin-top: 680px; margin-left: 1000px;"
+        class="button button4 rounded-2xl absolute">Sheet <br /> Feeder</button>
+        <button routerLink="/packconveyorpt2" style="margin-top: 480px; margin-left: 1200px;"
+        class="button button4 rounded-2xl absolute">Pack <br /> Conveyor</button>
+        <button routerLink="/palletconveyorpt2" style="margin-top: 660px; margin-left: 1160px;"
+        class="button button4 rounded-2xl absolute">Pallet <br /> Conveyor</button>
+        <button routerLink="/palletiserpt2" style="margin-top: 690px; margin-left: 1280px;"
+        class="button button4 rounded-2xl absolute">Palletiser</button>
+      <img src="{{srcimage}}" style="
+      width: auto;
+      max-height: 800px;" class="mb-2 center">
     </div>
   </div>
 </div>

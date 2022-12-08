@@ -30,7 +30,7 @@ export class LabellerComponent implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/Sidel Botle Blower.pdf", "_blank");
+    window.open("assets/pdf/Labeller.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';

@@ -8,36 +8,65 @@
       </div>
     </div>
   </div>
-  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
-    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <table class="w-full text-xxs text-center">
-        <tr>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">PET 1 Agitators</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">PET 2 Agitators</button></td>
-          <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Lubrication Chart</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Filler Press 1</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Filler Press 2</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">DPC 13 Pump</button></td>
-        </tr>
-      </table>
+  <!-- <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
+    <div id="content">
+      <h5 class="text-center mt-2">Click For Detail</h5>
+      <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+      <div id="number_container" class="mb-2">
+        <ul>
+          <li><button routerLink="/injectionmolder"  class="button button4 rounded-2xl">Injection
+              Molder</button></li>
+          <li><button routerLink="/bottleshower"  class="button button4 rounded-2xl">Bottle
+              Blower</button></li>
+          <li><button routerLink="/filler"  class="button button4 rounded-2xl">Filler</button></li>
+          <li><button routerLink="/containerconveyor"  class="button button4 rounded-2xl">Container
+              Conveyors</button></li>
+          <li><button routerLink="/labeller"  class="button button4 rounded-2xl">Labeller</button>
+          </li>
+          <li><button routerLink="/divider"  class="button button4 rounded-2xl">Divider</button>
+          </li>
+          <li><button routerLink="/sheetfeeder"  class="button button4 rounded-2xl">Sheet
+              Feeder</button></li>
+          <li><button routerLink="/shrinktray"  class="button button4 rounded-2xl">Packer Shnrik
+              Tray</button></li>
+          <li><button routerLink="/packconveyor"  class="button button4 rounded-2xl">Pack
+              Conveyors</button></li>
+          <li><button routerLink="/palletconveyor"  class="button button4 rounded-2xl">Pallet
+              Conveyors</button></li>
+          <li><button routerLink="/packrollerconveyor"  class="button button4 rounded-2xl">Pallet
+              Roller Conveyors</button></li>
+          <li><button routerLink="/palletiser"
+              class="button button4 rounded-2xl">Palletiser</button></li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border p-6">
-    <table style="text-align: center;" class="mb-4">
-      <button *ngIf="prevgambar" (click)="changeimage()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
-          aria-hidden="true"></i></button>
-      <button *ngIf="!prevgambar" (click)="changeimage2()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
-          aria-hidden="true"></i></button>
-    </table>
-    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <img src="{{srcimage}}" style=" width: 100%;
-        width: auto;
-        max-height: 385px;" class="mb-2 center">
+  </div> -->
+  <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl p-1 rounded-2xl bg-clip-border">
+    <div class="overflow-x-auto relative shadow-lg">
+      <button routerLink="/injectionmolder" style="margin-top: 450px; margin-left: 70px;"
+        class="button button4 rounded-2xl absolute">Pet 1<br />
+        Agitators</button>
+        <button routerLink="/injectionmolder" style="margin-top: 735px; margin-left: 315px;"
+        class="button button4 rounded-2xl absolute">Filler<br />
+        Press 2</button>
+        <button routerLink="/injectionmolder" style="margin-top: 750px; margin-left: 550px;"
+        class="button button4 rounded-2xl absolute">Filler<br />
+        Press 1</button>
+        <button routerLink="/injectionmolder" style="margin-top: 310px; margin-left: 850px;"
+        class="button button4 rounded-2xl absolute">Pet 2<br />
+        Agitators</button>
+        <button routerLink="/injectionmolder" style="margin-top: 450px; margin-left: 850px;"
+        class="button button4 rounded-2xl absolute">DPC 13<br />
+        Pump</button>
+      <img src="{{srcimage}}" style="
+      width: auto;
+      max-height: 1000px;" class="mb-2 center">
     </div>
   </div>
-  </div>
-  <ng-template #loading2>
-    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
-      <p style="font-size: 20px; color: white">{{deskripsi}}</p>
-    </ngx-spinner>
-  </ng-template>
+</div>
+<ng-template #loading2>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+    <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+  </ngx-spinner>
+</ng-template>

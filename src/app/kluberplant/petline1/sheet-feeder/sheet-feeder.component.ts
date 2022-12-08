@@ -32,7 +32,7 @@ export class SheetFeederComponent implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/SM OCII-2.pdf", "_blank");
+    window.open("assets/pdf/Sheet Feeder Manual.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';

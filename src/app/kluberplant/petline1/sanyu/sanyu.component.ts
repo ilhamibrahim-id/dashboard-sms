@@ -31,7 +31,7 @@ export class SanyuComponent implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/SM OCII-2.pdf", "_blank");
+    window.open("assets/pdf/bottle conveyor.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';

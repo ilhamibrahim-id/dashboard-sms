@@ -23,7 +23,7 @@ export class DividerComponent implements OnInit {
   loaddata:any;
   gambar: any;
   deskripsi: any = 'Loading..';
-  nameMachine: any = 'Husky Hypet 500 dividerion Molder';
+  nameMachine: any = 'Krones Divider';
   constructor(private spinner: NgxSpinnerService, private service: CountService) {
     window.scrollTo(0, 0);
   }

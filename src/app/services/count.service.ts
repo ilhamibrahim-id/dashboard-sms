@@ -476,4 +476,52 @@ export class CountService {
   getSheetFeeder(){
     return this.httpClient.get(api + "sheetfeeder");
   }
+  getShrinkTray(){
+    return this.httpClient.get(api + "shrinktray");
+  }
+  getPackConveyor(){
+    return this.httpClient.get(api + "packconveyor");
+  }
+  getPalletConveyor(){
+    return this.httpClient.get(api + "palletconveyor");
+  }
+  getPalletiser(){
+    return this.httpClient.get(api + "palletiser");
+  }
+  getPackRoller(){
+    return this.httpClient.get(api + "packroller");
+  }
+  getInjectionMolderPt2(){
+    return this.httpClient.get(api + "injectionmolderpt2");
+  }
+  getBottleBlowerPt2(){
+    return this.httpClient.get(api + "bottleblowerpt2");
+  }
+  getFillerPt2(){
+    return this.httpClient.get(api + "fillerpt2");
+  }
+  getConveyorPt2(){
+    return this.httpClient.get(api + "conveyorpt2");
+  }
+  getLabellerPt2(){
+    return this.httpClient.get(api + "labellerpt2");
+  }
+  getSanyuPt2(){
+    return this.httpClient.get(api + "sanyupt2");
+  }
+  getCaserPt2(){
+    return this.httpClient.get(api + "caserpt2");
+  }
+  getSheetFeederPt2(){
+    return this.httpClient.get(api + "sheetfeederpt2");
+  }
+  getPackConveyorPt2(){
+    return this.httpClient.get(api + "packconveyorpt2");
+  }
+  getPalletConveyorPt2(){
+    return this.httpClient.get(api + "palletconveyorpt2");
+  }
+  getPalletiserPt2(){
+    return this.httpClient.get(api + "palletiserpt2");
+  }
 };
