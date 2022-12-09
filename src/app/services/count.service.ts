@@ -524,4 +524,7 @@ export class CountService {
   getPalletiserPt2(){
     return this.httpClient.get(api + "palletiserpt2");
   }
+  getOffPackMain(){
+    return this.httpClient.get(api + "offpackmain");
+  }
 };

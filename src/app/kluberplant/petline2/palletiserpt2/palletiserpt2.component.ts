@@ -31,14 +31,14 @@ export class Palletiserpt2Component implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/SM OCII-2.pdf", "_blank");
+    window.open("assets/pdf/BA_89405655_001700_Innopal Palettierer_EN_01.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';
     this.detailarr = [];
     for (let i = 0; i < this.palletiserarr.length; i++) {
       if (this.palletiserarr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.palletiserarr[i].image;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.palletiserarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.palletiserarr[i]);
 
       }

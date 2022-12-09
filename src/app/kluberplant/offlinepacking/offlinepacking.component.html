@@ -8,30 +8,220 @@
       </div>
     </div>
   </div>
-  <!-- <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
-    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <table class="w-full text-xxs text-center">
-        <tr>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Container Conveyor</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Robo Packer</button></td>
-          <td><button *ngIf="!prevgambar" class="button button4 rounded-2xl">Lubrication Chart</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Empty Box Conveyor</button></td>
-          <td><button *ngIf="prevgambar" class="button button4 rounded-2xl">Pack Conveyors</button></td>
-        </tr>
-      </table>
-    </div>
-  </div> -->
   <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border p-6">
-    <!-- <table style="text-align: center;" class="mb-4">
-      <button *ngIf="prevgambar" (click)="changeimage()"><i class="fa fa-arrow-circle-left fa-2x mr-2"
-          aria-hidden="true"></i></button>
-      <button *ngIf="!prevgambar" (click)="changeimage2()"><i class="fa fa-arrow-circle-right fa-2x ml-2"
-          aria-hidden="true"></i></button>
-    </table> -->
+    <p style="color: red;" class="text-center mt-4">use a maximum zoom of 75 percent in the browser (PC)</p>
     <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <img src="https://jatim.bpk.go.id/wp-content/uploads/2017/10/under-maintenance.png" style=" width: 100%;
+      <button (click)="show()" style="margin-top: 20px; margin-left: 70px;"
+        class="button button4 rounded-2xl absolute">Lubrication
+        Chart</button>`
+        <button routerLink="/onprocess" style="margin-top: 136px; margin-left: 530px;"
+        class="button button4 rounded-2xl absolute">Container <br /> Conveyor</button>
+        <button routerLink="/onprocess" style="margin-top: 356px; margin-left: 700px;"
+        class="button button4 rounded-2xl absolute">Robo Packer</button>
+        <button routerLink="/onprocess" style="margin-top: 165px; margin-left: 950px;"
+        class="button button4 rounded-2xl absolute">Empty Box <br /> Conveyor</button>
+        <button routerLink="/onprocess" style="margin-top: 180px; margin-left: 1100px;"
+        class="button button4 rounded-2xl absolute">Pack <br /> Conveyor</button>
+        <button routerLink="/onprocess" style="margin-top: 356px; margin-left: 880px;"
+        class="button button4 rounded-2xl absolute">Resealer</button>
+      <img src="assets/img/offlinepacking.jpg" style=" width: 100%;
         width: auto;
         max-height: 385px;" class="mb-2 center">
+    </div>
+  </div>
+  <div *ngIf="showtable">
+    <div class="relative mt-2 flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+      <div class="flex-auto p-4">
+        <h5 class="text-center">Machine : {{nameMachine}}</h5>
+        <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+          <table border="1" class="w-full text-xs text-left text-gray-500 dark:text-gray-400 text-center">
+            <thead class="text-gray-700 uppercase dark:text-gray-400">
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Point
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Application
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Number of <br /> lube points
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Kluber <br /> Lubricant
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Symbol
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  QTY
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  NSF <br /> grade
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Method
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Task <br /> Owner
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  M/C <br /> Status
+                </td>
+                <td width="3%" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Detail
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Re-lube in <br /> hours/D/M/Y
+                </td>
+                <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  Note
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-200 dark:border-gray-700"
+                *ngFor="let header of offpackarr | paginate: { currentPage: currentPage, itemsPerPage: 5 }; let i = index;">
+                <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                  {{header.lubrication_point}}
+                </th>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.application}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.number_lube}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.kluber_lubricant}}
+                </td>
+                <td class=" font-medium font-semibold" style="color: black">
+                  <img src="http://192.168.9.47/kluber_lubrication/files/{{header.symbol}}">
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.qty}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.nsf_grade}}
+                </td>
+                <td class="font-medium font-semibold" style="color: black">
+                  <img width="100%" height="100%" src="http://192.168.9.47/kluber_lubrication/files/{{header.method}}">
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.task}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.mc_status}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                    <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
+                    <label (click)="detaildata(header.id)" for="modal-btn">Klik Detail<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                          d="M21 8a1 1 0 0 0 1-1V3a1 1 0 0 0-.08-.38a1 1 0 0 0-.54-.54A1 1 0 0 0 21 2h-4a1 1 0 0 0 0 2h1.59L12 10.59L5.41 4H7a1 1 0 0 0 0-2H3a1 1 0 0 0-.38.08a1 1 0 0 0-.54.54A1 1 0 0 0 2 3v4a1 1 0 0 0 2 0V5.41L10.59 12L4 18.59V17a1 1 0 0 0-2 0v4a1 1 0 0 0 .08.38a1 1 0 0 0 .54.54A1 1 0 0 0 3 22h4a1 1 0 0 0 0-2H5.41L12 13.41L18.59 20H17a1 1 0 0 0 0 2h4a1 1 0 0 0 .38-.08a1 1 0 0 0 .54-.54A1 1 0 0 0 22 21v-4a1 1 0 0 0-2 0v1.59L13.41 12L20 5.41V7a1 1 0 0 0 1 1Z" />
+                      </svg></label>
+                    <div class="modal">
+                      <div class="modal-wrap xl:ml-68.5">
+                        <img src="{{gambar}}" alt="">
+                        <h5 class="text-center">Machine : {{nameMachine}}</h5>
+                        <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+                          <table style="width: 1200px;"
+                            class="w-full text-xs text-left text-gray-500 dark:text-gray-400 text-center">
+                              <thead class="text-gray-700 uppercase dark:text-gray-400">
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Point
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Application
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Number of <br /> lube points
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Kluber <br /> Lubricant
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Symbol
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    QTY
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    NSF <br /> grade
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Method
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Task <br /> Owner
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    M/C <br /> Status
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Re-lube in <br /> hours/D/M/Y
+                                  </td>
+                                  <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    Note
+                                  </td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="border-b border-gray-200 dark:border-gray-700"
+                                  *ngFor="let header of detailarr; let i = index;">
+                                  <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                                    {{header.lubrication_point}}
+                                  </th>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.application}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.number_lube}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.kluber_lubricant}}
+                                  </td>
+                                  <td class="font-medium font-semibold" style="color: black">
+                                    <img width="200%" src="http://192.168.9.47/kluber_lubrication/files/{{header.symbol}}">
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.qty}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.nsf_grade}}
+                                  </td>
+                                  <td class="font-medium font-semibold" style="color: black">
+                                    <img width="100%" height="100%" src="http://192.168.9.47/kluber_lubrication/files/{{header.method}}">
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.task}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.mc_status}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.relube}}
+                                  </td>
+                                  <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                                    {{header.notes}}
+                                  </td>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.relube}}
+                </td>
+                <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                  {{header.notes}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
     </div>
   </div>
   </div>

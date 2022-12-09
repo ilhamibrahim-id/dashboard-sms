@@ -38,7 +38,7 @@ export class FillerComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.Fillerarr.length; i++) {
       if (this.Fillerarr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.Fillerarr[i].images;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.Fillerarr[i].images;
         this.detailarr.splice(this.detailarr.lenght, 0, this.Fillerarr[i]);
 
       }

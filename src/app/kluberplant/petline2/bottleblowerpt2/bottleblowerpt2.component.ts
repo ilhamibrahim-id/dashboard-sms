@@ -32,14 +32,14 @@ export class Bottleblowerpt2Component implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/SM OCII-2.pdf", "_blank");
+    window.open("assets/pdf/Sidel Botle Blower.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';
     this.detailarr = [];
     for (let i = 0; i < this.bottlearr.length; i++) {
       if (this.bottlearr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.bottlearr[i].image;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.bottlearr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.bottlearr[i]);
 
       }

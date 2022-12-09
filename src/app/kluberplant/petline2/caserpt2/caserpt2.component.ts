@@ -30,7 +30,7 @@ export class Caserpt2Component implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/SHIKOKU Filling machine.pdf", "_blank");
+    window.open("assets/pdf/Wrap Tray Sealer.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';
@@ -38,7 +38,7 @@ export class Caserpt2Component implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.caserarr.length; i++) {
       if (this.caserarr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.caserarr[i].image;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.caserarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.caserarr[i]);
 
       }

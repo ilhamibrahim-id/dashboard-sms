@@ -37,7 +37,7 @@ export class KronesComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.kronesarr.length; i++) {
       if (this.kronesarr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.kronesarr[i].images;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.kronesarr[i].images;
         this.detailarr.splice(this.detailarr.lenght, 0, this.kronesarr[i]);
 
       }

@@ -37,7 +37,7 @@ export class BottleShowerComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.bottlearr.length; i++) {
       if (this.bottlearr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.bottlearr[i].images;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.bottlearr[i].images;
         this.detailarr.splice(this.detailarr.lenght, 0, this.bottlearr[i]);
 
       }

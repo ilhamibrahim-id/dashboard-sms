@@ -31,7 +31,7 @@ export class Sheetfeederpt2Component implements OnInit {
     this.showtable = !this.showtable;
   }
   bukapdf() {
-    window.open("assets/pdf/SHIKOKU Filling machine.pdf", "_blank");
+    window.open("assets/pdf/Sheet Feeder Manual.pdf", "_blank");
   }
   detaildata(id: any) {
     this.gambar = '';
@@ -39,7 +39,7 @@ export class Sheetfeederpt2Component implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.sheetfeederarr.length; i++) {
       if (this.sheetfeederarr[i].id == id) {
-        this.gambar = "http://192.168.152.32/kluber_lubrication/files/" + this.sheetfeederarr[i].image;
+        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.sheetfeederarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.sheetfeederarr[i]);
 
       }

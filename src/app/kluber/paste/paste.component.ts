@@ -58,6 +58,6 @@ export class PasteComponent implements OnInit {
     this.loaddata = await this.loaddata;
   }
   getpdf(link: any) {
-    window.open("http://192.168.152.32/kluber_lubrication/files/" + link, "_blank");
+    window.open("http://192.168.9.47/kluber_lubrication/files/" + link, "_blank");
   }
 }
