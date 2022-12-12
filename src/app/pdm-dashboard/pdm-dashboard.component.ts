@@ -268,7 +268,7 @@ export class PdmDashboardComponent implements OnInit {
             this.coba = new Chart('dum', {
               type: 'doughnut',
               data: {
-                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+                labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
                   data: [this.goodoci1, this.satisoci1, this.unsatisfoci1, this.unaccoci1],
@@ -291,7 +291,7 @@ export class PdmDashboardComponent implements OnInit {
             this.coba = new Chart('donut', {
               type: 'doughnut',
               data: {
-                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+                labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
                 datasets: [{
                   label: '# of Votes',
                   data: [this.good, this.satis, this.unsatisf, this.unacc],
@@ -338,7 +338,7 @@ export class PdmDashboardComponent implements OnInit {
                 }
               },
               data: {
-                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+                labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
                 datasets: [{
                   label: 'oi',
                   data: [this.goodfsb, this.satisfsb, this.unsatisffsb, this.unaccfsb],
