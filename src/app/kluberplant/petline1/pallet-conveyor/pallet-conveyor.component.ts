@@ -75,6 +75,7 @@ export class PalletConveyorComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.palletconveyor.unsubscribe();
+        this.palletconveyor.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

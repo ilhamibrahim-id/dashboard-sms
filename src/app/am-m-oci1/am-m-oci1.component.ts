@@ -359,6 +359,13 @@ export class AmMOci1Component implements OnInit {
           this.totalfindingsub.unsubscribe();
           this.totalfinishmsub.unsubscribe();
           this.totalreadymsub.unsubscribe();
+          this.leveltotal.unsubscribe();
+          this.ordersub.unsubscribe();
+          this.findingsub.unsubscribe();
+          this.totalfindingmsub.unsubscribe();
+          this.totalfindingsub.unsubscribe();
+          this.totalfinishmsub.unsubscribe();
+          this.totalreadymsub.unsubscribe();
           this.ngOnInit();
         }
         if (count = 1) {

@@ -76,6 +76,7 @@ export class ShrinkTrayComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.shrinktray.unsubscribe();
+        this.shrinktray.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

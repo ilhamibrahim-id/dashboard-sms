@@ -75,6 +75,7 @@ export class PackConveyorComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.packconveyor.unsubscribe();
+        this.packconveyor.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

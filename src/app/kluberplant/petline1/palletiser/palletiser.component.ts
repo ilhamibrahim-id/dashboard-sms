@@ -75,6 +75,7 @@ export class PalletiserComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.palletiser.unsubscribe();
+        this.palletiser.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

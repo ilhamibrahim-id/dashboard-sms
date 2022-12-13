@@ -31,12 +31,12 @@ export class CountService {
 
   public listNodeObject: object = {};
   public listNode: any = [];
-
+  public big5load: any;
   getBigFive() {
     this.bigFive = [];
     this.bigFiveMachine = [];
     this.bigFiveByMachineId = [];
-    this.httpClient.get(api + "big5/get").subscribe(data => {
+    this.big5load = this.httpClient.get(api + "big5/get").subscribe(data => {
       this.bigFiveObject = data;
       Object.values(this.bigFiveObject).forEach(data => {
         // console.log(data);

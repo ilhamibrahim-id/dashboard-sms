@@ -75,6 +75,7 @@ export class Labellerpt2Component implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.labeller.unsubscribe();
+        this.labeller.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

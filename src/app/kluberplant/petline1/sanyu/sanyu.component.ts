@@ -75,6 +75,7 @@ export class SanyuComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.sanyu.unsubscribe();
+        this.sanyu.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

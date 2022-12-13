@@ -76,6 +76,7 @@ export class SheetFeederComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.sheetfeeder.unsubscribe();
+        this.sheetfeeder.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

@@ -76,6 +76,7 @@ export class Bottleblowerpt2Component implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.bottle.unsubscribe();
+        this.bottle.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

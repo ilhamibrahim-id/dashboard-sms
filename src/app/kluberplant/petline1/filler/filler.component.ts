@@ -75,6 +75,7 @@ export class FillerComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.Filler.unsubscribe();
+        this.Filler.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

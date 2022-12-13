@@ -74,6 +74,7 @@ export class OfflinepackingComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.offpack.unsubscribe();
+        this.offpack.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

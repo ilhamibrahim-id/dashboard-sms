@@ -360,7 +360,7 @@ export class PdmDashboardComponent implements OnInit {
               },
             }
             );
-            if (count2 = 1) {
+            if (count2 = 2) {
               clearInterval(b);
             }
           }, 50);
@@ -371,6 +371,13 @@ export class PdmDashboardComponent implements OnInit {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
           clearInterval(a);
+          this.goodsatisoci1y.unsubscribe();
+          this.goodsatisoci2y.unsubscribe();
+          this.goodsatisfsby.unsubscribe();
+          this.totalpdmasset.unsubscribe();
+          this.totalpdmassetoci1.unsubscribe();
+          this.totalpdmassetoci2.unsubscribe();
+          this.totalpdmassetfsb.unsubscribe();
           this.goodsatisoci1y.unsubscribe();
           this.goodsatisoci2y.unsubscribe();
           this.goodsatisfsby.unsubscribe();

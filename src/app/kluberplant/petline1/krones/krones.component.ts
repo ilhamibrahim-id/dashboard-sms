@@ -74,6 +74,7 @@ export class KronesComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.krones.unsubscribe();
+        this.krones.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

@@ -254,6 +254,11 @@ export class DashboardComponent implements OnInit {
           this.pendingexecutesub.unsubscribe();
           this.finishexecutesub.unsubscribe();
           this.readyexecutesub.unsubscribe();
+          this.kategori.unsubscribe();
+          this.totalfindingsub.unsubscribe();
+          this.pendingexecutesub.unsubscribe();
+          this.finishexecutesub.unsubscribe();
+          this.readyexecutesub.unsubscribe();
           this.ngOnInit();
         }
         if (count = 1) {

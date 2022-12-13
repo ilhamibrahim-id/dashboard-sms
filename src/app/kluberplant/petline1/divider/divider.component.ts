@@ -75,6 +75,7 @@ export class DividerComponent implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.divider.unsubscribe();
+        this.divider.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

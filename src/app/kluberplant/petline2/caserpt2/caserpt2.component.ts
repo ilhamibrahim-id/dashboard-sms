@@ -75,6 +75,7 @@ export class Caserpt2Component implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.caser.unsubscribe();
+        this.caser.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

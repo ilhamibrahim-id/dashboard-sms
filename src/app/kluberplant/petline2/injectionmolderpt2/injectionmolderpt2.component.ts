@@ -75,6 +75,7 @@ export class Injectionmolderpt2Component implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.inject.unsubscribe();
+        this.inject.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){

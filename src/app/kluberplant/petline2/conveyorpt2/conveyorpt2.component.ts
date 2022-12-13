@@ -76,6 +76,7 @@ export class Conveyorpt2Component implements OnInit {
       } else {
         this.deskripsi = 'Reconnect To Server';
         this.conveyor.unsubscribe();
+        this.conveyor.unsubscribe();
         this.ngOnInit();
       }
       if (count = 1){
