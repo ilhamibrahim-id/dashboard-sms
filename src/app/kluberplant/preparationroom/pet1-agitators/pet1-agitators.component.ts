@@ -10,6 +10,7 @@ export class Pet1AgitatorsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

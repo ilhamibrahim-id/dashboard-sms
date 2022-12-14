@@ -215,6 +215,7 @@ export class PdmMOci2Component implements OnInit {
     this.showPaginate2 = 5;
     this.currentPage = 1;
     this.currentPage2 = 1;
+    this.exportdata = !this.exportdata;
   }
   print(): void {
     let printContents, popupWin: any;
@@ -244,6 +245,7 @@ export class PdmMOci2Component implements OnInit {
     this.showPaginate2 = 5;
     this.currentPage = 1;
     this.currentPage2 = 1;
+    this.exportdata = !this.exportdata;
     popupWin.document.close();
   }
   data($event: any,$event2 : any) {
@@ -630,7 +632,7 @@ export class PdmMOci2Component implements OnInit {
         })
       }
       );
-      this.goodsatisoci2 = this.service.getReadGoodAndSatisoci2().subscribe(data => {
+      this.goodsatisoci2 = this.service.getReadGoodAndSatisoci2y().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {

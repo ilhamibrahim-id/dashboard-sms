@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { VERSION } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
+import { map, share, Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,7 +22,11 @@ export class SidebarComponent implements OnInit {
   public sub4: boolean = false;
   constructor(public router: Router,@Inject(DOCUMENT) private document: Document) {}
   ngOnInit(): void {
+    setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000);
   }
+
   lubiPlantClick(){
     this.lubiplantsub = !this.lubiplantsub;
   }

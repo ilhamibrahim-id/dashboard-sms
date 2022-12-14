@@ -311,7 +311,7 @@ export class PdmDashboardComponent implements OnInit {
                 }]
               },
             });
-            this.coba = new Chart('donutku', {
+            new Chart('donutku', {
               type: 'doughnut',
               options: {
                 plugins: {

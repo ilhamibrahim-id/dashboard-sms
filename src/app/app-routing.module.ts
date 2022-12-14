@@ -53,6 +53,16 @@ import { Sheetfeederpt2Component } from './kluberplant/petline2/sheetfeederpt2/s
 import { Packconveyorpt2Component } from './kluberplant/petline2/packconveyorpt2/packconveyorpt2.component';
 import { Palletconveyorpt2Component } from './kluberplant/petline2/palletconveyorpt2/palletconveyorpt2.component';
 import { Palletiserpt2Component } from './kluberplant/petline2/palletiserpt2/palletiserpt2.component';
+import { Pet1AgitatorsComponent } from './kluberplant/preparationroom/pet1-agitators/pet1-agitators.component';
+import { Pet2AgitatorsComponent } from './kluberplant/preparationroom/pet2-agitators/pet2-agitators.component';
+import { FilterPress1Component } from './kluberplant/preparationroom/filter-press1/filter-press1.component';
+import { FilterPress2Component } from './kluberplant/preparationroom/filter-press2/filter-press2.component';
+import { DpcPumpComponent } from './kluberplant/preparationroom/dpc-pump/dpc-pump.component';
+import { ContainerConveyorOffComponent } from './kluberplant/offlinepacking/container-conveyor-off/container-conveyor-off.component';
+import { RobopackerOffComponent } from './kluberplant/offlinepacking/robopacker-off/robopacker-off.component';
+import { ResealerOffComponent } from './kluberplant/offlinepacking/resealer-off/resealer-off.component';
+import { EmptyboxOffComponent } from './kluberplant/offlinepacking/emptybox-off/emptybox-off.component';
+import { PackConveyorOffComponent } from './kluberplant/offlinepacking/pack-conveyor-off/pack-conveyor-off.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -104,7 +114,16 @@ const routes: Routes = [
   {path: 'packconveyorpt2', component: Packconveyorpt2Component},
   {path: 'palletconveyorpt2', component: Palletconveyorpt2Component},
   {path: 'palletiserpt2', component: Palletiserpt2Component},
-  {path: 'colorcode', component: ColorcodeComponent},
+  {path: 'pet1', component: Pet1AgitatorsComponent},
+  {path: 'pet2', component: Pet2AgitatorsComponent},
+  {path: 'filterpress1', component: FilterPress1Component},
+  {path: 'filterpress2', component: FilterPress2Component},
+  {path: 'dpcpump', component: DpcPumpComponent},
+  {path: 'containeroffline', component: ContainerConveyorOffComponent},
+  {path: 'robopacker', component: RobopackerOffComponent},
+  {path: 'resealeroff', component: ResealerOffComponent},
+  {path: 'emptybox', component: EmptyboxOffComponent},
+  {path: 'packconveyoroff', component: PackConveyorOffComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -162,5 +181,15 @@ export const routingComponent = [
   Sheetfeederpt2Component,
   Packconveyorpt2Component,
   Palletconveyorpt2Component,
-  Palletiserpt2Component
+  Palletiserpt2Component,
+  Pet1AgitatorsComponent,
+  Pet2AgitatorsComponent,
+  FilterPress1Component ,
+  FilterPress2Component ,
+  DpcPumpComponent,
+  ContainerConveyorOffComponent,
+  RobopackerOffComponent,
+  ResealerOffComponent,
+  EmptyboxOffComponent,
+  PackConveyorOffComponent,
 ]
