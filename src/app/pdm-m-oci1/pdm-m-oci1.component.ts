@@ -22,6 +22,10 @@ export class PdmMOci1Component implements OnInit {
   good: number = 0;
   satis: number = 0;
   unsatisf: number = 0;
+  good2: number = 0;
+  satis2: number = 0;
+  unsatisf2: number = 0;
+  unacc2: number = 0;
   itemsPerPage: number = 0;
   searchText: any;
   searchDate: any = moment().format("YYYY-MM-DD");
@@ -85,6 +89,8 @@ export class PdmMOci1Component implements OnInit {
   totalfinish: any;
   goodsatis: object = {};
   goodsatis2: any = [];
+  subbarlistobj: object = {};
+  subbarlistarr: any = [];
   totalgoodsatis: any;
   unsatis: object = {};
   unsatis2: any = [];
@@ -184,6 +190,8 @@ export class PdmMOci1Component implements OnInit {
   oktober: number = 0;
   november: number = 0;
   desember: number = 0;
+  subbar: any;
+  selectorarrabnormal: any = [];
   isNumber(value: any) {
     return Number.isNaN(value);
   }
@@ -570,6 +578,15 @@ export class PdmMOci1Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.abnormalassetlist.splice(this.abnormalassetlist.lenght, 0, array[i]);
           }
+          this.abnormalassetlist = this.abnormalassetlist.filter((el:any, i:any, a:any) => i === a.indexOf(el))
+          console.log(this.abnormalassetlist);
+
+          for (let i = 0; i < this.abnormalassetlist.length; i++) {
+            if(this.abnormalassetlist[i].Stat == 'Unsatisfactory' || this.abnormalassetlist[i].Stat == 'Unacceptable'){
+              this.selectorarrabnormal.splice(this.selectorarrabnormal,0,this.abnormalassetlist[i]);
+            }
+          }
+
         })
       }
       );
@@ -632,6 +649,31 @@ export class PdmMOci1Component implements OnInit {
           // // console.log(array);
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
+          }
+        })
+      }
+      );
+      this.subbar = this.service.getReadGoodAndSatisoci1().subscribe(data => {
+        this.subbarlistobj = data;
+        Object.values(this.subbarlistobj).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          for (let i = 0; i < array.length; i++) {
+            this.subbarlistarr.splice(this.subbarlistarr.lenght, 0, array[i]);
+          }
+          for (let elem of this.subbarlistarr) {
+            if (elem.status == 'Good') {
+              this.good2 += 1;
+            } else if (elem.status == 'Satisfactory') {
+              this.satis2 += 1;
+            } else if (elem.status == 'Unsatisfactory') {
+              this.unsatisf2 += 1;
+            } else if (elem.status == 'Unacceptable') {
+              this.unacc2 += 1;
+            }
+            //// console.log(this.good);
+
           }
         })
       }
@@ -789,6 +831,7 @@ export class PdmMOci1Component implements OnInit {
         } else {
           // this.spinner.show();
           this.deskripsi = 'Reconnect To Server';
+          this.subbar.unsubscribe();
           this.goodsatisoci1.unsubscribe();
           this.pdmfinish.unsubscribe();
           this.finishtoday.unsubscribe();
@@ -811,6 +854,7 @@ export class PdmMOci1Component implements OnInit {
           this.totalassetsub.unsubscribe();
           this.finishnotfinish.unsubscribe();
           this.valuemountfunc.unsubscribe();
+          this.subbar.unsubscribe();
           clearInterval(a);
           this.ngOnInit();
         }

@@ -68,8 +68,8 @@
                   Total Good And SatisFactory
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{good+satis}}
-                  <span class="text-lime-500 ml-1">({{((good+satis) * 100 / totalasset).toFixed(1)}} %)</span>
+                  {{good2+satis2}}
+                  <span class="text-lime-500 ml-1">({{((good2+satis2) * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -92,8 +92,8 @@
                   Total Unsatisactory and Unacceptable
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{unsatisf+unacc}}
-                  <span class="text-lime-500 ml-1">({{((unsatisf+unacc) * 100 / totalasset).toFixed(1)}} %)</span>
+                  {{unsatisf2+unacc2}}
+                  <span class="text-lime-500 ml-1">({{((unsatisf2+unacc2) * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -458,7 +458,7 @@
                     </thead>
                     <tbody>
                       <tr class="border-b border-gray-200 dark:border-gray-700"
-                        *ngFor="let getdata of abnormalassetlist| filter:searchText2 |paginate: { id:'pagination2', currentPage: currentPage2, itemsPerPage: showPaginate2 }; let i = index;">
+                        *ngFor="let getdata of selectorarrabnormal| filter:searchText2 |paginate: { id:'pagination2', currentPage: currentPage2, itemsPerPage: showPaginate2 }; let i = index;">
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white"
                           bgcolor="#878790">
                           {{(currentPage2-1) * showPaginate2 + i + 1}}
