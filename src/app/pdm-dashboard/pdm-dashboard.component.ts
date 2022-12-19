@@ -9,10 +9,6 @@ import { CountService } from '../services/count.service';
   styleUrls: ['./pdm-dashboard.component.css']
 })
 export class PdmDashboardComponent implements OnInit {
-  coba: any = [];
-  donutchart: any;
-  donutku: any;
-  dum: any;
   good: number = 0;
   satis: number = 0;
   unsatisf: number = 0;
@@ -239,30 +235,32 @@ export class PdmDashboardComponent implements OnInit {
               this.unaccoci1 += 1;
             }
             //// console.log(this.good);
-            new Chart('dum', {
-              type: 'doughnut',
-              data: {
-                labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [this.goodoci1, this.satisoci1, this.unsatisfoci1, this.unaccoci1],
-                  backgroundColor: [
-                    'green',
-                    'rgb(230, 230, 0)',
-                    'orange',
-                    'red',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                  ],
-                  borderWidth: 1
-                }]
-              },
-            });
           }
+          new Chart('dum', {
+            type: 'doughnut',
+            data: {
+              labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
+              datasets: [{
+                label: '# of Votes',
+                data: [this.goodoci1, this.satisoci1, this.unsatisfoci1, this.unaccoci1],
+                backgroundColor: [
+                  'green',
+                  'rgb(230, 230, 0)',
+                  'orange',
+                  'red',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }]
+            },
+          });
+          this.spinner.hide();
+          this.resolved = true;
         })
       }
       );
@@ -339,8 +337,6 @@ export class PdmDashboardComponent implements OnInit {
             this.totalfsb = elem.total;
             //// console.log(this.totalfinding[0]);
           }
-          this.spinner.hide();
-          this.resolved = true;
           // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
         })
 

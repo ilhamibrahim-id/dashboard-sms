@@ -38,9 +38,9 @@ export class Big5Component implements OnInit {
   };
 
   bigFiveByMachine(value: any) {
-    // console.log(value);
+    console.log(value);
     this.machineA = value;
-    this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
+    this.service.getBigFiveByMachine(this.machineA, this.start, this.end);
     this.refresh();
     // console.log(this.labels);
     // this.chart();
@@ -53,7 +53,7 @@ export class Big5Component implements OnInit {
     this.start = moment(start.value).format("YYYY-MM-DD");
     this.end = moment(end.value).format("YYYY-MM-DD");
     // console.log(this.start);
-    this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
+    this.service.getBigFiveByMachine(this.machineA, this.start, this.end);
     this.refresh();
     // console.log(this.labels);
     // this.chart();
@@ -116,7 +116,7 @@ export class Big5Component implements OnInit {
         if (count = 1) {
           clearInterval(a);
         }
-      }, 750);
+      }, 300);
     });
     // console.log(this.service.bigFiveByMachineValue);
     this.spinner.show();
@@ -137,7 +137,11 @@ export class Big5Component implements OnInit {
           }
         }
       };
+      var count = 0;
       var count2 = 0;
+      var count3 = 0;
+      var a = setInterval(() => {
+        count++;
         var b = setInterval(() => {
           count2++;
           this.barchart = new Chart("dum", {
@@ -174,7 +178,32 @@ export class Big5Component implements OnInit {
           if (count2 = 1) {
             clearInterval(b);
           }
-        }, 500);
+        }, 50);
+        if (this.service.bigFiveByMachineValue != 0) {
+          //console.log("3");
+          this.spinner.hide();
+          this.resolved = true;
+          clearInterval(a);
+        } else {
+          // this.spinner.show();
+          this.deskripsi = 'Reconnect To Server';
+          this.spinner.show();
+          this.service.big5load.unsubscribe();
+          this.service.big5load.unsubscribe();
+          // this.barchart.unsubscribe();
+          var c = setInterval(() => {
+            count3++;
+            window.location.reload();
+            if (count3 = 1) {
+              clearInterval(c);
+            }
+          }, 1500);
+
+        }
+        if (count = 1) {
+          clearInterval(a);
+        }
+      }, 300);
     });
     // console.log(this.service.bigFiveByMachineValue);
     this.spinner.show();
@@ -182,17 +211,15 @@ export class Big5Component implements OnInit {
   };
 
   ngOnInit(): void {
-      window.scrollTo(0, 0);
-      // this.service.getBigFive();
-      // console.log(this.start);
-      this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
-      this.spinner.hide();
-      this.resolved = true;
-      // console.log(this.service.getBigFiveByMachine("AlarmInformation_OC2"));
-      // console.log(this.service.bigFiveByMachine.length);
-      this.service.getBigFive();
-      this.refresh();
-      // console.log(this.labels);
-      this.chart();
+    window.scrollTo(0, 0);
+    // this.service.getBigFive();
+    // console.log(this.start);
+    this.service.getBigFiveByMachine(this.machineA, this.start, this.end);
+    // console.log(this.service.getBigFiveByMachine("AlarmInformation_OC2"));
+    // console.log(this.service.bigFiveByMachine.length);
+    this.service.getBigFive();
+    this.refresh();
+    // console.log(this.labels);
+    this.chart();
   }
 };
