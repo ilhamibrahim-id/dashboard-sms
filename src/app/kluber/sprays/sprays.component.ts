@@ -31,27 +31,12 @@ export class SpraysComponent implements OnInit {
         for (let i = 0; i < array.length; i++) {
           this.sprayslist.splice(this.sprayslist.lenght, 0, array[i]);
         }
-      })
-    }
-    );
-    var count = 0;
-    var a = setInterval(() => {
-      count++;
-      if(this.sprayslist.length > 0){
-        // console.log(this.sprayslist);
 
         this.spinner.hide();
         this.resolved = true;
-      } else {
-        this.deskripsi = 'Reconnect To Server';
-        this.spraysproduct.unsubscribe();
-        this.spraysproduct.unsubscribe();
-        this.ngOnInit();
-      }
-      if (count = 1){
-        clearInterval(a);
-      }
-    },750);
+      })
+    }
+    );
   });
     this.spinner.show();
     this.loaddata = await this.loaddata;

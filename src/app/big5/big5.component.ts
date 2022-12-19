@@ -137,10 +137,7 @@ export class Big5Component implements OnInit {
           }
         }
       };
-      var count = 0;
       var count2 = 0;
-      var a = setInterval(() => {
-        count++;
         var b = setInterval(() => {
           count2++;
           this.barchart = new Chart("dum", {
@@ -177,25 +174,7 @@ export class Big5Component implements OnInit {
           if (count2 = 1) {
             clearInterval(b);
           }
-        }, 5);
-        if (this.service.bigFiveByMachineValue != 0) {
-          //console.log("3");
-          this.spinner.hide();
-          this.resolved = true;
-          clearInterval(a);
-        } else {
-          // this.spinner.show();
-          this.deskripsi = 'Reconnect To Server';
-          this.spinner.show();
-          this.service.big5load.unsubscribe();
-          this.service.big5load.unsubscribe();
-          // this.barchart.unsubscribe();
-            this.ngOnInit();
-        }
-        if (count = 1) {
-          clearInterval(a);
-        }
-      }, 750);
+        }, 500);
     });
     // console.log(this.service.bigFiveByMachineValue);
     this.spinner.show();
@@ -207,6 +186,8 @@ export class Big5Component implements OnInit {
       // this.service.getBigFive();
       // console.log(this.start);
       this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
+      this.spinner.hide();
+      this.resolved = true;
       // console.log(this.service.getBigFiveByMachine("AlarmInformation_OC2"));
       // console.log(this.service.bigFiveByMachine.length);
       this.service.getBigFive();

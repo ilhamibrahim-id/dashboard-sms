@@ -33,7 +33,7 @@ export class PreparationroomComponent implements OnInit {
       if(count = 1){
         clearInterval(a);
       }
-    },500);
+    },100);
   }
 
 }

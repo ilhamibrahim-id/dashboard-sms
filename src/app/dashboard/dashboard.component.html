@@ -1,4 +1,4 @@
-<div *ngIf="resolved  ; else loading2">
+<div  [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
   <!-- row 1 -->
   <!-- <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
     <div class="flex-auto p-6"> -->
@@ -24,7 +24,7 @@
                   Total Finding
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalfinding1}}
+                  {{this.const2.length}}
                   <span> / Year</span>
                 </h5>
               </div>
@@ -48,8 +48,8 @@
                   Pending execute
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalfinding2}}
-                  <span class="text-lime-500 ml-1">({{(totalfinding2 * 100 / totalfinding1).toFixed(1)}} %)</span>
+                  {{pendingexecute}}
+                  <span class="text-lime-500 ml-1">({{(pendingexecute * 100 / this.const2.length).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -72,8 +72,8 @@
                   Finish Execute
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalfinding3}}
-                  <span class="text-lime-500 ml-1">({{(totalfinding3 * 100 / totalfinding1).toFixed(1)}} %)</span>
+                  {{finishexecute}}
+                  <span class="text-lime-500 ml-1">({{(finishexecute * 100 / this.const2.length).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -96,8 +96,8 @@
                   Ready Execute
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{totalfinding4}}
-                  <span class="text-lime-500 ml-1">({{(totalfinding4 * 100 / totalfinding1).toFixed(1)}} %)</span>
+                  {{readyexecute}}
+                  <span class="text-lime-500 ml-1">({{(readyexecute * 100 / this.const2.length).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -126,9 +126,9 @@
             <div class="flex-auto p-6">
               <canvas id="dum" width="400" height="300"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
-                <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending: {{this.totalfinding[1]}}</span>
-                <span style="background-color: rgb(112, 112, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish: {{this.totalfinding[2]}}</span>
-                <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready: {{this.totalfinding[3]}}</span>
+                <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending: {{pendingexecute}}</span>
+                <span style="background-color: rgb(112, 112, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish: {{finishexecute}}</span>
+                <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready: {{readyexecute}}</span>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@
           <div
             class="relative flex flex-col mb-2 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
-              <canvas id="donut" width="400" height="300">{{donut}}</canvas>
+              <canvas id="donut" width="400" height="300"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
                 <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Setting: {{this.Setting}}</span>
                 <span style="background-color: rgb(112, 112, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Replacement: {{this.Replacement}}</span>
@@ -158,9 +158,9 @@
   <!-- </div>
   </div> -->
 </div>
-<ng-template #loading2>
+<div  [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
   <ngx-spinner  bdColor="rgba(51,51,51,0.8)"
   size="medium"
   color="#fff"type="ball-beat"> <p style="font-size: 20px; color: white">{{deskripsi}}</p></ngx-spinner>
-</ng-template>
+</div>
 <!-- <ngx-spinner type="ball-beat"></ngx-spinner> -->

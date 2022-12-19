@@ -10,6 +10,9 @@ import { CountService } from '../services/count.service';
 })
 export class PdmDashboardComponent implements OnInit {
   coba: any = [];
+  donutchart: any;
+  donutku: any;
+  dum: any;
   good: number = 0;
   satis: number = 0;
   unsatisf: number = 0;
@@ -85,13 +88,6 @@ export class PdmDashboardComponent implements OnInit {
   fsbunacc2: any = [];
   totalfsbunacc: any;
   deskripsi: any = 'Loading..';
-  private goodsatisoci2y:any;
-  private goodsatisoci1y:any;
-  private goodsatisfsby:any;
-  private totalpdmasset:any;
-  private totalpdmassetoci1:any;
-  private totalpdmassetoci2:any;
-  private totalpdmassetfsb:any;
   constructor(private service: CountService, private spinner: NgxSpinnerService) { }
   public resolved: boolean = false;
   donut: any = [];
@@ -99,7 +95,7 @@ export class PdmDashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.goodsatisoci2y = this.service.getReadGoodAndSatisoci2y().subscribe(data => {
+      this.service.getReadGoodAndSatisoci2y().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -123,10 +119,33 @@ export class PdmDashboardComponent implements OnInit {
             //// console.log(this.good);
 
           }
+          new Chart('donut', {
+            type: 'doughnut',
+            data: {
+              labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
+              datasets: [{
+                label: '# of Votes',
+                data: [this.good, this.satis, this.unsatisf, this.unacc],
+                backgroundColor: [
+                  'green',
+                  'rgb(230, 230, 0)',
+                  'orange',
+                  'red',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }]
+            },
+          });
         })
       }
       );
-      this.goodsatisfsby = this.service.getReadGoodAndSatisfsby().subscribe(data => {
+      this.service.getReadGoodAndSatisfsby().subscribe(data => {
         this.goodsatisfsb = data;
         Object.values(this.goodsatisfsb).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -148,10 +167,59 @@ export class PdmDashboardComponent implements OnInit {
             //// console.log(this.good);
 
           }
+          new Chart('donutku', {
+            type: 'doughnut',
+            options: {
+              plugins: {
+                datalabels: {
+                  display: true,
+                  backgroundColor: '#ccc',
+                  borderRadius: 3,
+                  font: {
+                    color: 'red',
+                    weight: 'bold',
+                  }
+                },
+                doughnutlabel: {
+                  labels: [{
+                    text: '550',
+                    font: {
+                      size: 20,
+                      weight: 'bold'
+                    }
+                  }, {
+                    text: 'total'
+                  }]
+                }
+              }
+            },
+            data: {
+              labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
+              datasets: [{
+                label: 'oi',
+                data: [this.goodfsb, this.satisfsb, this.unsatisffsb, this.unaccfsb],
+                backgroundColor: [
+                  'green',
+                  'rgb(230, 230, 0)',
+                  'orange',
+                  'red',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }],
+
+            },
+          }
+          );
         })
       }
       );
-      this.goodsatisoci1y = this.service.getReadGoodAndSatisoci1y().subscribe(data => {
+      this.service.getReadGoodAndSatisoci1y().subscribe(data => {
         this.goodsatisoci1 = data;
         Object.values(this.goodsatisoci1).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -171,101 +239,7 @@ export class PdmDashboardComponent implements OnInit {
               this.unaccoci1 += 1;
             }
             //// console.log(this.good);
-
-          }
-        })
-      }
-      );
-      this.totalpdmasset = this.service.getReadTotalPdmAsset().subscribe(data => {
-        this.asset = data;
-        Object.values(this.asset).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.asset2.splice(this.asset2.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.asset2) {
-            // this.totalfinding[0] = elem.total;
-            this.totalasset = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-     this.totalpdmassetoci1 = this.service.getTotalAssetOci1().subscribe(data => {
-        this.assetoci1 = data;
-        Object.values(this.assetoci1).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.assetoci12.splice(this.assetoci12.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.assetoci12) {
-            // this.totalfinding[0] = elem.total;
-            this.totalassetoci1 = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.totalpdmassetoci2 = this.service.getTotalAssetOci2().subscribe(data => {
-        this.assetoci2 = data;
-        Object.values(this.assetoci2).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.assetoci22.splice(this.assetoci22.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.assetoci22) {
-            // this.totalfinding[0] = elem.total;
-            this.totalassetoci2 = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.totalpdmassetfsb = this.service.getTotalAssetFsb().subscribe(data => {
-        this.assetfsb = data;
-        Object.values(this.assetfsb).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.assetfsb2.splice(this.assetfsb2.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.assetfsb2) {
-            // this.totalfinding[0] = elem.total;
-            this.totalfsb = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      var count = 0;
-      var count2 = 0;
-      var a = setInterval(() => {
-        count++;
-        if (this.totalfsb != null) {
-          // // console.log("3");
-          var b = setInterval(() => {
-            count2++;
-            //this.resolved = true;
-            this.coba = new Chart('dum', {
+            new Chart('dum', {
               type: 'doughnut',
               data: {
                 labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
@@ -288,109 +262,91 @@ export class PdmDashboardComponent implements OnInit {
                 }]
               },
             });
-            this.coba = new Chart('donut', {
-              type: 'doughnut',
-              data: {
-                labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [this.good, this.satis, this.unsatisf, this.unacc],
-                  backgroundColor: [
-                    'green',
-                    'rgb(230, 230, 0)',
-                    'orange',
-                    'red',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                  ],
-                  borderWidth: 1
-                }]
-              },
-            });
-            new Chart('donutku', {
-              type: 'doughnut',
-              options: {
-                plugins: {
-                  datalabels: {
-                    display: true,
-                    backgroundColor: '#ccc',
-                    borderRadius: 3,
-                    font: {
-                      color: 'red',
-                      weight: 'bold',
-                    }
-                  },
-                  doughnutlabel: {
-                    labels: [{
-                      text: '550',
-                      font: {
-                        size: 20,
-                        weight: 'bold'
-                      }
-                    }, {
-                      text: 'total'
-                    }]
-                  }
-                }
-              },
-              data: {
-                labels: ['Good', 'SatisFactory', 'Unsatisactory', 'Unacceptable'],
-                datasets: [{
-                  label: 'oi',
-                  data: [this.goodfsb, this.satisfsb, this.unsatisffsb, this.unaccfsb],
-                  backgroundColor: [
-                    'green',
-                    'rgb(230, 230, 0)',
-                    'orange',
-                    'red',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                  ],
-                  borderWidth: 1
-                }],
+          }
+        })
+      }
+      );
+      this.service.getReadTotalPdmAsset().subscribe(data => {
+        this.asset = data;
+        Object.values(this.asset).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          this.asset2.splice(this.asset2.lenght, 0, array[0]);
+          // // console.log(this.const2);
+          for (let elem of this.asset2) {
+            // this.totalfinding[0] = elem.total;
+            this.totalasset = elem.total;
+            //// console.log(this.totalfinding[0]);
+          }
 
-              },
-            }
-            );
-            if (count2 = 2) {
-              clearInterval(b);
-            }
-          }, 50);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+        })
+
+
+      }
+      );
+      this.service.getTotalAssetOci1().subscribe(data => {
+        this.assetoci1 = data;
+        Object.values(this.assetoci1).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          this.assetoci12.splice(this.assetoci12.lenght, 0, array[0]);
+          // // console.log(this.const2);
+          for (let elem of this.assetoci12) {
+            // this.totalfinding[0] = elem.total;
+            this.totalassetoci1 = elem.total;
+            //// console.log(this.totalfinding[0]);
+          }
+
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+        })
+
+
+      }
+      );
+      this.service.getTotalAssetOci2().subscribe(data => {
+        this.assetoci2 = data;
+        Object.values(this.assetoci2).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          this.assetoci22.splice(this.assetoci22.lenght, 0, array[0]);
+          // // console.log(this.const2);
+          for (let elem of this.assetoci22) {
+            // this.totalfinding[0] = elem.total;
+            this.totalassetoci2 = elem.total;
+            //// console.log(this.totalfinding[0]);
+          }
+
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+        })
+
+
+      }
+      );
+      this.service.getTotalAssetFsb().subscribe(data => {
+        this.assetfsb = data;
+        Object.values(this.assetfsb).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          this.assetfsb2.splice(this.assetfsb2.lenght, 0, array[0]);
+          // // console.log(this.const2);
+          for (let elem of this.assetfsb2) {
+            // this.totalfinding[0] = elem.total;
+            this.totalfsb = elem.total;
+            //// console.log(this.totalfinding[0]);
+          }
           this.spinner.hide();
           this.resolved = true;
-          clearInterval(a);
-        } else {
-          // this.spinner.show();
-          this.deskripsi = 'Reconnect To Server';
-          clearInterval(a);
-          this.goodsatisoci1y.unsubscribe();
-          this.goodsatisoci2y.unsubscribe();
-          this.goodsatisfsby.unsubscribe();
-          this.totalpdmasset.unsubscribe();
-          this.totalpdmassetoci1.unsubscribe();
-          this.totalpdmassetoci2.unsubscribe();
-          this.totalpdmassetfsb.unsubscribe();
-          this.goodsatisoci1y.unsubscribe();
-          this.goodsatisoci2y.unsubscribe();
-          this.goodsatisfsby.unsubscribe();
-          this.totalpdmasset.unsubscribe();
-          this.totalpdmassetoci1.unsubscribe();
-          this.totalpdmassetoci2.unsubscribe();
-          this.totalpdmassetfsb.unsubscribe();
-          this.ngOnInit();
-        }
-        if (count = 1) {
-          clearInterval(a);
-        }
-      }, 750);
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+        })
+
+
+      }
+      );
     });
     // // console.log("1");
     this.spinner.show();

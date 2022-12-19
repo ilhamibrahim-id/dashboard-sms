@@ -53,13 +53,9 @@ export class AmMOci1Component implements OnInit {
   funloc: any;
   funloclist: any = [];
   deskripsi: any = 'Loading..';
-  private leveltotal: any;
-  private ordersub: any;
-  private findingsub: any;
-  private totalfindingsub: any;
-  private totalfindingmsub: any;
-  private totalfinishmsub: any;
-  private totalreadymsub: any;
+  pendingexecute: number = 0;
+  finishexecute: number = 0;
+  readyexecute: number = 0;
   data($event: any) {
     //// console.log($event);
     this.funloclist = [];
@@ -75,8 +71,8 @@ export class AmMOci1Component implements OnInit {
   }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
-     this.loaddata = new Promise(resolve => {
-      this.ordersub = this.service.getOrder().subscribe(data => {
+    this.loaddata = new Promise(resolve => {
+      this.service.getOrder().subscribe(data => {
         this.orderobj = data;
         Object.values(this.orderobj).forEach(data => {
           // // console.log(data);
@@ -95,7 +91,7 @@ export class AmMOci1Component implements OnInit {
 
       }
       );
-      this.leveltotal = this.service.getReadLevelTotal().subscribe(data => {
+      this.service.getReadLevelTotal().subscribe(data => {
         this.totallevel = data;
         Object.values(this.totallevel).forEach(data => {
           // // console.log(data);
@@ -117,6 +113,29 @@ export class AmMOci1Component implements OnInit {
               this.high += 1;
             }
           }
+          new Chart('donut2', {
+            type: 'doughnut',
+            data: {
+              labels: ['Low', 'Medium', 'High'],
+              datasets: [{
+                label: '# of Votes',
+                data: [this.low, this.medium, this.high],
+                backgroundColor: [
+                  'red',
+                  'rgb(112, 112, 0)',
+                  'blue',
+                  'green',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }]
+            },
+          });
           // // console.log(this.medium);
           // // console.log(this.totallevel2);
         })
@@ -124,7 +143,7 @@ export class AmMOci1Component implements OnInit {
 
       }
       );
-      this.findingsub = this.service.getReadFindingPending().subscribe(data => {
+      this.service.getReadFindingPending().subscribe(data => {
         this.findingpending = data;
         Object.values(this.findingpending).forEach(data => {
           // // console.log(data);
@@ -142,238 +161,122 @@ export class AmMOci1Component implements OnInit {
 
       }
       );
-      this.totalfindingsub = this.service.getTotalFindingM().subscribe(data => {
+      this.service.getTotalFindingM().subscribe(data => {
         this.totalfm = data;
         Object.values(this.totalfm).forEach(data => {
           var array = Object.keys(data).map(function (key) {
             return data[key];
           });
-          this.totalfm2.splice(this.totalfm2.lenght, 0, array[0]);
-          // // console.log(this.const2);
+          for (let i = 0; i < array.length; i++) {
+            this.totalfm2.splice(this.totalfm2.lenght, 0, array[i]);
+          }
+          console.log(this.totalfm2);
+
           for (let elem of this.totalfm2) {
-            this.totalfinding1 = elem.total;
-            this.totalfindingmonitorbar[0] = elem.total;
-            this.totalfindingmonitordonut[0] = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.totalfindingmsub = this.service.getTotalPendingFindingM().subscribe(data => {
-        this.totalpm = data;
-        Object.values(this.totalpm).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.totalpm2.splice(this.totalpm2.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.totalpm2) {
-            this.totalfinding2 = elem.total;
-            this.totalfindingmonitorbar[1] = elem.total;
-            this.totalfindingmonitordonut[1] = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.totalfinishmsub = this.service.getTotalFinsihFindingM().subscribe(data => {
-        this.totalffm = data;
-        Object.values(this.totalffm).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.totalffm2.splice(this.totalffm2.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.totalffm2) {
-            this.totalfinding4 = elem.total;
-            this.totalfindingmonitorbar[2] = elem.total;
-            this.totalfindingmonitordonut[2] = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      this.totalreadymsub = this.service.getTotalReadyFindingM().subscribe(data => {
-        this.totalrm = data;
-        Object.values(this.totalrm).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.totalrm2.splice(this.totalrm2.lenght, 0, array[0]);
-          // // console.log(this.const2);
-          for (let elem of this.totalrm2) {
-            this.totalfinding3 = elem.total;
-            this.totalfindingmonitorbar[3] = elem.total;
-            this.totalfindingmonitordonut[3] = elem.total;
-            //// console.log(this.totalfinding[0]);
-          }
-
-          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
-        })
-
-
-      }
-      );
-      var count = 0;
-      var count2 = 0;
-      var a = setInterval(() => {
-        count++;
-        if (this.totalfinding3 != null) {
-          //// console.log("3");
-          var b = setInterval(() => {
-            count2++;
-            this.coba = new Chart('dum', {
-              type: 'bar',
-              data: {
-                datasets: [
-                  {
-                    label: 'Total Finding',
-                    data: [this.totalfindingmonitorbar[0]],
-                    backgroundColor: [
-                      'red',
-                    ],
-                    borderColor: [
-                      'white',
-                    ],
-                    borderWidth: 1
-                  },
-                  {
-                    type: 'bar',
-                    label: 'Pending Execute',
-                    data: [this.totalfindingmonitorbar[1]],
-                    backgroundColor: [
-                      'rgb(112, 112, 0)',
-                    ],
-                    borderColor: [
-                      'white',
-                    ],
-                    borderWidth: 1
-                  },
-                  {
-                    label: 'Ready Execute',
-                    data: [this.totalfindingmonitorbar[2]],
-                    backgroundColor: [
-                      'blue',
-                    ],
-                    borderColor: [
-                      'white',
-                    ],
-                    borderWidth: 1
-                  },
-                  {
-                    label: 'Finish Execute',
-                    data: [this.totalfindingmonitorbar[3]],
-                    backgroundColor: [
-                      'green',
-                    ],
-                    borderColor: [
-                      'white',
-                    ],
-                    borderWidth: 1
-                  },
-
-                ]
-              }, options: {
-                scales: {
-                  yAxes: [{
-                    ticks: {
-                      beginAtZero: true
-                    }
-                  }]
-                }
-              }
-            });
-            this.coba = new Chart('donut', {
-              type: 'doughnut',
-              data: {
-                labels: ['Total finding', 'Pending execute', 'Ready execute', 'Finish execute'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: this.totalfindingmonitordonut,
-                  backgroundColor: [
-                    'red',
-                    'rgb(112, 112, 0)',
-                    'blue',
-                    'green',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                  ],
-                  borderWidth: 1
-                }]
-              },
-            });
-            this.coba = new Chart('donut2', {
-              type: 'doughnut',
-              data: {
-                labels: ['Low', 'Medium', 'High'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [this.low, this.medium, this.high],
-                  backgroundColor: [
-                    'red',
-                    'rgb(112, 112, 0)',
-                    'blue',
-                    'green',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                  ],
-                  borderWidth: 1
-                }]
-              },
-            });
-            if (count2 = 1) {
-              clearInterval(b);
+            if (elem.status == 'Done') {
+              this.finishexecute += 1;
             }
-          }, 50);
+            else if (elem.status == 'Draft' || elem.status == 'Submit' || elem.status == 'Revise') {
+              this.pendingexecute += 1;
+            }
+            else if (elem.status == 'Approved') {
+              this.readyexecute += 1;
+            }
+          }
+          // // console.log(this.const2);
+          new Chart('dum', {
+            type: 'bar',
+            data: {
+              datasets: [
+                {
+                  label: 'Total Finding',
+                  data: [this.totalfm2.length],
+                  backgroundColor: [
+                    'red',
+                  ],
+                  borderColor: [
+                    'white',
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  type: 'bar',
+                  label: 'Pending Execute',
+                  data: [this.pendingexecute],
+                  backgroundColor: [
+                    'rgb(112, 112, 0)',
+                  ],
+                  borderColor: [
+                    'white',
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  label: 'Ready Execute',
+                  data: [this.readyexecute],
+                  backgroundColor: [
+                    'blue',
+                  ],
+                  borderColor: [
+                    'white',
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  label: 'Finish Execute',
+                  data: [this.finishexecute],
+                  backgroundColor: [
+                    'green',
+                  ],
+                  borderColor: [
+                    'white',
+                  ],
+                  borderWidth: 1
+                },
+
+              ]
+            }, options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+          new Chart('donut', {
+            type: 'doughnut',
+            data: {
+              labels: ['Total finding', 'Pending execute', 'Ready execute', 'Finish execute'],
+              datasets: [{
+                label: '# of Votes',
+                data: [this.totalfm2.length, this.pendingexecute, this.readyexecute, this.finishexecute],
+                backgroundColor: [
+                  'red',
+                  'rgb(112, 112, 0)',
+                  'blue',
+                  'green',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }]
+            },
+          });
           this.spinner.hide();
           this.resolved = true;
-          clearInterval(a);
-        } else {
-          // this.spinner.show();
-          this.deskripsi = 'Reconnect To Server';
-          clearInterval(a);
-          this.leveltotal.unsubscribe();
-          this.ordersub.unsubscribe();
-          this.findingsub.unsubscribe();
-          this.totalfindingmsub.unsubscribe();
-          this.totalfindingsub.unsubscribe();
-          this.totalfinishmsub.unsubscribe();
-          this.totalreadymsub.unsubscribe();
-          this.leveltotal.unsubscribe();
-          this.ordersub.unsubscribe();
-          this.findingsub.unsubscribe();
-          this.totalfindingmsub.unsubscribe();
-          this.totalfindingsub.unsubscribe();
-          this.totalfinishmsub.unsubscribe();
-          this.totalreadymsub.unsubscribe();
-          this.ngOnInit();
-        }
-        if (count = 1) {
-          clearInterval(a);
-        }
-      }, 750);
-    });
-    // console.log("1");
+          // // console.log(this.const2.splice(this.const2.lenght,0,array[0]).total);
+        })
+      })
+
+
+    }
+    );
     this.spinner.show();
     this.loaddata = await this.loaddata;
   }

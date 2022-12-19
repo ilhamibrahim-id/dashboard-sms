@@ -23,7 +23,7 @@ export class TicTacToeComponent implements OnInit {
       if(count = 1){
         clearInterval(a);
       }
-    },500);
+    },100);
   }
   refresh(){
     window.location.reload();

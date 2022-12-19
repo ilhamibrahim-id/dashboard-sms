@@ -20,7 +20,7 @@ export class AboutusComponent{
       if(count = 1){
         clearInterval(a);
       }
-    },500);
+    },100);
   }
   name: any;
   email: any;

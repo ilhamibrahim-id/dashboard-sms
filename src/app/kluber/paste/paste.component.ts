@@ -32,27 +32,12 @@ export class PasteComponent implements OnInit {
         for (let i = 0; i < array.length; i++) {
           this.pastelist.splice(this.pastelist.lenght, 0, array[i]);
         }
-      })
-    }
-    );
-    var count = 0;
-    var a = setInterval(() => {
-      count++;
-      if(this.pastelist.length > 0){
-        // console.log(this.pastelist);
 
         this.spinner.hide();
         this.resolved = true;
-      } else {
-        this.deskripsi = 'Reconnect To Server';
-        this.pasteproduct.unsubscribe();
-        this.pasteproduct.unsubscribe();
-        this.ngOnInit();
-      }
-      if (count = 1){
-        clearInterval(a);
-      }
-    },750);
+      })
+    }
+    );
   });
     this.spinner.show();
     this.loaddata = await this.loaddata;

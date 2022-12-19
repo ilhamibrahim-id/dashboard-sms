@@ -1,4 +1,4 @@
-<div *ngIf="resolved; else loading2">
+<div [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
   <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
     class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
     <div class="flex-auto p-1">
@@ -8,40 +8,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border mb-1">
-    <div id="content">
-      <h5 class="text-center mt-2">Click For Detail</h5>
-      <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
-      <div id="number_container" class="mb-2">
-        <ul>
-          <li><button routerLink="/injectionmolder"  class="button button4 rounded-2xl">Injection
-              Molder</button></li>
-          <li><button routerLink="/bottleshower"  class="button button4 rounded-2xl">Bottle
-              Blower</button></li>
-          <li><button routerLink="/filler"  class="button button4 rounded-2xl">Filler</button></li>
-          <li><button routerLink="/containerconveyor"  class="button button4 rounded-2xl">Container
-              Conveyors</button></li>
-          <li><button routerLink="/labeller"  class="button button4 rounded-2xl">Labeller</button>
-          </li>
-          <li><button routerLink="/divider"  class="button button4 rounded-2xl">Divider</button>
-          </li>
-          <li><button routerLink="/sheetfeeder"  class="button button4 rounded-2xl">Sheet
-              Feeder</button></li>
-          <li><button routerLink="/shrinktray"  class="button button4 rounded-2xl">Packer Shnrik
-              Tray</button></li>
-          <li><button routerLink="/packconveyor"  class="button button4 rounded-2xl">Pack
-              Conveyors</button></li>
-          <li><button routerLink="/palletconveyor"  class="button button4 rounded-2xl">Pallet
-              Conveyors</button></li>
-          <li><button routerLink="/packrollerconveyor"  class="button button4 rounded-2xl">Pallet
-              Roller Conveyors</button></li>
-          <li><button routerLink="/palletiser"
-              class="button button4 rounded-2xl">Palletiser</button></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  </div> -->
   <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl p-1 rounded-2xl bg-clip-border">
     <p style="color: red;" class="text-center mt-4">use a maximum zoom of 75 percent in the browser (PC)</p>
     <div class="overflow-x-auto relative shadow-lg">
@@ -75,8 +41,8 @@
     </div>
   </div>
 </div>
-<ng-template #loading2>
-  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
-    <p style="font-size: 20px; color: white">{{deskripsi}}</p>
-  </ngx-spinner>
-</ng-template>
+<div  [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+      <p style="font-size: 20px; color: white">{{deskripsi}}</p>
+    </ngx-spinner>
+  </div>

@@ -1,4 +1,4 @@
-<div *ngIf="resolved; else loading2">
+<div  [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
   <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
     class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
     <div class="flex-auto p-1">
@@ -498,7 +498,7 @@
               <div class="flex-auto p-6">
                 <!-- <p class="text-center" style="color: red;">Device Name : {{funloc}}</p> -->
                 <div class="flex flex-wrap -mx-1 lg:-mx-3">
-                  <canvas id="pdmchartfinishnot">{{ pdmchartfinishnot }}</canvas>
+                  <canvas id="pdmchartfinishnot"></canvas>
                 </div>
               </div>
             </div>
@@ -515,7 +515,7 @@
               <div class="flex-auto p-6">
                 <!-- <p class="text-center" style="color: red;">Device Name : {{funloc}}</p> -->
                 <div class="flex flex-wrap -mx-1 lg:-mx-3">
-                  <canvas id="valuepermonthchart">{{ valuepermonthchart }}</canvas>
+                  <canvas id="valuepermonthchart"></canvas>
                 </div>
               </div>
             </div>
@@ -527,8 +527,8 @@
   <!-- </div>
   </div> -->
 </div>
-<ng-template #loading2>
+<div  [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
   <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
     <p style="font-size: 20px; color: white">{{deskripsi}}</p>
   </ngx-spinner>
-</ng-template>
+</div>

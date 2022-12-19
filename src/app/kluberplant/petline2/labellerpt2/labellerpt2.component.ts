@@ -59,29 +59,13 @@ export class Labellerpt2Component implements OnInit {
           this.labellerarr.splice(this.labellerarr.lenght, 0, array[i]);
         }
 
+        this.spinner.hide();
+        this.resolved = true;
       })
 
 
     }
     );
-    var count = 0;
-    var a = setInterval(() => {
-      count++;
-      if(this.labellerarr.length > 0){
-        // console.log(this.greaselist);
-
-        this.spinner.hide();
-        this.resolved = true;
-      } else {
-        this.deskripsi = 'Reconnect To Server';
-        this.labeller.unsubscribe();
-        this.labeller.unsubscribe();
-        this.ngOnInit();
-      }
-      if (count = 1){
-        clearInterval(a);
-      }
-    },750);
   });
     this.spinner.show();
     this.loaddata = await this.loaddata;

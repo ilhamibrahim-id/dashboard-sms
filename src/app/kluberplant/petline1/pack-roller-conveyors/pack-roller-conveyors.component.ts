@@ -59,29 +59,13 @@ export class PackRollerConveyorsComponent implements OnInit {
           this.packrollerarr.splice(this.packrollerarr.lenght, 0, array[i]);
         }
 
+        this.spinner.hide();
+        this.resolved = true;
       })
 
 
     }
     );
-    var count = 0;
-    var a = setInterval(() => {
-      count++;
-      if(this.packrollerarr.length > 0){
-        // console.log(this.greaselist);
-
-        this.spinner.hide();
-        this.resolved = true;
-      } else {
-        this.deskripsi = 'Reconnect To Server';
-        this.packroller.unsubscribe();
-        this.packroller.unsubscribe();
-        this.ngOnInit();
-      }
-      if (count = 1){
-        clearInterval(a);
-      }
-    },750);
   });
     this.spinner.show();
     this.loaddata = await this.loaddata;

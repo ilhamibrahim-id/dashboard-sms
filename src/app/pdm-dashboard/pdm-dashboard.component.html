@@ -1,4 +1,4 @@
-<div *ngIf="resolved; else loading2">
+<div  [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
   <!-- row 1 -->
   <!-- <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
     <div class="flex-auto p-6"> -->
@@ -185,8 +185,8 @@
     <!-- </div>
   </div> -->
   </div>
-  <ng-template #loading2>
+  <div [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
     <ngx-spinner  bdColor="rgba(51,51,51,0.8)"
     size="medium"
     color="#fff"type="ball-beat"> <p style="font-size: 20px; color: white">{{deskripsi}}</p></ngx-spinner>
-  </ng-template>
+  </div>

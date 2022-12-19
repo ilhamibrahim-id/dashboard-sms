@@ -151,17 +151,6 @@ export class PdmMOci1Component implements OnInit {
   note: any;
   pdmchartfinishnot: any;
   valuepermonthchart: any;
-  private goodsatisoci1:any;
-  private pdmfinish:any;
-  private finishtoday:any;
-  private finishabnormal: any;
-  private notepdmunsub:any;
-  private temperaturelinesub:any;
-  private amperesub: any;
-  private vibtrationsub: any;
-  private totalassetsub: any;
-  private finishnotfinish: any;
-  private valuemountfunc: any;
   filterMetadata = { count: 0 };
   filtre: any;
   preparation: number = 0;
@@ -419,8 +408,6 @@ export class PdmMOci1Component implements OnInit {
         },
       ],
     };
-    var loadagain = setInterval(() => {
-      countagain++;;
       this.coba = new Chart('dum', {
         type: 'line',
         data: dataVibration,
@@ -434,16 +421,25 @@ export class PdmMOci1Component implements OnInit {
         type: 'line',
         data: dataTemperature,
       });
-      if (countagain == 1) {
-        clearInterval(loadagain);
-      }
-    }, 500);
   }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
 
     this.loaddata = new Promise(resolve => {
-      this.valuemountfunc = this.service.getOci1Valuemonth().subscribe(data => {
+      this.service.getReadTotalPdmAssetoci1().subscribe(data => {
+        this.asset = data;
+        Object.values(this.asset).forEach(data => {
+          var array = Object.keys(data).map(function (key) {
+            return data[key];
+          });
+          this.asset2.splice(this.asset2.lenght, 0, array[0]);
+          for (let elem of this.asset2) {
+            this.totalasset = elem.total;
+          }
+        })
+      }
+      );
+      this.service.getOci1Valuemonth().subscribe(data => {
         this.valuemonth = data;
         Object.values(this.valuemonth).forEach(data => {
           // // console.log(data);
@@ -482,11 +478,41 @@ export class PdmMOci1Component implements OnInit {
               this.desember += 1;
             }
           }
+          new Chart("valuepermonthchart", {
+            type: "bar",
+            data: {
+              labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
+              datasets: [
+                {
+                  "label": "Total Data OCI1 Data %",
+                  "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
+                  "backgroundColor": "#34568B"
+                },
+              ]
+
+            },
+             options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 200,
+                    callback: function (value) { return value + "%" },
+                    //beginAtZero: true
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Percentage"
+                  }
+                }]
+              }
+            }
+          });
         })
 
       }
       );
-      this.finishnotfinish = this.service.getOci1fNotFinish().subscribe(data => {
+      this.service.getOci1fNotFinish().subscribe(data => {
         this.finishnot = data;
         Object.values(this.finishnot).forEach(data => {
           // // console.log(data);
@@ -529,7 +555,7 @@ export class PdmMOci1Component implements OnInit {
               } else {
                 this.pack += 1;
               }
-            }else if (elem.name_are == 'PF Transfer/KANESHO'){
+            }else if (elem.name_area == 'PF Transfer/KANESHO'){
               if(elem.value == null){
                 this.pfnull += 1;
               } else {
@@ -543,6 +569,36 @@ export class PdmMOci1Component implements OnInit {
               }
             }
           }
+          new Chart("pdmchartfinishnot", {
+            type: "bar",
+            data: {
+              labels: ["PREPARATION", "INJECTION", "BLOW","FILL","PACK","KANESHO","STU1"],
+              datasets: [
+                {
+                  "label": "Done",
+                  "data": [this.preparation, this.injection, this.blow,this.fill,this.pack,this.pf,this.stu],
+                  "backgroundColor": "#34568B"
+                },
+                {
+                  "label": "Not Yet",
+                  "data": [this.preparationnull, this.injectionnnull, this.blownull,this.fillnull,this.packnull,this.pfnull,this.stunull],
+                  "backgroundColor": "#FF6F61"
+                },
+              ]
+
+            },
+            options: {
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }
+                ]
+              }
+            }
+          });
 
         }
         )
@@ -550,7 +606,7 @@ export class PdmMOci1Component implements OnInit {
 
       }
       );
-      this.notepdmunsub = this.service.getNotePdm().subscribe(data => {
+      this.service.getNotePdm().subscribe(data => {
         this.notepdm = data;
         Object.values(this.notepdm).forEach(data => {
           // // console.log(data);
@@ -566,7 +622,7 @@ export class PdmMOci1Component implements OnInit {
 
       }
       );
-      this.finishabnormal = this.service.getReadFinishTodayoci1abnormal().subscribe(data => {
+      this.service.getReadFinishTodayoci1abnormal().subscribe(data => {
         this.abnormalasset = data;
         Object.values(this.abnormalasset).forEach(data => {
           // // console.log(data);
@@ -590,7 +646,7 @@ export class PdmMOci1Component implements OnInit {
         })
       }
       );
-      this.temperaturelinesub = this.service.getTemperatureLineoci1().subscribe(data => {
+      this.service.getTemperatureLineoci1().subscribe(data => {
         this.temperature = data;
         Object.values(this.temperature).forEach(data => {
           // // console.log(data);
@@ -607,7 +663,7 @@ export class PdmMOci1Component implements OnInit {
         })
       }
       );
-      this.amperesub = this.service.getAmpereLineoci1().subscribe(data => {
+      this.service.getAmpereLineoci1().subscribe(data => {
         this.ampere = data;
         Object.values(this.ampere).forEach(data => {
           // // console.log(data);
@@ -623,7 +679,7 @@ export class PdmMOci1Component implements OnInit {
         })
       }
       );
-      this.vibtrationsub = this.service.getVibrationLineoci1().subscribe(data => {
+      this.service.getVibrationLineoci1().subscribe(data => {
         this.vibration = data;
         Object.values(this.vibration).forEach(data => {
           // // console.log(data);
@@ -639,7 +695,7 @@ export class PdmMOci1Component implements OnInit {
         })
       }
       );
-      this.finishtoday = this.service.getReadFinishTodayoci1().subscribe(data => {
+      this.service.getReadFinishTodayoci1().subscribe(data => {
         this.totalfinishtoday = data;
         Object.values(this.totalfinishtoday).forEach(data => {
           // // console.log(data);
@@ -678,7 +734,7 @@ export class PdmMOci1Component implements OnInit {
         })
       }
       );
-      this.goodsatisoci1 = this.service.getReadGoodAndSatisoci1y().subscribe(data => {
+      this.service.getReadGoodAndSatisoci1y().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -700,10 +756,33 @@ export class PdmMOci1Component implements OnInit {
             //// console.log(this.good);
 
           }
+          this.coba = new Chart('donut', {
+            type: 'doughnut',
+            data: {
+              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+              datasets: [{
+                label: '# of Votes',
+                data: [this.good, this.satis, this.unsatisf, this.unacc],
+                backgroundColor: [
+                  'green',
+                  'rgb(230, 230, 0)',
+                  'orange',
+                  'red',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }]
+            },
+          });
         })
       }
       );
-      this.pdmfinish = this.service.getReadPdmFinishoci1().subscribe(data => {
+      this.service.getReadPdmFinishoci1().subscribe(data => {
         this.finish = data;
         Object.values(this.finish).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -715,153 +794,12 @@ export class PdmMOci1Component implements OnInit {
           for (let elem of this.finish2) {
             this.totalfinish = elem.total;
           }
-        })
-      }
-      );
-      this.totalassetsub = this.service.getReadTotalPdmAssetoci1().subscribe(data => {
-        this.asset = data;
-        Object.values(this.asset).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          this.asset2.splice(this.asset2.lenght, 0, array[0]);
-          for (let elem of this.asset2) {
-            this.totalasset = elem.total;
-          }
-        })
-      }
-      );
-      var count = 0;
-      var count2 = 0;
-      var a = setInterval(() => {
-        count++;
-        if (this.totalasset != null) {
-          var b = setInterval(() => {
-            count2++;
-            this.coba = new Chart('donut', {
-              type: 'doughnut',
-              data: {
-                labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [this.good, this.satis, this.unsatisf, this.unacc],
-                  backgroundColor: [
-                    'green',
-                    'rgb(230, 230, 0)',
-                    'orange',
-                    'red',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                  ],
-                  borderWidth: 1
-                }]
-              },
-            });
-            this.pdmchartfinishnot = new Chart("pdmchartfinishnot", {
-              type: "bar",
-              data: {
-                labels: ["PREPARATION", "INJECTION", "BLOW","FILL","PACK","KANESHO","STU1"],
-                datasets: [
-                  {
-                    "label": "Done",
-                    "data": [this.preparation, this.injection, this.blow,this.fill,this.pack,this.pf,this.stu],
-                    "backgroundColor": "#34568B"
-                  },
-                  {
-                    "label": "Not Yet",
-                    "data": [this.preparationnull, this.injectionnnull, this.blownull,this.fillnull,this.packnull,this.pfnull,this.stunull],
-                    "backgroundColor": "#FF6F61"
-                  },
-                ]
 
-              },
-              options: {
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }
-                  ]
-                }
-              }
-            });
-            this.valuepermonthchart = new Chart("valuepermonthchart", {
-              type: "bar",
-              data: {
-                labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
-                datasets: [
-                  {
-                    "label": "Total Data OCI1 Data %",
-                    "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
-                    "backgroundColor": "#34568B"
-                  },
-                ]
-
-              },
-               options: {
-                scales: {
-                  yAxes: [{
-                    ticks: {
-                      min: 0,
-                      max: 200,
-                      callback: function (value) { return value + "%" },
-                      //beginAtZero: true
-                    },
-                    scaleLabel: {
-                      display: true,
-                      labelString: "Percentage"
-                    }
-                  }]
-                }
-              }
-            });
-            if (count2 = 1) {
-              clearInterval(b);
-            }
-          }, 50);
           this.spinner.hide();
           this.resolved = true;
-          clearInterval(a);
-        } else {
-          // this.spinner.show();
-          this.deskripsi = 'Reconnect To Server';
-          this.subbar.unsubscribe();
-          this.goodsatisoci1.unsubscribe();
-          this.pdmfinish.unsubscribe();
-          this.finishtoday.unsubscribe();
-          this.finishabnormal.unsubscribe();
-          this.notepdmunsub.unsubscribe();
-          this.temperaturelinesub.unsubscribe();
-          this.amperesub.unsubscribe();
-          this.vibtrationsub.unsubscribe();
-          this.totalassetsub.unsubscribe();
-          this.finishnotfinish.unsubscribe();
-          this.valuemountfunc.unsubscribe();
-          this.goodsatisoci1.unsubscribe();
-          this.pdmfinish.unsubscribe();
-          this.finishtoday.unsubscribe();
-          this.finishabnormal.unsubscribe();
-          this.notepdmunsub.unsubscribe();
-          this.temperaturelinesub.unsubscribe();
-          this.amperesub.unsubscribe();
-          this.vibtrationsub.unsubscribe();
-          this.totalassetsub.unsubscribe();
-          this.finishnotfinish.unsubscribe();
-          this.valuemountfunc.unsubscribe();
-          this.subbar.unsubscribe();
-          clearInterval(a);
-          this.ngOnInit();
-        }
-        if (count = 1) {
-          clearInterval(a);
-        }
-      }, 750);
+        })
+      }
+      );
     });
     //// console.log("1");
     this.spinner.show();

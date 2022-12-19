@@ -3,7 +3,7 @@
     <app-sidebar></app-sidebar>
     <div class="w-full px-6 mx-auto">
       <!-- <body  onload = "JavaScript:AutoRefresh(1000);"> -->
-      <!-- <div *ngIf="resolved; else loading2"> -->
+      <!-- <div [style.visibility]="(resolved === false) ? 'hidden' : 'visible' "> -->
       <router-outlet>
       </router-outlet>
       <!-- </div> -->
