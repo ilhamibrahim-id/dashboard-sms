@@ -38,7 +38,7 @@ export class Big5Component implements OnInit {
   };
 
   bigFiveByMachine(value: any) {
-    console.log(value);
+    // console.log(value);
     this.machineA = value;
     this.service.getBigFiveByMachine(this.machineA,this.start,this.end);
     this.refresh();

@@ -170,7 +170,7 @@ export class AmMOci1Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalfm2.splice(this.totalfm2.lenght, 0, array[i]);
           }
-          console.log(this.totalfm2);
+          // console.log(this.totalfm2);
 
           for (let elem of this.totalfm2) {
             if (elem.status == 'Done') {

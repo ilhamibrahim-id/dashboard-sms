@@ -635,7 +635,7 @@ export class PdmMOci1Component implements OnInit {
             this.abnormalassetlist.splice(this.abnormalassetlist.lenght, 0, array[i]);
           }
           this.abnormalassetlist = this.abnormalassetlist.filter((el:any, i:any, a:any) => i === a.indexOf(el))
-          console.log(this.abnormalassetlist);
+          // console.log(this.abnormalassetlist);
 
           for (let i = 0; i < this.abnormalassetlist.length; i++) {
             if(this.abnormalassetlist[i].Stat == 'Unsatisfactory' || this.abnormalassetlist[i].Stat == 'Unacceptable'){
