@@ -111,7 +111,7 @@ export class CountService {
           this.bigFiveByMachineName.splice(this.bigFiveByMachineName.length, 0, arrayy[0]);
           this.bigFiveByMachineValue.splice(this.bigFiveByMachineValue.length, 0, arrayy[1]);
           this.bigFiveDescription.splice(this.bigFiveDescription.length, 0, des);
-          console.log(des);
+          // console.log(des);
         }
       })
     });

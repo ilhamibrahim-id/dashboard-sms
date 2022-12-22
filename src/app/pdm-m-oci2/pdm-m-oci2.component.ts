@@ -432,80 +432,79 @@ export class PdmMOci2Component implements OnInit {
           for (let elem of this.asset2) {
             this.totalasset = elem.total;
           }
-        })
-      }
-      );
-      this.service.getOci2Valuemonth().subscribe(data => {
-        this.valuemonth = data;
-        Object.values(this.valuemonth).forEach(data => {
-          // // console.log(data);
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
+          this.service.getOci2Valuemonth().subscribe(data => {
+            this.valuemonth = data;
+            Object.values(this.valuemonth).forEach(data => {
+              // // console.log(data);
+              var array = Object.keys(data).map(function (key) {
+                return data[key];
+              });
 
-          // // console.log(array);
-          for (let i = 0; i < array.length; i++) {
-            this.valuemonthlist.splice(this.valuemonthlist.lenght, 0, array[i]);
-          }
-          for (let elem of this.valuemonthlist) {
-            if(elem.bulan == 'January'){
-              this.januari += 1;
-            } else if (elem.bulan == 'February') {
-              this.febuari += 1;
-            } else if (elem.bulan == 'March') {
-              this.maret +=1;
-            } else if (elem.bulan == 'April') {
-              this.april += 1;
-            } else if (elem.bulan == 'May') {
-              this.mei += 1;
-            } else if (elem.bulan == 'June') {
-              this.juni += 1;
-            } else if (elem.bulan == 'July') {
-              this.juli += 1;
-            }else if (elem.bulan == 'August') {
-              this.agustus += 1;
-            } else if (elem.bulan == 'September') {
-              this.september += 1;
-            } else if (elem.bulan == 'October') {
-              this.oktober += 1;
-            } else if (elem.bulan == 'November') {
-              this.november += 1;
-            } else if (elem.bulan == 'December') {
-              this.desember += 1;
-            }
-          }
-          new Chart("valuepermonthchart", {
-            type: "bar",
-            data: {
-              labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
-              datasets: [
-                {
-                  "label": "Total Data OCI2 Data %",
-                  "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
-                  "backgroundColor": "#34568B"
-                },
-              ]
-
-            },
-            options: {
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    min: 0,
-                    max: 200,
-                    callback: function (value) { return value + "%" },
-                    //beginAtZero: true
-                  },
-                  scaleLabel: {
-                    display: true,
-                    labelString: "Percentage"
-                  }
-                }]
+              // // console.log(array);
+              for (let i = 0; i < array.length; i++) {
+                this.valuemonthlist.splice(this.valuemonthlist.lenght, 0, array[i]);
               }
-            }
-          });
-        })
+              for (let elem of this.valuemonthlist) {
+                if(elem.bulan == 'January'){
+                  this.januari += 1;
+                } else if (elem.bulan == 'February') {
+                  this.febuari += 1;
+                } else if (elem.bulan == 'March') {
+                  this.maret +=1;
+                } else if (elem.bulan == 'April') {
+                  this.april += 1;
+                } else if (elem.bulan == 'May') {
+                  this.mei += 1;
+                } else if (elem.bulan == 'June') {
+                  this.juni += 1;
+                } else if (elem.bulan == 'July') {
+                  this.juli += 1;
+                }else if (elem.bulan == 'August') {
+                  this.agustus += 1;
+                } else if (elem.bulan == 'September') {
+                  this.september += 1;
+                } else if (elem.bulan == 'October') {
+                  this.oktober += 1;
+                } else if (elem.bulan == 'November') {
+                  this.november += 1;
+                } else if (elem.bulan == 'December') {
+                  this.desember += 1;
+                }
+              }
+              new Chart("valuepermonthchart", {
+                type: "bar",
+                data: {
+                  labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
+                  datasets: [
+                    {
+                      "label": "Total Data OCI2 Data %",
+                      "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
+                      "backgroundColor": "#34568B"
+                    },
+                  ]
 
+                },
+                options: {
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        min: 0,
+                        callback: function (value) { return value + "%" },
+                        //beginAtZero: true
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Percentage"
+                      }
+                    }]
+                  }
+                }
+              });
+            })
+
+          }
+          );
+        })
       }
       );
       this.service.getOci2fNotFinish().subscribe(data => {
