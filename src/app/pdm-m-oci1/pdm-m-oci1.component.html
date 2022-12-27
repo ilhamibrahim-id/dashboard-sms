@@ -1,4 +1,4 @@
-<div  [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
+<div [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
   <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
     class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
     <div class="flex-auto p-1">
@@ -204,7 +204,8 @@
                         <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
                           {{(currentPage-1) * showPaginate + i + 1}}
                         </th>
-                        <td (click)="data(header.device_name,header.dodate)" class="py-4 px-6 font-medium font-semibold" style="color: black;">
+                        <td (click)="data(header.device_name,header.dodate)" class="py-4 px-6 font-medium font-semibold"
+                          style="color: black;">
                           {{header.device_name}}
                         </td>
                         <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
@@ -520,6 +521,123 @@
               </div>
             </div>
           </div>
+          <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <p class="text-left text-md">History Check
+                  <button *ngIf="paginatereset == false" (click)="showallPaginate()"
+                    class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Show
+                    All Data</button>
+                    <button
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                    *ngIf="paginatereset == true" (click)="exportTableExcel()"><i class="fa fa-file-excel-o fa-1"></i>
+                    Excel</button>
+                    <button *ngIf="paginatereset == true" (click)="resetPaginate()"
+                    class="inline-block px-0 py-3 mb-0 font-bold leading-normal ml-4 uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700">Reset</button>
+                </p>
+
+                <div class="w-full max-w-full md:w-full">
+                  <div class="flex items-center text-center mt-4 mb-4 flex-wrap">
+                      <div class="w-full max-w-full md:w-3/12 xl:w-3/12 xs:w-3/12">
+                      <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                        <span
+                          class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                          <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text"
+                          class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                          placeholder="Type here..." name="search" [(ngModel)]="searchText3" />
+                      </div>
+                    </div>
+                      <div class="w-full max-w-full md:w-3/12 xl:w-3/12 xs:w-3/12">
+                        <!-- <label for="date" class="mr-1">Date : </label> -->
+                        <label>Start Date :</label><br/>
+                        <input type="date" style=" border: 1px solid #c4c4c4;
+                    border-radius: 5px;
+                    background-color: #fff;
+                    padding: 3px 5px;
+                    box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                  " width="48" [(ngModel)]="searchDate1">
+                      </div>
+                      <div class="w-full max-w-full md:w-3/12 xl:w-3/12 xs:w-3/12">
+                        <label>End Date :</label><br/>
+                        <input type="date" style=" border: 1px solid #c4c4c4;
+                    border-radius: 5px;
+                    background-color: #fff;
+                    padding: 3px 5px;
+                    box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                  " width="48" [(ngModel)]="searchDate2">
+                      </div>
+                      <div class="w-full max-w-full md:w-3/12 xl:w-3/12 xs:w-3/12">
+                        <button (click)="daterange()" class="button button2">Find Data</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="overflow-x-auto relative shadow-lg sm:rounded-lg" id="printexcel" #printexcel>
+                  <table border="1" class="w-full text-lg text-gray-500 dark:text-gray-400 text-center">
+                    <thead class="text-gray-700 uppercase dark:text-gray-400">
+                      <tr>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          No
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Device Name
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          PIC
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Execution
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200 dark:border-gray-700"
+                        *ngFor="let header of totalfinishtoday2down| filter:searchText3 | paginate: {  id:'pagination3',currentPage: currentPage3, itemsPerPage: showPaginate3 } let i = index; let first = first;">
+                        <th class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-white" bgcolor="#878790">
+                          {{(currentPage3-1) * showPaginate3 + i + 1}}
+                        </th>
+                        <td class="py-4 px-6 font-medium font-semibold"
+                          style="color: black;">
+                          {{header.device_name}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.PIC}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.dodate}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center"
+                          style="color: #000000;" bgcolor="#94D977">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Satisfactory'" class="py-4 px-6 font-semibold text-center"
+                          bgcolor="#F5FF25" style="color: #000000;">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Unsatisfactory'" style="color: #000000;"
+                          class="py-4 px-6 font-semibold text-center" bgcolor="#FED033">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 'Unacceptable'" style="color: #000000;"
+                          class="py-4 px-6 font-semibold text-center" bgcolor="#EA8686">
+                          {{header.Stat}}
+                        </td>
+                        <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6  font-semibold text-center">
+                          -
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <pagination-controls class="text-center" id="pagination3"
+                (pageChange)="currentPage3 = $event"></pagination-controls>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -527,7 +645,7 @@
   <!-- </div>
   </div> -->
 </div>
-<div  [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
+<div [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
   <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
     <p style="font-size: 20px; color: white">{{deskripsi}}</p>
   </ngx-spinner>

@@ -15,6 +15,7 @@ export class PdmMOci2Component implements OnInit {
   constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
   public exportdata: boolean = false;
+  public paginatereset: boolean = false;
   @ViewChild('screen', { static: true }) screen: any;
   good: number = 0;
   satis: number = 0;
@@ -28,7 +29,12 @@ export class PdmMOci2Component implements OnInit {
   subbarlistarr: any = [];
   itemsPerPage: number = 0;
   searchText: any;
+  searchDate1: any;
+  searchDate2: any;
   searchText2: any;
+  searchText3: any;
+  showPaginate3: number = 5;
+  totalfinishtoday2down: any = [];
   currentPage: number = 1;
   public img = "";
   imgBase64 = '';
@@ -73,6 +79,11 @@ export class PdmMOci2Component implements OnInit {
   currentPage2: number = 1;
   absoluteIndex2(indexOnPage: number): number {
     return this.itemsPerPage2 * (this.currentPage2 - 1) + indexOnPage;
+  }
+  itemsPerPage3: number = 0;
+  currentPage3: number = 1;
+  absoluteIndex3(indexOnPage: number): number {
+    return this.itemsPerPage3 * (this.currentPage3 - 1) + indexOnPage;
   }
 
   unacc: number = 0;
@@ -244,6 +255,33 @@ export class PdmMOci2Component implements OnInit {
     this.currentPage2 = 1;
     this.exportdata = !this.exportdata;
     popupWin.document.close();
+  }
+  showallPaginate() {
+    this.currentPage3  = 1;
+    this.paginatereset = !this.paginatereset;
+    this.showPaginate3 = this.totalfinishtoday2down.length;
+  }
+  resetPaginate() {
+    this.currentPage3  = 1;
+    this.showPaginate3 = 5;
+    this.paginatereset = !this.paginatereset;
+  }
+  daterange() {
+    this.totalfinishtoday2down = [];
+    for (let i = 0; i < this.totalfinishtoday2.length; i++) {
+      this.totalfinishtoday2down.splice(this.totalfinishtoday2down.lenght, 0, this.totalfinishtoday2[i]);
+    }
+    this.totalfinishtoday2down = this.totalfinishtoday2down.filter((e: any) => {
+      return e.getdate >= this.searchDate1 &&
+        e.getdate <= this.searchDate2;
+    });
+
+  }
+  exportTableExcel(){
+    TableUtil.exportTableToExcel("printexcel");
+    this.currentPage3  = 1;
+    this.showPaginate3 = 5;
+    this.paginatereset = !this.paginatereset;
   }
   data($event: any,$event2 : any) {
     if(this.coba != null && this.coba2 != null && this.coba3 != null){

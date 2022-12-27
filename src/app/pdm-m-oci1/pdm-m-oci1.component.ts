@@ -15,9 +15,10 @@ import * as moment from 'moment';
 export class PdmMOci1Component implements OnInit {
   currentDate = new Date();
 
-  constructor(private service: CountService, private spinner: NgxSpinnerService,private captureService: NgxCaptureService) { }
+  constructor(private service: CountService, private spinner: NgxSpinnerService, private captureService: NgxCaptureService) { }
   public resolved: boolean = false;
   public exportdata: boolean = false;
+  public paginatereset: boolean = false;
   @ViewChild('screen', { static: true }) screen: any;
   good: number = 0;
   satis: number = 0;
@@ -29,7 +30,10 @@ export class PdmMOci1Component implements OnInit {
   itemsPerPage: number = 0;
   searchText: any;
   searchDate: any = moment().format("YYYY-MM-DD");
+  searchDate1: any;
+  searchDate2: any;
   searchText2: any;
+  searchText3: any;
   currentPage: number = 1;
   public img = "";
   imgBase64 = '';
@@ -38,7 +42,7 @@ export class PdmMOci1Component implements OnInit {
   capture() {
     this.captureService
       .getImage(this.taptap.nativeElement, true)
-      .subscribe((img:any) => {
+      .subscribe((img: any) => {
         this.imgBase64 = img;
         this.downloadJson();
       });
@@ -75,6 +79,11 @@ export class PdmMOci1Component implements OnInit {
   absoluteIndex2(indexOnPage: number): number {
     return this.itemsPerPage2 * (this.currentPage2 - 1) + indexOnPage;
   }
+  itemsPerPage3: number = 0;
+  currentPage3: number = 1;
+  absoluteIndex3(indexOnPage: number): number {
+    return this.itemsPerPage3 * (this.currentPage3 - 1) + indexOnPage;
+  }
 
   unacc: number = 0;
   coba: any;
@@ -97,6 +106,7 @@ export class PdmMOci1Component implements OnInit {
   totalunsatis: any;
   totalfinishtoday: object = {};
   totalfinishtoday2: any = [];
+  totalfinishtoday2down: any = [];
   abnormal: object = {};
   totalabnormal: any = [];
   totalabnormallist: any = [];
@@ -128,6 +138,7 @@ export class PdmMOci1Component implements OnInit {
   amperedate: any = [];
   showPaginate: number = 5;
   showPaginate2: number = 5;
+  showPaginate3: number = 5;
   abnormalasset: object = {};
   abnormalassetlist: any = [];
   ampereR: any = [];
@@ -186,11 +197,11 @@ export class PdmMOci1Component implements OnInit {
   }
   public toFloat(value: string): number {
     return parseFloat(value);
- }
+  }
   trackElement(index: number, element: any) {
     return element ? element.id : null;
   }
-  date(masukandate: HTMLInputElement){
+  date(masukandate: HTMLInputElement) {
     //console.log(moment(masukandate.value).format("DD-MM-YYYY"));
     this.currentPage = 1;
     this.searchDate = masukandate.value;
@@ -201,6 +212,16 @@ export class PdmMOci1Component implements OnInit {
     this.currentPage = 1;
     this.currentPage2 = 1;
     this.exportdata = !this.exportdata;
+  }
+  resetPaginate() {
+    this.currentPage3  = 1;
+    this.showPaginate3 = 5;
+    this.paginatereset = !this.paginatereset;
+  }
+  showallPaginate() {
+    this.currentPage3  = 1;
+    this.paginatereset = !this.paginatereset;
+    this.showPaginate3 = this.totalfinishtoday2down.length;
   }
   done() {
     this.exportdata = !this.exportdata;
@@ -216,6 +237,12 @@ export class PdmMOci1Component implements OnInit {
     this.currentPage = 1;
     this.currentPage2 = 1;
     this.exportdata = !this.exportdata;
+  }
+  exportTableExcel(){
+    TableUtil.exportTableToExcel("printexcel");
+    this.currentPage3  = 1;
+    this.showPaginate3 = 5;
+    this.paginatereset = !this.paginatereset;
   }
   print(): void {
     let printContents, popupWin: any;
@@ -248,8 +275,19 @@ export class PdmMOci1Component implements OnInit {
     this.exportdata = !this.exportdata;
     popupWin.document.close();
   }
-  data($event: any,$event2 : any) {
-    if(this.coba != null && this.coba2 != null && this.coba3 != null){
+  daterange() {
+    this.totalfinishtoday2down = [];
+    for (let i = 0; i < this.totalfinishtoday2.length; i++) {
+      this.totalfinishtoday2down.splice(this.totalfinishtoday2down.lenght, 0, this.totalfinishtoday2[i]);
+    }
+    this.totalfinishtoday2down = this.totalfinishtoday2down.filter((e: any) => {
+      return e.getdate >= this.searchDate1 &&
+        e.getdate <= this.searchDate2;
+    });
+
+  }
+  data($event: any, $event2: any) {
+    if (this.coba != null && this.coba2 != null && this.coba3 != null) {
       this.coba.destroy();
       this.coba2.destroy();
       this.coba3.destroy();
@@ -408,19 +446,19 @@ export class PdmMOci1Component implements OnInit {
         },
       ],
     };
-      this.coba = new Chart('dum', {
-        type: 'line',
-        data: dataVibration,
-      }
-      );
-      this.coba2 = new Chart('dumdum', {
-        type: 'line',
-        data: dataAmpere,
-      });
-      this.coba3 = new Chart('dumdumdum', {
-        type: 'line',
-        data: dataTemperature,
-      });
+    this.coba = new Chart('dum', {
+      type: 'line',
+      data: dataVibration,
+    }
+    );
+    this.coba2 = new Chart('dumdum', {
+      type: 'line',
+      data: dataAmpere,
+    });
+    this.coba3 = new Chart('dumdumdum', {
+      type: 'line',
+      data: dataTemperature,
+    });
   }
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
@@ -449,12 +487,12 @@ export class PdmMOci1Component implements OnInit {
                 this.valuemonthlist.splice(this.valuemonthlist.lenght, 0, array[i]);
               }
               for (let elem of this.valuemonthlist) {
-                if(elem.bulan == 'January'){
+                if (elem.bulan == 'January') {
                   this.januari += 1;
                 } else if (elem.bulan == 'February') {
                   this.febuari += 1;
                 } else if (elem.bulan == 'March') {
-                  this.maret +=1;
+                  this.maret += 1;
                 } else if (elem.bulan == 'April') {
                   this.april += 1;
                 } else if (elem.bulan == 'May') {
@@ -463,7 +501,7 @@ export class PdmMOci1Component implements OnInit {
                   this.juni += 1;
                 } else if (elem.bulan == 'July') {
                   this.juli += 1;
-                }else if (elem.bulan == 'August') {
+                } else if (elem.bulan == 'August') {
                   this.agustus += 1;
                 } else if (elem.bulan == 'September') {
                   this.september += 1;
@@ -478,17 +516,17 @@ export class PdmMOci1Component implements OnInit {
               new Chart("valuepermonthchart", {
                 type: "bar",
                 data: {
-                  labels: ["January", "February", "Maret","April","May","June","July","August","September","October", "November", "December"],
+                  labels: ["January", "February", "Maret", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                   datasets: [
                     {
                       "label": "Total Data OCI1 Data %",
-                      "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset),Math.round(this.april * 100 / this.totalasset),Math.round(this.mei * 100 / this.totalasset),Math.round(this.juni * 100 / this.totalasset),Math.round(this.juli * 100 / this.totalasset),Math.round(this.agustus * 100 / this.totalasset),Math.round(this.september * 100 / this.totalasset),Math.round(this.oktober * 100 / this.totalasset),Math.round(this.november * 100 / this.totalasset),Math.round(this.desember * 100 / this.totalasset)],
+                      "data": [Math.round(this.januari * 100 / this.totalasset), Math.round(this.febuari * 100 / this.totalasset), Math.round(this.maret * 100 / this.totalasset), Math.round(this.april * 100 / this.totalasset), Math.round(this.mei * 100 / this.totalasset), Math.round(this.juni * 100 / this.totalasset), Math.round(this.juli * 100 / this.totalasset), Math.round(this.agustus * 100 / this.totalasset), Math.round(this.september * 100 / this.totalasset), Math.round(this.oktober * 100 / this.totalasset), Math.round(this.november * 100 / this.totalasset), Math.round(this.desember * 100 / this.totalasset)],
                       "backgroundColor": "#34568B"
                     },
                   ]
 
                 },
-                 options: {
+                options: {
                   scales: {
                     yAxes: [{
                       ticks: {
@@ -524,44 +562,44 @@ export class PdmMOci1Component implements OnInit {
             this.finishnotlist.splice(this.finishnotlist.lenght, 0, array[i]);
           }
           for (let elem of this.finishnotlist) {
-            if(elem.name_area == 'PREPARATION'){
-              if(elem.value == null){
+            if (elem.name_area == 'PREPARATION') {
+              if (elem.value == null) {
                 this.preparationnull += 1;
               } else {
                 this.preparation += 1;
               }
-            } else if (elem.name_area == 'INJECTION'){
-              if(elem.value == null){
+            } else if (elem.name_area == 'INJECTION') {
+              if (elem.value == null) {
                 this.injectionnnull += 1;
               } else {
                 this.injection += 1;
               }
-            } else if (elem.name_area == 'BLOW'){
-              if(elem.value == null){
+            } else if (elem.name_area == 'BLOW') {
+              if (elem.value == null) {
                 this.blownull += 1;
               } else {
                 this.blow += 1;
               }
-            }else if (elem.name_area == 'FILL'){
-              if(elem.value == null){
+            } else if (elem.name_area == 'FILL') {
+              if (elem.value == null) {
                 this.fillnull += 1;
               } else {
                 this.fill += 1;
               }
-            }else if (elem.name_area == 'PACK'){
-              if(elem.value == null){
+            } else if (elem.name_area == 'PACK') {
+              if (elem.value == null) {
                 this.packnull += 1;
               } else {
                 this.pack += 1;
               }
-            }else if (elem.name_area == 'PF Transfer/KANESHO'){
-              if(elem.value == null){
+            } else if (elem.name_area == 'PF Transfer/KANESHO') {
+              if (elem.value == null) {
                 this.pfnull += 1;
               } else {
                 this.pf += 1;
               }
-            } else if (elem.name_area == 'STU1'){
-              if(elem.value == null){
+            } else if (elem.name_area == 'STU1') {
+              if (elem.value == null) {
                 this.stunull += 1;
               } else {
                 this.stu += 1;
@@ -571,16 +609,16 @@ export class PdmMOci1Component implements OnInit {
           new Chart("pdmchartfinishnot", {
             type: "bar",
             data: {
-              labels: ["PREPARATION", "INJECTION", "BLOW","FILL","PACK","KANESHO","STU1"],
+              labels: ["PREPARATION", "INJECTION", "BLOW", "FILL", "PACK", "KANESHO", "STU1"],
               datasets: [
                 {
                   "label": "Done",
-                  "data": [this.preparation, this.injection, this.blow,this.fill,this.pack,this.pf,this.stu],
+                  "data": [this.preparation, this.injection, this.blow, this.fill, this.pack, this.pf, this.stu],
                   "backgroundColor": "#34568B"
                 },
                 {
                   "label": "Not Yet",
-                  "data": [this.preparationnull, this.injectionnnull, this.blownull,this.fillnull,this.packnull,this.pfnull,this.stunull],
+                  "data": [this.preparationnull, this.injectionnnull, this.blownull, this.fillnull, this.packnull, this.pfnull, this.stunull],
                   "backgroundColor": "#FF6F61"
                 },
               ]
@@ -633,12 +671,12 @@ export class PdmMOci1Component implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.abnormalassetlist.splice(this.abnormalassetlist.lenght, 0, array[i]);
           }
-          this.abnormalassetlist = this.abnormalassetlist.filter((el:any, i:any, a:any) => i === a.indexOf(el))
+          this.abnormalassetlist = this.abnormalassetlist.filter((el: any, i: any, a: any) => i === a.indexOf(el))
           // console.log(this.abnormalassetlist);
 
           for (let i = 0; i < this.abnormalassetlist.length; i++) {
-            if(this.abnormalassetlist[i].Stat == 'Unsatisfactory' || this.abnormalassetlist[i].Stat == 'Unacceptable'){
-              this.selectorarrabnormal.splice(this.selectorarrabnormal,0,this.abnormalassetlist[i]);
+            if (this.abnormalassetlist[i].Stat == 'Unsatisfactory' || this.abnormalassetlist[i].Stat == 'Unacceptable') {
+              this.selectorarrabnormal.splice(this.selectorarrabnormal, 0, this.abnormalassetlist[i]);
             }
           }
 
@@ -704,6 +742,7 @@ export class PdmMOci1Component implements OnInit {
           // // console.log(array);
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
+            // this.totalfinishtoday2down.splice(this.totalfinishtoday2down.lenght, 0, array[i]);
           }
         })
       }
