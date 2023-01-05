@@ -527,4 +527,34 @@ export class CountService {
   getOffPackMain(){
     return this.httpClient.get(api + "offpackmain");
   }
+  getPet1(){
+    return this.httpClient.get(api + "pet1");
+  }
+  getPet2(){
+    return this.httpClient.get(api + "pet2");
+  }
+  getPress1(){
+    return this.httpClient.get(api + "press1");
+  }
+  getPress2(){
+    return this.httpClient.get(api + "press2");
+  }
+  getCip(){
+    return this.httpClient.get(api + "cip");
+  }
+  getOxonia(){
+    return this.httpClient.get(api + "oxonia");
+  }
+  getContainerOff(){
+    return this.httpClient.get(api + "containeroff");
+  }
+  getRobotpackerOff(){
+    return this.httpClient.get(api + "robopackeroff");
+  }
+  getResealerOff(){
+    return this.httpClient.get(api + "resealeroff");
+  }
+  getPackConveyorOff(){
+    return this.httpClient.get(api + "packconveyoroff");
+  }
 };

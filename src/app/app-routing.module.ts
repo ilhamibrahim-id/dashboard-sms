@@ -63,6 +63,7 @@ import { RobopackerOffComponent } from './kluberplant/offlinepacking/robopacker-
 import { ResealerOffComponent } from './kluberplant/offlinepacking/resealer-off/resealer-off.component';
 import { EmptyboxOffComponent } from './kluberplant/offlinepacking/emptybox-off/emptybox-off.component';
 import { PackConveyorOffComponent } from './kluberplant/offlinepacking/pack-conveyor-off/pack-conveyor-off.component';
+import { OxoniaComponent } from './kluberplant/preparationroom/oxonia/oxonia.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -119,6 +120,7 @@ const routes: Routes = [
   {path: 'filterpress1', component: FilterPress1Component},
   {path: 'filterpress2', component: FilterPress2Component},
   {path: 'dpcpump', component: DpcPumpComponent},
+  {path: 'oxonia', component: OxoniaComponent},
   {path: 'containeroffline', component: ContainerConveyorOffComponent},
   {path: 'robopacker', component: RobopackerOffComponent},
   {path: 'resealeroff', component: ResealerOffComponent},
@@ -192,4 +194,5 @@ export const routingComponent = [
   ResealerOffComponent,
   EmptyboxOffComponent,
   PackConveyorOffComponent,
+  OxoniaComponent
 ]

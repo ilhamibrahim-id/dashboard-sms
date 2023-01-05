@@ -9,65 +9,21 @@ import { CountService } from 'src/app/services/count.service';
 })
 export class OfflinepackingComponent implements OnInit {
   public resolved: boolean = false;
-  public showtable: boolean = false;
-  offpack: any;
-  itemsPerPage: number = 0;
-  currentPage: number = 1;
-  absoluteIndex(indexOnPage: number): number {
-    return this.itemsPerPage * (this.currentPage - 1) + indexOnPage;
-  }
-  offpackobj: object = {};
-  offpackarr: any = [];
-  detailarr: any = [];
-  loaddata:any;
-  gambar: any;
   deskripsi: any = 'Loading..';
-  nameMachine: any = 'Pallet Conveyors';
-  constructor(private spinner: NgxSpinnerService, private service: CountService) {
-  }
-  show() {
-    this.showtable = !this.showtable;
-  }
-  bukapdf() {
-    window.open("assets/pdf/Sidel Botle Blower.pdf", "_blank");
-  }
-  detaildata(id: any) {
-    this.gambar = '';
-    this.gambar = '';
-    this.detailarr = [];
-    for (let i = 0; i < this.offpackarr.length; i++) {
-      if (this.offpackarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.offpackarr[i].images;
-        this.detailarr.splice(this.detailarr.lenght, 0, this.offpackarr[i]);
-
-      }
-    }
-
-
-  }
-  async ngOnInit(): Promise<void> {
+  constructor(private spinner: NgxSpinnerService) {
     window.scrollTo(0, 0);
-    this.loaddata = new Promise(resolve => {
-    this.offpack = this.service.getOffPackMain().subscribe(data => {
-      this.offpackobj = data;
-      Object.values(this.offpackobj).forEach(data => {
-        var array = Object.keys(data).map(function (key) {
-          return data[key];
-        });
-        for (let i = 0; i < array.length; i++) {
-          this.offpackarr.splice(this.offpackarr.lenght, 0, array[i]);
-        }
+   }
 
-        this.spinner.hide();
-        this.resolved = true;
-
-      })
-
-
-    }
-    );
-  });
+  ngOnInit(): void {
     this.spinner.show();
-    this.loaddata = await this.loaddata;
+    var count = 0;
+    var a = setInterval(() => {
+      count++;
+      this.spinner.hide();
+      this.resolved = true;
+      if(count = 1){
+        clearInterval(a);
+      }
+    },100);
   }
 }
