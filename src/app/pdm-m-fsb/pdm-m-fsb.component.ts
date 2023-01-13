@@ -660,6 +660,57 @@ export class PdmMFsbComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.abnormalassetlist.splice(this.abnormalassetlist.lenght, 0, array[i]);
           }
+          for (let elem of this.abnormalassetlist) {
+            if (elem.Stat == 'Good') {
+              this.good2 += 1;
+            } else if (elem.Stat == 'Satisfactory') {
+              this.satis2 += 1;
+            } else if (elem.Stat == 'Unsatisfactory') {
+              this.unsatisf2 += 1;
+            } else if (elem.Stat == 'Unacceptable') {
+              this.unacc2 += 1;
+            }
+            //// console.log(this.good);
+
+          }
+          for (let elem of this.abnormalassetlist) {
+            if (elem.Stat == 'Good') {
+              this.good += 1;
+            } else if (elem.Stat == 'Satisfactory') {
+              this.satis += 1;
+            } else if (elem.Stat == 'Unsatisfactory') {
+              this.unsatisf += 1;
+            } else if (elem.Stat == 'Unacceptable') {
+              this.unacc += 1;
+            }
+            //// console.log(this.good);
+
+          }
+          this.coba = new Chart('donut', {
+            type: 'doughnut',
+            data: {
+              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
+              datasets: [{
+                label: '# of Votes',
+                data: [this.good, this.satis, this.unsatisf, this.unacc],
+                backgroundColor: [
+                  'green',
+                  'rgb(230, 230, 0)',
+                  'orange',
+                  'red',
+                ],
+                borderColor: [
+                  'white',
+                  'white',
+                  'white',
+                  'white',
+                ],
+                borderWidth: 1
+              }]
+            },
+          });
+          // this.abnormalassetlist = this.abnormalassetlist.filter((el: any, i: any, a: any) => i === a.indexOf(el))
+          // console.log(this.abnormalassetlist);
           for (let i = 0; i < this.abnormalassetlist.length; i++) {
             if(this.abnormalassetlist[i].Stat == 'Unsatisfactory' || this.abnormalassetlist[i].Stat == 'Unacceptable'){
               this.selectorarrabnormal.splice(this.selectorarrabnormal,0,this.abnormalassetlist[i]);
@@ -728,79 +779,6 @@ export class PdmMFsbComponent implements OnInit {
           for (let i = 0; i < array.length; i++) {
             this.totalfinishtoday2.splice(this.totalfinishtoday2.lenght, 0, array[i]);
           }
-        })
-      }
-      );
-      this.service.getReadGoodAndSatisfsb().subscribe(data => {
-        this.subbarlistobj = data;
-        Object.values(this.subbarlistobj).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-            this.subbarlistarr.splice(this.subbarlistarr.lenght, 0, array[i]);
-          }
-          for (let elem of this.subbarlistarr) {
-            if (elem.status == 'Good') {
-              this.good2 += 1;
-            } else if (elem.status == 'Satisfactory') {
-              this.satis2 += 1;
-            } else if (elem.status == 'Unsatisfactory') {
-              this.unsatisf2 += 1;
-            } else if (elem.status == 'Unacceptable') {
-              this.unacc2 += 1;
-            }
-            //// console.log(this.good);
-
-          }
-        })
-      }
-      );
-      this.service.getReadGoodAndSatisfsby().subscribe(data => {
-        this.goodsatis = data;
-        Object.values(this.goodsatis).forEach(data => {
-          var array = Object.keys(data).map(function (key) {
-            return data[key];
-          });
-          for (let i = 0; i < array.length; i++) {
-            this.goodsatis2.splice(this.goodsatis2.lenght, 0, array[i]);
-          }
-          for (let elem of this.goodsatis2) {
-            if (elem.status == 'Good') {
-              this.good += 1;
-            } else if (elem.status == 'Satisfactory') {
-              this.satis += 1;
-            } else if (elem.status == 'Unsatisfactory') {
-              this.unsatisf += 1;
-            } else if (elem.status == 'Unacceptable') {
-              this.unacc += 1;
-            }
-            //// console.log(this.good);
-
-          }
-          new Chart('donut', {
-            type: 'doughnut',
-            data: {
-              labels: ['Total Good', 'Total SatisFactory', 'Total Unsatisactory', 'Total Unacceptable'],
-              datasets: [{
-                label: '# of Votes',
-                data: [this.good, this.satis, this.unsatisf, this.unacc],
-                backgroundColor: [
-                  'green',
-                  'rgb(230, 230, 0)',
-                  'orange',
-                  'red',
-                ],
-                borderColor: [
-                  'white',
-                  'white',
-                  'white',
-                  'white',
-                ],
-                borderWidth: 1
-              }]
-            },
-          });
         })
       }
       );

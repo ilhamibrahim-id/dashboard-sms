@@ -91,7 +91,7 @@ export class PdmDashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getReadGoodAndSatisoci2y().subscribe(data => {
+      this.service.getReadFinishTodayoci2abnormal().subscribe(data => {
         this.goodsatis = data;
         Object.values(this.goodsatis).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -103,13 +103,13 @@ export class PdmDashboardComponent implements OnInit {
           // console.log(this.goodsatis2);
 
           for (let elem of this.goodsatis2) {
-            if (elem.status == 'Good') {
+            if (elem.Stat == 'Good') {
               this.good += 1;
-            } else if (elem.status == 'Satisfactory') {
+            } else if (elem.Stat == 'Satisfactory') {
               this.satis += 1;
-            } else if (elem.status == 'Unsatisfactory') {
+            } else if (elem.Stat == 'Unsatisfactory') {
               this.unsatisf += 1;
-            } else if (elem.status == 'Unacceptable') {
+            } else if (elem.Stat == 'Unacceptable') {
               this.unacc += 1;
             }
             //// console.log(this.good);
@@ -141,7 +141,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadGoodAndSatisfsby().subscribe(data => {
+      this.service.getReadFinishTodayfsbabnormal().subscribe(data => {
         this.goodsatisfsb = data;
         Object.values(this.goodsatisfsb).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -151,13 +151,13 @@ export class PdmDashboardComponent implements OnInit {
             this.goodsatis2fsb.splice(this.goodsatis2fsb.lenght, 0, array[i]);
           }
           for (let elem of this.goodsatis2fsb) {
-            if (elem.status == 'Good') {
+            if (elem.Stat == 'Good') {
               this.goodfsb += 1;
-            } else if (elem.status == 'Satisfactory') {
+            } else if (elem.Stat == 'Satisfactory') {
               this.satisfsb += 1;
-            } else if (elem.status == 'Unsatisfactory') {
+            } else if (elem.Stat == 'Unsatisfactory') {
               this.unsatisffsb += 1;
-            } else if (elem.status == 'Unacceptable') {
+            } else if (elem.Stat == 'Unacceptable') {
               this.unaccfsb += 1;
             }
             //// console.log(this.good);
@@ -215,7 +215,7 @@ export class PdmDashboardComponent implements OnInit {
         })
       }
       );
-      this.service.getReadGoodAndSatisoci1y().subscribe(data => {
+      this.service.getReadFinishTodayoci1abnormal().subscribe(data => {
         this.goodsatisoci1 = data;
         Object.values(this.goodsatisoci1).forEach(data => {
           var array = Object.keys(data).map(function (key) {
@@ -225,13 +225,13 @@ export class PdmDashboardComponent implements OnInit {
             this.goodsatis2oci1.splice(this.goodsatis2oci1.lenght, 0, array[i]);
           }
           for (let elem of this.goodsatis2oci1) {
-            if (elem.status == 'Good') {
+            if (elem.Stat == 'Good') {
               this.goodoci1 += 1;
-            } else if (elem.status == 'Satisfactory') {
+            } else if (elem.Stat == 'Satisfactory') {
               this.satisoci1 += 1;
-            } else if (elem.status == 'Unsatisfactory') {
+            } else if (elem.Stat == 'Unsatisfactory') {
               this.unsatisfoci1 += 1;
-            } else if (elem.status == 'Unacceptable') {
+            } else if (elem.Stat == 'Unacceptable') {
               this.unaccoci1 += 1;
             }
             //// console.log(this.good);

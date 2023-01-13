@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from 'src/app/services/count.service';
 
@@ -23,6 +23,8 @@ export class ShrinkTrayComponent implements OnInit {
   detailarr: any = [];
   loaddata:any;
   gambar: any;
+  @ViewChild("target")
+  target!: ElementRef;
   deskripsi: any = 'Loading..';
   nameMachine: any = 'Krones Packer';
   constructor(private spinner: NgxSpinnerService, private service: CountService) {
@@ -30,6 +32,18 @@ export class ShrinkTrayComponent implements OnInit {
   }
   show() {
     this.showtable = !this.showtable;
+    var count = 0;
+    var a = setInterval(() => {
+      count++;
+      this.target.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+      if(count = 1){
+        clearInterval(a);
+      }
+    },100);
   }
   bukapdf() {
     window.open("assets/pdf/Operating Manual kr96k86_bd_ba(kroness).pdf", "_blank");

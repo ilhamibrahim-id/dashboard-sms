@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CountService } from 'src/app/services/count.service';
 
@@ -22,12 +23,26 @@ export class InjectionMolderComponent implements OnInit {
   loaddata:any;
   gambar: any;
   deskripsi: any = 'Loading..';
+  @ViewChild("target")
+  target!: ElementRef;
   nameMachine: any = 'Husky Hypet 500 Injection Molder';
   constructor(private spinner: NgxSpinnerService, private service: CountService) {
     window.scrollTo(0, 0);
   }
   show() {
     this.showtable = !this.showtable;
+    var count = 0;
+    var a = setInterval(() => {
+      count++;
+      this.target.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+      if(count = 1){
+        clearInterval(a);
+      }
+    },100);
   }
   bukapdf() {
     window.open("assets/pdf/SM OCII-2.pdf", "_blank");
@@ -71,3 +86,7 @@ export class InjectionMolderComponent implements OnInit {
   }
 
 }
+function scrollIntoView() {
+  throw new Error('Function not implemented.');
+}
+

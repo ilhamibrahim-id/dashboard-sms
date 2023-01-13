@@ -3,7 +3,7 @@
     class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
     <div class="flex-auto p-1">
       <div class="wrapper">
-        <h5 class="typing-demo">PDM Monitoring - PETLINE 2
+        <h5 class="typing-demo">PDM Monitoring - OCI 2
         </h5>
       </div>
     </div>
@@ -41,11 +41,11 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                  Finish Check
+                  Total Good
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{this.finish2.length}}
-                  <span class="text-lime-500 ml-1">({{(this.finish2.length * 100 / totalasset).toFixed(1)}} %)</span>
+                  {{good2}}
+                  <span class="text-lime-500 ml-1">({{((good2) * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -65,11 +65,11 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p class="mb-0 font-sans font-semibold leading-normal text-xs">
-                  Total Good And SatisFactory
+                  Total Satisfactory
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{good2+satis2}}
-                  <span class="text-lime-500 ml-1">({{((good2+satis2) * 100 / totalasset).toFixed(1)}} %)</span>
+                  {{satis2}}
+                  <span class="text-lime-500 ml-1">({{((satis2) * 100 / totalasset).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -309,7 +309,7 @@
             <div
               class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
-                <h5 class="text-center">PETLINE 2</h5>
+                <h5 class="text-center">OCI 2</h5>
               </div>
             </div>
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
@@ -348,13 +348,23 @@
                     <tbody>
                       <tr class="border-b border-gray-200 dark:border-gray-700">
                         <td class="py-4 px-6 font-medium whitespace-nowrap bg-gray-50" style="color: black">
-                          <div *ngIf="note == null"><img src="assets/img/nodata.jpeg" style=" width: 100%;
-                            max-width: 400px;
+                          <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
+                          <label for="modal-btn">
+                            <div *ngIf="note == null"><img src="assets/img/nodata.jpeg" style=" width: 100%;
                             height: auto;" class="center"></div>
-                          <div *ngIf="note != null">
-                            <img src="{{picture}}" style=" width: 100%;
-                          max-width: 150px;
+                            <div *ngIf="note != null">
+                              <img src="{{picture}}" style=" width: 100%;
+                          max-width: 100px;
                           height: auto;" class="center">
+                            </div>
+                          </label>
+                          <div class="modal">
+                            <div class="modal-wrap xl:ml-68.5">
+                              <div *ngIf="note == null"><img src="assets/img/nodata.jpeg" class="center"></div>
+                                <div *ngIf="note != null">
+                                  <img src="{{picture}}" class="center">
+                                </div>
+                            </div>
                           </div>
                         </td>
                       </tr>
