@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scrollTo(0, 0);
     this.loaddata = new Promise(resolve => {
-      this.service.getKategori().subscribe(data => {
+      this.service.getCountTotalFinding().subscribe(data => {
         this.totalkategori = data;
         Object.values(this.totalkategori).forEach(data => {
           // // console.log(data);
@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
             this.totalkategoriarr.splice(this.totalkategoriarr.lenght, 0, array[i]);
           }
           for (var i = 0; i < this.totalkategoriarr.length; i++) {
-            if (this.totalkategoriarr[i].kategori === 'Setting') {
+            if (this.totalkategoriarr[i].kategori === 'Preventive') {
               this.Setting += 1;
             }
             if (this.totalkategoriarr[i].kategori === 'Replacement') {
@@ -60,9 +60,9 @@ export class DashboardComponent implements OnInit {
                 label: 'Data',
                 data: [this.Setting, this.Replacement, this.Improvement],
                 backgroundColor: [
-                  'red',
-                  'rgb(112, 112, 0)',
-                  'green',
+                  '#316879',
+                  '#f47a60',
+                  '#7fe7dc',
                 ],
                 borderColor: [
                   'white',
@@ -86,14 +86,19 @@ export class DashboardComponent implements OnInit {
             this.const2.splice(this.const2.lenght, 0, array[i]);
           }
           for (let elem of this.const2) {
-            if (elem.status == 'Done') {
-              this.finishexecute += 1;
-            }
-            else if (elem.status == 'Draft' || elem.status == 'Submit' || elem.status == 'Revise') {
-              this.pendingexecute += 1;
-            }
-            else if (elem.status == 'Approved') {
-              this.readyexecute += 1;
+              if (elem.status2 == 'CLOSED' || elem.status2 == 'TECO') {
+                this.finishexecute += 1;
+
+              }
+              else if (elem.status2 == 'READY') {
+                this.readyexecute += 1;
+              } else if (elem.status1 == 'Done' || elem.status1 == 'None') {
+                if (elem.status2 == 'RELEASED' || elem.status2 == 'CREATED') {
+                  this.pendingexecute += 1;
+                }
+              }
+              else if (elem.status1 == 'Draft' || elem.status1 == 'Submit' || elem.status1 == 'Revise' || elem.status1 == 'Approved' || elem.status1 == 'Not Yet') {
+                this.pendingexecute += 1;
             }
           }
           this.spinner.hide();
@@ -105,21 +110,10 @@ export class DashboardComponent implements OnInit {
               labels: ["Data %"],
               datasets: [
                 {
-                  label: 'Pending Execute',
+                  label: 'On Progress WO',
                   data: [Math.round((this.pendingexecute / this.const2.length)*100)],
                   backgroundColor: [
-                    'red'
-                  ],
-                  borderColor: [
-                    'white'
-                  ],
-                  borderWidth: 1
-                },
-                {
-                  label: 'Finish Execute',
-                  data: [Math.round((this.finishexecute / this.const2.length)*100)],
-                  backgroundColor: [
-                    'rgb(112, 112, 0)'
+                    '#f47a60'
                   ],
                   borderColor: [
                     'white'
@@ -130,7 +124,18 @@ export class DashboardComponent implements OnInit {
                   label: 'Ready Execute',
                   data: [Math.round((this.readyexecute / this.const2.length)*100)],
                   backgroundColor: [
-                    'green'
+                    '#7fe7dc'
+                  ],
+                  borderColor: [
+                    'white'
+                  ],
+                  borderWidth: 1
+                },
+                {
+                  label: 'Finish Execute',
+                  data: [Math.round((this.finishexecute / this.const2.length)*100)],
+                  backgroundColor: [
+                    '#316879'
                   ],
                   borderColor: [
                     'white'

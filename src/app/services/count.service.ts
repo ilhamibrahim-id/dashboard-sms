@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlHandlingStrategy } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs';
 
 var api = environment.baseUrlApi;
 
@@ -556,5 +557,29 @@ export class CountService {
   }
   getPackConveyorOff(){
     return this.httpClient.get(api + "packconveyoroff");
+  }
+  getAmTotalData1Year(){
+    return this.httpClient.get(api + "total1year");
+  }
+  getTotalFeeding(){
+    return this.httpClient.get(api + "totalfeeding");
+  }
+  getTotalDataPost(tgl1: any,tgl2: any){
+    return this.httpClient.post(api + "totaldatapost", {tgl1 :tgl1,tgl2: tgl2});
+  }
+  getTotalApproval(){
+    return this.httpClient.get(api + "totalapproval");
+  }
+  getTotalApprovalOrderFinish(id_area: any){
+    return this.httpClient.post(api + "totalapprovalorderfinish", {id_area :id_area});
+  }
+  getTotalApprovalShcedule(id_area: any){
+    return this.httpClient.post(api + "totalapprovalshcedule", {id_area :id_area});
+  }
+  getReportingHarianam(tgl: any,id_area: any){
+    return this.httpClient.post(api + "reportingharianam", {tgl: tgl,id_area :id_area});
+  }
+  getTotalPartReporting(no_wo:any){
+    return this.httpClient.post(api + "totalpartreporting",{no_wo: no_wo});
   }
 };

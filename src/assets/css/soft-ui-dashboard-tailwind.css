@@ -2010,7 +2010,7 @@ h6 {
 }
 
 .from-purple-700 {
-  --tw-gradient-from: #7928ca;
+  --tw-gradient-from: #e3d5ca;
   --tw-gradient-to: rgb(121 40 202 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
@@ -2072,7 +2072,7 @@ h6 {
 }
 
 .to-pink-500 {
-  --tw-gradient-to: #ff0080;
+  --tw-gradient-to: #90e0ef;
 }
 
 .to-slate-300 {

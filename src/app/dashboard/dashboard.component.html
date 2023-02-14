@@ -24,7 +24,7 @@
                   Total Finding
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{this.const2.length}}
+                  {{pendingexecute + finishexecute + readyexecute}}
                   <span> / Year</span>
                 </h5>
               </div>
@@ -45,35 +45,11 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                  Pending execute
+                  On Progres WO
                 </p>
                 <h5 class="mb-0 font-bold">
                   {{pendingexecute}}
                   <span class="text-lime-500 ml-1">({{(pendingexecute * 100 / this.const2.length).toFixed(1)}} %)</span>
-                </h5>
-              </div>
-            </div>
-            <div class="px-3 text-right basis-1/3">
-              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-        <div class="flex-auto p-4">
-          <div class="flex flex-row -mx-3">
-            <div class="flex-none w-2/3 max-w-full px-3">
-              <div>
-                <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                  Finish Execute
-                </p>
-                <h5 class="mb-0 font-bold">
-                  {{finishexecute}}
-                  <span class="text-lime-500 ml-1">({{(finishexecute * 100 / this.const2.length).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -110,6 +86,30 @@
         </div>
       </div>
     </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <div class="flex flex-row -mx-3">
+            <div class="flex-none w-2/3 max-w-full px-3">
+              <div>
+                <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                  Finish Execute
+                </p>
+                <h5 class="mb-0 font-bold">
+                  {{finishexecute}}
+                  <span class="text-lime-500 ml-1">({{(finishexecute * 100 / this.const2.length).toFixed(1)}} %)</span>
+                </h5>
+              </div>
+            </div>
+            <div class="px-3 text-right basis-1/3">
+              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="flex flex-wrap -mx-3">
     <div class="w-full px-1 py-1 mx-auto">
@@ -126,9 +126,9 @@
             <div class="flex-auto p-6">
               <canvas id="dum" width="400" height="300"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
-                <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending: {{pendingexecute}}</span>
-                <span style="background-color: rgb(112, 112, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish: {{finishexecute}}</span>
-                <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready: {{readyexecute}}</span>
+                <span style="background-color: #f47a60;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">On Progres: {{pendingexecute}}</span>
+                <span style="background-color: #7fe7dc;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready: {{readyexecute}}</span>
+                <span style="background-color: #316879" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish: {{finishexecute}}</span>
               </div>
             </div>
           </div>
@@ -145,9 +145,9 @@
             <div class="flex-auto p-6">
               <canvas id="donut" width="400" height="300"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
-                <span style="background-color: red;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Setting: {{this.Setting}}</span>
-                <span style="background-color: rgb(112, 112, 0);" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Replacement: {{this.Replacement}}</span>
-                <span style="background-color: green;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Improvement: {{this.Improvement}}</span>
+                <span style="background-color: #316879;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Preventive: {{this.Setting}}</span>
+                <span style="background-color: #f47a60" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Replacement: {{this.Replacement}}</span>
+                <span style="background-color: #7fe7dc;" class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Improvement: {{this.Improvement}}</span>
               </div>
             </div>
           </div>

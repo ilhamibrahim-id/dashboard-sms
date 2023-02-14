@@ -1,9 +1,9 @@
-<div  [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
+<div [style.visibility]="(resolved === false) ? 'hidden' : 'visible' ">
   <!-- row 1 -->
   <!-- <div class="relative flex flex-col min-w-0 break-words shadow-soft-2xl bg-white rounded-2xl mb-1 bg-clip-border">
     <div class="flex-auto p-6"> -->
   <div style="position:-webkit-sticky; position:sticky; top:0;z-index:100;"
-  class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+    class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
     <div class="flex-auto p-1">
       <div class="wrapper">
         <h5 class="typing-demo">AM Monitoring - FNB
@@ -23,7 +23,7 @@
                   Total Finding
                 </p>
                 <h5 class="mb-0 font-bold">
-                  {{this.totalfm2.length}}
+                  {{pendingexecute + finishexecute + readyexecute}}
                   <span> / Month</span>
                 </h5>
               </div>
@@ -44,35 +44,12 @@
             <div class="flex-none w-2/3 max-w-full px-3">
               <div>
                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                  Pending execute
+                  On Progres WO
                 </p>
                 <h5 class="mb-0 font-bold">
                   {{pendingexecute}}
-                  <span class="text-lime-500 ml-1">({{(pendingexecute * 100 / this.totalfm2.length).toFixed(1)}} %)</span>
-                </h5>
-              </div>
-            </div>
-            <div class="px-3 text-right basis-1/3">
-              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
-        <div class="flex-auto p-4">
-          <div class="flex flex-row -mx-3">
-            <div class="flex-none w-2/3 max-w-full px-3">
-              <div>
-                <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                  Finish Execute
-                </p>
-                <h5 class="mb-0 font-bold">
-                  {{finishexecute}}
-                  <span class="text-lime-500 ml-1">({{(finishexecute * 100 / this.totalfm2.length).toFixed(1)}} %)</span>
+                  <span class="text-lime-500 ml-1">({{(pendingexecute * 100 / (pendingexecute + finishexecute + readyexecute)).toFixed(1)}}
+                    %)</span>
                 </h5>
               </div>
             </div>
@@ -96,7 +73,7 @@
                 </p>
                 <h5 class="mb-0 font-bold">
                   {{readyexecute}}
-                  <span class="text-lime-500 ml-1">({{(readyexecute * 100 / this.totalfm2.length).toFixed(1)}} %)</span>
+                  <span class="text-lime-500 ml-1">({{(readyexecute * 100 / (pendingexecute + finishexecute + readyexecute)).toFixed(1)}} %)</span>
                 </h5>
               </div>
             </div>
@@ -106,6 +83,71 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+        <div class="flex-auto p-4">
+          <div class="flex flex-row -mx-3">
+            <div class="flex-none w-2/3 max-w-full px-3">
+              <div>
+                <p class="mb-0 font-sans font-semibold leading-normal text-sm">
+                  Finish Execute
+                </p>
+                <h5 class="mb-0 font-bold">
+                  {{finishexecute}}
+                  <span class="text-lime-500 ml-1">({{(finishexecute * 100 / (pendingexecute + finishexecute + readyexecute)).toFixed(1)}}
+                    %)</span>
+                </h5>
+              </div>
+            </div>
+            <div class="px-3 text-right basis-1/3">
+              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
+                <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 duration-2000">
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4 mt-2">
+      <div
+        class="relative flex flex-col min-w-0 break-words border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+        style="background-color: #f4b8a5;">
+        <div class="flex-auto p-1 pt-0 text-center">
+          <h6 class="mt-1 text-center font-bold">Approval Finding :<strong class="text-lg"> {{approvalfinding}}</strong>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4 mt-2">
+      <div
+        class="relative flex flex-col min-w-0 break-words border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+        style="background-color: #86b0de;">
+        <div class="flex-auto p-1 pt-0 text-center">
+          <h6 class="mt-1 text-center font-bold">Create Order :<strong class="text-lg"> {{createorderfinding}}</strong>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4 mt-2">
+      <div
+        class="relative flex flex-col min-w-0 break-words border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+        style="background-color: #86b0de;">
+        <div class="flex-auto p-1 pt-0 text-center">
+          <h6 class="mt-1 text-center font-bold">Scheduling :<strong class="text-lg"> {{ordershecdule}}</strong></h6>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4 mt-2">
+      <div
+        class="relative flex flex-col min-w-0 break-words border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+        style="background-color: #f4b8a5;">
+        <div class="flex-auto p-1 pt-0 text-center">
+          <h6 class="mt-1 text-center font-bold">Check Execution :<strong class="text-lg"> {{orderfinish}}</strong></h6>
         </div>
       </div>
     </div>
@@ -122,16 +164,17 @@
           <div class="flex-auto p-6">
             <canvas id="dum" height="150px"></canvas>
             <div class="px-6 pt-4 pb-2 text-center">
-              <span style="background-color: red;"
+              <span style="background-color: #7fe7dc;"
                 class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Total:
-                {{this.totalfm2.length}}</span>
-              <span style="background-color: rgb(112, 112, 0);"
-                class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending:
+                {{pendingexecute + finishexecute + readyexecute}}</span>
+              <span style="background-color:#ffc13b"
+                class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">On
+                Progres:
                 {{pendingexecute}}</span>
-              <span style="background-color: blue;"
+              <span style="background-color: #ff6e40;"
                 class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready:
                 {{readyexecute}}</span>
-              <span style="background-color: green;"
+              <span style="background-color: #316879;"
                 class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish:
                 {{finishexecute}}</span>
             </div>
@@ -151,16 +194,14 @@
             <div class="flex-auto p-6">
               <canvas id="donut" width="575" height="480"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
-                <span style="background-color: red;"
-                  class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Total:
-                  {{this.totalfm2.length}}</span>
-                <span style="background-color: rgb(112, 112, 0);"
-                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending:
+                <span style="background-color: #ffc13b"
+                  class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">On
+                  Progres:
                   {{pendingexecute}}</span>
-                <span style="background-color: blue;"
+                <span style="background-color: #ff6e40;"
                   class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Ready:
                   {{readyexecute}}</span>
-                <span style="background-color: green;"
+                <span style="background-color: #316879;"
                   class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Finish:
                   {{finishexecute}}</span>
               </div>
@@ -179,13 +220,13 @@
             <div class="flex-auto p-6">
               <canvas id="donut2" width="575" height="480"></canvas>
               <div class="px-6 pt-4 pb-2 text-center">
-                <span style="background-color: red;"
+                <span style="background-color: #626d71;"
                   class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Low:
                   {{this.low}}</span>
-                <span style="background-color: rgb(112, 112, 0);"
+                <span style="background-color: #ffc13b;"
                   class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Medium:
                   {{this.medium}}</span>
-                <span style="background-color: blue;"
+                <span style="background-color: #ff6e40;"
                   class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">High:
                   {{this.high}}</span>
               </div>
@@ -201,19 +242,19 @@
           </div>
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
-                <p class="text-center" style="color: red;">Click Funlock For Show History Finding Close</p>
-                <div class="flex items-center text-center p-4">
-                  <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
-                    <span
-                      class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                      <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text"
-                      class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
-                      placeholder="Type here..." name="search" [(ngModel)]="searchText" />
-                  </div>
+              <p class="text-center" style="color: red;">Click Funlock For Show History Finding Close</p>
+              <div class="flex items-center text-center p-4">
+                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                  <span
+                    class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text"
+                    class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                    placeholder="Type here..." name="search" [(ngModel)]="searchText" />
                 </div>
-                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+              </div>
+              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -230,7 +271,7 @@
                         Machine
                       </th>
                       <th scope="col" class="py-3 px-6">
-                        Area
+                        Section
                       </th>
                     </tr>
                   </thead>
@@ -247,10 +288,10 @@
                         {{findingpending.level}}
                       </td>
                       <td (click)="data(findingpending.func_loc)" class="py-4 px-6">
-                        {{findingpending.func_loc}}
+                        <a class="styled-pointer">{{findingpending.func_loc}}</a>
                       </td>
                       <td class="py-4 px-6">
-                        {{findingpending.area}}
+                        {{findingpending.section}}
                       </td>
                     </tr>
                   </tbody>
@@ -271,19 +312,19 @@
           <div
             class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mt-1 mb-1 bg-clip-border">
             <div class="flex-auto p-6">
-                <p class="text-center" style="color: red;">Name Machine : {{funloc}}</p>
-                <div class="flex items-center text-center p-4">
-                  <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
-                    <span
-                      class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                      <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text"
-                      class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
-                      placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
-                  </div>
+              <p class="text-center" style="color: red;">Name Machine : {{funloc}}</p>
+              <div class="flex items-center text-center p-4">
+                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                  <span
+                    class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" id="target" #target
+                    class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                    placeholder="Type here..." name="search" [(ngModel)]="searchText2" />
                 </div>
-                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+              </div>
+              <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -291,7 +332,7 @@
                         No
                       </th>
                       <th scope="col" class="py-3 px-6">
-                        Actual End
+                        Tanggal Pengerjaan
                       </th>
                       <th scope="col" class="py-3 px-6">
                         Finding
@@ -331,13 +372,370 @@
             </pagination-controls>
           </div>
         </div>
+        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <p class="text-left text-md">List Job Finish Today
+              </p>
+              <p class="text-center" style="color: red;">Click NO WO Get Detail Part</p>
+              <div class="flex items-center text-center mb-4">
+                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+                  <span
+                    class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text"
+                    class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                    placeholder="Type here..." name="search" [(ngModel)]="searchText3" />
+                </div>
+                <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                  <!-- <label for="date" class="mr-1">Date : </label> -->
+                  <input type="date" style=" border: 1px solid #c4c4c4;
+                        border-radius: 5px;
+                        background-color: #fff;
+                        padding: 3px 5px;
+                        box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                      " width="48" [(ngModel)]="tglsearch" (ngModelChange)="finddatachange()">
+                </div>
+              </div>
+              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+                <table border="1" class="w-full text-lg text-gray-500 dark:text-gray-400 text-center mb-6">
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="py-3 px-6">
+                        Section
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        NO WO
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Foto
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Deskripsi
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Note Executor
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Executor
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Total
+                      </th>
+                    </tr>
+                    <tr class="bg-white border-b Success:bg-gray-900 Success:border-gray-700"
+                      *ngFor="let item of reportharian[0]| filter:searchText3| paginate: { id:'pagination3', currentPage: currentPage3, itemsPerPage: 5 }; let i = index ">
+                      <td>
+                        {{item.section}}
+                      </td>
+                      <td *ngIf="item.no_wo == '9999999';else nowoclear">
+                        -
+                      </td>
+                      <ng-template #nowoclear>
+                        <td (click)="detailpart(item.no_wo)">
+                          <a class="styled-pointer"> {{item.no_wo}} </a>
+                        </td>
+                      </ng-template>
+                      <td>
+                        <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
+                        <label for="modal-btn">
+                        </label>
+                        <div class="modal">
+                          <div class="modal-wrap xl:ml-68.5">
+                            <img src="http://192.168.9.47/plan_am/files/{{picture}}" class="center">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="column text-center center" *ngFor="let item2 of item.foto;">
+                            <label for="modal-btn">
+                            <img class="animasi" (click)="getphoto(item2)" src="http://192.168.9.47/plan_am/files/{{item2}}" style="width: 100%;
+                              max-width: 150px;
+                              height: auto;">
+                              </label>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        {{item.desc}}
+                      </td>
+                      <td>
+                        {{item.note_executor}}
+                      </td>
+                      <td>
+                        {{item.executor}}
+                      </td>
+                      <td *ngIf="item.total != null;else nulltotal">
+                        {{item.total}} %
+                      </td>
+                      <ng-template #nulltotal>
+                        -
+                      </ng-template>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+            <pagination-controls class="text-center" id="pagination3" (pageChange)="currentPage3 = $event">
+            </pagination-controls>
+          </div>
+        </div>
+        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <p class="text-center" style="color: red;" id="target2" #target2>Detail Part</p>
+              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+                <table border="1" class="w-full text-lg text-gray-500 dark:text-gray-400 text-center">
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="py-3 px-6">
+                        Description Part
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Quantity
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Quantity Install
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Prosentase
+                      </th>
+                    </tr>
+                    <tr class="bg-white border-b Success:bg-gray-900 Success:border-gray-700"
+                      *ngFor="let item of detailpartarr[0] | paginate: { id:'pagination4', currentPage: currentPage4, itemsPerPage: 5 }; let i = index ">
+                      <td>
+                        {{item.desc_part}}
+                      </td>
+                      <td>
+                        {{item.qty}}
+                      </td>
+                      <td>
+                        {{item.qty_install}}
+                      </td>
+                      <td>
+                        {{item.prosentase}} %
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+            <pagination-controls class="text-center" id="pagination4" (pageChange)="currentPage4 = $event">
+            </pagination-controls>
+          </div>
+        </div>
+        <div class="w-full px-1 py-1 mx-auto">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-4">
+              <h5 class="text-center">
+                Monthly Report Work Order </h5>
+            </div>
+          </div>
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <div class="w-full max-w-full md:w-full">
+                <div class="flex items-center text-center mt-4 mb-4 flex-wrap">
+                  <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                    <!-- <label for="date" class="mr-1">Date : </label> -->
+                    <label>Start Date :</label><br />
+                    <input type="date" style=" border: 1px solid #c4c4c4;
+                  border-radius: 5px;
+                  background-color: #fff;
+                  padding: 3px 5px;
+                  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                " width="48" [(ngModel)]="tgl3">
+                  </div>
+                  <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                    <label>End Date :</label><br />
+                    <input type="date" style=" border: 1px solid #c4c4c4;
+                  border-radius: 5px;
+                  background-color: #fff;
+                  padding: 3px 5px;
+                  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                " width="48" [(ngModel)]="tgl4">
+                  </div>
+                  <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                    <button (click)="finddata2()" class="button button2">Find Data</button>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                (click)="capture()"><i class="fa fa-camera fa-1"></i>
+                Capture</button>
+              <div id="ss" #ss>
+                <h2 class="text-center" style="color: blue;">Grafik Work Order FNB {{autodate}}</h2>
+                <div class="flex flex-wrap -mx-1 lg:-mx-3">
+                  <canvas id="valuepermonthchart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="my-1 px-1 w-full max-w-full md:w-full lg:my-6 lg:px-6">
+          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
+            <div class="flex-auto p-6">
+              <div class="w-full max-w-full md:w-full">
+                <div class="flex items-center text-center mt-4 mb-4 flex-wrap">
+                  <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                    <!-- <label for="date" class="mr-1">Date : </label> -->
+                    <label>Start Date :</label><br />
+                    <input type="date" style=" border: 1px solid #c4c4c4;
+                  border-radius: 5px;
+                  background-color: #fff;
+                  padding: 3px 5px;
+                  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                " width="48" [(ngModel)]="tgl1">
+                  </div>
+                  <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                    <label>End Date :</label><br />
+                    <input type="date" style=" border: 1px solid #c4c4c4;
+                  border-radius: 5px;
+                  background-color: #fff;
+                  padding: 3px 5px;
+                  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+                " width="48" [(ngModel)]="tgl2">
+                  </div>
+                  <div class="w-full max-w-full md:w-4/12 xl:w-4/12 xs:w-4/12">
+                    <button (click)="finddata()" class="button button2">Find Data</button>
+                  </div>
+                  <button
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                    (click)="capture2()"><i class="fa fa-camera fa-1"></i>
+                    Capture Chart</button>
+                  <button
+                    class="inline-block px-0 py-3 mb-0 ml-4 font-bold leading-normal uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-md active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"
+                    (click)="capture3()"><i class="fa fa-camera fa-1"></i>
+                    Capture Table</button>
+                </div>
+              </div>
+              <div class="w-full max-w-full md:w-full" id="ss2" #ss2>
+                <div class="flex items-center text-center mt-4 mb-4 flex-wrap">
+                  <div class="w-full max-w-full md:w-1/2 xl:w-1/2 xs:w-1/2">
+                    <h4 class="text-center" style="color: blue;">WORK ORDER MONTH DATE</h4>
+                    <canvas id="barreport"></canvas>
+                      <div class="px-6 pt-4 pb-2 text-center">
+                        <span style="background-color: #7fe7dc;"
+                          class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">Total WO:
+                          {{this.totalwo02report + this.totalwo03report + this.totalwo06report + this.totalwo07report}}</span>
+                        <span style="background-color: #316879;"
+                          class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Done WO:
+                          {{this.wo02donereport + this.wo03donereport + this.wo06donereport + this.wo07donereport}}</span>
+                        <span style="background-color: #ff6e40;"
+                          class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">Pending WO:
+                          {{this.wo02report + this.wo03report + this.wo06report + this.wo07report}}</span>
+                      </div>
+                  </div>
+                  <div class="w-full max-w-full md:w-1/2 xl:w-1/2 xs:w-1/2">
+                    <h4 class="text-center" style="color: blue;">COMPLETION RATIO</h4>
+                    <canvas id="barreport2"></canvas>
+                    <div class="px-6 pt-4 pb-2 text-center">
+                      <span style="background-color: #ffc13b;"
+                        class="text-white inline-block bg-red rounded-full text-md px-3 py-1 font-semibold mr-2 mb-2">WO02:
+                        {{math.round((this.wo02donereport / this.totalwo02report) * 100)}} %</span>
+                      <span style="background-color: #7fe7dc;"
+                        class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">WO03:
+                        {{math.round((this.wo03donereport / this.totalwo03report) * 100)}} %</span>
+                      <span style="background-color: #ff6e40;"
+                        class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">WO06:
+                        {{math.round((this.wo06donereport / this.totalwo06report) * 100)}} %</span>
+                        <span style="background-color: #1e3d59;"
+                        class="text-white inline-block bg-red rounded-full px-3 py-1 text-md font-semibold mr-2 mb-2">WO07:
+                        {{math.round((this.wo07donereport / this.totalwo07report) * 100)}} %</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="overflow-x-auto relative shadow-lg sm:rounded-lg" id="ss3" #ss3>
+                <table border="1" class="w-full text-lg text-gray-500 dark:text-gray-400 text-center">
+                  <thead class="text-gray-700 uppercase dark:text-gray-400">
+                    <tr>
+                      <th scope="col" colspan="5" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                        WORK ORDER MONTH DATE
+                      </th>
+                    </tr>
+                    <tr>
+                      <td class="font-bold">Total</td>
+                      <td>:</td>
+                      <td>{{totalreport}}</td>
+                      <td>WO</td>
+                    </tr>
+                    <tr>
+                      <td class="font-bold">Done</td>
+                      <td>:</td>
+                      <td>{{donereport}}</td>
+                      <td>WO</td>
+                    </tr>
+                    <tr>
+                      <td class="font-bold">Pending</td>
+                      <td>:</td>
+                      <td>{{pendingreport}}</td>
+                      <td>WO</td>
+                    </tr>
+                    <tr>
+                      <td class="font-bold">Procentage</td>
+                      <td>:</td>
+                      <td>{{((donereport / totalreport) * 100).toFixed(2) }}</td>
+                      <td>%</td>
+                    </tr>
+                  </thead>
+                </table>
+                <table border="1" class="w-full mt-6 text-lg text-gray-500 dark:text-gray-400 text-center mb-6">
+                  <thead class="text-gray-700 uppercase dark:text-gray-400">
+                    <tr>
+                      <th scope="col" colspan="5" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                        COMPLETION RATIO
+                      </th>
+                    </tr>
+                    <tr>
+                      <td class="font-bold">Type WO</td>
+                      <td class="font-bold">WO Closed</td>
+                      <td class="font-bold">Pending Wo</td>
+                      <td class="font-bold">Total Wo</td>
+                      <td class="font-bold">Prosentase</td>
+                    </tr>
+                    <tr>
+                      <td>WO02 Corretive</td>
+                      <td>{{wo02donereport}}</td>
+                      <td>{{wo02report}}</td>
+                      <td>{{totalwo02report}}</td>
+                      <td>{{((wo02donereport/totalwo02report) * 100).toFixed(2)}}</td>
+                    </tr>
+                    <tr>
+                      <td>WO03 Improvement</td>
+                      <td>{{wo03donereport}}</td>
+                      <td>{{wo03report}}</td>
+                      <td>{{totalwo03report}}</td>
+                      <td>{{((wo03donereport/totalwo03report) * 100).toFixed(2)}}</td>
+                    </tr>
+                    <tr>
+                      <td>WO06 Preventive</td>
+                      <td>{{wo06donereport}}</td>
+                      <td>{{wo06report}}</td>
+                      <td>{{totalwo06report}}</td>
+                      <td>{{((wo06donereport/totalwo06report) * 100).toFixed(2)}}</td>
+                    </tr>
+                    <tr>
+                      <td>WO07 OverHaul</td>
+                      <td>{{wo07donereport}}</td>
+                      <td>{{wo07report}}</td>
+                      <td>{{totalwo07report}}</td>
+                      <td>{{((wo07donereport/totalwo07report) * 100).toFixed(2)}}</td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <!-- </div>
   </div> -->
 </div>
-<div  [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
+<div [style.visibility]="(resolved === true) ? 'hidden' : 'visible' ">
   <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
     <p style="font-size: 20px; color: white">{{deskripsi}}</p>
   </ngx-spinner>

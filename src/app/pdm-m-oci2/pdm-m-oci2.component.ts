@@ -40,6 +40,8 @@ export class PdmMOci2Component implements OnInit {
   imgBase64 = '';
   @ViewChild("ss")
   taptap!: ElementRef;
+  @ViewChild("target")
+  target!: ElementRef;
   capture() {
     this.captureService
       .getImage(this.taptap.nativeElement, true)
@@ -284,6 +286,7 @@ export class PdmMOci2Component implements OnInit {
     this.paginatereset = !this.paginatereset;
   }
   data($event: any,$event2 : any) {
+    this.target.nativeElement.scrollIntoView();
     if(this.coba != null && this.coba2 != null && this.coba3 != null){
       this.coba.destroy();
       this.coba2.destroy();

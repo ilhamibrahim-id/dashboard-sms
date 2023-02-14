@@ -39,6 +39,8 @@ export class PdmMOci1Component implements OnInit {
   imgBase64 = '';
   @ViewChild("ss")
   taptap!: ElementRef;
+  @ViewChild("target")
+  target!: ElementRef;
   capture() {
     this.captureService
       .getImage(this.taptap.nativeElement, true)
@@ -287,6 +289,11 @@ export class PdmMOci1Component implements OnInit {
 
   }
   data($event: any, $event2: any) {
+    this.target.nativeElement.scrollIntoView();
+    // window.scrollTo({
+    //   top: 100,
+    //   behavior: 'smooth',
+    // });
     if (this.coba != null && this.coba2 != null && this.coba3 != null) {
       this.coba.destroy();
       this.coba2.destroy();

@@ -3,7 +3,7 @@
     class="relative flex flex-col mb-4 min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
     <div class="flex-auto p-1">
       <div class="wrapper">
-        <h5 class="typing-demo">PDM Monitoring - OCI 1
+        <h5 class="typing-demo">PDM Monitoring - PETLINE 1
         </h5>
       </div>
     </div>
@@ -159,14 +159,55 @@
                   <table border="1" class="w-full text-lg text-gray-500 dark:text-gray-400 text-center">
                     <thead class="text-gray-700 uppercase dark:text-gray-400">
                       <tr>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          No
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          NO
                         </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          Device Name
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          DEVICE NAME
                         </th>
+                        <th colspan="3" scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          2H
+                        </th>
+                        <th colspan="3" scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          3H
+                        </th>
+                        <th colspan="3" scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          AMPERE
+                        </th>
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Therm
+                        </th>
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Freq
+                        </th>
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          VC
+                        </th>
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Status
+                        </th>
+                        <th scope="col" rowspan="2" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          PIC
+                        </th>
+                      </tr>
+                      <tr>
                         <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                           2H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Thermal 2H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          CF 2H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          3H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          Thermal 3H
+                        </th>
+                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
+                          CF 3H
                         </th>
                         <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                           R
@@ -176,24 +217,6 @@
                         </th>
                         <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
                           T
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          Thermal
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          Frequency
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          CF+ 2H
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          VC
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          PIC
-                        </th>
-                        <th scope="col" class="py-3 px-6 dark:bg-gray-800 text-white" bgcolor="#878790">
-                          Status
                         </th>
                       </tr>
                     </thead>
@@ -206,7 +229,7 @@
                         </th>
                         <td (click)="data(header.device_name,header.dodate)" class="py-4 px-6 font-medium font-semibold"
                           style="color: black;">
-                          {{header.device_name}}
+                          <a class="styled-pointer">{{header.device_name}}</a>
                         </td>
                         <!-- <td *ngIf="header.Two_H < 2" bgcolor="green" class="text-white text-center"> -->
                         <td *ngIf="toFloat(header.Two_H) >= 4.50 && toFloat(header.Two_H) <= 7.10"
@@ -227,6 +250,33 @@
                           {{header.Two_H}}
                         </td>
                         <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.Thermal_Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF_Two_H) >= 11 && toFloat(header.CF_Two_H) <= 15"
+                          class="py-4 px-6 font-medium font-semibold" style="background-color: #FED033;color: #000000;">
+                          {{header.CF_Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF_Two_H) > 15" class="py-4 px-6 font-medium font-semibold"
+                          style="background-color: #EA8686;color: #000000;">
+                          {{header.CF_Two_H}}
+                        </td>
+                        <td *ngIf="toFloat(header.CF_Two_H) < 11" class="py-4 px-6 font-medium font-semibold"
+                          style="color: black">
+                          {{header.CF_Two_H}}
+                        </td>
+                        <td *ngIf="header.CF_Two_H == '-'" class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.CF_Two_H}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.Three_H}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.Thermal_Three_H}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.CF_Three_H}}
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.R}}
                         </td>
                         <td class="py-4 px-6 font-medium font-semibold" style="color: black">
@@ -241,21 +291,6 @@
                         <td class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.Frequency}}
                         </td>
-                        <td *ngIf="toFloat(header.CF) >= 11 && toFloat(header.CF) <= 15"
-                          class="py-4 px-6 font-medium font-semibold" style="background-color: #FED033;color: #000000;">
-                          {{header.CF}}
-                        </td>
-                        <td *ngIf="toFloat(header.CF) > 15" class="py-4 px-6 font-medium font-semibold"
-                          style="background-color: #EA8686;color: #000000;">
-                          {{header.CF}}
-                        </td>
-                        <td *ngIf="toFloat(header.CF) < 11" class="py-4 px-6 font-medium font-semibold"
-                          style="color: black">
-                          {{header.CF}}
-                        </td>
-                        <td *ngIf="header.CF == '-'" class="py-4 px-6 font-medium font-semibold" style="color: black">
-                          {{header.CF}}
-                        </td>
                         <td *ngIf="header.VC == '3'" class="py-4 px-6 font-medium font-semibold"
                           style="background-color: #FED033;color: #000000;">
                           {{header.VC}}
@@ -267,9 +302,6 @@
                         <td *ngIf="header.VC == '1' || header.VC == '2' || header.VC == '-'"
                           class="py-4 px-6 font-medium font-semibold" style="color: black">
                           {{header.VC}}
-                        </td>
-                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
-                          {{header.PIC}}
                         </td>
                         <td *ngIf="header.Stat == 'Good'" class="py-4 px-6 text font-semibold text-center"
                           style="color: #000000;" bgcolor="#94D977">
@@ -289,6 +321,9 @@
                         </td>
                         <td *ngIf="header.Stat == 0 || header.Stat == '-'" class="py-4 px-6  font-semibold text-center">
                           -
+                        </td>
+                        <td class="py-4 px-6 font-medium font-semibold" style="color: black">
+                          {{header.PIC}}
                         </td>
                       </tr>
                     </tbody>
@@ -310,7 +345,7 @@
             <div
               class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
-                <h5 class="text-center">OCI 1</h5>
+                <h5 class="text-center">PETLINE 1</h5>
               </div>
             </div>
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl bg-clip-border">
@@ -362,9 +397,9 @@
                           <div class="modal">
                             <div class="modal-wrap xl:ml-68.5">
                               <div *ngIf="note == null"><img src="assets/img/nodata.jpeg" class="center"></div>
-                                <div *ngIf="note != null">
-                                  <img src="{{picture}}" class="center">
-                                </div>
+                              <div *ngIf="note != null">
+                                <img src="{{picture}}" class="center">
+                              </div>
                             </div>
                           </div>
                         </td>
@@ -388,7 +423,7 @@
             <div
               class="relative flex flex-col min-w-0 break-words bg-white mb-1 shadow-soft-lg rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
-                <h5 class="text-center">Chart Abnormal Asset</h5>
+                <h5 class="text-center" id="target" #target>Chart Abnormal Asset</h5>
                 <p class="text-center" style="color: red;">Device Name : {{funloc}}</p>
               </div>
             </div>
@@ -476,7 +511,7 @@
                         </th>
                         <td (click)="data(getdata.device_name,getdata.dodate)" style="color: #000000;"
                           class="py-4 px-6 py-4 px-6 font-medium font-semibold">
-                          {{getdata.device_name}}
+                          <a class="styled-pointer">{{getdata.device_name}}</a>
                         </td>
                         <td style="color: #000000;" class="py-4 px-6 font-medium font-semibold">
                           {{getdata.dodate}}

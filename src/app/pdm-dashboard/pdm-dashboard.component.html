@@ -47,11 +47,11 @@
                 <div class="flex-none w-2/3 max-w-full px-3">
                   <div>
                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">
-                      Finish Check
+                      Total Good
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{(this.good + this.goodoci1 + this.satisoci1 + this.satis + this.goodfsb + this.satisfsb + this.unsatisfoci1 + this.unsatisf + this.unacc + this.unaccoci1 + this.unsatisffsb + this.unaccfsb)}}
-                      <span class="text-lime-500 ml-1">({{((this.good + this.goodoci1 + this.satisoci1 + this.satis + this.goodfsb + this.satisfsb + this.unsatisfoci1 + this.unsatisf + this.unacc + this.unaccoci1 + this.unsatisffsb + this.unaccfsb) * 100 / totalasset).toFixed(1)}} %)</span>
+                      {{(this.good + this.goodoci1 + this.goodfsb)}}
+                      <span class="text-lime-500 ml-1">({{((this.good + this.goodoci1 + this.goodfsb) * 100 / totalasset).toFixed(1)}} %)</span>
                     </h5>
                   </div>
                 </div>
@@ -72,11 +72,11 @@
                 <div class="flex-none w-2/3 max-w-full px-3">
                   <div>
                     <p class="mb-0 font-sans font-semibold leading-normal text-xs">
-                      Total Good Dan SatisFactory
+                      Total SatisFactory
                     </p>
                     <h5 class="mb-0 font-bold">
-                      {{(this.good + this.goodoci1 + this.satisoci1 + this.satis + this.goodfsb + this.satisfsb)}}
-                      <span class="text-lime-500 ml-1">({{((this.good + this.goodoci1 + this.satisoci1 + this.satis + this.goodfsb + this.satisfsb) * 100 / totalasset).toFixed(1)}} %)</span>
+                      {{(this.satisoci1 + this.satis + this.satisfsb)}}
+                      <span class="text-lime-500 ml-1">({{((this.satisoci1 + this.satis + this.satisfsb) * 100 / totalasset).toFixed(1)}} %)</span>
                     </h5>
                   </div>
                 </div>
@@ -123,7 +123,7 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
                 <div class="flex-auto p-6">
-                  <h5 class="text-center">OCI 1<br />{{totalassetoci1}} Device</h5>
+                  <h5 class="text-center">PETLINE 1<br />{{totalassetoci1}} Device</h5>
                 </div>
               </div>
               <div
@@ -143,7 +143,7 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
                 <div class="flex-auto p-6">
-                  <h5 class="text-center">OCI 2<br />{{totalassetoci2}} Device</h5>
+                  <h5 class="text-center">PETLINE 2<br />{{totalassetoci2}} Device</h5>
                 </div>
               </div>
               <div
@@ -163,7 +163,7 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-lg rounded-2xl mb-1 bg-clip-border">
                 <div class="flex-auto p-6">
-                  <h5 class="text-center">FSB<br />{{totalfsb}} Device</h5>
+                  <h5 class="text-center">FNB<br />{{totalfsb}} Device</h5>
                 </div>
               </div>
               <div
