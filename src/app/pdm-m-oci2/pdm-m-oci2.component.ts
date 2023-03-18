@@ -313,7 +313,7 @@ export class PdmMOci2Component implements OnInit {
     for (let i = 0; i < this.notepdmlist.length; i++) {
       if (this.notepdmlist[i].device_name === this.funloc && this.notepdmlist[i].do_date === $event2) {
         this.note = this.notepdmlist[i].note;
-        this.picture = 'http://192.168.9.47/plan_pdm/files/' + this.notepdmlist[i].picture;
+        this.picture = 'http://localhost/plan_pdm/files/' + this.notepdmlist[i].picture;
         break;
       }
     }

@@ -52,7 +52,7 @@ export class Injectionmolderpt2Component implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.injectarr.length; i++) {
       if (this.injectarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.injectarr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.injectarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.injectarr[i]);
 
       }

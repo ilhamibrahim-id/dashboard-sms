@@ -52,7 +52,7 @@ export class LabellerComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.labellerarr.length; i++) {
       if (this.labellerarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.labellerarr[i].images;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.labellerarr[i].images;
         this.detailarr.splice(this.detailarr.lenght, 0, this.labellerarr[i]);
 
       }

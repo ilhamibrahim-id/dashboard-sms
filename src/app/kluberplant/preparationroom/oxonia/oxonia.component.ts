@@ -53,7 +53,7 @@ export class OxoniaComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.oxoniaarr.length; i++) {
       if (this.oxoniaarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.oxoniaarr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.oxoniaarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.oxoniaarr[i]);
 
       }

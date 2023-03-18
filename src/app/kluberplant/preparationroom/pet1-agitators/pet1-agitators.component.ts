@@ -54,7 +54,7 @@ export class Pet1AgitatorsComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.pet1arr.length; i++) {
       if (this.pet1arr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.pet1arr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.pet1arr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.pet1arr[i]);
 
       }

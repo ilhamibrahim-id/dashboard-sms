@@ -51,7 +51,7 @@ export class ContainerConveyorOffComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.containeroffarr.length; i++) {
       if (this.containeroffarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.containeroffarr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.containeroffarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.containeroffarr[i]);
 
       }

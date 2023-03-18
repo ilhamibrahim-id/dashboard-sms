@@ -52,7 +52,7 @@ export class PackRollerConveyorsComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.packrollerarr.length; i++) {
       if (this.packrollerarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.packrollerarr[i].images;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.packrollerarr[i].images;
         this.detailarr.splice(this.detailarr.lenght, 0, this.packrollerarr[i]);
 
       }

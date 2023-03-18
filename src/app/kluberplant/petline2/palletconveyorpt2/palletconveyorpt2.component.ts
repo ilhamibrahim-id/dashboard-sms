@@ -53,7 +53,7 @@ export class Palletconveyorpt2Component implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.palletconveyorarr.length; i++) {
       if (this.palletconveyorarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.palletconveyorarr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.palletconveyorarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.palletconveyorarr[i]);
 
       }

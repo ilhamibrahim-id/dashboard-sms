@@ -53,7 +53,7 @@ export class Sheetfeederpt2Component implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.sheetfeederarr.length; i++) {
       if (this.sheetfeederarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.sheetfeederarr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.sheetfeederarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.sheetfeederarr[i]);
 
       }

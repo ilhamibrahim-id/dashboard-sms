@@ -52,7 +52,7 @@ export class RobopackerOffComponent implements OnInit {
     this.detailarr = [];
     for (let i = 0; i < this.robopackerarr.length; i++) {
       if (this.robopackerarr[i].id == id) {
-        this.gambar = "http://192.168.9.47/kluber_lubrication/files/" + this.robopackerarr[i].image;
+        this.gambar = "http://localhost/kluber_lubrication/files/" + this.robopackerarr[i].image;
         this.detailarr.splice(this.detailarr.lenght, 0, this.robopackerarr[i]);
 
       }
